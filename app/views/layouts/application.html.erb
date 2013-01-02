@@ -63,6 +63,15 @@
       <div class="row-fluid">
         <div class="span3">
           <div class="well sidebar-nav" id="sidebar">
+            <div id="user_nav">
+              <% if current_user %>
+                Logged in as <%= current_user.email %>
+                <%= link_to "Log out", log_out_path %>
+              <% else %>
+                <%= link_to "Sign Up", sign_up_path %> or
+                <%= link_to "Log in", log_in_path %>
+              <% end %>
+            </div>
             <ul class="nav nav-list">
               <li class="nav-header">Sidebar</li>
               <li><%= link_to "Home", "/"  %></li>
