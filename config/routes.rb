@@ -1,28 +1,15 @@
 Website::Application.routes.draw do
   resources :comments
-
-
   resources :forums
-
-
   resources :photos
-
-
   resources :albums
-
-
   resources :pages
-
-
   resources :users
-
-
   resources :posts
-
-
   resources :groups
 
   get "welcome/index"
+  get "sign_up" => "users#new", :as => "sign_up"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

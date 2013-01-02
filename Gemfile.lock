@@ -168,6 +168,7 @@ PLATFORMS
 DEPENDENCIES
   activeadmin
   acts-as-taggable-on
+  bcrypt-ruby (~> 3.0.0)
   cancan
   coffee-rails (~> 3.2.1)
   jquery-rails
