@@ -1,41 +1,44 @@
-<%= form_for(@comment) do |f| %>
-  <% if @comment.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
-
-      <ul>
-      <% @comment.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+<%= form_for @comment, :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="control-group">
+    <%= f.label :user_id, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :user_id, :class => 'number_field' %>
     </div>
-  <% end %>
+  </div>
+  <div class="control-group">
+    <%= f.label :content, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_area :content, :class => 'text_area' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :title, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :title, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :parent_id, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :parent_id, :class => 'number_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :sticky, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.check_box :sticky, :class => 'check_box' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :important, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.check_box :important, :class => 'check_box' %>
+    </div>
+  </div>
 
-  <div class="field">
-    <%= f.label :user_id %><br />
-    <%= f.number_field :user_id %>
-  </div>
-  <div class="field">
-    <%= f.label :content %><br />
-    <%= f.text_area :content %>
-  </div>
-  <div class="field">
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :parent_id %><br />
-    <%= f.number_field :parent_id %>
-  </div>
-  <div class="field">
-    <%= f.label :sticky %><br />
-    <%= f.text_field :sticky %>
-  </div>
-  <div class="field">
-    <%= f.label :important %><br />
-    <%= f.text_field :important %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                comments_path, :class => 'btn' %>
   </div>
 <% end %>
