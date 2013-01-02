@@ -1,14 +1,18 @@
 Website::Application.routes.draw do
+  get "sessions/new"
+
   resources :comments
   resources :forums
   resources :photos
   resources :albums
   resources :pages
   resources :users
+  resources :sessions
   resources :posts
   resources :groups
 
   get "welcome/index"
+  get "log_in" => "sessions#new", :as => "log_in"
   get "sign_up" => "users#new", :as => "sign_up"
 
   # The priority is based upon order of creation:
