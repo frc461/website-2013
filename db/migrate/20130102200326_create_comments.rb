@@ -5,8 +5,8 @@ class CreateComments < ActiveRecord::Migration
       t.text :content
       t.string :title
       t.integer :parent_id
-      t.bool :sticky
-      t.bool :important
+      t.boolean :sticky
+      t.boolean :important
 
       t.timestamps
     end

@@ -4,7 +4,7 @@ class CreatePages < ActiveRecord::Migration
       t.string :title
       t.text :content
       t.integer :parent_id
-      t.bool :navigable
+      t.boolean :navigable
 
       t.timestamps
     end

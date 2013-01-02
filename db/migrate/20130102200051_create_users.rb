@@ -4,7 +4,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :name
       t.string :email
       t.string :username
-      t.bool :admin
+      t.boolean :admin
       t.string :password_hash
       t.string :password_salt
 
