@@ -18,15 +18,15 @@
     </div>
   </div>
   <div class="control-group">
-    <%= f.label :password_hash, :class => 'control-label' %>
+    <%= f.label :password, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :password_hash, :class => 'text_field' %>
+      <%= f.password_field :password, :class => 'text_field' %>
     </div>
   </div>
   <div class="control-group">
-    <%= f.label :password_salt, :class => 'control-label' %>
+    <%= f.label :password_confirmation, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :password_salt, :class => 'text_field' %>
+      <%= f.password_field :password_confirmation, :class => 'text_field' %>
     </div>
   </div>
 
