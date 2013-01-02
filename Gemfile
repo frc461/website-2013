@@ -37,3 +37,8 @@ gem 'jquery-rails'
 
 # To use debugger
 # gem 'debugger'
+
+gem 'paperclip'
+gem 'acts-as-taggable-on'
+gem 'cancan'
+gem 'twitter-bootstrap-rails'
