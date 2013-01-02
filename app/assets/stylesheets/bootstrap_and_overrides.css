@@ -51,3 +51,7 @@ a :hover{
 #sidebar {
   margin-top: 20px;
 }
+
+#sidebar .nav-list {
+  padding-bottom: 5px;
+}
