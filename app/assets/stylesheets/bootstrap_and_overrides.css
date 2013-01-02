@@ -23,3 +23,11 @@ a :hover{
 .nav-list li>a:hover {
   color: #020202;
 }
+
+.navbar .nav>li>a {
+  color: #fff200 !important;
+}
+
+#sidebar {
+  margin-top: 20px;
+}
