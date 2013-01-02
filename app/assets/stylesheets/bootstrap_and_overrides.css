@@ -4,16 +4,36 @@
   Use Font Awesome icons (default)
   To use Glyphicons sprites instead of Font Awesome, replace with "require twitter-bootstrap-static/sprites"
   =require twitter-bootstrap-static/fontawesome
+
   */
 
-.navbar-fluid-top .nav {
-  padding-left: 200px;
+.navbar-fluid-top .nav-collapse {
+  padding-left: 160px;
   position: absolute;
+}
+
+@media (max-width: 979px) {
+  .navbar-fluid-top .nav-collapse {
+    padding-left: 0px;
+    position: relative;
+  }
 }
 
 .navbar .nav>li>a:hover{
   padding:15px 15px 14px;
   border-bottom:1px solid #fff200;
+}
+
+@media (max-width: 979px) {
+  .navbar .nav>li>a{
+    padding-left:15px;
+  }
+  .navbar .nav>li>a:hover{
+    padding: 9px 15px;
+    padding-left: 14px;
+    border-left:1px solid #fff200;
+    border-bottom:0px;
+  }
 }
 
 a :hover{
