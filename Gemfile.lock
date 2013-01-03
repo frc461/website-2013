@@ -46,6 +46,7 @@ GEM
       activesupport (>= 3.0.0)
     arel (3.0.2)
     bcrypt-ruby (3.0.1)
+    bluecloth (2.2.0)
     bourbon (3.0.1)
       sass (>= 3.2.0)
       thor
@@ -169,6 +170,7 @@ DEPENDENCIES
   activeadmin
   acts-as-taggable-on
   bcrypt-ruby (~> 3.0.0)
+  bluecloth
   cancan
   coffee-rails (~> 3.2.1)
   jquery-rails

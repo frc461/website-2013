@@ -16,6 +16,19 @@ textarea {
   position: absolute;
 }
 
+.page_body h1 {
+  font-size: 240%;
+  color: #e0e0e0;
+  font-weight: bold;
+  border-bottom: 1px solid #242424;
+}
+
+.page_body h2 {
+  font-size: 150%;
+  color: #e0e0e0;
+  font-weight: bold;
+}
+
 @media (max-width: 979px) {
   .navbar-fluid-top .nav-collapse {
     margin-left: 0px;
