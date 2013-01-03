@@ -5,11 +5,6 @@ gem 'rails', '3.2.9'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
-gem 'twitter-bootstrap-rails'
-gem 'activeadmin'
-gem 'bluecloth'
-
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -19,6 +14,10 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+gem 'sqlite3'
+gem 'twitter-bootstrap-rails'
+gem 'activeadmin'
+gem 'bluecloth'
 gem 'jquery-rails'
 gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'paperclip'

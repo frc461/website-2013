@@ -1,10 +1,15 @@
 Website::Application.routes.draw do
+  get "permissions/create"
+
+  get "permissions/destroy"
+
   resources :comments
   resources :forums
   resources :photos
   resources :albums
   resources :pages
   resources :users
+  resources :permissions
   resources :sessions
   resources :posts
   resources :groups
