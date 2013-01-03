@@ -3,9 +3,11 @@ class User < ActiveRecord::Base
   attr_accessible :admin, :email, :name, :password, :password_confirmation, :password_hash, :password_salt
   attr_accessor :password
   before_save :encrypt_password
+  after_create :create_principal
   validates_confirmation_of :password
   validates_presence_of :password, :on => :create
   validates_presence_of :email
+  validates_presence_of :name
   validates_uniqueness_of :email
 
   def self.authenticate(email, password)
@@ -15,6 +17,10 @@ class User < ActiveRecord::Base
     else
       nil
     end
+  end
+
+  def create_principal
+    p = Principal.create :authenticatable_type => "User", :authenticatable_id => self.id
   end
 
   def encrypt_password
@@ -28,4 +34,5 @@ class User < ActiveRecord::Base
   has_many :groups, :through => :memberships
   has_many :posts
   has_one :principal, :as => :authenticatable
+  has_many :permissions, :through => :principal
 end

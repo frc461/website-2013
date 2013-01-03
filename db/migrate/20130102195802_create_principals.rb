@@ -1,8 +1,8 @@
 class CreatePrincipals < ActiveRecord::Migration
   def change
     create_table :principals do |t|
-      t.integer :securable_id
-      t.string :securable_type
+      t.integer :authenticatable_id
+      t.string :authenticatable_type
 
       t.timestamps
     end

@@ -87,10 +87,10 @@ ActiveRecord::Schema.define(:version => 20130102200326) do
   end
 
   create_table "principals", :force => true do |t|
-    t.integer  "securable_id"
-    t.string   "securable_type"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.integer  "authenticatable_id"
+    t.string   "authenticatable_type"
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
   end
 
   create_table "users", :force => true do |t|

@@ -1,6 +1,7 @@
 class Principal < ActiveRecord::Base
-  attr_accessible :securable_id, :securable_type
+  attr_accessible :authenticatable_id, :authenticatable_type
 
+  has_many :permissions
   belongs_to :securable, :polymorphic => true
   belongs_to :principal
 end
