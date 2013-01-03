@@ -1,6 +1,4 @@
 Website::Application.routes.draw do
-  get "sessions/new"
-
   resources :comments
   resources :forums
   resources :photos
@@ -11,6 +9,7 @@ Website::Application.routes.draw do
   resources :posts
   resources :groups
 
+  get "sessions/new"
   get "welcome/index"
   get "log_in" => "sessions#new", :as => "log_in"
   get "log_out" => "sessions#destroy", :as => "log_out"
