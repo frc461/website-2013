@@ -22,6 +22,7 @@
 .navbar .nav>li>a:hover{
   padding:15px 15px 14px;
   border-bottom:1px solid #fff200;
+  background-color: #252a30
 }
 
 @media (max-width: 979px) {
