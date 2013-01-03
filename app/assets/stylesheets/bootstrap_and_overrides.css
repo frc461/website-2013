@@ -7,8 +7,12 @@
 
   */
 
+textarea {
+  font-family: monospace;
+}
+
 .navbar-fluid-top .nav-collapse {
-  padding-left: 160px;
+  margin-left: 140px;
   position: absolute;
 }
 
@@ -20,7 +24,7 @@
 
 @media (max-width: 979px) {
   .navbar-fluid-top .nav-collapse {
-    padding-left: 0px;
+    margin-left: 0px;
     position: relative;
   }
 }
@@ -80,6 +84,6 @@ input[type="color"]:focus,
 .uneditable-input:focus{
   border-color:rgba(255, 230, 50, 0.8);
   -webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(255,230,50,.6);
-  -moz-box-shadow:inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(255,230,50,.6);
-  box-shadow:inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(255,230,50,.6);
+     -moz-box-shadow:inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(255,230,50,.6);
+          box-shadow:inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(255,230,50,.6);
 }
