@@ -1,7 +1,7 @@
 <%= form_for @user, :html => { :class => 'form-horizontal' } do |f| %>
   <% if @user.errors.any? %>
     <div class="well text-error">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+      <h2><%= pluralize(@user.errors.count, "error") %> prevented this user from being saved:</h2>
 
       <ul>
         <% @user.errors.full_messages.each do |msg| %>
@@ -43,7 +43,6 @@
 
   <div class="form-actions">
     <%= f.submit nil, :class => 'btn btn-primary' %>
-    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                users_path, :class => 'btn' %>
+    <%= link_to "Cancel", users_path, :class => 'btn' %>
   </div>
 <% end %>

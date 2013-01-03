@@ -4,7 +4,7 @@ class CreatePermissions < ActiveRecord::Migration
       t.integer :principal_id
       t.boolean :read
       t.boolean :write
-      t.boolean :delete
+      t.boolean :remove
       t.boolean :execute
       t.integer :securable_id
       t.string :securable_id

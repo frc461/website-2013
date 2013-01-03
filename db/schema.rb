@@ -64,7 +64,7 @@ ActiveRecord::Schema.define(:version => 20130102200326) do
     t.integer  "principal_id"
     t.boolean  "read"
     t.boolean  "write"
-    t.boolean  "delete"
+    t.boolean  "remove"
     t.boolean  "execute"
     t.integer  "securable_id", :limit => 255
     t.integer  "priority"
