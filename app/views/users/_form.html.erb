@@ -41,6 +41,16 @@
     </div>
   </div>
 
+  <h4>Groups</h4>
+  <% Group.all.each do |grp| %>
+  <div class="control-group">
+      <%= f.label grp.name, :class => 'control-label' %>
+      <div class="controls">
+        <%= check_box_tag "user[group_ids][]", grp.id, grp.users.include?(@user) %>
+      </div>
+  </div>
+  <% end %>
+
   <div class="form-actions">
     <%= f.submit nil, :class => 'btn btn-primary' %>
     <%= link_to "Cancel", users_path, :class => 'btn' %>

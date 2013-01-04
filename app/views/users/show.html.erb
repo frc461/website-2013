@@ -10,8 +10,13 @@
   <dd><%= @user.email %></dd>
   <dt><strong><%= model_class.human_attribute_name(:admin) %>:</strong></dt>
   <dd><%= @user.admin %></dd>
-  <%= render :partial => "permission_form", :locals => { :principal => @user.principal } %>
+  <% Group.all.each do |usr_grp| %>
+  <dt><strong>Belongs to <%= usr_grp.name %>?</strong></dt>
+  <dd><%= check_box_tag "", "", usr_grp.users.include?(@user), :disabled => "disabled" %></dd>
+  <% end %>
 </dl>
+
+<%= render :partial => "permission_form", :locals => { :principal => @user.principal } %>
 
 <div class="form-actions">
   <%= link_to t('.back', :default => t("helpers.links.back")),

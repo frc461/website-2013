@@ -15,6 +15,7 @@ class UsersController < InheritedResources::Base
 
   def create
     @user = User.new(params[:user])
+    @user.group_ids = params[:group_ids]
     if @user.save
       redirect_to root_url, :notice => "Signed up!"
     else

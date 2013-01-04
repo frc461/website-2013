@@ -52,8 +52,9 @@
           <div class="container-fluid nav-collapse">
             <ul class="nav">
               <li><%= link_to "Home", "/"  %></li>
-              <li><%= link_to "Link2", "#"  %></li>
-              <li><%= link_to "Link3", "#"  %></li>
+              <% Page.where(:navigable => true, :parent_id => nil).each do |page_to_draw| %>
+                <li><%= link_to page_to_draw.title, page_to_draw %></li>
+              <% end %>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
@@ -67,9 +68,17 @@
             <ul class="nav nav-list">
               <li class="nav-header">Sidebar</li>
               <li><%= link_to "Home", "/"  %></li>
-              <li><%= link_to "Link2", "#"  %></li>
-              <li><%= link_to "Link3", "#"  %></li>
-	            <li>
+                <% Page.where(:navigable => true, :parent_id => nil).each do |page_to_draw| %>
+                  <li><%= link_to page_to_draw.title, page_to_draw %></li>
+                  <% if page_to_draw.pages.count > 0 %>
+                    <ul>
+                      <% page_to_draw.pages.each do |subpage| %>
+                      <li><%= link_to subpage.title, subpage %></li>
+                      <% end %>
+                    </ul>
+                  <% end %>
+                <% end %>
+              <li>
                 <% if current_user %>
                   Logged in as <%= current_user.email %>
                     <li><%= link_to "Log out", log_out_path %></li>

@@ -1,4 +1,5 @@
 <%- model_class = Page -%>
+
 <div class="page-header">
   <h1><%= @page.title %></h1>
 </div>
@@ -9,14 +10,18 @@
 
 <dl class="dl-horizontal">
   <dt><strong><%= model_class.human_attribute_name(:parent_id) %>:</strong></dt>
-  <dd><%= @page.parent_id %></dd>
+  <dd><%= @page.parent_id ? link_to(@page.parent.title, @page.parent) : "No" %></dd>
   <dt><strong><%= model_class.human_attribute_name(:navigable) %>:</strong></dt>
-  <dd><%= @page.navigable %></dd>
+  <dd><%= @page.navigable ? "Yes" : "No" %></dd>
+  <dt><strong>Children:</strong></dt>
+  <dd><%= @page.pages.map do |pg| link_to(pg.title, pg) end.join(", ").html_safe %></dd>
 </dl>
 
+<% if can? :update, @page %>
 <div class="form-actions">
   <%= link_to "Back", pages_path, :class => 'btn'  %>
   <%= link_to "Edit", edit_page_path(@page), :class => 'btn' %>
   <%= link_to "Deletify", page_path(@page), :method => 'delete',
               :data => { :confirm => "Are you sure?" }, :class => 'btn btn-danger' %>
 </div>
+<% end %>
