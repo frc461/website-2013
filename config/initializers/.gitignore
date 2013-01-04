@@ -1,2 +1,3 @@
-twitter.rb   # this includes special OAuth keys that we don't want to be putlic
-             # see github.com/sferik/twitter
+# this includes special OAuth keys that we don't want to be putlic
+# see github.com/sferik/twitter
+twitter.rb

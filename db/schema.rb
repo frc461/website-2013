@@ -96,7 +96,6 @@ ActiveRecord::Schema.define(:version => 20130102200326) do
   create_table "users", :force => true do |t|
     t.string   "name"
     t.string   "email"
-    t.string   "username"
     t.boolean  "admin"
     t.string   "password_hash"
     t.string   "password_salt"
