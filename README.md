@@ -21,6 +21,6 @@ To fetch the repo. Change to directory, then do
     bundle install
     rake db:migrate
 
-Then go set up `config\initializers\twitter.rb`. See the .gitignore in that directory
+Then go set up `config/initializers/twitter.rb`. See the .gitignore in that directory
 for more info. Once you have the correct authentication stuffs in there, you should be able 
 to do `rails server` and access the server at port 3000.
