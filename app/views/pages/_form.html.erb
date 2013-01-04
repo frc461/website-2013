@@ -14,7 +14,7 @@
   <div class="control-group">
     <%= f.label :parent_id, :class => 'control-label' %>
     <div class="controls">
-      <%= f.number_field :parent_id, :class => 'number_field' %>
+      <%= f.select(:parent_id, ["None"] + Page.all.map { |page| [page.title, page.id] }) %>
     </div>
   </div>
   <div class="control-group">
