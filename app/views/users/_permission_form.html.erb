@@ -24,8 +24,14 @@
       <td><%= f.check_box :remove, :class => 'check_box' %></td>
       <td><%= f.check_box :execute, :class => 'check_box' %></td>
     </tr>
+    <tr>
+      <td colspan="4">
+        <strong>Securable Thingy</strong>
+        <%= f.text_field :securable_string, :class => 'text_field' %>
+      </td>
+    </tr>
   </table></dd>
-  <%= f.hidden_field :principal_id, :value => principal %>
+  <%= f.hidden_field :principal_id, :value => principal.id %>
   <div class="form-actions">
     <%= f.submit nil, :class => 'btn btn-primary' %>
     <%= link_to "Cancel", permissions_path, :class => 'btn' %>

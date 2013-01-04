@@ -10,6 +10,15 @@ class User < ActiveRecord::Base
   validates_presence_of :name
   validates_uniqueness_of :email
 
+  def all_permissions
+    shopping_cart = []
+    shopping_cart.insert(self.permissions).flatten
+    self.groups.each do |grp|
+      shopping_cart.add(grp.permissions).flatten
+    end
+    shopping_cart
+  end
+
   def self.authenticate(email, password)
     user = User.where(:email => email).first
     if user && user.password_hash == BCrypt::Engine.hash_secret(password, user.password_salt)

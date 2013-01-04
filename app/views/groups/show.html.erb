@@ -10,7 +10,7 @@
   <dd><%= @group.users.map do |usr| link_to(usr.email, usr) end.join(", ").html_safe%></dd>
 </dl>
 
-<%= render :partial => "permission_form", :locals => { :principal => @group.principal } %>
+<%= render :partial => "users/permission_form", :locals => { :principal => @group.principal } %>
 
 <div class="form-actions">
   <%= link_to t('.back', :default => t("helpers.links.back")),

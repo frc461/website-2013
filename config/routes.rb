@@ -1,6 +1,5 @@
 Website::Application.routes.draw do
   get "permissions/create"
-
   get "permissions/destroy"
 
   resources :comments
@@ -19,6 +18,8 @@ Website::Application.routes.draw do
   get "log_in" => "sessions#new", :as => "log_in"
   get "log_out" => "sessions#destroy", :as => "log_out"
   get "sign_up" => "users#new", :as => "sign_up"
+  get "groups" => "groups#new", :as => "group"
+  get "users" => "users#index", :as => "users"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

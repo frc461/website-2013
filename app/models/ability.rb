@@ -6,10 +6,25 @@ class Ability
     if user.admin
       can :manage, :all
     end
-#can do |action, subject_class, subject|
-#     user.permissions.find_all_by_action(aliases_for_action(action)).any? do |perm|
-#       perm.subject_class == subject_class.to_s && (subject.nil? || perm.subject_id.nil? || perm.subject_id == subject.id)
-#     end
-#  end
+      can do |action, subject_class, subject|
+        user.all_permissions.delete_if do |perm|
+          case action
+            when "read"
+              !perm.read
+            when "write"
+              !perm.write
+            when "delete"
+              !perm.remove
+            when "update"
+              !perm.write && !perm.remove
+            when "manage"
+              !perm.write && !perm.read && !perm.remove && !perm.update
+            when "execute"
+              !perm.execute
+            end
+        end.any? do |perm|
+        perm.securable_type == subject_class.to_s && (subject.nil? || perm.securable_id.nil? || perm.securable_id == subject.id)
+      end
+    end
   end
 end

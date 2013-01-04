@@ -83,7 +83,18 @@
                   Logged in as <%= current_user.email %>
                     <li><%= link_to "Log out", log_out_path %></li>
                     <% if can? :update, current_user %>
-                      <li><%= link_to "Sign Up", sign_up_path %></li>
+                      <table>
+                      <tr>
+                        <td rowspan="3"><strong>{A}</strong></td>
+                        <td><%= link_to "Create User", sign_up_path %></td>
+                      </tr>
+                      <tr>
+                        <td><%= link_to "Create Group", groups_path %></td>
+                      </tr>
+                      <tr>
+                        <td><%= link_to "Show Users", users_path %></td>
+                      </tr>
+                      </table>
                     <% end %>
                 <% else %>
                   <%= link_to "Log in", log_in_path %>

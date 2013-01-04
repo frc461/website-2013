@@ -1,4 +1,6 @@
 class UsersController < InheritedResources::Base
+  load_and_authorize_resource
+
   def new
     @user = User.new
     @permission = Permission.new

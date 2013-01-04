@@ -7,7 +7,7 @@ class CreatePermissions < ActiveRecord::Migration
       t.boolean :remove
       t.boolean :execute
       t.integer :securable_id
-      t.string :securable_id
+      t.string :securable_type
       t.integer :priority
 
       t.timestamps

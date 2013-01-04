@@ -1,4 +1,6 @@
 class GroupsController < InheritedResources::Base
+  load_and_authorize_resource
+  
   def add_permission
   end
 
