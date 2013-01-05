@@ -102,3 +102,11 @@ input[type="color"]:focus,
 .tweet .tweet-info {
   color: #999999;
 }
+
+footer {
+  font-size: 80%;
+}
+
+footer a {
+  color: inherit;
+}
