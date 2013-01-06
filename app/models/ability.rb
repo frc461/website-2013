@@ -26,5 +26,9 @@ class Ability
         perm.securable_type == subject_class.to_s && (subject.nil? || perm.securable_id.nil? || perm.securable_id == subject.id)
       end
     end
+    can :read, Page
+    can :read, Post
+    can :read, Album
+    can :read, Photo
   end
 end
