@@ -7,7 +7,7 @@
   <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
   <dd><%= @group.name %></dd>
   <dt><strong>Users:</strong></dt> 
-  <dd><%= @group.users.map do |usr| link_to(usr.email, usr) end.join(", ").html_safe%></dd>
+  <dd><%= @group.users.map do |usr| link_to(usr.name, usr) end.join(", ").html_safe%></dd>
 </dl>
 
 <%= render :partial => "users/permission_form", :locals => { :principal => @group.principal } %>

@@ -56,6 +56,7 @@
                 <li><%= link_to page_to_draw.title, page_to_draw %></li>
               <% end %>
               <li><%= link_to "Blog", posts_path %></li>
+              <li><%= link_to "Photos", albums_path %></li>
               <% if can? :read, Forum %>
                 <li><%= link_to "Forums", forums_path %></li>
               <% end %>
@@ -84,10 +85,11 @@
               <% end %>
 
               <li><%= link_to "Blog", posts_path %></li>
+              <li><%= link_to "Photos", albums_path %></li>
               <% if can? :read, Forum %>
                 <li><%= link_to "Forums", forums_path %></li>
                 <ul>
-                  <% Forum.where(1).each do |forum_checking| %>
+                  <% Forum.all.each do |forum_checking| %>
                     <% if can? :read, forum_checking %>
                       <li><%= link_to forum_checking.name, forum_checking %></li>
                     <% end %>
