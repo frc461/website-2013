@@ -66,7 +66,8 @@ ActiveRecord::Schema.define(:version => 20130102200326) do
     t.boolean  "write"
     t.boolean  "remove"
     t.boolean  "execute"
-    t.integer  "securable_id", :limit => 255
+    t.integer  "securable_id"
+    t.string   "securable_type"
     t.integer  "priority"
     t.datetime "created_at",                  :null => false
     t.datetime "updated_at",                  :null => false
