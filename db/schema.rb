@@ -69,8 +69,8 @@ ActiveRecord::Schema.define(:version => 20130102200326) do
     t.integer  "securable_id"
     t.string   "securable_type"
     t.integer  "priority"
-    t.datetime "created_at",                  :null => false
-    t.datetime "updated_at",                  :null => false
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
   end
 
   create_table "photos", :force => true do |t|
