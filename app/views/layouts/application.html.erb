@@ -97,10 +97,8 @@
 
               <li>
                 <% if current_user %>
-                  Logged in as <%= current_user.email %>
-                    <li><%= link_to "Log out", log_out_path %></li>
-                    <% if can? :update, current_user %>
-                      <table>
+                  <% if can? :update, current_user %>
+                    <table>
                       <tr>
                         <td rowspan="3"><strong>{A}</strong></td>
                         <td><%= link_to "Create User", sign_up_path %></td>
@@ -111,10 +109,9 @@
                       <tr>
                         <td><%= link_to "Show Users", users_path %></td>
                       </tr>
-                      </table>
-                    <% end %>
-                <%# else %><!-- now at bottom of page -->
-                  <%#= link_to "Log in", log_in_path %>
+                    </table>
+                  <% end %>
+                  <p>Logged in as <%= current_user.email %></p>
                 <% end %>
 	            </li>
             </ul>
@@ -129,9 +126,11 @@
       <footer>
         <center>
           <p>
-            &copy; Copyright Westside Boiler Invasion 2012 
+            &copy; Copyright Westside Boiler Invasion 2012
             <% if !current_user %>
-              <%= link_to "Team login", log_in_path, :id => "login" %>
+              <br /><%= link_to "Log in", log_in_path, :id => "login" %>
+            <% else %>
+              <br /><%= link_to "Log out", log_out_path %>
             <% end %>
           </p>
         </center>
