@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
     shopping_cart = []
     shopping_cart.insert(self.permissions).flatten
     self.groups.each do |grp|
-      shopping_cart.add(grp.permissions).flatten
+      shopping_cart.insert(grp.permissions).flatten
     end
     shopping_cart
   end
