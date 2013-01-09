@@ -8,23 +8,23 @@ class Permission < ActiveRecord::Base
 
   def securify
     puts "about to start if including /"
-    if securable_string.include? "/"
+    if self.securable_string.include? "/"
       puts "includes, splitting on /"
-      type = securable_string.split("/")[0]
-      id = securable_string.split("/")[1]
+      type = self.securable_string.split("/")[0]
+      id = self.securable_string.split("/")[1]
     else
       puts "doesn't include"
-      type = securable_string
+      type = self.securable_string
     end
     puts "next part"
 
     if ["Page", "Post", "Forum", "Photo", "Album"].include? type
       puts "thing includes other things"
-      securable_type = type
+      self.securable_type = type
       puts securable_type
       if securable_string.include?("/") && securable_type.constantize.where(:id => id)
         puts "includes /, setting id"
-        securable_id = id.to_i
+        self.securable_id = id.to_i
         puts securable_id
       else
         self.errors.add(:base, "You fail")
