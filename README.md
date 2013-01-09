@@ -20,6 +20,9 @@ To fetch the repo. Change to directory, then do
     bundle install
     rake db:migrate
 
+Then install nodejs through your package manager of choice (or however 
+you want to, really, just make sure it works).
+
 Then go set up `config/initializers/twitter.rb`.
 See the .gitignore in that directory for more info.
 Once you have the correct authentication stuffs in there,
