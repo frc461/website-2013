@@ -7,6 +7,32 @@
 
   */
 
+.carousel-inner {
+  padding: 0px;
+  margin: 0px;
+  height: 256px;
+}
+
+.carousel-inner img {
+  margin: auto;
+  max-height: 256px;
+  width: auto;
+
+.alerts-holder {
+	position: absolute;
+	bottom: 2px;
+	right: 22px;
+	width: 300px;
+}
+
+td {
+	border-top: 0px solid rgb(34,34,34);
+}
+
+body {
+	padding-top: 128px;
+}
+
 textarea {
   font-family: monospace;
 }
@@ -63,7 +89,7 @@ a :hover{
 }
 
 .nav-list li>a:hover {
-  color: #020202;
+  //color: #020202;
 }
 
 .navbar .nav>li>a {

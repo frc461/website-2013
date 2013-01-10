@@ -10,6 +10,26 @@
   <dd><%= @album.description %></dd>
 </dl>
 
+<div id="tehCarousel" class="carousel slide">
+  <div class="carousel-inner">
+    <% first=true %>
+    <% @album.photos.each do |photo| %>
+    <% if first %>
+    <div class="item active">
+    <% first=false %>
+    <% else %>
+    <div class="item">
+    <% end %>
+    <%= image_tag photo.image.url %>
+    </div>
+    <% end %>
+  </div>
+</div>
+<div id="carouselnav">
+  <a class="btn" href="#tehCarousel" data-slide="prev">&lsaquo;</a>
+  <a class="btn pull-right" href="#tehCarousel" data-slide="next">&rsaquo;</a>
+</div>
+
 <div class="form-actions">
   <%= link_to t('.back', :default => t("helpers.links.back")),
               albums_path, :class => 'btn'  %>

@@ -76,8 +76,12 @@ ActiveRecord::Schema.define(:version => 20130110013907) do
 
   create_table "photos", :force => true do |t|
     t.integer  "album_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   create_table "posts", :force => true do |t|
