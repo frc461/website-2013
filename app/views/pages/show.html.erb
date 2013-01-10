@@ -8,15 +8,16 @@
   <%= format @page.content %>
 </div>
 
+<!--<dl class="dl-horizontal">
+  <dt><strong>Children:</strong></dt>
+  <dd><%# sanitize(@page.pages.map do |pg| link_to(pg.title, pg) end.join(", ".html_safe)) %></dd>
+</dl>-->
+
 <% if can? :update, @page %>
 <div class="form-actions">
-  <dl class="dl-horizontal">
-    <dt><strong>Children:</strong></dt>
-    <dd><%= sanitize(@page.pages.map do |pg| link_to(pg.title, pg) end.join(", ".html_safe)) %></dd>
-  </dl>
   <%= link_to "Back", pages_path, :class => 'btn'  %>
   <%= link_to "Edit", edit_page_path(@page), :class => 'btn' %>
   <%= link_to "Deletify", page_path(@page), :method => 'delete',
-              :data => { :confirm => "Are you sure?" }, :class => 'btn btn-danger' %>
+              :data => { :confirm => "Are ye sure?" }, :class => 'btn btn-danger' %>
 </div>
 <% end %>

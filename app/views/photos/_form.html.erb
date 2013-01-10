@@ -1,8 +1,14 @@
-<%= form_for @photo, :html => { :class => 'form-horizontal' } do |f| %>
+<%= form_for @photo, :html => { :multipart => true, :class => 'form-horizontal' } do |f| %>
   <div class="control-group">
     <%= f.label :album_id, :class => 'control-label' %>
     <div class="controls">
-      <%= f.number_field :album_id, :class => 'number_field' %>
+      <%= f.select(:album_id, Album.all.map { |abm| [abm.name, abm.id] }, :include_blank => true) %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <div class="controls">
+      <%= f.file_field :image %>
     </div>
   </div>
 

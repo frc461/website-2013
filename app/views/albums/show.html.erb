@@ -10,6 +10,8 @@
   <dd><%= @album.description %></dd>
 </dl>
 
+<%= sanitize(@album.photos.map do |phto| image_tag(phto.image.url) end.join(" ")) %>
+
 <div class="form-actions">
   <%= link_to t('.back', :default => t("helpers.links.back")),
               albums_path, :class => 'btn'  %>
