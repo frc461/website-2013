@@ -88,7 +88,7 @@
               <li><%= link_to "Photos", albums_path %></li>
               <% if can? :read, Forum %>
                 <li><%= link_to "Forums", forums_path %></li>
-                <ul>
+                <ul id="Forumlinks">
                   <% Forum.all.each do |forum_checking| %>
                     <% if can? :read, forum_checking %>
                       <li><%= link_to forum_checking.name, forum_checking %></li>
