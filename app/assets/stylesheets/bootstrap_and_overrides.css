@@ -7,6 +7,13 @@
 
   */
 
+.alerts-holder{
+	position: absolute;
+	bottom: 2px;
+	right: 22px;
+	width: 300px;
+}
+
 td {
 	border-top: 0px solid rgb(34,34,34);
 }
