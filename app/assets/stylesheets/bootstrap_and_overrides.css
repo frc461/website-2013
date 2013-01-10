@@ -7,7 +7,18 @@
 
   */
 
-.alerts-holder{
+.carousel-inner {
+  padding: 0px;
+  margin: 0px;
+  height: 256px;
+}
+
+.carousel-inner img {
+  margin: auto;
+  max-height: 256px;
+  width: auto;
+
+.alerts-holder {
 	position: absolute;
 	bottom: 2px;
 	right: 22px;
@@ -19,7 +30,7 @@ td {
 }
 
 body {
-	padding-top: 130px;
+	padding-top: 128px;
 }
 
 textarea {
