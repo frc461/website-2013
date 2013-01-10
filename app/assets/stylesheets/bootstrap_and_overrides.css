@@ -7,6 +7,14 @@
 
   */
 
+td {
+	border-top: 0px solid rgb(34,34,34);
+}
+
+body {
+	padding-top: 130px;
+}
+
 textarea {
   font-family: monospace;
 }
