@@ -58,7 +58,7 @@
               <li><%= link_to "Blog", posts_path %></li>
               <li><%= link_to "Photos", albums_path %></li>
               <% if can? :read, Forum %>
-                <li><%= link_to "Forums", forums_path %></li>
+                <li class="forumlink"><%= link_to "Forums", forums_path %></li>
               <% end %>
             </ul>
           </div><!--/.nav-collapse -->
