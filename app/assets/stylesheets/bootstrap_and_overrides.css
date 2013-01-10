@@ -7,12 +7,24 @@
 
   */
 
+.carousel-inner {
+  padding: 0px;
+  margin: 0px;
+  height: 256px;
+}
+
+.carousel-inner img {
+  margin: auto;
+  max-height: 256px;
+  width: auto;
+}
+
 td {
 	border-top: 0px solid rgb(34,34,34);
 }
 
 body {
-	padding-top: 130px;
+	padding-top: 128px;
 }
 
 textarea {
