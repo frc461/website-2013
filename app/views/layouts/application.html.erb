@@ -58,7 +58,7 @@
               <li><%= link_to "Blog", posts_path %></li>
               <li><%= link_to "Photos", albums_path %></li>
               <% if can? :read, Forum %>
-                <li class="forumlink"><%= link_to "Forums", forums_path %></li>
+                <li><%= link_to "Forums", forums_path %></li>
               <% end %>
             </ul>
           </div><!--/.nav-collapse -->
@@ -88,7 +88,7 @@
               <li><%= link_to "Photos", albums_path %></li>
               <% if can? :read, Forum %>
                 <li><%= link_to "Forums", forums_path %></li>
-                <ul id="Forumlinks">
+                <ul id="forumLinks">
                   <% Forum.all.each do |forum_checking| %>
                     <% if can? :read, forum_checking %>
                       <li><%= link_to forum_checking.name, forum_checking %></li>
@@ -122,7 +122,7 @@
             </ul>
 			<div id="tweetbox">
             	<center><h4>Latest tweets from <a href="https://www.twitter.com/team461wbi">@Team461WBI</a></h4></center>
-            	<% Twitter.user_timeline("team461wbi", options = { :count => 10 } ).each do |tweet| %>
+            	<% Twitter.user_timeline("team461wbi", options = { :count => 2 } ).each do |tweet| %>
               	<p class="tweet">
                 	<%= sanitize tweet.text %>
                 	<span class="tweet-info">

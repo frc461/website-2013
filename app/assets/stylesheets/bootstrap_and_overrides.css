@@ -7,7 +7,7 @@
 
   */
 
-#Forumlinks li>a:hover {
+#forumLinks li>a:hover {
  color: #fff;
  background: none; 
 }
@@ -25,7 +25,7 @@
 }
 
 .alerts-holder {
-	position: absolute;
+	position: fixed;
 	bottom: 2px;
 	right: 22px;
 	width: 300px;
