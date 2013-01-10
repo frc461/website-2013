@@ -42,6 +42,10 @@ textarea {
     margin-left: 0px;
     position: relative;
   }
+  #tweetbox {
+    display:none;
+  }
+
 }
 
 .navbar .nav>li>a:hover{
@@ -117,12 +121,6 @@ footer {
 
 footer a {
   color: inherit;
-}
-
-@media (max-width: 767px) {
-  #tweetbox {
-    display:none;
-  }
 }
 
 body {

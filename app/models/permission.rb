@@ -27,10 +27,10 @@ class Permission < ActiveRecord::Base
         self.securable_id = id.to_i
         puts securable_id
       else
-        self.errors.add(:base, "You fail")
+#        self.errors.add(:base, "You fail")
       end
     else
-      self.errors.add(:base, "You fail harder")
+      self.errors.add(:base, "That's not a thing.")
     end
   end
 end
