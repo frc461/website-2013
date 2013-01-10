@@ -1,14 +1,49 @@
 <%- model_class = Forum -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human %></h1>
+  <h1><%= @forum.name %></h1>
 </div>
 
-<dl class="dl-horizontal">
-  <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
-  <dd><%= @forum.name %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:description) %>:</strong></dt>
-  <dd><%= @forum.description %></dd>
-</dl>
+<p>
+  <%= @forum.description %>
+</p>
+
+<% if @forum.comments.where(:parent_id => nil).count < 1 %>
+<p>No threads yet.</p>
+<% else %>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Thread</th>
+      <th>User</th>
+      <th>Sticky</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @forum.comments.where(:parent_id => nil, :sticky => true) do |comment| %>
+      <tr>
+        <% if comment.important %>
+        <td><%= link_to comment.name, comment_path(comment), :class => "text-error" %></td>
+        <% else %>
+        <td><%= link_to comment.name, comment_path(comment) %></td>
+        <% end %>
+        <td><%= comment.user_id.name %></td>
+        <td><% if comment.sticky %>YES<% else %>no<% end %></td>
+      </tr>
+    <% end %>
+    <% @forum.comments.where(:parent_id => nil, :sticky => false) do |comment| %>
+      <tr>
+        <% if comment.important %>
+        <td><%= link_to comment.name, comment_path(comment), :class => "text-error" %></td>
+        <% else %>
+        <td><%= link_to comment.name, comment_path(comment) %></td>
+        <% end %>
+        <td><%= comment.user_id.name %></td>
+        <td><% if comment.sticky %>YES<% else %>no<% end %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<% end %>
 
 <div class="form-actions">
   <%= link_to t('.back', :default => t("helpers.links.back")),
