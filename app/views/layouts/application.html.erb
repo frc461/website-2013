@@ -102,7 +102,7 @@
                   <% if can? :update, current_user %>
                     <table>
                       <tr class="smallerPadding">
-                        <td rowspan="4"><div class="verticalText"><strong>Admin</strong></div></td>
+                        <td rowspan="4"><div class="verticalText"><strong>Admin:</strong></div></td>
                         <td><%= link_to "Create User", sign_up_path %></td>
                       </tr>
                       <tr>
@@ -120,11 +120,12 @@
                 </li>
               <% end %>
             </ul>
+            <hr />
             <div id="tweetbox">
-              <hr />
               <center><h4>Latest tweets from <a href="https://www.twitter.com/team461wbi">@Team461WBI</a></h4></center>
               <% Twitter.user_timeline("team461wbi", options = { :count => 2 } ).each do |tweet| %>
               	<p class="tweet">
+                  <hr />
                 	<%= sanitize tweet.text %>
                 	<span class="tweet-info">
                   	<br />
@@ -154,10 +155,9 @@
           </p>
         </center>
       </footer>
-	<div class="alerts-holder">
+	    <div class="alerts-holder">
           <%= bootstrap_flash %>
-	</div>
-
+	    </div>
     </div> <!-- /container -->
 
     <!-- Javascripts
