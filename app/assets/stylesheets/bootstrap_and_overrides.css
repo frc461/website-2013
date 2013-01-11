@@ -7,6 +7,14 @@
 
   */
 
+.verticalText {
+		     -moz-transform: rotate(270deg);  /* FF3.5+ */
+			 -o-transform: rotate(270deg);  /* Opera 10.5 */
+			 -webkit-transform: rotate(270deg);  /* Saf3.1+, Chrome */
+			 filter:  progid:DXImageTransform.Microsoft.BasicImage(rotation=2.988);  /* IE6,IE7 */
+			 -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=2.988)"; /* IE8 */
+}
+
 #forumLinks li>a:hover {
  color: #fff;
  background: none; 

@@ -71,7 +71,7 @@
         <div class="span3">
           <div class="well sidebar-nav" id="sidebar">
             <ul class="nav nav-list">
-              <li class="nav-header">Sidebar</li>
+              <!--<li class="nav-header">Sidebar</li>-->
               <li><%= link_to "Home", "/"  %></li>
               <% Page.where(:navigable => true, :parent_id => nil).each do |page_to_draw| %>
                 <li><%= link_to page_to_draw.title, page_to_draw %></li>
@@ -102,8 +102,8 @@
                 <li>
                   <% if can? :update, current_user %>
                     <table>
-                      <tr>
-                        <td rowspan="4"><strong>{A}</strong>&nbsp;&nbsp;</td>
+                      <tr class="smallerPadding">
+                        <td rowspan="4"><div class="verticalText"><strong>Admin</strong></div></td>
                         <td><%= link_to "Create User", sign_up_path %></td>
                       </tr>
                       <tr>
