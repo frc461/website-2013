@@ -15,6 +15,13 @@
 			 -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=2.988)"; /* IE8 */
 }
 
+textarea {
+	width: auto;
+}
+input {
+	width: auto;
+}
+
 #forumLinks li>a:hover {
  color: #fff;
  background: none; 
