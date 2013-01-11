@@ -102,7 +102,7 @@
                   <% if can? :update, current_user %>
                     <table>
                       <tr class="smallerPadding">
-                        <td rowspan="4"><div class="verticalText"><strong>Admin:</strong></div></td>
+                        <td rowspan="5"><div class="verticalText"><strong>Admin</strong></div></td>
                         <td><%= link_to "Create User", sign_up_path %></td>
                       </tr>
                       <tr>
@@ -113,6 +113,9 @@
                       </tr>
                       <tr>
                         <td><%= link_to "Show Groups", groups_path %></td>
+                      </tr>
+                      <tr>
+                        <td><%= link_to "Edit Pages", pages_path %></td>
                       </tr>
                     </table>
                   <% end %>

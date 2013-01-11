@@ -1,16 +1,17 @@
-<table class="table">
+<br />
+<p>
 <% @pages.in_groups_of(3) { | groupofpage |%>
-	<tr>
+	<div class="row-fluid">
 		<% groupofpage.each { | page | %>
 			<% if (page != nil)  %>
-				<td>
+				<div class="span4">
 					<%= link_to(page.title, page) %>
-				</td>
+				</div>
 			<% end %>
 		<% } %>
+	</div>
 <% } %>
-	</tr>
-</table>
+</p>
 <%= link_to t('.new', :default => t("helpers.links.new")),
             new_page_path,
             :class => 'btn btn-primary' %>
