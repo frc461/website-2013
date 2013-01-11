@@ -71,7 +71,6 @@
         <div class="span3">
           <div class="well sidebar-nav" id="sidebar">
             <ul class="nav nav-list">
-              <!--<li class="nav-header">Sidebar</li>-->
               <li><%= link_to "Home", "/"  %></li>
               <% Page.where(:navigable => true, :parent_id => nil).each do |page_to_draw| %>
                 <li><%= link_to page_to_draw.title, page_to_draw %></li>
@@ -117,12 +116,12 @@
                       </tr>
                     </table>
                   <% end %>
-                  <p>Logged in as <%= current_user.name %></p>
+                  <p><br />Logged in as <%= current_user.name %></p>
                 </li>
               <% end %>
             </ul>
-      <hr />
-      <div id="tweetbox">
+            <hr />
+            <div id="tweetbox">
             	<center><h4>Latest tweets from <a href="https://www.twitter.com/team461wbi">@Team461WBI</a></h4></center>
             	<% Twitter.user_timeline("team461wbi", options = { :count => 2 } ).each do |tweet| %>
               	<p class="tweet">
@@ -134,7 +133,7 @@
                 	</span>
               	</p>
             	<% end %>
-			</div>
+			      </div>
           </div><!--/.well -->
         </div><!--/span-->
         <div class="span8">
