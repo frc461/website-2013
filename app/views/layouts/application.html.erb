@@ -120,10 +120,10 @@
                 </li>
               <% end %>
             </ul>
-            <hr />
             <div id="tweetbox">
-            	<center><h4>Latest tweets from <a href="https://www.twitter.com/team461wbi">@Team461WBI</a></h4></center>
-            	<% Twitter.user_timeline("team461wbi", options = { :count => 2 } ).each do |tweet| %>
+              <hr />
+              <center><h4>Latest tweets from <a href="https://www.twitter.com/team461wbi">@Team461WBI</a></h4></center>
+              <% Twitter.user_timeline("team461wbi", options = { :count => 2 } ).each do |tweet| %>
               	<p class="tweet">
                 	<%= sanitize tweet.text %>
                 	<span class="tweet-info">
