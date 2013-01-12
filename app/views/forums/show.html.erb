@@ -45,6 +45,8 @@
 </table>
 <% end %>
 
+<%= link_to "New Thread", new_comment_path(:forum_id => @forum.id) %>
+
 <div class="form-actions">
   <%= link_to t('.back', :default => t("helpers.links.back")),
               forums_path, :class => 'btn'  %>

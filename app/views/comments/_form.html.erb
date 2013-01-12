@@ -1,16 +1,6 @@
 <%= form_for @comment, :html => { :class => 'form-horizontal' } do |f| %>
-  <div class="control-group">
-    <%= f.label :user_id, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.number_field :user_id, :class => 'number_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :content, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_area :content, :class => 'text_area' %>
-    </div>
-  </div>
+  <%= f.hidden_field :user_id, :value => current_user.id %>
+  <%= f.hidden_field :forum_id, :value => params[:forum_id] %>
   <div class="control-group">
     <%= f.label :title, :class => 'control-label' %>
     <div class="controls">
@@ -18,9 +8,9 @@
     </div>
   </div>
   <div class="control-group">
-    <%= f.label :parent_id, :class => 'control-label' %>
+    <%= f.label "Content", :class => 'control-label' %>
     <div class="controls">
-      <%= f.number_field :parent_id, :class => 'number_field' %>
+      <%= f.text_area :content, :class => 'text_area' %>
     </div>
   </div>
   <div class="control-group">
