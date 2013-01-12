@@ -4,8 +4,8 @@
     <script type="text/javascript" src="http://konami-js.googlecode.com/svn/trunk/konami.js"></script>
     <script type="text/javascript">
       konami = new Konami()
-      konami.code = function() {
-        alert("Konamicode");
+      konami.code = function () {
+        document.getElementById("konamicodething").style.display = "block";
       }
       konami.load()
     </script>
@@ -57,9 +57,6 @@
           <a class="brand" href="/">
 	    <%= image_tag 'logo.png' %>
 	  </a>
-          <span id="konamicodething">
-            That's the Konami Code!
-          </span>
 	  <br />
           <div class="container-fluid nav-collapse">
             <ul class="nav">
@@ -171,6 +168,7 @@
         </center>
       </footer>
 	    <div class="alerts-holder">
+              <div id="konamicodething" class="alert fade in alert-success"><button class="close" data-dismiss="alert">&times;</button>Woah, you know the Konami code!</div>
           <%= bootstrap_flash %>
 	    </div>
     </div> <!-- /container -->
