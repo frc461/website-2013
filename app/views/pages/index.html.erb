@@ -1,7 +1,6 @@
-<br />
-<p>
+<br class="hidden-phone" />
 <% @pages.in_groups_of(3) { | groupofpage |%>
-  <div class="row-fluid">
+  <div class="row-fluid hidden-phone">
     <% groupofpage.each { | page | %>
       <% if (page != nil)  %>
         <div class="span4 postWithBorder">
@@ -14,7 +13,20 @@
   </div>
   <br />
 <% } %>
-</p>
+<div class="visible-phone">
+  <% @pages.each { | page | %>
+    <% if (page != nil)  %>
+      <div class="postWithBorder">
+        <h2>
+          <%= link_to(page.title, page) %>
+        </h2>
+      </div>
+        <br class="visible-phone" />
+    <% end %>
+  <% } %>
+</div>
+<br class="visible-phone" />
+<br class="visible-phone" />
 <%= link_to t('.new', :default => t("helpers.links.new")),
             new_page_path,
             :class => 'btn btn-primary' %>
