@@ -6,10 +6,17 @@
   =require twitter-bootstrap-static/fontawesome
 
   */
+@media (max-width: 767px) {
+  .postWithBorder {
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-right: 10px;
+  }
+}
 .postWithBorder {
-  border-left: solid #252525 5px;
+  border-left: solid #151010 5px;
   padding-left: 10px;
-background: #303030
+  background: #252a30;
 }
 
 .verticalText {
