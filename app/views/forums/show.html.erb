@@ -19,26 +19,26 @@
     </tr>
   </thead>
   <tbody>
-    <% @forum.comments.where(:parent_id => nil, :sticky => true) do |comment| %>
+    <% @forum.comments.where(:parent_id => nil, :sticky => true).each do |comment| %>
       <tr>
         <% if comment.important %>
-        <td><%= link_to comment.name, comment_path(comment), :class => "text-error" %></td>
+        <td><%= link_to comment.title, comment, :class => "text-error" %></td>
         <% else %>
-        <td><%= link_to comment.name, comment_path(comment) %></td>
+        <td><%= link_to comment.title, comment %></td>
         <% end %>
-        <td><%= comment.user_id.name %></td>
-        <td><% if comment.sticky %>YES<% else %>no<% end %></td>
+        <td><%= comment.user.name %></td>
+        <td>YES</td>
       </tr>
     <% end %>
-    <% @forum.comments.where(:parent_id => nil, :sticky => false) do |comment| %>
+    <% @forum.comments.where(:parent_id => nil, :sticky => false).each do |comment| %>
       <tr>
         <% if comment.important %>
-        <td><%= link_to comment.name, comment_path(comment), :class => "text-error" %></td>
+        <td><%= link_to comment.title, comment_path(comment), :class => "text-error" %></td>
         <% else %>
-        <td><%= link_to comment.name, comment_path(comment) %></td>
+        <td><%= link_to comment.title, comment_path(comment) %></td>
         <% end %>
-        <td><%= comment.user_id.name %></td>
-        <td><% if comment.sticky %>YES<% else %>no<% end %></td>
+        <td><%= comment.user.name %></td>
+        <td>no</td>
       </tr>
     <% end %>
   </tbody>

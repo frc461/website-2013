@@ -4,19 +4,42 @@
 </div>
 
 <dl class="dl-horizontal">
-  <dt><strong><%= model_class.human_attribute_name(:user_id) %>:</strong></dt>
-  <dd><%= @comment.user_id %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:content) %>:</strong></dt>
-  <dd><%= @comment.content %></dd>
   <dt><strong><%= model_class.human_attribute_name(:title) %>:</strong></dt>
   <dd><%= @comment.title %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:parent_id) %>:</strong></dt>
-  <dd><%= @comment.parent_id %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:user_id) %>:</strong></dt>
+  <dd><%= @comment.user.name %></dd>
   <dt><strong><%= model_class.human_attribute_name(:sticky) %>:</strong></dt>
   <dd><%= @comment.sticky %></dd>
   <dt><strong><%= model_class.human_attribute_name(:important) %>:</strong></dt>
   <dd><%= @comment.important %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:content) %>:</strong></dt>
+  <dd><%= @comment.content %></dd>
 </dl>
+
+<% Comment.where(:parent_id => @comment.id).each do |comment| %>
+<p>
+  <b>
+    <%= comment.user.name %>
+  </b>
+  <%= comment.content %>
+</p>
+<% end %>
+
+<%= form_for Comment.new, :html => {:class => 'form-horizontal' } do |f| %>
+  <div class="control-group">
+    <%= f.label "Add a comment:", :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_area :content, :class => 'text_area' %>
+    </div>
+  </div>
+  <%= f.hidden_field :user_id, :value => current_user.id %>
+  <%= f.hidden_field :parent_id, :value => @comment.id %>
+  <%= f.hidden_field :sticky, :value => false %>
+  <%= f.hidden_field :important, :value => false %>
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+  </div>
+<% end %>
 
 <div class="form-actions">
   <%= link_to t('.back', :default => t("helpers.links.back")),

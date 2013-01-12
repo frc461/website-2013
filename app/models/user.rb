@@ -44,4 +44,5 @@ class User < ActiveRecord::Base
   has_many :posts
   has_one :principal, :as => :authenticatable
   has_many :permissions, :through => :principal
+  has_many :comments
 end
