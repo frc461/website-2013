@@ -6,9 +6,12 @@
   =require twitter-bootstrap-static/fontawesome
 
   */
-@media (min-width 767) {
-  padding-top: 25px;
-  padding-bottom: 25px;
+@media (max-width: 767px) {
+  .postWithBorder {
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-right: 10px;
+  }
 }
 .postWithBorder {
   border-left: solid #151010 5px;
