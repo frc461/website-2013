@@ -10,6 +10,7 @@
   border-left: solid #252525 5px;
   padding-left: 10px;
   background: #303030;
+  min-height: 60px;
 }
 
 .verticalText {
