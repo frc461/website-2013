@@ -8,11 +8,13 @@
   <%= format @post.content %>
 </div>
 
-<% if can? :update, @post %>
 <div class="form-actions">
   <%= link_to "Back", posts_path, :class => 'btn' %>
-  <%= link_to "Edit", edit_post_path, :class => 'btn' %>
+  <% if can? :write, @post %>
+    <%= link_to "Edit", edit_post_path, :class => 'btn' %>
+  <% end %>
+  <% if can? :remove, @post %>
   <%= link_to "Deletify", post_path, :method => 'delete',
               :data => { :confirm => "Are ye sure?"}, :class => 'btn btn-danger' %>
+  <% end %>
 </div>
-<% end %>
