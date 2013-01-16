@@ -51,5 +51,5 @@ as it sets the user to an administrator.
 On the sidebar, the Sign Up link (which directs to the user creation
 panel) will only be displayed if the user-logged-in-as is an administrator.
 
-Of course, all of the above information is subject to change as we the stuff
+Of course, all of the above information is subject to change as the stuff
 does, so this may be outdated (direct all issues to our [issues page](https://github.com/team461WBI/website/issues))
