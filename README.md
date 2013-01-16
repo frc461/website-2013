@@ -44,7 +44,7 @@ To add a user, and work around this, you should probably run
 
 And within it, run
 
-    User.create :name => "[administrator's name (e.g. Administrator)", :email => "[administrator's email address (e.g. admin@blah.com)]", :password => "[administrator password, needs to be that, and is not hidden when entering (so avert others' eyes)]", :admin => true
+    User.create :name => "[administrator's name (e.g. Administrator)]", :email => "[administrator's email address (e.g. admin@blah.com)]", :password => "[administrator password, needs to be that, and is not hidden when entering (so avert others' eyes)]", :admin => true
 
 The `:admin => true` is the most important part of that command,
 as it sets the user to an administrator.
