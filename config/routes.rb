@@ -21,6 +21,8 @@ Website::Application.routes.draw do
   get "groups" => "groups#new", :as => "groups"
   get "users" => "users#index", :as => "users"
 
+  match '/pages/*titles' => "pages#show"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
