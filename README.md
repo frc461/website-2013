@@ -10,6 +10,8 @@ and read them from the database when added will be there).
 This means no actual content will be added, as we're creating this as a framework.
 When _on_ the server, scripts will be used to add content automatically from the old website, but the layout and such will remain.
 
+Eventually, this will be up at [our site](http://boilerinvasion.org).
+
 Installation
 ------------
 
@@ -50,4 +52,4 @@ On the sidebar, the Sign Up link (which directs to the user creation
 panel) will only be displayed if the user-logged-in-as is an administrator.
 
 Of course, all of the above information is subject to change as we the stuff
-does, so this may be outdated (direct all issues to our [issues page](https://github.com/team461WBI/website/issues)
+does, so this may be outdated (direct all issues to our [issues page](https://github.com/team461WBI/website/issues))
