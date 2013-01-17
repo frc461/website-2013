@@ -1,37 +1,51 @@
 <%- model_class = Comment -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human %></h1>
+  <h1>
+    <%= @comment.title %>
+  </h1>
 </div>
-
-<dl class="dl-horizontal">
-  <dt><strong><%= model_class.human_attribute_name(:title) %>:</strong></dt>
-  <dd><%= @comment.title %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:user_id) %>:</strong></dt>
-  <dd><%= @comment.user.name %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:sticky) %>:</strong></dt>
-  <dd><%= @comment.sticky %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:important) %>:</strong></dt>
-  <dd><%= @comment.important %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:content) %>:</strong></dt>
-  <dd><%= @comment.content %></dd>
-</dl>
-
+<table class="comment"> 
+<tr>
+<td class="username">
+  <%= @comment.user.name %>
+  <br />
+  <% if @comment.important %> <strong>Important!</strong><% end %>
+  <br />
+  <% if @comment.sticky %> <strong>Sticky!</strong><% end %>
+</td>
+<td class="content">
+  <%= @comment.content %>
+</td>
+</tr>
+</table>
+<br />
 <% Comment.where(:parent_id => @comment.id).each do |comment| %>
-<p>
-  <b>
-    <%= comment.user.name %>
-  </b>
-  <%= comment.content %>
-</p>
+  <br />
+  <table class="comment"> 
+    <tr>
+      <td class="username">
+        <%= comment.user.name %>
+      </td>
+      <td class="content">
+        <%= comment.content %>
+      </td>
+    </tr>
+  </table>
+  <br />
 <% end %>
 
 <%= form_for Comment.new, :html => {:class => 'form-horizontal' } do |f| %>
-  <div class="control-group">
-    <%= f.label "Add a comment:", :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_area :content, :class => 'text_area' %>
-    </div>
-  </div>
+  <br />
+  <table class="comment">
+    <tr>
+      <td class="username">
+        <%= current_user.name %>
+      </td>
+      <td class="content">
+        <%= f.text_area :content, :class => 'text_area' %>
+      </td>
+    </tr>
+  </table>
   <%= f.hidden_field :user_id, :value => current_user.id %>
   <%= f.hidden_field :parent_id, :value => @comment.id %>
   <%= f.hidden_field :sticky, :value => false %>
@@ -43,7 +57,7 @@
 
 <div class="form-actions">
   <%= link_to t('.back', :default => t("helpers.links.back")),
-              comments_path, :class => 'btn'  %>
+              @comment.forum, :class => 'btn'  %>
   <%= link_to t('.edit', :default => t("helpers.links.edit")),
               edit_comment_path(@comment), :class => 'btn' %>
   <%= link_to t('.destroy', :default => t("helpers.links.destroy")),

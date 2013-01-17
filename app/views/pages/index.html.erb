@@ -5,7 +5,7 @@
       <% if (page != nil)  %>
         <div class="span4 postWithBorder">
         <h2>
-          <%= link_to(page.title, page) %>
+          <%= link_to_page page %>
         </h2>
         </div>
       <% end %>
@@ -18,7 +18,7 @@
     <% if (page != nil)  %>
       <div class="postWithBorder">
         <h2>
-          <%= link_to(page.title, page) %>
+          <%= link_to_page page %>
         </h2>
       </div>
         <br class="visible-phone" />
