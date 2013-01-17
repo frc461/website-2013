@@ -12,11 +12,19 @@ module ApplicationHelper
     BlueCloth::new(text).to_html
   end
 
-  def link_to_page (page, text = nil)
-    if text == nil
-      ('<a href="/pages/' + page.title.gsub(/ /, '_') + '">' + page.title + '</a>').html_safe
-    else
-      ('<a href="/pages/' + page.title.gsub(/ /, '_') + '">' + text + '</a>').html_safe
+  def page_path (page, thing = nil)
+    # puts (thing.map {|key, value| "#{key} is #{value}" }).join("\n")
+    titles = [page]
+    while titles.first.parent_id
+      titles.unshift(Page.find(titles.first.parent_id))
     end
+    titles.map! do |t|
+      t.title.gsub(/ /,"_")
+    end
+    '/pages/' + titles.join("/")
+  end
+  
+  def link_to_page (page, text = nil)
+    ('<a href="' + page_path(page) + '">' + (text ? text : page.title) + '</a>').html_safe
   end
 end
