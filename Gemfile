@@ -12,16 +12,16 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
 #  gem 'therubyracer', :platforms => :ruby
   gem 'uglifier', '>= 1.0.3'
+gem 'twitter-bootstrap-rails'
 end
 
 gem 'sqlite3'
-gem 'twitter-bootstrap-rails'
-gem 'activeadmin'
+gem 'mysql2'
 gem 'bluecloth'
 gem 'jquery-rails'
 gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'paperclip'
 gem 'acts-as-taggable-on'
 gem 'cancan'
-gem 'twitter-bootstrap-rails'
 gem 'twitter'
+gem 'activeadmin'
