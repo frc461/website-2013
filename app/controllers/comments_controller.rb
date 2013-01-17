@@ -1,6 +1,5 @@
 class CommentsController < InheritedResources::Base
   load_and_authorize_resource
-
   def create
     @comment = Comment.new(params[:comment])
     if @comment.save

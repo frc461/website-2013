@@ -6,6 +6,39 @@
   =require twitter-bootstrap-static/fontawesome
 
   */
+.comment {
+  width: 100%;
+  font-size: 15px;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+.comment td {
+  vertical-align: text-top;
+}
+.username {
+  padding: 5px;
+  padding-left: 10px;
+  background: #1F2424;
+  width: 20%;
+  background-image: url('/assets/triangle.png');
+  background-repeat: no-repeat;
+  background-size: auto 15px;
+  background-position: right top;
+
+}
+.content {
+  color: #282828;
+  padding: 5px;
+  padding-left: 10px;
+  background: #b0b0b0;
+  width: 80%;
+  border-left: 3px solid #FFF200;
+  border-right: 3px solid #FFF200;
+}
+.content textarea {
+width:95%;
+height:100px;
+}
 @media (max-width: 767px) {
   .postWithBorder {
     padding-top: 1px;
@@ -14,7 +47,7 @@
   }
 }
 .postWithBorder {
-  border-left: solid #151010 5px;
+  border-left: solid #1F2424 5px;
   padding-left: 10px;
   background: #252a30;
 }
