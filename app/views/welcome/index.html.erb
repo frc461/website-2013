@@ -1,23 +1,28 @@
 <div class="page-header"><h1>Welcome!</h1></div>
-<p>Find me in app/views/welcome/index.html.erb</p>
-<p><a href="#">Sample Link</a>.</p>
 
-<!-- BEGIN TWITTER FEED -->
-
-<hr>
-
-<h2>Tweets by <a href="https://www.twitter.com/team461wbi">@Team461WBI</a></h2>
-
-<div class="well">
-  <% Twitter.user_timeline("team461wbi", options = { :count => 10 } ).each do |tweet| %>
-  <p class="tweet">
-    <%= sanitize tweet.text %>
-    <span class="tweet-info">
-      @<%= tweet.from_user() %>
-      <a href="https://twitter.com/<%= tweet.from_user() %>/statuses/<%= tweet.id() %>"><%= time_ago_in_words(tweet.created_at()) %> ago </a>
-    </span>
-  </p>
+<% Post.last(2).reverse.each do |post| %>
+  <% if (post != nil) %>
+  <div class="row-fluid">
+    <div class="span12 postWithBorder">
+      <h2>
+        <%= link_to(post.title, post, :class => "") %>
+      </h2>
+      <div style="padding-left: 16px;">
+      <% if post.content.lines.count > 2 %>
+        <% if post.content.lines.to_a[2] =~ /^-+/ %>
+          <%= format post.content.lines.to_a[0..6].join %>
+        <% else %>
+          <%= format post.content.lines.to_a[0..4].join %>
+        <% end %>
+      <% else %>
+        <%= format post.content.lines.to_a.join %>
+      <% end %>
+      </div>
+      <br />
+    </div>
+  </div>
+  <br />
+  <% end %>
 <% end %>
-</div>
 
-<!-- END TWITTER FEED -->
+<%= render :partial => "twitter_feed/twitter_feed" %>

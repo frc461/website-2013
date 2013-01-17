@@ -11,7 +11,7 @@
             <%= link_to(post.title, post, :class => "") %>
           </h2>
           <br />
-          <%= post.content.lines.first(10).join %>
+          <%= format post.content.lines.first(10).join %>
           <br />
           <br />
         </div>
