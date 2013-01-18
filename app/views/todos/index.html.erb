@@ -9,7 +9,7 @@
     <th>Done</th>
   </tr>
 
-<% @todos.each do |todo| %>
+<% @todos.order("done ASC, created_at DESC").each do |todo| %>
   <tr>
     <td><%= link_to todo.name, todo %></td>
     <td><%= todo.content %></td>

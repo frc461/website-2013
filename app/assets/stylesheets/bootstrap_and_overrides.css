@@ -33,7 +33,7 @@
   background: #b0b0b0;
   width: 80%;
   border-left: 3px solid #FFF200;
-  border-right: 3px solid #FFF200;
+  //border-right: 3px solid #FFF200;
 }
 .content textarea {
 width:95%;
