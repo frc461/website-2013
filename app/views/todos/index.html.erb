@@ -1,0 +1,31 @@
+<div class="page-header">
+  <h1>To Do</h1>
+</div>
+
+<table class="table table-striped">
+  <tr>
+    <th>Title</th>
+    <th>Content</th>
+    <th>Done</th>
+  </tr>
+
+<% @todos.order("done ASC, created_at DESC").each do |todo| %>
+  <tr>
+    <td><%= link_to todo.name, todo %></td>
+    <td><%= todo.content %></td>
+    <td>
+    <%= form_for(todo) do |f|%>
+      <%= f.check_box :done %>
+    <%end%>
+    </td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<% if can?(:write, Todo) || can?(:remove, Todo) %>
+  <%= link_to t('.new', :default => t("helpers.links.new")),
+              new_todo_path,
+              :class => 'btn btn-primary' %>
+<% end %>
