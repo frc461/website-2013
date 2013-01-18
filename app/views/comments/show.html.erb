@@ -8,10 +8,9 @@
 <tr>
 <td class="username">
   <%= @comment.user.name %>
-  <br />
-  <% if @comment.important %> <strong>Important!</strong><% end %>
-  <br />
-  <% if @comment.sticky %> <strong>Sticky!</strong><% end %>
+  <% if @comment.important %><br /><strong>Important!</strong><% end %>
+  <% if @comment.sticky %><br /><strong>Sticky!</strong><% end %>
+  <br /><%= @comment.created_at.strftime("%d %b %Y") %>
 </td>
 <td class="content">
   <%= @comment.content %>
@@ -25,6 +24,7 @@
     <tr>
       <td class="username">
         <%= comment.user.name %>
+        <br /><%= @comment.created_at.strftime("%d %b %Y") %>
       </td>
       <td class="content">
         <%= comment.content %>
