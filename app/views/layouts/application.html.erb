@@ -64,6 +64,9 @@
               <% end %>
               <li><%= link_to "Blog", posts_path %></li>
               <li><%= link_to "Photos", albums_path %></li>
+              <% if can? :read, Todo %>
+                <li><%= link_to "To Do", todos_path %></li>
+              <% end %>
               <% if can? :read, Forum %>
                 <li><%= link_to "Forums", forums_path %></li>
               <% end %>
@@ -92,6 +95,9 @@
 
               <li><%= link_to "Blog", posts_path %></li>
               <li><%= link_to "Photos", albums_path %></li>
+              <% if can? :read, Todo %>
+                <li><%= link_to "To Do", todos_path %></li>
+              <% end %>
               <% if can? :read, Forum %>
                 <li><%= link_to "Forums", forums_path %></li>
                 <ul id="forumLinks">
