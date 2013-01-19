@@ -5,14 +5,14 @@
 <table class="table table-striped">
   <tr>
     <th>Title</th>
-    <th>Content</th>
+    <th class="hidden-phone">Content</th>
     <th>Done</th>
   </tr>
 
 <% @todos.order("done ASC, created_at DESC").each do |todo| %>
   <tr>
     <td><%= link_to todo.name, todo %></td>
-    <td><%= todo.content %></td>
+    <td class="hidden-phone"><%= todo.content %></td>
     <td>
     <%= form_for(todo) do |f|%>
       <%= f.check_box :done %>

@@ -6,11 +6,13 @@
   <%= format @todo.content %>
 </div>
 
-<p>
-  <b>Done:</b>
-  <%= @todo.done %>
-</p>
-
-
-<%= link_to 'Edit', edit_todo_path(@todo) %> |
-<%= link_to 'Back', todos_path %>
+<div class="form-actions">
+  <%= link_to "Back", todos_path, :class => 'btn' %>
+  <% if can? :write, @todo %>
+    <%= link_to "Edit", edit_todo_path, :class => 'btn' %>
+  <% end %>
+  <% if can? :remove, @todo %>
+  <%= link_to "Deletify", todo_path, :method => 'delete',
+              :data => { :confirm => "Are ye sure?"}, :class => 'btn btn-danger' %>
+  <% end %>
+</div>
