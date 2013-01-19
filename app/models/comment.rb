@@ -5,4 +5,6 @@ class Comment < ActiveRecord::Base
   belongs_to :forum
   belongs_to :user
   belongs_to :parent, :foreign_key => :parent_id, :class_name => :Comment
+
+  acts_as_taggable
 end

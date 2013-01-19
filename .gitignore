@@ -14,7 +14,10 @@
 /log/*.log
 /tmp
 *.swp
+*.swo
+*.xcf
 *#
 *~
 .#*
 /public/system
+*.sh

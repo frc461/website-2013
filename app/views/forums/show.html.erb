@@ -27,7 +27,7 @@
         <td><%= link_to comment.title, comment %></td>
         <% end %>
         <td><%= comment.user.name %></td>
-        <td>YES</td>
+        <td>Sticky</td>
       </tr>
     <% end %>
     <% @forum.comments.where(:parent_id => nil, :sticky => false).each do |comment| %>
@@ -38,23 +38,21 @@
         <td><%= link_to comment.title, comment_path(comment) %></td>
         <% end %>
         <td><%= comment.user.name %></td>
-        <td>no</td>
+        <td></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 <% end %>
 
-<%= link_to "New Thread", new_comment_path(:forum_id => @forum.id) %>
+<div class="form-actions">
+  <%= link_to "New Thread", new_comment_path(:forum_id => @forum.id), :class => 'btn' %>
+</div>
 
 <div class="form-actions">
-  <%= link_to t('.back', :default => t("helpers.links.back")),
-              forums_path, :class => 'btn'  %>
-  <%= link_to t('.edit', :default => t("helpers.links.edit")),
-              edit_forum_path(@forum), :class => 'btn' %>
-  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-              forum_path(@forum),
-              :method => 'delete',
-              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+  <%= link_to "Back", forums_path, :class => 'btn'  %>
+  <%= link_to "Edit", edit_forum_path(@forum), :class => 'btn' %>
+  <%= link_to "Deletify", forum_path(@forum), :method => 'delete',
+              :data => { :confirm => 'Are you sure?' },
               :class => 'btn btn-danger' %>
 </div>

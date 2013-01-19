@@ -64,6 +64,9 @@
               <% end %>
               <li><%= link_to "Blog", posts_path %></li>
               <li><%= link_to "Photos", albums_path %></li>
+              <% if can? :read, Todo %>
+                <li><%= link_to "To Do", todos_path %></li>
+              <% end %>
               <% if can? :read, Forum %>
                 <li><%= link_to "Forums", forums_path %></li>
               <% end %>
@@ -92,6 +95,9 @@
 
               <li><%= link_to "Blog", posts_path %></li>
               <li><%= link_to "Photos", albums_path %></li>
+              <% if can? :read, Todo %>
+                <li><%= link_to "To Do", todos_path %></li>
+              <% end %>
               <% if can? :read, Forum %>
                 <li><%= link_to "Forums", forums_path %></li>
                 <ul id="forumLinks">
@@ -133,11 +139,11 @@
             <div id="tweetbox">
               <hr />
               <center><h4>Latest tweets from <a href="https://www.twitter.com/team461wbi">@Team461WBI</a></h4></center>
-              <%= render :partial => "twitter_feed/sidebar_twitter_feed" %>
+              <%= render :partial => "twitter_feed/twitter_feed" %>
             </div>
           </div><!--/.well -->
         </div><!--/span-->
-        <div class="span9">
+        <div class="span9 solidBackground">
           <%= yield %>
         </div>
       </div><!--/row-->
@@ -146,6 +152,9 @@
 
       <footer>
         <center>
+          <a href="https://www.facebook.com/WBI461"     ><%= image_tag 'facebook-icon.png', :class => "social-icon" %></a>
+          <a href="https://twitter.com/team461WBI"      ><%= image_tag 'twitter-icon.png',  :class => "social-icon" %></a>
+          <a href="https://www.youtube.com/user/team461"><%= image_tag 'youtube-icon.png',  :class => "social-icon" %></a>
           <p>
             &copy; Copyright Westside Boiler Invasion 2013
             <% if !current_user %>
@@ -157,7 +166,10 @@
         </center>
       </footer>
       <div class="alerts-holder">
-              <div id="konamicodething" class="alert fade in alert-success"><button class="close" data-dismiss="alert">&times;</button>Woah, you know the Konami code! Unfortunately, we can't give you any extra lives.</div>
+              <div id="konamicodething" class="alert fade in alert-success">
+                <button class="close" data-dismiss="alert">&times;</button>
+                Woah, you know the Konami code! Unfortunately, we can't give you any extra lives.
+              </div>
           <%= bootstrap_flash %>
       </div>
     </div> <!-- /container -->
