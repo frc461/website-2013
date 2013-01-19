@@ -3,4 +3,8 @@ class PostsController < InheritedResources::Base
   def index
     @posts = Post.order('created_at DESC')
   end
+
+  def tag_cloud
+    @tags = Post.tag_counts_on(:tags)
+  end
 end

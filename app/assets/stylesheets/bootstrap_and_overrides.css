@@ -51,6 +51,7 @@ height:100px;
     padding-right: 10px;
   }
 }
+
 .postWithBorder {
   border-left: solid #1F2424 5px;
   padding-left: 10px;
@@ -58,18 +59,22 @@ height:100px;
 }
 
 .verticalText {
-		     -moz-transform: rotate(270deg);  /* FF3.5+ */
-			 -o-transform: rotate(270deg);  /* Opera 10.5 */
-			 -webkit-transform: rotate(270deg);  /* Saf3.1+, Chrome */
-			 filter:  progid:DXImageTransform.Microsoft.BasicImage(rotation=2.988);  /* IE6,IE7 */
-			 -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=2.988)"; /* IE8 */
+  -moz-transform: rotate(270deg);  /* FF3.5+ */
+  -o-transform: rotate(270deg);  /* Opera 10.5 */
+  -webkit-transform: rotate(270deg);  /* Saf3.1+, Chrome */
+  filter:  progid:DXImageTransform.Microsoft.BasicImage(rotation=2.988);  /* IE6,IE7 */
+  -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=2.988)"; /* IE8 */
 }
+.css1 { font-size: 1.0em; }
+.css2 { font-size: 1.2em; }
+.css3 { font-size: 1.4em; }
+.css4 { font-size: 1.6em; }
 
 textarea {
-	width: auto;
+  width: auto;
 }
 input {
-	width: auto;
+  width: auto;
 }
 
 #forumLinks li>a:hover {
@@ -90,18 +95,18 @@ input {
 }
 
 .alerts-holder {
-	position: fixed;
-	bottom: 2px;
-	right: 22px;
-	width: 300px;
+  position: fixed;
+  bottom: 2px;
+  right: 22px;
+  width: 300px;
 }
 
 td {
-	border-top: 0px solid rgb(34,34,34);
+  border-top: 0px solid rgb(34,34,34);
 }
 
 body {
-	padding-top: 128px;
+  padding-top: 128px;
 }
 
 textarea {

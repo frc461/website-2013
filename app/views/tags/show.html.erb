@@ -1,0 +1,31 @@
+<div class="page-header">
+  <h1>Things with <%= params[:tag] %> as a tag:</h1>
+</div>
+
+<% [[@posts,       "posts"],
+    [@pages,       "pages"],
+    [@albums,     "albums"],
+    [@photos,     "photos"],
+    [@forums,     "forums"],
+    [@comments, "comments"]].in_groups_of(2) do |group_of_things| %>
+<div class="row-fluid">
+  <% group_of_things.each do |things| %>
+  <div class="well span6">
+  <% if things[0].count == 0 %>
+    <p>No <%= things[1] %> have <%= params[:tag] %> as a tag.</br></p>
+  <% else %>
+    <% things[0].each do |thing| %>
+      <%= link_to thing.title, thing %><br />
+      <% if thing != things[0].last %>
+        <hr />
+      <% end %>
+    <% end %>
+  <% end %>
+  </div>
+  <% end %>
+</div>
+<% end %>
+
+<div class="form-actions">
+  <%= link_to 'Back', tags_path, :class => 'btn' %>
+</div>

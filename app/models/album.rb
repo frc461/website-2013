@@ -3,4 +3,6 @@ class Album < ActiveRecord::Base
 
   has_many :photos
   has_many :permissions, :as => :securable
+
+  acts_as_taggable  
 end

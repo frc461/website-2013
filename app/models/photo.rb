@@ -5,4 +5,6 @@ class Photo < ActiveRecord::Base
 
   belongs_to :album
   has_many :permissions, :as => :securable
+
+  acts_as_taggable
 end

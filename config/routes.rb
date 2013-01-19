@@ -1,10 +1,9 @@
 Website::Application.routes.draw do
-  resources :todos
-
-
   get "permissions/create"
   get "permissions/destroy"
 
+  resources :todos
+  resources :tags
   resources :comments
   resources :forums
   resources :photos

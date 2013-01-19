@@ -3,4 +3,6 @@ class Forum < ActiveRecord::Base
 
   has_many :comments
   has_many :permissions, :as => :securable
+  
+  acts_as_taggable
 end

@@ -8,6 +8,13 @@
   <%= format @post.content %>
 </div>
 
+<% if @post.tags && @post.tags.count > 0 %>
+  <%# raise "there are tags" %>
+  <% tag_cloud(@post.tags, %w(css1 css2 css3 css4)) do |tag, css_class| %>
+  <%= link_to tag.name, { :action => :show, :tag => tag.name, :controller => :tags }, :class => css_class %>
+  <% end %>
+<% end %>
+
 <div class="form-actions">
   <%= link_to "Back", posts_path, :class => 'btn' %>
   <% if can? :write, @post %>
