@@ -1,20 +1,18 @@
 <div class="page-header"><h1>Welcome!</h1></div>
 
-<% Post.all.in_groups_of(10) do | groupOfPosts | %>
-  <% groupOfPosts.each do | post | %>
-    <% if (post != nil) %>
-    <div class="row-fluid">
-      <div class="span12 postWithBorder" style="padding: x">
-        <h2>
-          <%= link_to(post.title, post, :class => "") %>
-        </h2>
-        <br />
-        <%= format post.content.lines.first(2).join %>
-        <br />
-        <br />
-      </div>
+<% Post.last(2).reverse.each do | post | %>
+  <% if (post != nil) %>
+  <div class="row-fluid">
+    <div class="span12 postWithBorder" style="padding: x">
+      <h2>
+        <%= link_to(post.title, post, :class => "") %>
+      </h2>
+      <br />
+      <%= format post.content.lines.first(2).join %>
+      <br />
     </div>
-    <% end %>
+  </div>
+  <br />
   <% end %>
 <% end %>
 
