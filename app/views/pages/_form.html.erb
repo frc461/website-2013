@@ -14,7 +14,7 @@
   <div class="control-group">
     <%= f.label :parent_id, :class => 'control-label' %>
     <div class="controls">
-      <%= f.select(:parent_id, Page.all.map { |page| [page.title, page.id] }, :include_blank => true) %>
+      <%= f.select(:parent_id, ["None", nil] + Page.all.map { |page| [page.title, page.id] }, {}, {:include_blank => true, :class => "selectpicker"} ) %>
     </div>
   </div>
   <div class="control-group">
