@@ -6,6 +6,11 @@
   =require twitter-bootstrap-static/fontawesome
 
   */
+.social-icon {
+  width:  32px;
+  height: 32px;
+}
+
 .comment {
   width: 100%;
   font-size: 15px;
