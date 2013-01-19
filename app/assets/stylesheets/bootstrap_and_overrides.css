@@ -7,8 +7,8 @@
 
   */
 .social-icon {
-  width:  32px;
-  height: 32px;
+  width:  48px;
+  height: 48px;
 }
 
 .comment {
@@ -41,8 +41,8 @@
   //border-right: 3px solid #FFF200;
 }
 .content textarea {
-width:95%;
-height:100px;
+  width:95%;
+  height:100px;
 }
 @media (max-width: 767px) {
   .postWithBorder {
@@ -52,17 +52,18 @@ height:100px;
   }
 }
 .postWithBorder {
-  border-left: solid #1F2424 5px;
+  border-left: solid #FFFF00 5px;
   padding-left: 10px;
-  background: #252a30;
+  background: #232323;
+  overflow: hidden;
 }
 
 .verticalText {
-		     -moz-transform: rotate(270deg);  /* FF3.5+ */
-			 -o-transform: rotate(270deg);  /* Opera 10.5 */
-			 -webkit-transform: rotate(270deg);  /* Saf3.1+, Chrome */
-			 filter:  progid:DXImageTransform.Microsoft.BasicImage(rotation=2.988);  /* IE6,IE7 */
-			 -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=2.988)"; /* IE8 */
+ -moz-transform: rotate(270deg);  /* FF3.5+ */
+ -o-transform: rotate(270deg);  /* Opera 10.5 */
+ -webkit-transform: rotate(270deg);  /* Saf3.1+, Chrome */
+ filter:  progid:DXImageTransform.Microsoft.BasicImage(rotation=2.988);  /* IE6,IE7 */
+ -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=2.988)"; /* IE8 */
 }
 
 textarea {
