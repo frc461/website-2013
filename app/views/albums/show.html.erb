@@ -14,14 +14,23 @@
   <div class="carousel-inner">
     <% first=true %>
     <% @album.photos.each do |photo| %>
-    <% if first %>
-    <div class="item active">
-    <% first=false %>
-    <% else %>
-    <div class="item">
-    <% end %>
-    <%= image_tag photo.image.url %>
-    </div>
+      <% if first %>
+        <div class="item active">
+        <% first=false %>
+      <% else %>
+        <div class="item">
+      <% end %>
+          <%= image_tag photo.image.url %>
+      <% if can?(:write, Post) %>
+          <div class="carousel-caption">
+            <p>
+              <center>
+                <%= photo.id %>
+              </center>
+            </p>
+          </div>
+      <% end %>
+        </div>
     <% end %>
   </div>
 </div>
