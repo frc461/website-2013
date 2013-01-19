@@ -1,7 +1,28 @@
 <div class="page-header">
   <h1>To Do</h1>
 </div>
-
+<table class="table table-striped">
+  <tr>
+    <th>Title</th>
+    <th class="hidden-phone">Content</th>
+    <th>Done</th>
+  </tr>
+  <% Todo.where(:group_id => nil).order("done ASC, created_at DESC").each do | todo |%>
+    <tr>
+      <td><%= link_to todo.name, todo %></td>
+      <td class="hidden-phone"><%= todo.content %></td>
+      <td>
+      <%= form_for(todo, :remote => true) do |f|%>
+        <%= f.check_box :done, :class => "checkthing" %>
+      <%end%>
+      </td>
+    </tr>
+  <% end %>
+</table>
+<% Group.all.each do | group |%>
+<% if current_user.groups.include?(group) || current_user.admin %>
+<h1><%= group.name %></h1>
+<hr />
 <table class="table table-striped">
   <tr>
     <th>Title</th>
@@ -9,7 +30,7 @@
     <th>Done</th>
   </tr>
 
-<% @todos.order("done ASC, created_at DESC").each do |todo| %>
+<% group.todos.order("done ASC, created_at DESC").each do |todo| %>
   <tr>
     <td><%= link_to todo.name, todo %></td>
     <td class="hidden-phone"><%= todo.content %></td>
@@ -21,6 +42,9 @@
   </tr>
 <% end %>
 </table>
+<%end%>
+<br />
+<%end%>
 
 <br />
 
