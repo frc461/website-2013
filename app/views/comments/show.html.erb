@@ -4,6 +4,7 @@
     <%= @comment.title %>
   </h1>
 </div>
+<div class="border">
 <table class="comment"> 
 <tr>
 <td class="username">
@@ -17,9 +18,11 @@
 </td>
 </tr>
 </table>
+</div>
 <br />
 <% Comment.where(:parent_id => @comment.id).each do |comment| %>
   <br />
+  <div class="border">
   <table class="comment"> 
     <tr>
       <td class="username">
@@ -31,11 +34,13 @@
       </td>
     </tr>
   </table>
+  </div>
   <br />
 <% end %>
 
 <%= form_for Comment.new, :html => {:class => 'form-horizontal' } do |f| %>
   <br />
+  <div class="border">
   <table class="comment">
     <tr>
       <td class="username">
@@ -46,6 +51,7 @@
       </td>
     </tr>
   </table>
+  </div>
   <%= f.hidden_field :user_id, :value => current_user.id %>
   <%= f.hidden_field :parent_id, :value => @comment.id %>
   <%= f.hidden_field :sticky, :value => false %>

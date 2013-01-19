@@ -10,5 +10,6 @@ class Group < ActiveRecord::Base
 
   def create_principal
     p = Principal.create :authenticatable_type => "Group", :authenticatable_id => self.id
+    has_many :todos
   end
 end

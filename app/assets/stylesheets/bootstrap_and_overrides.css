@@ -6,9 +6,14 @@
   =require twitter-bootstrap-static/fontawesome
 
   */
+.border {
+  width: auto;
+  height: auto;
+  border: 2px solid #333333;
+}
 .social-icon {
-  width:  32px;
-  height: 32px;
+  width:  48px;
+  height: 48px;
 }
 
 .comment {
@@ -41,8 +46,8 @@
   //border-right: 3px solid #FFF200;
 }
 .content textarea {
-width:95%;
-height:100px;
+  width:95%;
+  height:100px;
 }
 @media (max-width: 767px) {
   .postWithBorder {
@@ -53,9 +58,10 @@ height:100px;
 }
 
 .postWithBorder {
-  border-left: solid #1F2424 5px;
+  border-left: solid #FFFF00 5px;
   padding-left: 10px;
-  background: #252a30;
+  background: #232323;
+  overflow: hidden;
 }
 
 .verticalText {
@@ -220,13 +226,9 @@ footer a {
 body {
   background-image: url('/assets/TestyTesty.png');
   color: #FFF;
-  //background-color: #252a30;
+  background-repeat: no-repeat;
+  background-color: #000;
 }
-/*.solidBackground {
-  background-color: #252a30;
-  padding: 20px;
-  border: 3px solid #FFFF00;
-}*/
 
 #konamicodething {
   display: none;

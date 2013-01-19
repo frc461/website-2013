@@ -24,4 +24,10 @@
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
                 todos_path, :class => 'btn' %>
   </div>
+  <div class="control-group">
+    <%= f.label :group_id, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.select(:group_id, Group.all.map { |group| [group.name, group.id] }, :include_blank => true, :class => "selectpicker") %>
+    </div>
+  </div>
 <% end %>
