@@ -57,6 +57,10 @@
   }
 }
 
+.text-error {
+  color: #FFAA00;
+}
+
 .postWithBorder {
   border-left: solid #FFFF00 5px;
   padding-left: 10px;

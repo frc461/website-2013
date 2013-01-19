@@ -6,5 +6,11 @@ class Comment < ActiveRecord::Base
   belongs_to :user
   belongs_to :parent, :foreign_key => :parent_id, :class_name => :Comment
 
+  before_save :setvalues
+
   acts_as_taggable
+
+  def setvalues
+    self.important = true if self.sticky
+  end
 end
