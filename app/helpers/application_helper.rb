@@ -14,9 +14,31 @@ module ApplicationHelper
 
   def photocheck(text)
     begin
-      gsubber = text.gsub!(/\[[Aa]lbum ([^\[\]]+)\]\[[Pp]hoto (\d+)\]/, image_tag(Photo.where("album_id LIKE ? and id LIKE ?", Album.where("name LIKE ?", $1).first.id, $2.to_i).first.image.url))
-    rescue
-      raise "#{$1} - #{$2}"
+      gsubber = text.gsub!(/\[[Aa]lbum ([^\[\]]+)\]\[[Pp]hoto (\d+)\](\[([rl])\])?/) { |s|
+        if s != ""
+          begin
+            if $4
+              if $4 == "r"
+                image_tag(Photo.where("album_id LIKE ? and id LIKE ?",
+                                      Album.where("name LIKE ?", $1).first.id, $2.to_i).first.image.url,
+                          :class => "pull-right smaller-img")
+              elsif $4 == "l"
+                image_tag(Photo.where("album_id LIKE ? and id LIKE ?",
+                                      Album.where("name LIKE ?", $1).first.id, $2.to_i).first.image.url,
+                          :class => "pull-left smaller-img")
+              end
+            else
+              image_tag(Photo.where("album_id LIKE ? and id LIKE ?",
+                                    Album.where("name LIKE ?", $1).first.id, $2.to_i).first.image.url)
+            end
+          rescue
+            "!! NO SUCH PHOTO !!"
+          end
+        else s
+        end }
+                           # "thing in brackets \\1")
+    # rescue
+    #   raise "#{$1} - #{$2}"
     end
     markdown text
   end
