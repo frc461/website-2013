@@ -45,16 +45,14 @@
 </table>
 <% end %>
 
-<%= link_to "New Thread", new_comment_path(:forum_id => @forum.id) %>
+<div class="form-actions">
+  <%= link_to "New Thread", new_comment_path(:forum_id => @forum.id), :class => 'btn' %>
+</div>
 
 <div class="form-actions">
-  <%= link_to t('.back', :default => t("helpers.links.back")),
-              forums_path, :class => 'btn'  %>
-  <%= link_to t('.edit', :default => t("helpers.links.edit")),
-              edit_forum_path(@forum), :class => 'btn' %>
-  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-              forum_path(@forum),
-              :method => 'delete',
-              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+  <%= link_to "Back", forums_path, :class => 'btn'  %>
+  <%= link_to "Edit", edit_forum_path(@forum), :class => 'btn' %>
+  <%= link_to "Deletify", forum_path(@forum), :method => 'delete',
+              :data => { :confirm => 'Are you sure?' },
               :class => 'btn btn-danger' %>
 </div>
