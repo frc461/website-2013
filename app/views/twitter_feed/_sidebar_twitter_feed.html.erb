@@ -1,0 +1,15 @@
+<% begin %>
+  <% Twitter.user_timeline("team461wbi", options = { :count => 2 } ).each do |tweet| %>
+    <p class="tweet">
+      <hr />
+      <%= sanitize tweet.text %>
+      <span class="tweet-info">
+        <br />
+        @<%= tweet.from_user() %>
+        <a href="https://twitter.com/<%= tweet.from_user() %>/status/<%= tweet.id() %>"><%= time_ago_in_words(tweet.created_at()) %> ago </a>
+      </span>
+    </p>
+  <% end %>
+<% rescue %>
+  <p>No internet connection</p>
+<% end %>
