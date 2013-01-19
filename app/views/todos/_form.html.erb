@@ -18,16 +18,16 @@
       <%= f.text_area :content, :class => 'text_area' %>
     </div>
   </div>
+<div class="control-group">
+    <%= f.label :group_id, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.select(:group_id, ["None", nil] + Group.all.map { |group| [group.name, group.id] }, {}, {:include_blank => true, :class => "selectpicker"} ) %>
+    </div>
+  </div>
 
   <div class="form-actions">
     <%= f.submit nil, :class => 'btn btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
                 todos_path, :class => 'btn' %>
   </div>
-  <div class="control-group">
-    <%= f.label :group_id, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.select(:group_id, Group.all.map { |group| [group.name, group.id] }, :include_blank => true, :html => { :class => "selectpicker" }) %>
-    </div>
-  </div>
-<% end %>
+  <% end %>
