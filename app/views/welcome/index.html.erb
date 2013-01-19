@@ -1,23 +1,14 @@
 <div class="page-header"><h1>Welcome!</h1></div>
 
-<% Post.last(2).reverse.each do |post| %>
+<% Post.last(2).reverse.each do | post | %>
   <% if (post != nil) %>
   <div class="row-fluid">
-    <div class="span12 postWithBorder">
+    <div class="span12 postWithBorder" style="padding: x">
       <h2>
         <%= link_to(post.title, post, :class => "") %>
       </h2>
-      <div style="padding-left: 16px;">
-      <% if post.content.lines.count > 2 %>
-        <% if post.content.lines.to_a[2] =~ /^-+/ %>
-          <%= format post.content.lines.to_a[0..6].join %>
-        <% else %>
-          <%= format post.content.lines.to_a[0..4].join %>
-        <% end %>
-      <% else %>
-        <%= format post.content.lines.to_a.join %>
-      <% end %>
-      </div>
+      <br />
+      <%= format post.content.lines.first(2).join %>
       <br />
     </div>
   </div>
