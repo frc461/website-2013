@@ -14,9 +14,20 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require_tree .
+
 $('.selectpicker').selectpicker({
   btnStyle: 'btn-info'
 });
+
 bootstrap_alert_success = function(message) {
   $('.alerts-holder').html('<div class="alert alert-sucess"><a class="close" data-dismiss="alert">×</a><span>'+message+'</span></div>');
+}
+
+function toggleSticky() {
+  if(document.getElementById('comment_sticky').checked) {
+    document.getElementById('comment_important').disabled = true;
+    document.getElementById('comment_important').checked = true;
+  } else {
+    document.getElementById('comment_important').disabled = false;
+  }
 }
