@@ -5,15 +5,45 @@ module ApplicationHelper
   end
 
   def format(text)
-    sanitize(markdown(text))
+    sanitize(photocheck(text))
   end
 
   def markdown(text)
     BlueCloth::new(text).to_html
   end
 
+  def photocheck(text)
+    begin
+      gsubber = text.gsub!(/\[[Aa]lbum ([^\[\]]+)\]\[[Pp]hoto (\d+)\](\[([rl])\])?/) { |s|
+        if s != ""
+          begin
+            if $4
+              if $4 == "r"
+                image_tag(Photo.where("album_id LIKE ? and id LIKE ?",
+                                      Album.where("name LIKE ?", $1).first.id, $2.to_i).first.image.url,
+                          :class => "pull-right smaller-img")
+              elsif $4 == "l"
+                image_tag(Photo.where("album_id LIKE ? and id LIKE ?",
+                                      Album.where("name LIKE ?", $1).first.id, $2.to_i).first.image.url,
+                          :class => "pull-left smaller-img")
+              end
+            else
+              image_tag(Photo.where("album_id LIKE ? and id LIKE ?",
+                                    Album.where("name LIKE ?", $1).first.id, $2.to_i).first.image.url)
+            end
+          rescue
+            "!! NO SUCH PHOTO !!"
+          end
+        else s
+        end }
+                           # "thing in brackets \\1")
+    # rescue
+    #   raise "#{$1} - #{$2}"
+    end
+    markdown text
+  end
+
   def page_path (page, thing = nil)
-    # puts (thing.map {|key, value| "#{key} is #{value}" }).join("\n")
     if thing #hacky update fix
       return '/pages/' + page.id.to_s
     else

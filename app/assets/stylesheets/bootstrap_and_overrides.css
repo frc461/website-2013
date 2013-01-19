@@ -237,3 +237,8 @@ body {
 #konamicodething {
   display: none;
 }
+
+.smaller-img {
+  max-width: 50%;
+  padding: 10px;
+}
