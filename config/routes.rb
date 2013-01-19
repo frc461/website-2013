@@ -1,4 +1,7 @@
 Website::Application.routes.draw do
+  resources :todos
+
+
   get "permissions/create"
   get "permissions/destroy"
 
