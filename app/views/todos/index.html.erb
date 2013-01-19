@@ -14,8 +14,8 @@
     <td><%= link_to todo.name, todo %></td>
     <td class="hidden-phone"><%= todo.content %></td>
     <td>
-    <%= form_for(todo) do |f|%>
-      <%= f.check_box :done %>
+    <%= form_for(todo, :remote => true) do |f|%>
+      <%= f.check_box :done, :class => "checkthing" %>
     <%end%>
     </td>
   </tr>
@@ -29,3 +29,8 @@
               new_todo_path,
               :class => 'btn btn-primary' %>
 <% end %>
+<script>
+  $('.checkthing').live("click", function() {
+    $('.checkthing').parent('form').submit();
+  });
+</script>

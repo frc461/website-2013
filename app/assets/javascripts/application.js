@@ -14,3 +14,6 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require_tree .
+bootstrap_alert_success = function(message) {
+  $('.alerts-holder').html('<div class="alert alert-sucess"><a class="close" data-dismiss="alert">×</a><span>'+message+'</span></div>');
+}
