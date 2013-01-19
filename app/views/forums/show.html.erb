@@ -27,7 +27,7 @@
         <td><%= link_to comment.title, comment %></td>
         <% end %>
         <td><%= comment.user.name %></td>
-        <td>YES</td>
+        <td>Sticky!!!</td>
       </tr>
     <% end %>
     <% @forum.comments.where(:parent_id => nil, :sticky => false).each do |comment| %>
@@ -38,7 +38,7 @@
         <td><%= link_to comment.title, comment_path(comment) %></td>
         <% end %>
         <td><%= comment.user.name %></td>
-        <td>no</td>
+        <td></td>
       </tr>
     <% end %>
   </tbody>
