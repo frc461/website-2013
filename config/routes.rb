@@ -3,7 +3,6 @@ Website::Application.routes.draw do
   get "permissions/destroy"
 
   resources :todos
-  resources :tags
   resources :comments
   resources :forums
   resources :photos
@@ -24,6 +23,7 @@ Website::Application.routes.draw do
   get "users" => "users#index", :as => "users"
 
   match '/pages/*titles' => "pages#show"
+  match '/tags/:tag' => "tags#show"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
