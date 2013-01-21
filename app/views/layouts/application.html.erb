@@ -59,8 +59,8 @@
           <div class="container-fluid nav-collapse">
             <ul class="nav">
               <li><%= link_to "Home", "/"  %></li>
-              <% Page.where(:navigable => true, :parent_id => nil).each do |page_to_draw| %>
-                <li><%= link_to_page page_to_draw %></li>
+              <% Page.where(:navigable => true, :parent_id => nil).each do |page_to_draw|  %>
+                <li <%= 'class="dropdown"' if page_to_draw.pages.count > 0 %> ><%= link_to_page page_to_draw %> <%= '<span class="caret dropdown-toggle" data-toggle="dropdown"></span>'.html_safe if page_to_draw.pages.count > 0 %><% if page_to_draw.pages.count > 0 %> <ul class="dropdown-menu"> <% page_to_draw.pages do |child|%> <li> <%= link_to_page child %> </li> <% end %> </ul> <% end %> </li>
               <% end %>
               <li><%= link_to "Blog", posts_path %></li>
               <li><%= link_to "Photos", albums_path %></li>
@@ -154,6 +154,9 @@
 
       <footer>
         <center>
+          <p>
+            <%= link_to( image_tag("firstlogovector.png", :style => "height: 48px; width: auto;" ), "http://www.usfirst.org/" ) %>
+          </p>
           <a href="https://www.facebook.com/WBI461"     ><%= image_tag 'facebook-icon.png', :class => "social-icon" %></a>
           <a href="https://twitter.com/team461WBI"      ><%= image_tag 'twitter-icon.png',  :class => "social-icon" %></a>
           <a href="https://www.youtube.com/user/team461"><%= image_tag 'youtube-icon.png',  :class => "social-icon" %></a>
