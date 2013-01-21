@@ -3,11 +3,14 @@
 </div>
 
 <table class="table table-striped">
-  <tr>
-    <th>Title</th>
-    <th class="hidden-phone">Content</th>
-    <th>Done</th>
-  </tr>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th class="hidden-phone">Content</th>
+      <th>Done</th>
+    </tr>
+  </thead>
+  <tbody>
   <% Todo.where(:group_id => nil).order("done ASC, created_at DESC").each do | todo |%>
     <tr>
       <td><%= link_to todo.name, todo %></td>
@@ -19,12 +22,12 @@
       </td>
     </tr>
   <% end %>
+  </tbody>
 </table>
 
 <% Group.all.each do | group |%>
 <% if current_user.groups.include?(group) || current_user.admin %>
 <h1><%= group.name %></h1>
-<hr />
 <table class="table table-striped">
   <tr>
     <th>Title</th>

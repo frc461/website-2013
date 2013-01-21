@@ -1,28 +1,31 @@
 <%- model_class = Comment -%>
+
 <div class="page-header">
   <h1>
     <%= @comment.title %>
   </h1>
 </div>
+
 <div class="border">
-<table class="comment"> 
-<tr>
-<td class="username">
-  <%= @comment.user.name %>
-  <% if @comment.important %><br /><strong>Important!</strong><% end %>
-  <% if @comment.sticky %><br /><strong>Sticky!</strong><% end %>
-  <br /><%= @comment.created_at.strftime("%d %b %Y") %>
-</td>
-<td class="content">
-  <%= @comment.content %>
-</td>
-</tr>
-</table>
+  <table class="comment"> 
+    <tr>
+      <td class="username">
+        <%= @comment.user.name %>
+        <% if @comment.important %><br /><strong>Important!</strong><% end %>
+        <% if @comment.sticky %><br /><strong>Sticky!</strong><% end %>
+        <br /><%= @comment.created_at.strftime("%d %b %Y") %>
+      </td>
+      <td class="content">
+        <%= @comment.content.split("\r\n").join("<br />").html_safe %>
+      </td>
+    </tr>
+  </table>
 </div>
 <br />
+
 <% Comment.where(:parent_id => @comment.id).each do |comment| %>
-  <br />
-  <div class="border">
+
+<div class="border">
   <table class="comment"> 
     <tr>
       <td class="username">
@@ -30,17 +33,16 @@
         <br /><%= @comment.created_at.strftime("%d %b %Y") %>
       </td>
       <td class="content">
-        <%= comment.content %>
+        <%= comment.content.split("\r\n").join("<br />").html_safe %>
       </td>
     </tr>
   </table>
-  </div>
-  <br />
+</div>
+<br />
 <% end %>
 
 <%= form_for Comment.new, :html => {:class => 'form-horizontal' } do |f| %>
-  <br />
-  <div class="border">
+<div class="border">
   <table class="comment">
     <tr>
       <td class="username">
@@ -51,23 +53,20 @@
       </td>
     </tr>
   </table>
-  </div>
-  <%= f.hidden_field :user_id, :value => current_user.id %>
-  <%= f.hidden_field :parent_id, :value => @comment.id %>
-  <%= f.hidden_field :sticky, :value => false %>
-  <%= f.hidden_field :important, :value => false %>
-  <div class="form-actions">
-    <%= f.submit nil, :class => 'btn btn-primary' %>
-  </div>
+</div>
+<%= f.hidden_field :user_id, :value => current_user.id %>
+<%= f.hidden_field :parent_id, :value => @comment.id %>
+<%= f.hidden_field :sticky, :value => false %>
+<%= f.hidden_field :important, :value => false %>
+<div class="form-actions">
+  <%= f.submit nil, :class => 'btn btn-primary' %>
+</div>
 <% end %>
 
 <div class="form-actions">
-  <%= link_to t('.back', :default => t("helpers.links.back")),
-              @comment.forum, :class => 'btn'  %>
-  <%= link_to t('.edit', :default => t("helpers.links.edit")),
-              edit_comment_path(@comment), :class => 'btn' %>
-  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-              comment_path(@comment),
+  <%= link_to "Back", @comment.forum, :class => 'btn'  %>
+  <%= link_to "Edit", edit_comment_path(@comment), :class => 'btn' %>
+  <%= link_to "Deletify!", comment_path(@comment),
               :method => 'delete',
               :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
               :class => 'btn btn-danger' %>

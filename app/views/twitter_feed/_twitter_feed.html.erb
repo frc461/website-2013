@@ -8,10 +8,10 @@
     <% tweets.each do |tweet| %>
       <p class="tweet">
         <%= sanitize tweet.text %>
-        <span class="tweet-info">
-          @<%= tweet.from_user() %>
+        <div style="text-align: right;" class="tweet-info">
+          <a href="https://twitter.com/<%= tweet.from_user() %>">@<%= tweet.from_user() %></a>,
           <a href="https://twitter.com/<%= tweet.from_user() %>/statuses/<%= tweet.id() %>"><%= time_ago_in_words(tweet.created_at()) %>     ago </a>
-        </span>
+        </div>
       </p>
       <% if tweet != tweets.last%>
       <hr />
