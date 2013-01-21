@@ -1,3 +1,6 @@
 # this includes special OAuth keys that we don't want to be putlic
 # see github.com/sferik/twitter
 twitter.rb
+# moved now to secret.rb
+# now includes SECRET_CODE
+secret.rb

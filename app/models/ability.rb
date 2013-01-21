@@ -30,5 +30,6 @@ class Ability
     can :read, Post
     can :read, Album
     can :read, Photo
+    can :create, User
   end
 end

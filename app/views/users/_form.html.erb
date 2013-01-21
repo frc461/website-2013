@@ -22,12 +22,14 @@
       <%= f.text_field :email, :class => 'text_field' %>
     </div>
   </div>
+  <% if current_user && current_user.admin %>
   <div class="control-group">
     <%= f.label :admin, :class => 'control-label' %>
     <div class="controls">
       <%= f.check_box :admin, :class => 'check_box' %>
     </div>
   </div>
+  <% end %>
   <div class="control-group">
     <%= f.label :password, :class => 'control-label' %>
     <div class="controls">
@@ -40,6 +42,16 @@
       <%= f.password_field :password_confirmation, :class => 'text_field' %>
     </div>
   </div>
+  <% if !current_user %>
+  <div class="control-group">
+    <%= f.label :secret_code, :class => 'control-label' %>
+    <div class="controls">
+        <%= f.text_field :secret_code, :class => 'text_field' %>
+    </div>
+  </div>
+  <% else %>
+    <%= f.hidden_field :secret_code %>
+  <% end %>
 
   <h4>Groups</h4>
   <% Group.all.each do |grp| %>
