@@ -1,52 +1,54 @@
 <%- model_class = Album -%>
-<div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human %></h1>
-</div>
 
-<dl class="dl-horizontal">
-  <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
-  <dd><%= @album.name %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:description) %>:</strong></dt>
-  <dd><%= @album.description %></dd>
-</dl>
+<div class="well">
+  <div class="page-header">
+    <h1><%= @album.name %></h1>
+  </div>
 
-<div id="tehCarousel" class="carousel slide">
-  <div class="carousel-inner">
-    <% first=true %>
+  <div style="padding-left: 32px;">
+    <strong><%= model_class.human_attribute_name(:description) %>:</strong>
+    <div style="padding-left: 4px;">
+      <%= @album.description %>
+    </div>
+  </div>
+
+  <hr />
+
+  <div id="theCarousel" class="carousel slide">
+    <div class="carousel-inner">
+    <% first = true %>
     <% @album.photos.each do |photo| %>
       <% if first %>
-        <div class="item active">
-        <% first=false %>
+      <div class="item active">
+        <% first = false %>
       <% else %>
-        <div class="item">
+      <div class="item">
       <% end %>
-          <%= image_tag photo.image.url %>
-      <% if can?(:write, Post) %>
-          <div class="carousel-caption">
-            <p>
-              <center>
-                <%= photo.id %>
-              </center>
-            </p>
-          </div>
-      <% end %>
+        <%= image_tag photo.image.url %>
+        <% if can?(:write, Post) %>
+        <div class="carousel-caption">
+          <p>
+            ID: <%= photo.id %>
+          </p>
         </div>
+        <% end %>
+      </div>
     <% end %>
+    </div>
   </div>
-</div>
-<div id="carouselnav">
-  <a class="btn" href="#tehCarousel" data-slide="prev">&lsaquo;</a>
-  <a class="btn pull-right" href="#tehCarousel" data-slide="next">&rsaquo;</a>
-</div>
 
-<div class="form-actions">
-  <%= link_to t('.back', :default => t("helpers.links.back")),
-              albums_path, :class => 'btn'  %>
-  <%= link_to t('.edit', :default => t("helpers.links.edit")),
-              edit_album_path(@album), :class => 'btn' %>
-  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-              album_path(@album),
-              :method => 'delete',
-              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-              :class => 'btn btn-danger' %>
+  <div id="carouselnav">
+    <a class="btn" href="#theCarousel" data-slide="prev">&lsaquo;</a>
+    <a class="btn pull-right" href="#theCarousel" data-slide="next">&rsaquo;</a>
+  </div>
+
+  <% if can? :remove, current_user %>
+  <div class="form-actions">
+    <%= link_to "Back", albums_path, :class => 'btn'  %>
+    <%= link_to "Edit", edit_album_path(@album), :class => 'btn' %>
+    <%= link_to "Deletify", album_path(@album), :method => 'delete',
+                :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                :class => 'btn btn-danger' %>
+  </div>
+  <% end %>
 </div>

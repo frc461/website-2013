@@ -45,7 +45,7 @@
     <%= favicon_link_tag '/favicon.ico', :rel => 'shortcut icon' %>
   </head>
   <body>
-
+    <!-- NAVBAR -->
     <div class="navbar navbar-fluid-top navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container-fluid">
@@ -78,6 +78,7 @@
 
     <div class="container-fluid">
       <div class="row-fluid">
+        <!-- SIDEBAR -->
         <div class="span3">
           <div class="well sidebar-nav" id="sidebar">
             <ul class="nav nav-list">
@@ -94,7 +95,7 @@
               <% end %>
 
               <li><%= link_to "Blog", posts_path %></li>
-              <li><%= link_to "Photos", albums_path %></li>
+              <li><%= link_to "Photo Album".pluralize, albums_path %></li>
               <% if can? :read, Todo %>
                 <li><%= link_to "To Do", todos_path %></li>
               <% end %>
@@ -143,6 +144,7 @@
             </div>
           </div><!--/.well -->
         </div><!--/span-->
+        <!-- CONTENT -->
         <div class="span9 solidBackground">
           <%= yield %>
         </div>
@@ -168,7 +170,7 @@
       <div class="alerts-holder">
               <div id="konamicodething" class="alert fade in alert-success">
                 <button class="close" data-dismiss="alert">&times;</button>
-                Woah, you know the Konami code! Unfortunately, we can't give you any extra lives.
+                Woah, you know the Konami code! Unfortunately, we can't give you any extra lives. Or anything else. Carry on.
               </div>
           <%= bootstrap_flash %>
       </div>

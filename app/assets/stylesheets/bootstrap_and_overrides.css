@@ -6,11 +6,13 @@
   =require twitter-bootstrap-static/fontawesome
 
   */
+
 .border {
   width: auto;
   height: auto;
   border: 2px solid #333333;
 }
+
 .social-icon {
   width:  48px;
   height: 48px;
@@ -22,9 +24,11 @@
   max-width: 100%;
   overflow-x: hidden;
 }
+
 .comment td {
   vertical-align: text-top;
 }
+
 .username {
   padding: 5px;
   padding-left: 10px;
@@ -36,6 +40,7 @@
   background-position: right top;
 
 }
+
 .content {
   color: #282828;
   padding: 5px;
@@ -45,16 +50,22 @@
   border-left: 3px solid #FFF200;
   //border-right: 3px solid #FFF200;
 }
+
 .content textarea {
   width:95%;
   height:100px;
 }
+
 @media (max-width: 767px) {
   .postWithBorder {
     padding-top: 1px;
     padding-bottom: 1px;
     padding-right: 10px;
   }
+}
+
+.carousel-caption {
+  max-width: 40px;
 }
 
 .text-error {
@@ -69,12 +80,13 @@
 }
 
 .verticalText {
-  -moz-transform: rotate(270deg);  /* FF3.5+ */
-  -o-transform: rotate(270deg);  /* Opera 10.5 */
+     -moz-transform: rotate(270deg);  /* FF3.5+ */
+       -o-transform: rotate(270deg);  /* Opera 10.5 */
   -webkit-transform: rotate(270deg);  /* Saf3.1+, Chrome */
-  filter:  progid:DXImageTransform.Microsoft.BasicImage(rotation=2.988);  /* IE6,IE7 */
-  -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=2.988)"; /* IE8 */
+             filter:  progid:DXImageTransform.Microsoft.BasicImage(rotation=2.988);  /* IE6,IE7 */
+         -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=2.988)"; /* IE8 */
 }
+
 .css1 { font-size: 1.0em; }
 .css2 { font-size: 1.2em; }
 .css3 { font-size: 1.4em; }
@@ -83,13 +95,14 @@
 textarea {
   width: auto;
 }
+
 input {
   width: auto;
 }
 
 #forumLinks li>a:hover {
- color: #fff;
- background: none; 
+  color: #fff;
+  background: none; 
 }
 
 .carousel-inner {
@@ -146,13 +159,13 @@ textarea {
     margin-left: 0px;
     position: relative;
   }
+  
   #tweetbox {
     display:none;
   }
-
 }
 
-.navbar .nav>li>a:hover{
+.navbar .nav > li > a:hover{
   padding:15px 15px 14px;
   border-bottom:1px solid #fff200;
   background-color: #252a30
@@ -189,21 +202,23 @@ a :hover{
 #sidebar .nav-list {
   padding-bottom: 5px;
 }
+
 textarea:focus,
-input[type="text"]:focus,
-input[type="password"]:focus,
-input[type="datetime"]:focus,
+input[type="text"]          :focus,
+input[type="password"]      :focus,
+input[type="datetime"]      :focus,
 input[type="datetime-local"]:focus,
-input[type="date"]:focus,
-input[type="month"]:focus,
-input[type="time"]:focus,
-input[type="week"]:focus,
-input[type="number"]:focus,
-input[type="email"]:focus,
-input[type="url"]:focus,
-input[type="search"]:focus,
-input[type="tel"]:focus,
-input[type="color"]:focus,
+input[type="date"]          :focus,
+input[type="month"]         :focus,
+input[type="time"]          :focus,
+input[type="week"]          :focus,
+input[type="number"]        :focus,
+input[type="email"]         :focus,
+input[type="url"]           :focus,
+input[type="search"]        :focus,
+input[type="tel"]           :focus,
+input[type="color"]         :focus,
+
 .uneditable-input:focus{
   border-color:rgba(255, 230, 50, 0.8);
   -webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(255,230,50,.6);

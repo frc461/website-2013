@@ -1,38 +1,22 @@
 <%- model_class = Album -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
+  <h1><%= "Album".pluralize %></h1>
 </div>
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
-      <th><%= model_class.human_attribute_name(:name) %></th>
-      <th><%= model_class.human_attribute_name(:description) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
-      <th><%=t '.actions', :default => t("helpers.actions") %></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @albums.each do |album| %>
-      <tr>
-        <td><%= link_to album.id, album_path(album) %></td>
-        <td><%= album.name %></td>
-        <td><%= album.description %></td>
-        <td><%=l album.created_at %></td>
-        <td>
-          <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_album_path(album), :class => 'btn btn-mini' %>
-          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                      album_path(album),
-                      :method => :delete,
-                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                      :class => 'btn btn-mini btn-danger' %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
 
+<% @albums.in_groups_of(3) do |grp| %>
+  <div class="row-fluid">
+  <% grp.each do |albm| %>
+    <% if albm %>
+      <div class="span4 well">
+      <h4><%= link_to albm.name, album_path(albm) %></h4>
+      </div>
+    <% end %>
+  <% end %>
+  </div>
+<% end %>
+
+<% if can? :write, current_user %>
 <%= link_to t('.new', :default => t("helpers.links.new")),
             new_album_path,
             :class => 'btn btn-primary' %>
+<% end %>
