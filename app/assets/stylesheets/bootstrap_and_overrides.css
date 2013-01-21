@@ -62,6 +62,35 @@
     padding-bottom: 1px;
     padding-right: 10px;
   }
+  #main-span.span9 {
+    float: none;
+  }
+  #sidebar-span.span3 {
+    float: none;
+  }
+  #tweetbox {
+    display:none;
+  }
+}
+
+@media (max-width: 979px) {
+  .navbar-fluid-top .nav-collapse {
+    margin-left: 0px;
+    position: relative;
+  }
+  .navbar .nav>li>a{
+    padding-left:15px;
+  }
+  .navbar .nav>li>a:hover{
+    padding: 9px 15px;
+    padding-left: 14px;
+    border-left:1px solid #fff200;
+    border-bottom:0px;
+  }
+}
+
+#sidebar-span.span3 {
+  margin-left: 0px !important;
 }
 
 .carousel-caption {
@@ -154,33 +183,11 @@ textarea {
   font-weight: bold;
 }
 
-@media (max-width: 979px) {
-  .navbar-fluid-top .nav-collapse {
-    margin-left: 0px;
-    position: relative;
-  }
-  
-  #tweetbox {
-    display:none;
-  }
-}
 
 .navbar .nav > li > a:hover{
   padding:15px 15px 14px;
   border-bottom:1px solid #fff200;
   background-color: #252a30
-}
-
-@media (max-width: 979px) {
-  .navbar .nav>li>a{
-    padding-left:15px;
-  }
-  .navbar .nav>li>a:hover{
-    padding: 9px 15px;
-    padding-left: 14px;
-    border-left:1px solid #fff200;
-    border-bottom:0px;
-  }
 }
 
 a :hover{
@@ -243,7 +250,7 @@ footer a {
 }
 
 body {
-  background-image: url('/assets/TestyTesty.png');
+  background-image: url('/assets/bg.png');
   color: #FFF;
   background-repeat: no-repeat;
   background-color: #000;
