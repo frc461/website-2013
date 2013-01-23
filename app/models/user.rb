@@ -3,7 +3,11 @@ class User < ActiveRecord::Base
   attr_accessible :admin, :email, :name, :group_ids, :password, :password_confirmation, :password_hash, :password_salt, :secret_code
   attr_accessor :password, :secret_code
   before_save :encrypt_password, :set_admin
-  before_validation :check_code
+  validates_each :secret_code do |record, attr, value|
+    if record.secret_code != SECRET_CODE #defined in secret.rb
+      record.errors.add :secret_code, "is not correct"
+    end
+  end
   after_create :create_principal
   validates_confirmation_of :password
   validates_presence_of :password, :on => :create
@@ -15,13 +19,14 @@ class User < ActiveRecord::Base
     if self.admin == nil
       self.admin = false
     end
+    puts "" # fixes some wierd thing
   end
 
-  def check_code
-    if self.secret_code != SECRET_CODE #defined in secret.rb
-      self.errors.add :base, "is not correct"
-    end
-  end
+  # def check_code
+  #   if self.secret_code != SECRET_CODE #defined in secret.rb
+  #     self.errors.add :secret_code, "is not correct"
+  #   end
+  # end
 
   def all_permissions
     shopping_cart = []
