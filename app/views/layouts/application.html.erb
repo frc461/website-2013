@@ -60,7 +60,15 @@
             <ul class="nav">
               <li><%= link_to "Home", "/"  %></li>
               <% Page.where(:navigable => true, :parent_id => nil).each do |page_to_draw|  %>
-                <li <%= 'class="dropdown"' if page_to_draw.pages.count > 0 %> ><%= link_to_page page_to_draw %> <%= '<div class="dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></div>'.html_safe if page_to_draw.pages.count > 0 %><% if page_to_draw.pages.count > 0 %> <ul class="dropdown-menu"> <% page_to_draw.pages do | childs_to_draw |%> <li> <%= link_to_page childs_to_draw %> </li> <% end %> </ul> <% end %> </li>
+                <li class="dropdown"> 
+                    <%= link_to_page page_to_draw, "#{page_to_draw.title} <i class=\"icon-chevron-down\"></i>" %> 
+                    <%# link_to '<span class="caret"> </span>'.html_safe, page_to_draw, :class => 'dropdown-toggle', :"data-toggle" => "dropdown" %>
+                  <ul class="dropdown-menu" style="margin-top: 6px;">
+                    <% page_to_draw.pages.each do | childs_to_draw |%>
+                      <li> <%= link_to_page childs_to_draw %> </li>
+                    <% end %> 
+                  </ul>
+                </li>
               <% end %>
               <li><%= link_to "Blog", posts_path %></li>
               <li><%= link_to "Photos", albums_path %></li>
@@ -191,5 +199,10 @@
         js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
         fjs.parentNode.insertBefore(js, fjs);
       }(document, 'script', 'facebook-jssdk'));</script>
+    <style>
+    ul.nav li.dropdown:hover ul.dropdown-menu{
+          display: block;    
+    }
+    </style>
   </body>
 </html>
