@@ -56,39 +56,6 @@
   height:100px;
 }
 
-@media (max-width: 767px) {
-  .postWithBorder {
-    padding-top: 1px;
-    padding-bottom: 1px;
-    padding-right: 10px;
-  }
-  #main-span.span9 {
-    float: none;
-  }
-  #sidebar-span.span3 {
-    float: none;
-  }
-  #tweetbox {
-    display:none;
-  }
-}
-
-@media (max-width: 979px) {
-  .navbar-fluid-top .nav-collapse {
-    margin-left: 0px;
-    position: relative;
-  }
-  .navbar .nav>li>a{
-    padding-left:15px;
-  }
-  .navbar .nav>li>a:hover{
-    padding: 9px 15px;
-    padding-left: 14px;
-    border-left:1px solid #fff200;
-    border-bottom:0px;
-  }
-}
-
 #sidebar-span.span3 {
   margin-left: 0px !important;
 }
@@ -294,3 +261,37 @@ ul.nav > li.dropdown > ul.dropdown-menu > li > a:hover {
 ul.nav > li.dropdown > ul.dropdown-menu > li > a {
   color: #ffff30;
 }
+
+@media (max-width: 767px) {
+  .postWithBorder {
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-right: 10px;
+  }
+  #main-span.span9 {
+    float: none;
+  }
+  #sidebar-span.span3 {
+    float: none;
+  }
+  #tweetbox {
+    display:none;
+  }
+}
+
+@media (max-width: 979px) {
+  .navbar-fluid-top .nav-collapse {
+    margin-left: 0px;
+    position: relative;
+  }
+  .navbar .nav>li>a{
+    padding-left:15px;
+  }
+  .navbar .nav>li>a:hover{
+    padding: 9px 15px;
+    padding-left: 14px;
+    border-left:1px solid #fff200;
+    border-bottom:0px;
+  }
+}
+
