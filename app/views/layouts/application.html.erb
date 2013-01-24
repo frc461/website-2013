@@ -49,7 +49,8 @@
           <br />
           <div class="container-fluid nav-collapse">
             <ul class="nav">
-              <li><%= link_to "Home", "/"  %></li>
+              <li><%= link_to "Home", "/", :class => "dropdown-toggle js-activated" %></li>
+              <!-- the classes here close all other dropdowns on highlight, this is repeated throughout the navbar -->
               <% Page.where(:navigable => true, :parent_id => nil).each do |page_to_draw|  %>
                 <% if page_to_draw.pages.first %>
                   <li class="dropdown"> 
@@ -63,16 +64,16 @@
                     </ul>
                   </li>
                 <% else %>
-                  <li><%= link_to_page page_to_draw %></li>
+                  <li><%= link_to_page page_to_draw, page_to_draw.title, 'class="dropdown-toggle js-activated"' %></li>
                 <% end %>
               <% end %>
-              <li><%= link_to "Blog", posts_path %></li>
-              <li><%= link_to "Photos", albums_path %></li>
+              <li><%= link_to "Blog", posts_path, :class => "dropdown-toggle js-activated" %></li>
+              <li><%= link_to "Photos", albums_path, :class => "dropdown-toggle js-activated" %></li>
               <% if can? :read, Todo %>
-                <li><%= link_to "To Do", todos_path %></li>
+                <li><%= link_to "To Do", todos_path, :class => "dropdown-toggle js-activated" %></li>
               <% end %>
               <% if can? :read, Forum %>
-                <li><%= link_to "Forums", forums_path %></li>
+                <li><%= link_to "Forums", forums_path, :class => "dropdown-toggle js-activated" %></li>
               <% end %>
             </ul>
           </div><!--/.nav-collapse -->

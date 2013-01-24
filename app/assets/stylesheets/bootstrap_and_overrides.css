@@ -154,7 +154,7 @@ textarea {
 .navbar .nav > li > a:hover{
   padding:15px 15px 14px;
   border-bottom:1px solid #fff200;
-  background-color: #252a30
+  background-color: #252a30 !important;
 }
 
 a :hover{
@@ -291,6 +291,21 @@ ul.nav > li.dropdown > ul.dropdown-menu > li > a {
     padding-left: 14px;
     border-left:1px solid #fff200;
     border-bottom:0px;
+  }
+  ul.nav > li.dropdown > ul.dropdown-menu {
+    display: block;
+    padding-left: 15px;
+    background-color: #111111;
+  }
+  ul.nav > li.dropdown > ul.dropdown-menu > li > a:hover {
+    padding: 9px 15px;
+    padding-left: 14px;
+    border-left:1px solid #fff200;
+    border-bottom:0px;
+    background-color: #252a30
+  }
+  ul.nav > li.dropdown > a > i.icon-chevron-down {
+    display: none;
   }
 }
 
