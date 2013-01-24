@@ -19,14 +19,8 @@ class User < ActiveRecord::Base
     if self.admin == nil
       self.admin = false
     end
-    puts "" # fixes some wierd thing
+    true
   end
-
-  # def check_code
-  #   if self.secret_code != SECRET_CODE #defined in secret.rb
-  #     self.errors.add :secret_code, "is not correct"
-  #   end
-  # end
 
   def all_permissions
     shopping_cart = []
