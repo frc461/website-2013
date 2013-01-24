@@ -1,3 +1,7 @@
+<% if current_user && current_user.admin
+  groups=Group.all else groups=Group.where(:joinable => true)
+  end %>
+
 <%= form_for @user, :html => { :class => 'form-horizontal' } do |f| %>
   <% if @user.errors.any? %>
     <div class="well text-error">
@@ -53,14 +57,16 @@
     <%= f.hidden_field :secret_code, :value => SECRET_CODE %>
   <% end %>
 
+  <% if groups.count > 0 %>
   <h4>Groups</h4>
-  <% Group.all.each do |grp| %>
+  <% groups.each do |grp| %>
   <div class="control-group">
-      <%= f.label grp.name, :class => 'control-label' %>
-      <div class="controls">
-        <%= check_box_tag "user[group_ids][]", grp.id, grp.users.include?(@user) %>
-      </div>
+    <%= f.label grp.name, :class => 'control-label' %>
+    <div class="controls">
+      <%= check_box_tag "user[group_ids][]", grp.id, grp.users.include?(@user) %>
+    </div>
   </div>
+  <% end %>
   <% end %>
 
   <div class="form-actions">
