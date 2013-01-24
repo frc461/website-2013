@@ -1,5 +1,13 @@
 <div class="page-header"><h1>Welcome!</h1></div>
 
+<% if Page.where("title LIKE ?", "frontpage").first %>
+  <div class="page_body">
+    <%= format Page.where("title LIKE ?", "frontpage").first.content %>
+  </div>
+  <hr>
+<% end %>
+
+<h2>Latest Blog Posts</h2>
 <% Post.last(2).reverse.each do | post | %>
   <% if (post != nil) %>
   <div class="row-fluid">
