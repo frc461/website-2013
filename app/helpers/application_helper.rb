@@ -70,7 +70,7 @@ module ApplicationHelper
     end
   end
   
-  def link_to_page (page, text = nil)
-    ('<a href="' + page_path(page) + '">' + (text ? text : page.title) + '</a>').html_safe
+  def link_to_page (page, text = nil, html = "")
+    ('<a href="' + page_path(page) + '" ' + html +'>' + (text ? text : page.title) + '</a>').html_safe
   end
 end

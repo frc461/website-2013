@@ -273,7 +273,24 @@ body {
 }
 
 .post-info {
-  padding-top: 10px;
+  padding-top: 20px;
   text-align: right;
-  color: #999999;
+  color: #cccccc;
+}
+
+ul.nav > li.dropdown > ul.dropdown-menu {
+  width: 100%;
+  margin-top: 6px;
+  background-color: #202224;
+}
+
+ul.nav > li.dropdown > ul.dropdown-menu > li > a:hover {
+  background-color: transparent;
+  background-image: none;
+  text-decoration: underline;
+  color: #ffffff;
+}
+
+ul.nav > li.dropdown > ul.dropdown-menu > li > a {
+  color: #ffff30;
 }
