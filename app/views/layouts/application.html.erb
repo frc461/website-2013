@@ -1,15 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <script type="text/javascript" src="http://konami-js.googlecode.com/svn/trunk/konami.js"></script>
-    <script type="text/javascript">
-      konami = new Konami()
-      konami.code = function () {
-        document.getElementById("konamicodething").style.display = "block";
-      }
-      konami.load()
-    </script>
-    <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -60,15 +51,20 @@
             <ul class="nav">
               <li><%= link_to "Home", "/"  %></li>
               <% Page.where(:navigable => true, :parent_id => nil).each do |page_to_draw|  %>
-                <li class="dropdown"> 
-                    <%= link_to_page page_to_draw, "#{page_to_draw.title} <i class=\"icon-chevron-down\"></i>" %> 
-                    <%# link_to '<span class="caret"> </span>'.html_safe, page_to_draw, :class => 'dropdown-toggle', :"data-toggle" => "dropdown" %>
-                  <ul class="dropdown-menu" style="margin-top: 6px;">
-                    <% page_to_draw.pages.each do | childs_to_draw |%>
-                      <li> <%= link_to_page childs_to_draw %> </li>
-                    <% end %> 
-                  </ul>
-                </li>
+                <% if page_to_draw.pages.first %>
+                  <li class="dropdown"> 
+                    <%= link_to_page page_to_draw,
+                        page_to_draw.title + " <i class=\"icon-chevron-down\"></i>",
+                        'class="dropdown-toggle js-activated"'%> 
+                    <ul class="dropdown-menu">
+                      <% page_to_draw.pages.each do | childs_to_draw |%>
+                        <li> <%= link_to_page childs_to_draw %> </li>
+                      <% end %> 
+                    </ul>
+                  </li>
+                <% else %>
+                  <li><%= link_to_page page_to_draw %></li>
+                <% end %>
               <% end %>
               <li><%= link_to "Blog", posts_path %></li>
               <li><%= link_to "Photos", albums_path %></li>
@@ -192,17 +188,27 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <%= javascript_include_tag "application" %>
     <div id="fb-root"></div>
-    <script>(function(d, s, id) {
+    <script type="text/javascript">(function(d, s, id) {
       var js, fjs = d.getElementsByTagName(s)[0];
       if (d.getElementById(id)) return;
         js = d.createElement(s); js.id = id;
         js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
         fjs.parentNode.insertBefore(js, fjs);
-      }(document, 'script', 'facebook-jssdk'));</script>
-    <style>
-    ul.nav li.dropdown:hover ul.dropdown-menu{
-          display: block;    
-    }
-    </style>
+      }(document, 'script', 'facebook-jssdk'));
+    </script>
+    <script type="text/javascript" src="http://konami-js.googlecode.com/svn/trunk/konami.js"></script>
+    <script type="text/javascript">
+      konami = new Konami()
+      konami.code = function () {
+        document.getElementById("konamicodething").style.display = "block";
+      }
+      konami.load()
+    </script>
+    <script>
+    // very simple to use!
+    $(document).ready(function() {
+      $('.js-activated').dropdownHover(true);
+    });
+    </script>
   </body>
 </html>

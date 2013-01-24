@@ -5,42 +5,54 @@ module ApplicationHelper
   end
 
   def format(text)
-    sanitize(photocheck(text))
+    sanitize(markdown(text))
   end
 
   def markdown(text)
+    photocheck(text)
+    linkcheck(text)
     BlueCloth::new(text).to_html
   end
 
   def photocheck(text)
-    begin
-      gsubber = text.gsub!(/\[[Aa]lbum ([^\[\]]+)\]\[[Pp]hoto (\d+)\](\[([rl])\])?/) { |s|
-        if s != ""
-          begin
-            if $4
-              if $4 == "r"
-                image_tag(Photo.where("album_id LIKE ? and id LIKE ?",
-                                      Album.where("name LIKE ?", $1).first.id, $2.to_i).first.image.url,
-                          :class => "pull-right smaller-img")
-              elsif $4 == "l"
-                image_tag(Photo.where("album_id LIKE ? and id LIKE ?",
-                                      Album.where("name LIKE ?", $1).first.id, $2.to_i).first.image.url,
-                          :class => "pull-left smaller-img")
-              end
-            else
+    gsubber = text.gsub!(/\[[Aa]lbum ([^\[\]]+)\]\[[Pp]hoto (\d+)\](\[([rl])\])?/) do |s|
+      if s != ""
+        begin
+          if $4
+            if $4 == "r"
               image_tag(Photo.where("album_id LIKE ? and id LIKE ?",
-                                    Album.where("name LIKE ?", $1).first.id, $2.to_i).first.image.url)
+                                    Album.where("name LIKE ?", $1).first.id, $2.to_i).first.image.url,
+                        :class => "pull-right floating-content-img")
+            elsif $4 == "l"
+              image_tag(Photo.where("album_id LIKE ? and id LIKE ?",
+                                    Album.where("name LIKE ?", $1).first.id, $2.to_i).first.image.url,
+                        :class => "pull-left floating-content-img")
             end
-          rescue
-            "!! NO SUCH PHOTO !!"
+          else
+            image_tag(Photo.where("album_id LIKE ? and id LIKE ?",
+                                  Album.where("name LIKE ?", $1).first.id, $2.to_i).first.image.url,
+                      :class => "content-img")
           end
-        else s
-        end }
-                           # "thing in brackets \\1")
-    # rescue
-    #   raise "#{$1} - #{$2}"
+        rescue
+          "!! NO SUCH PHOTO !!"
+        end
+      else s
+      end
     end
-    markdown text
+  end
+
+  def linkcheck(text)
+    gsubber = text.gsub!(/\[[Pp]age ([^\[\]]+)\](\[([^\[\]]+)\])?/) do |s|
+      begin
+        if $3
+          link_to_page Page.where("title LIKE ?", $1).first, $3
+        else
+          link_to_page Page.where("title LIKE ?", $1).first
+        end
+      rescue
+        "!! NO SUCH PAGE !!"
+      end
+    end
   end
 
   def page_path (page, thing = nil)
@@ -58,7 +70,7 @@ module ApplicationHelper
     end
   end
   
-  def link_to_page (page, text = nil)
-    ('<a href="' + page_path(page) + '">' + (text ? text : page.title) + '</a>').html_safe
+  def link_to_page (page, text = nil, html = "")
+    ('<a href="' + page_path(page) + '" ' + html +'>' + (text ? text : page.title) + '</a>').html_safe
   end
 end
