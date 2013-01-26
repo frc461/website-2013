@@ -28,7 +28,11 @@ you want to, really, just make sure it works).
 Then go set up `config/initializers/twitter.rb`.
 See the .gitignore in that directory for more info.
 Once you have the correct authentication stuffs in there,
-you should be able to do `rails server` and access the server at port 3000
+add the line `SECRET_CODE = "ASecretCode"` which is the secret code that
+users need to sign up.
+
+After all this, you should be able to do `rails server` and access the server at port 3000.
+
 
 Setting up logins
 -----------------
