@@ -73,4 +73,16 @@ module ApplicationHelper
   def link_to_page (page, text = nil, html = "")
     ('<a href="' + page_path(page) + '" ' + html +'>' + (text ? text : page.title) + '</a>').html_safe
   end
+
+  def format_tweet (tweet)
+    text = tweet.text
+    tweet.urls.each do |url|
+      text.gsub!(url.url, "<a href=\"" + url.expanded_url + "\">" + url.display_url + "</a>")
+    end
+    tweet.media.each do |media|
+      text.gsub!(media.url, "<a href=\"" + media.expanded_url + "\">" + media.display_url + "</a>")
+    end
+    text
+  end
+  
 end

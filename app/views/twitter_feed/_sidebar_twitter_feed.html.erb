@@ -2,7 +2,7 @@
   <% Twitter.user_timeline("team461wbi", options = { :count => 3 } ).each do |tweet| %>
     <p class="tweet">
       <hr />
-      <%= sanitize tweet.text %>
+      <%= sanitize format_tweet(tweet) %>
       <div style="text-align: right;" class="tweet-info">
         <a href="https://twitter.com/<%= tweet.from_user() %>">@<%= tweet.from_user() %></a>, 
         <a href="https://twitter.com/<%= tweet.from_user() %>/status/<%= tweet.id() %>"><%= time_ago_in_words(tweet.created_at()) %> ago </a>
