@@ -319,7 +319,7 @@ ul.nav > li.dropdown > ul.dropdown-menu > li > a {
   ul.nav > li.dropdown > ul.dropdown-menu {
     display: block;
     padding-left: 15px;
-    background-color: #111111;
+    background-color: #181818;
   }
   ul.nav > li.dropdown > ul.dropdown-menu > li > a:hover {
     padding: 9px 15px;
@@ -330,6 +330,12 @@ ul.nav > li.dropdown > ul.dropdown-menu > li > a {
   }
   ul.nav > li.dropdown > a > i.icon-chevron-down {
     display: none;
+  }
+  body {
+    padding-top: 0px;
+  }
+  .content-img {
+    max-width: 100%;
   }
 }
 
