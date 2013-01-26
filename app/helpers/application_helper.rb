@@ -84,5 +84,5 @@ module ApplicationHelper
     end
     text
   end
-  
+
 end

@@ -1,4 +1,7 @@
 <%- model_class = Post -%>
+<% content_for :title do
+     "Blog | " + @post.title
+   end %>
 
 <div class="pull-right post-info">
   <%= User.find(@post.user_id).name %> <br />
