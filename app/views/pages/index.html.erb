@@ -1,3 +1,7 @@
+<% content_for :title do
+     "Listing Pages"
+   end %>
+
 <br class="hidden-phone" />
 <% @pages.in_groups_of(3) { | groupofpage |%>
   <div class="row-fluid hidden-phone">

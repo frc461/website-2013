@@ -1,4 +1,7 @@
 <%- model_class = Comment -%>
+<% content_for :title do
+     "Forums | " + @comment.title 
+   end %>
 
 <div class="page-header">
   <h1>
