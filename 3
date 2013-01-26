@@ -14,7 +14,6 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require_tree .
-//= require fullcalendar
 
 $('.selectpicker').selectpicker({
   btnStyle: 'btn-info'
@@ -33,9 +32,6 @@ function toggleSticky() {
   }
 }
 
-$(function() {
-  $('.datetimepicker').datetimepicker({
-    language: 'en',
-    pick12HourFormat: false
-  });
+$(document).on("focus", "[data-behaviour~='datepicker']", function(e){
+  $(this).datepicker({"format": "yyyy-mm-dd", "weekStart": 1, "autoclose": true});
 });

@@ -1,0 +1,17 @@
+<%- model_class = Event -%>
+<div class="page-header">
+  <h1> Calendar </h1>
+</div>
+<div id='calendar'></div>
+<br />
+<script>
+$(document).ready(function() {
+  $('#calendar').fullCalendar({
+    // put your options and callbacks here
+  })
+});
+</script>
+
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_event_path,
+            :class => 'btn btn-primary' %>
