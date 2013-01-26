@@ -1,4 +1,7 @@
 Website::Application.routes.draw do
+  resources :events
+
+
   get "permissions/create"
   get "permissions/destroy"
 

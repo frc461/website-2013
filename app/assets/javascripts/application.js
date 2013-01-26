@@ -31,3 +31,10 @@ function toggleSticky() {
     document.getElementById('comment_important').disabled = false;
   }
 }
+
+$(function() {
+  $('.datetimepicker').datetimepicker({
+    language: 'en',
+    pick12HourFormat: false
+  });
+});

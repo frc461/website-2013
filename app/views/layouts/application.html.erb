@@ -69,6 +69,7 @@
               <% end %>
               <li><%= link_to "Blog", posts_path, :class => "dropdown-toggle js-activated" %></li>
               <li><%= link_to "Photos", albums_path, :class => "dropdown-toggle js-activated" %></li>
+              <li><%= link_to "Calendar", events_path, :class => "dropdown-toggle js-activated" %></li>
               <% if can? :read, Todo %>
                 <li><%= link_to "To Do", todos_path, :class => "dropdown-toggle js-activated" %></li>
               <% end %>
@@ -103,7 +104,8 @@
               <% end %>
 
               <li><%= link_to "Blog", posts_path %></li>
-              <li><%= link_to "Photo Album".pluralize, albums_path %></li>
+              <li><%= link_to "Photo Albums", albums_path %></li>
+              <li><%= link_to "Calendar", events_path %></li>
               <% if can? :read, Todo %>
                 <li><%= link_to "To Do", todos_path %></li>
               <% end %>
@@ -117,7 +119,6 @@
                   <% end %>
                 </ul>
               <% end %>
-
               <% if current_user %>
                 <hr />
                 <li>
