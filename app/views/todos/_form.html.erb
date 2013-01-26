@@ -22,10 +22,8 @@
     <%= f.label :group_id, :class => 'control-label' %>
     <div class="controls">
       <%= f.select(:group_id,
-                   ["None", nil] + Group.all.map { |group| [group.name, group.id] },
-                   {},
-                   {:include_blank => true,
-                    :class => "selectpicker"}) %>
+                   [["None", nil]] + current_user.groups.map { |group| [group.name, group.id] },
+                   {:class => "selectpicker"}) %>
     </div>
   </div>
 
