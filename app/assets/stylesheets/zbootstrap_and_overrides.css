@@ -320,6 +320,7 @@ ul.nav > li.dropdown > ul.dropdown-menu > li > a {
     display: block;
     padding-left: 15px;
     background-color: #181818;
+    margin-bottom: 6px;
   }
   ul.nav > li.dropdown > ul.dropdown-menu > li > a:hover {
     padding: 9px 15px;
