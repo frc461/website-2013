@@ -10,8 +10,8 @@ class ApplicationController < ActionController::Base
     redirect_to root_url, :alert => exception.message
   end
 
-rescue_from Exception, :with => :handle_error
-  rescue_from ActionController::RoutingError, :with => :handle_error 
+#rescue_from Exception, :with => :handle_error
+#rescue_from ActionController::RoutingError, :with => :handle_error 
 
 #, ActionController::UnknownController, AbstractController::ActionNotFound, ActiveRecord::RecordNotFound  def handle_error
 

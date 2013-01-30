@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schmas/sitemaps/0.9">
+  <% @posts.each do |post| %>
+    <url>
+      <loc><%= post_url post %></loc>
+      <lastmod><%= post.updated_at.strftime("%Y-%m-%d") %> </lastmod>
+    </url>
+  <% end %>
+  <% @pages.each do |page| %>
+    <url>
+      <loc><%= page_url page %></loc>
+      <lastmod><%= page.updated_at.strftime("%Y-%m-%d") %> </lastmod>
+    </url>
+  <% end %>
+</urlset>

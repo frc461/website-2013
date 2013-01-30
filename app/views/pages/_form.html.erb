@@ -15,9 +15,7 @@
     <%= f.label :parent_id, :class => 'control-label' %>
     <div class="controls">
       <%= f.select(:parent_id,
-                   [["None", nil]] + Page.where("parent_id != ?",
-                   @page.parent_id).map { |page| [page.title, page.id] },
-                   {}, 
+                   [["None", nil]] + Page.where("parent_id != ?", @page.id).map { |page| [page.title, page.id] },
                    {:class => "selectpicker"} ) %>
     </div>
   </div>
