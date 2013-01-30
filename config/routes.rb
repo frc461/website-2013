@@ -1,4 +1,6 @@
 Website::Application.routes.draw do
+  get "error" => "error#index"
+
   resources :events
 
 
