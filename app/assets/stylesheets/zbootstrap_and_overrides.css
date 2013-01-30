@@ -359,3 +359,10 @@ div .fb_reset {
     display: inline;
   }
 }
+
+.social-buttons-navbar {
+  text-align: right;
+}
+table.social-buttons-navbar > tr > td {
+  float: right;
+}
