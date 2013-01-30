@@ -340,3 +340,22 @@ ul.nav > li.dropdown > ul.dropdown-menu > li > a {
   }
 }
 
+div .fb_reset {
+  display: inline;
+}
+
+.social-header {
+  display: none;
+  margin-top: 19px;
+  border-right: 2px solid #fff200;
+}
+@media (min-width: 1200px) {
+  .social-header {
+    display: inline;
+  }
+}
+@media (max-width: 767px) {
+  .social-header {
+    display: inline;
+  }
+}
