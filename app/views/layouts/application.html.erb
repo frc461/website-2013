@@ -82,6 +82,15 @@
               <% end %>
             </ul>
           </div><!--/.nav-collapse -->
+          <table class="social-buttons-navbar visible-desktop pull-right">
+            <tr><td>
+                <div class="fb-like" data-layout="button_count" data-colorscheme="light" data-action="like" data-href="http://www.facebook.com/WBI461"></div>
+            </td></tr><tr><td>
+                <div class="g-plusone" data-size="medium" data-href="http://boilerinvasion.org" data-align="right"></div>
+            </td></tr><tr><td>              
+                <a href="https://twitter.com/Team461WBI" class="twitter-follow-button" data-show-count="false" data-dnt="true">Follow @Team461WBI</a>
+              </td></tr>
+          </table>
         </div>
       </div>
     </div>
@@ -150,7 +159,20 @@
                 </li>
               <% end %>
             </ul>
-            <div id="tweetbox" class="hidden-phone hidden-tablet">
+            <div class="hidden-desktop">
+            <hr />
+            <!-- <h3 class="pull-right social-header">Social&nbsp;</h3> -->
+            <table class="social-buttons">
+              <tr><td>
+              <div class="fb-like" data-layout="button_count" data-colorscheme="light" data-action="like" data-href="http://www.facebook.com/WBI461"></div>
+              </td></tr><tr><td>
+              <div class="g-plusone" data-size="medium" data-href="http://boilerinvasion.org"></div>
+              </td></tr><tr><td>              
+              <a href="https://twitter.com/Team461WBI" class="twitter-follow-button" data-show-count="false" data-dnt="true">Follow @Team461WBI</a>
+              </td></tr>
+            </table>
+            </div>
+            <div id="tweetbox" class="visible-desktop">
               <hr />
               <center><h4>Latest tweets from <a href="https://www.twitter.com/team461wbi">@Team461WBI</a></h4></center>
               <%= render :partial => "twitter_feed/sidebar_twitter_feed" %>
@@ -197,6 +219,16 @@
         js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
         fjs.parentNode.insertBefore(js, fjs);
       }(document, 'script', 'facebook-jssdk'));
+    </script>
+    <script type="text/javascript">
+      (function() {
+        var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+        po.src = 'https://apis.google.com/js/plusone.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+      })();
+    </script>
+    <script>
+      !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
     </script>
     <script type="text/javascript">
       konami = new Konami()
