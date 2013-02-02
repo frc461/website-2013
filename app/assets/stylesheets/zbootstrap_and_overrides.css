@@ -367,6 +367,14 @@ table.social-buttons-navbar > tr > td {
   float: right;
 }
 
+.inline-text-align-left {
+  float: left;
+}
+
+.inline-text-align-right {
+  float: right;
+}
+
 /* .dropdown-menu li > a:hover, */
 /* .dropdown-menu li > a:focus, */
 /* .dropdown-submenu:hover > a { */

@@ -7,10 +7,17 @@
     <% tweets = Twitter.user_timeline("team461wbi", options = { :count => 10 } )%>
     <% tweets.each do |tweet| %>
       <p class="tweet">
-        <%= sanitize tweet.text %>
-        <div style="text-align: right;" class="tweet-info">
-          <a href="https://twitter.com/<%= tweet.from_user() %>">@<%= tweet.from_user() %></a>,
-          <a href="https://twitter.com/<%= tweet.from_user() %>/statuses/<%= tweet.id() %>"><%= time_ago_in_words(tweet.created_at()) %>     ago </a>
+        <div id="textbox">
+          <p class="inline-text-align-left">
+            <%= sanitize format_tweet(tweet) %>
+          </p>
+          <p class="inline-text-align-right">
+            <a href="https://twitter.com/<%= tweet.from_user() %>">@<%= tweet.from_user() %></a>,
+            <a href="https://twitter.com/<%= tweet.from_user() %>/statuses/<%= tweet.id() %>">
+              <%= time_ago_in_words(tweet.created_at()) %>     ago 
+            </a>
+          </p>
+          <div style="clear: both;"></div>
         </div>
       </p>
       <% if tweet != tweets.last%>
@@ -19,7 +26,7 @@
     <% end %>
   </div>
 <% rescue %>
-<p> No internet connection </p>
+<p>Error: No internet connection</p>
 </div>
 <% end %>
 
