@@ -40,62 +40,6 @@
     <%= favicon_link_tag '/favicon.ico', :rel => 'shortcut icon' %>
   </head>
   <body>
-    <!-- NAVBAR
-    <div class="navbar navbar-fluid-top navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container-fluid">
-          <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <a class="brand" href="/"><%# image_tag 'logo.png' %></a>
-          <br />
-          <div class="container-fluid nav-collapse">
-            <ul class="nav">
-              <li><%# link_to "Home", "/", :class => "dropdown-toggle js-activated" %></li>
-              <%# Page.where(:navigable => true, :parent_id => nil).each do |page_to_draw|  %>
-                <%# if page_to_draw.pages.first %>
-                  <li class="dropdown"> 
-                    <%# link_to_page page_to_draw,
-                        page_to_draw.title + " <i class=\"icon-chevron-down\"></i>",
-                        'class="dropdown-toggle js-activated"'%> 
-                    <ul class="dropdown-menu">
-                      <%# page_to_draw.pages.each do | childs_to_draw |%>
-                        <li> <%# link_to_page childs_to_draw %> </li>
-                      <%# end %> 
-                    </ul>
-                  </li>
-                <%# else %>
-                  <li><%# link_to_page page_to_draw, page_to_draw.title, 'class="dropdown-toggle js-activated"' %></li>
-                <%# end %>
-              <%# end %>
-              <li><%# link_to "Blog", posts_path, :class => "dropdown-toggle js-activated" %></li>
-              <li><%# link_to "Photos", albums_path, :class => "dropdown-toggle js-activated" %></li>
-              <li><%# link_to "Calendar", events_path, :class => "dropdown-toggle js-activated" %></li>
-              <%# if can? :read, Todo %>
-                <li><%# link_to "To Do", todos_path, :class => "dropdown-toggle js-activated" %></li>
-              <%# end %>
-              <%# if can? :read, Forum %>
-                <li><%# link_to "Forums", forums_path, :class => "dropdown-toggle js-activated" %></li>
-              <%# end %>
-            </ul>
-          </div>
-          <table class="social-buttons-navbar visible-desktop pull-right">
-            <tr><td>
-              <div class="fb-like" data-layout="button_count" data-colorscheme="light" data-action="like" data-href="http://www.facebook.com/WBI461">Like us on Facebook</div>
-            </td></tr><tr><td>
-              <div class="g-plusone" data-size="medium" data-href="http://boilerinvasion.org" data-align="right">1+ on Google+</div>
-            </td></tr><tr><td>              
-              <a href="https://twitter.com/Team461WBI" class="twitter-follow-button" data-show-count="true" data-dnt="true" data-align="right">Follow @Team461WBI</a>
-              </td>
-            </tr>
-          </table>
-        </div>
-      </div>
-    </div> -->
-
-    <div class="container-fluid">
       <div class="row-fluid">
         <div class="span9 solidBackground pull-right" id="main-span">
           <%= yield %>
