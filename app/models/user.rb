@@ -8,7 +8,6 @@ class User < ActiveRecord::Base
       record.errors.add :secret_code, "is not correct"
     end
   end
-  after_create :create_principal
   validates_confirmation_of :password
   validates_presence_of :password, :on => :create
   validates_presence_of :email
@@ -40,10 +39,6 @@ class User < ActiveRecord::Base
     end
   end
 
-  def create_principal
-    p = Principal.create :authenticatable_type => "User", :authenticatable_id => self.id
-  end
-
   def encrypt_password
     if password.present?
       self.password_salt = BCrypt::Engine.generate_salt
@@ -54,7 +49,5 @@ class User < ActiveRecord::Base
   has_many :memberships
   has_many :groups, :through => :memberships
   has_many :posts
-  has_one :principal, :as => :authenticatable
-  has_many :permissions, :through => :principal
   has_many :comments
 end

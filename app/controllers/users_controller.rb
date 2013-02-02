@@ -3,16 +3,10 @@ class UsersController < InheritedResources::Base
 
   def new
     @user = User.new
-    @permission = Permission.new
-  end
-
-  def add_permission
   end
 
   def show
     @user = User.find(params[:id])
-    @permission = Permission.new
-    @permissions = @user.permissions
   end
 
   def create

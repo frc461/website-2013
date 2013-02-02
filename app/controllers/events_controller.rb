@@ -1,4 +1,5 @@
 class EventsController < InheritedResources::Base
+  load_and_authorize_resource
     def index
       if current_user
         @events = Event.all

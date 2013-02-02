@@ -16,8 +16,6 @@
   <% end %>
 </dl>
 
-<%= render :partial => "permission_form", :locals => { :principal => @user.principal } %>
-
 <div class="form-actions">
   <%= link_to t('.back', :default => t("helpers.links.back")),
               users_path, :class => 'btn'  %>

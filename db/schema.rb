@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130126143452) do
+ActiveRecord::Schema.define(:version => 20130202205637) do
 
   create_table "albums", :force => true do |t|
     t.string   "name"
@@ -52,9 +52,16 @@ ActiveRecord::Schema.define(:version => 20130126143452) do
 
   create_table "groups", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
     t.boolean  "joinable"
+    t.boolean  "page_access"
+    t.boolean  "post_access"
+    t.boolean  "photo_access"
+    t.boolean  "event_access"
+    t.boolean  "user_access"
+    t.boolean  "forum_access"
+    t.boolean  "group_access"
   end
 
   create_table "memberships", :force => true do |t|
@@ -73,19 +80,6 @@ ActiveRecord::Schema.define(:version => 20130126143452) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "permissions", :force => true do |t|
-    t.integer  "principal_id"
-    t.boolean  "read"
-    t.boolean  "write"
-    t.boolean  "remove"
-    t.boolean  "execute"
-    t.integer  "securable_id"
-    t.string   "securable_type"
-    t.integer  "priority"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
-  end
-
   create_table "photos", :force => true do |t|
     t.integer  "album_id"
     t.datetime "created_at",         :null => false
@@ -102,13 +96,6 @@ ActiveRecord::Schema.define(:version => 20130126143452) do
     t.integer  "user_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-  end
-
-  create_table "principals", :force => true do |t|
-    t.integer  "authenticatable_id"
-    t.string   "authenticatable_type"
-    t.datetime "created_at",           :null => false
-    t.datetime "updated_at",           :null => false
   end
 
   create_table "taggings", :force => true do |t|

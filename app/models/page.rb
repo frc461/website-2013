@@ -3,7 +3,6 @@ class Page < ActiveRecord::Base
 
   has_many :pages, :foreign_key => :parent_id
   belongs_to :parent, :foreign_key => :parent_id, :class_name => :Page
-  has_many :permissions, :as => :securable
 
   acts_as_taggable
 end
