@@ -6,10 +6,16 @@
   =require twitter-bootstrap-static/fontawesome
 
   */
+.twitter-border hr {
+  color = #fff200;
+  background-color = #fff200;
+  border-color: #fff200;
+}
 .twitter-border {
   padding: 9px;
   border-left: 5px solid #fff200;
-  background-color: #222222;
+  background-color: #232323;
+  margin-bottom: 10px;
 }
 .fc-state-highlight {
   background-color: rgba(19,21,23,.7) !important;
