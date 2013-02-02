@@ -175,9 +175,14 @@ textarea {
   font-family: monospace;
 }
 
-.navbar-fluid-top .nav-collapse {
-  margin-left: 140px;
+ul.nav {
   position: absolute;
+  bottom: 0px;
+}
+
+.navbar-fluid-top .nav-collapse {
+  //margin-left: 140px;
+  position: relative;
 }
 
 .page_body h1 {
@@ -195,8 +200,8 @@ textarea {
 
 
 .navbar .nav > li > a:hover{
-  padding:15px 15px 14px;
-  border-bottom:1px solid #fff200;
+  padding: 15px 15px 14px;
+  border-bottom: 1px solid #fff200;
   background-color: #252a30 !important;
 }
 
@@ -331,9 +336,11 @@ ul.nav > li.dropdown > ul.dropdown-menu > li > a {
     margin-left: 0px;
     position: relative;
   }
+  
   .navbar .nav>li>a{
     padding-left:15px;
   }
+  
   .navbar .nav>li>a:hover{
     padding: 9px 15px;
     padding-left: 14px;
@@ -341,12 +348,14 @@ ul.nav > li.dropdown > ul.dropdown-menu > li > a {
     border-bottom: 0px;
     text-decoration: none;
   }
+  
   ul.nav > li.dropdown > ul.dropdown-menu {
     display: block;
     padding-left: 15px;
     background-color: #181818;
     margin-bottom: 6px;
   }
+
   ul.nav > li.dropdown > ul.dropdown-menu > li > a:hover {
     padding: 9px 15px;
     padding-left: 14px;
@@ -354,12 +363,15 @@ ul.nav > li.dropdown > ul.dropdown-menu > li > a {
     border-bottom:0px;
     background-color: #252a30
   }
+  
   ul.nav > li.dropdown > a > i.icon-chevron-down {
     display: none;
   }
+  
   body {
     padding-top: 0px;
   }
+  
   .content-img {
     max-width: 100%;
   }
@@ -387,6 +399,7 @@ div .fb_reset {
 
 .social-buttons-navbar {
   text-align: right;
+  float: right;
 }
 table.social-buttons-navbar > tr > td {
   float: right;

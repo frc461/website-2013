@@ -7,7 +7,11 @@
   <hr>
 <% end %>
 
+<% if Post.count > 0 %>
 <h2>Latest Blog Posts</h2>
+<% else %>
+<h3>No blog posts to show.</h3>
+<% end %>
 <% Post.last(2).reverse.each do | post | %>
   <% if (post != nil) %>
   <div class="row-fluid">
@@ -18,7 +22,6 @@
       <%= format post.content.lines.first(2).join %>
     </div>
   </div>
-  <br />
   <% end %>
 <% end %>
 

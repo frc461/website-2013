@@ -7,7 +7,6 @@ class Photo < ActiveRecord::Base
     :url => "/assets/images/:filename"
 
   belongs_to :album
-  has_many :permissions, :as => :securable
 
   acts_as_taggable
 end
