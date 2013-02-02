@@ -31,6 +31,10 @@ a.text-error:hover {
   color: #FFFFFF;
 }
 
+a:hover {
+  text-decoration: none;
+}
+
 .border {
   width: auto;
   height: auto;
@@ -187,6 +191,7 @@ textarea {
 
 a :hover{
   color: #020202;
+  text-decoration: none;
 }
 
 .nav-list li>a:hover {
@@ -199,6 +204,10 @@ a :hover{
 
 .sidebar-nav {
   margin-top: 20px;
+}
+
+.sidebar-nav .a:hover {
+  text-decoration: none;
 }
 
 #sidebar .nav-list {
@@ -281,7 +290,7 @@ ul.nav > li.dropdown > ul.dropdown-menu {
 ul.nav > li.dropdown > ul.dropdown-menu > li > a:hover {
   background-color: transparent;
   background-image: none;
-  text-decoration: underline;
+  text-decoration: none;
   color: #ffffff;
 }
 
@@ -317,8 +326,9 @@ ul.nav > li.dropdown > ul.dropdown-menu > li > a {
   .navbar .nav>li>a:hover{
     padding: 9px 15px;
     padding-left: 14px;
-    border-left:1px solid #fff200;
-    border-bottom:0px;
+    border-left :1px solid #fff200;
+    border-bottom: 0px;
+    text-decoration: none;
   }
   ul.nav > li.dropdown > ul.dropdown-menu {
     display: block;

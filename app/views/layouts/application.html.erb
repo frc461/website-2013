@@ -48,7 +48,7 @@
         <div class="span3 pull-left" id="sidebar-span">
           <div class="well sidebar-nav" id="sidebar">
             <center><a class="brand" href="/"><%= image_tag 'logo.png' %></a></center>
-            <br />
+            <hr />
             <ul class="nav nav-list">
               <li><%= link_to "Home", "/"  %></li>
               <% Page.where(:navigable => true, :parent_id => nil).each do |page_to_draw| %>
@@ -104,11 +104,11 @@
             <!-- <h3 class="pull-right social-header">Social&nbsp;</h3> -->
             <table class="social-buttons">
               <tr><td>
-              <div class="fb-like" data-layout="button_count" data-colorscheme="light" data-action="like" data-href="http://www.facebook.com/WBI461">Like us on Facebook</div>
+              <center><div class="fb-like" data-layout="button_count" data-colorscheme="light" data-action="like" data-href="http://www.facebook.com/WBI461">Like us on Facebook</div></center>
               </td></tr><tr><td>
-              <div class="g-plusone" data-size="medium" data-href="http://boilerinvasion.org">1+ on Google+</div>
+              <center><div class="g-plusone" data-size="medium" data-href="http://boilerinvasion.org">1+ on Google+</div></center>
               </td></tr><tr><td>              
-              <a href="https://twitter.com/Team461WBI" class="twitter-follow-button" data-show-count="false" data-dnt="true">Follow @Team461WBI</a>
+              <center><a href="https://twitter.com/Team461WBI" class="twitter-follow-button" data-show-count="false" data-dnt="true">Follow @Team461WBI</a></center>
               </td></tr>
             </table>
             </div>
