@@ -97,6 +97,10 @@ a.text-error:hover {
   padding-left: 10px;
   background: #232323;
   overflow: hidden;
+  height: 60px;
+}
+.postWithBorder a {
+  height: 40px;
 }
 
 .verticalText {

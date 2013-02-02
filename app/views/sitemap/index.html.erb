@@ -2,5 +2,10 @@
 <h1>Sitemap</h1>
 </div>
 
+<div class="row-fluid">
 <% @posts.each do |post| %>
+  <div class="span6 postWithBorder">
+    <h2><%= link_to post.title, post_path(post) %></h2>
+  </div>
 <% end %>
+</div>
