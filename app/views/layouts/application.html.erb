@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <%= javascript_include_tag "application" %>
+    <%= javascript_include_tag "jquery" %>
+    <%= javascript_include_tag "jquery_ujs" %>
+    <%= javascript_include_tag "fullcalendar" %>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -81,12 +83,13 @@
           </div><!--/.nav-collapse -->
           <table class="social-buttons-navbar visible-desktop pull-right">
             <tr><td>
-                <div class="fb-like" data-layout="button_count" data-colorscheme="light" data-action="like" data-href="http://www.facebook.com/WBI461"></div>
+              <div class="fb-like" data-layout="button_count" data-colorscheme="light" data-action="like" data-href="http://www.facebook.com/WBI461"></div>
             </td></tr><tr><td>
-                <div class="g-plusone" data-size="medium" data-href="http://boilerinvasion.org" data-align="right"></div>
+              <div class="g-plusone" data-size="medium" data-href="http://boilerinvasion.org" data-align="right"></div>
             </td></tr><tr><td>              
-                <a href="https://twitter.com/Team461WBI" class="twitter-follow-button" data-show-count="false" data-dnt="true">Follow @Team461WBI</a>
-              </td></tr>
+              <a href="https://twitter.com/Team461WBI" class="twitter-follow-button" data-show-count="true" data-dnt="true">Follow @Team461WBI</a>
+              </td>
+            </tr>
           </table>
         </div>
       </div>

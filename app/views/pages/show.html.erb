@@ -16,7 +16,7 @@
   <dd><%# sanitize(@page.pages.map do |pg| link_to(pg.title, pg) end.join(", ".html_safe)) %></dd>
 </dl>-->
 
-<% if can? :update, @page %>
+<% if can?(:read, @page) && can?(:write, @page) %>
 <div class="form-actions">
   <%= link_to "Back", pages_path, :class => 'btn'  %>
   <%= link_to "Edit", edit_page_path(@page), :class => 'btn' %>

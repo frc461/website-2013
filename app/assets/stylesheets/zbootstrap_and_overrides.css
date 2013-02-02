@@ -370,3 +370,26 @@ div .fb_reset {
 table.social-buttons-navbar > tr > td {
   float: right;
 }
+
+.inline-text-align-left {
+  float: left;
+}
+
+.inline-text-align-right {
+  float: right;
+}
+
+/* .dropdown-menu li > a:hover, */
+/* .dropdown-menu li > a:focus, */
+/* .dropdown-submenu:hover > a { */
+/*   text-decoration:none; */
+/*   color:#020202; */
+/*   background-color:#fff200; */
+/*   background-image:-moz-linear-gradient(top, #fff200, #e2dd00); */
+/*   background-image:-webkit-gradient(linear, 0 0, 0 100%, from(#fff200), to(#e2dd00)); */
+/*   background-image:-webkit-linear-gradient(top, #fff200, #e2dd00); */
+/*   background-image:-o-linear-gradient(top, #fff200, #e2dd00); */
+/*   background-image:linear-gradient(to bottom, #fff200, #e2dd00); */
+/*   background-repeat:repeat-x; */
+/*   filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff33b5e5', endColorstr='#ff1dade2', GradientType=0); */
+/* } */

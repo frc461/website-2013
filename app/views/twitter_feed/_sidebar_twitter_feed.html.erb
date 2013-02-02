@@ -1,5 +1,6 @@
 <% begin %>
-  <% Twitter.user_timeline("team461wbi", options = { :count => 3 } ).each do |tweet| %>
+  <% tweets = Twitter.user_timeline("team461wbi", options = { :count => 4 } ) %>
+  <% tweets.each do |tweet| %>
     <p class="tweet">
       <hr />
       <%= sanitize format_tweet(tweet) %>
