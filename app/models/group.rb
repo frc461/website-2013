@@ -7,8 +7,7 @@ class Group < ActiveRecord::Base
   has_many :users, :through => :memberships
   has_one :principal, :as => :authenticatable
   has_many :permissions, :through => :principal
-
-    has_many :todos
+  has_many :todos
   def create_principal
     p = Principal.create :authenticatable_type => "Group", :authenticatable_id => self.id
   end
