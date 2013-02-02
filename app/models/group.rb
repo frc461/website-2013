@@ -1,14 +1,8 @@
 class Group < ActiveRecord::Base
-  attr_accessible :name
+  attr_accessible :name, :joinable, :page_access, :post_access, :photo_access, :event_access, :user_access, :forum_access, :group_access
 
   validates_presence_of :name
-  after_create :create_principal
   has_many :memberships
   has_many :users, :through => :memberships
-  has_one :principal, :as => :authenticatable
-  has_many :permissions, :through => :principal
   has_many :todos
-  def create_principal
-    p = Principal.create :authenticatable_type => "Group", :authenticatable_id => self.id
-  end
 end
