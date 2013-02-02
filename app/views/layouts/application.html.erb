@@ -101,10 +101,13 @@
         <!-- SIDEBAR -->
         <div class="span3 pull-left" id="sidebar-span">
           <div class="well sidebar-nav" id="sidebar">
-              <!--<li><%# link_to "Home", "/"  %></li>
-              <%# Page.where(:navigable => true, :parent_id => nil).each do |page_to_draw| %>
-                <li><%# link_to_page page_to_draw %></li>
-                <# if page_to_draw.pages.count > 0 %>
+            <!-- <center><a class="brand" href="/"><%= image_tag 'logo.png' %></a></center>
+            <hr />
+            <ul class="nav nav-list">
+              <li><%= link_to "Home", "/"  %></li>
+              <% Page.where(:navigable => true, :parent_id => nil).each do |page_to_draw| %>
+                <li><%= link_to_page page_to_draw %></li>
+                <% if page_to_draw.pages.count > 0 %>
                   <ul id="forumLinks">
                     <# page_to_draw.pages.each do |subpage| %>
                     <li><%# link_to_page subpage %></li>
