@@ -170,8 +170,8 @@ textarea {
 }
 
 .navbar-fluid-top .nav-collapse {
-  margin-left: 140px;
-  position: absolute;
+  //margin-left: 140px;
+  //position: absolute;
 }
 
 .page_body h1 {
@@ -381,6 +381,7 @@ div .fb_reset {
 
 .social-buttons-navbar {
   text-align: right;
+  float: right;
 }
 table.social-buttons-navbar > tr > td {
   float: right;
