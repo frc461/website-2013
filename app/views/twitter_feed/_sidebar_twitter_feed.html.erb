@@ -1,7 +1,10 @@
 <% begin %>
   <% tweets = Twitter.user_timeline("team461wbi", options = { :count => 4 } ) %>
   <% tweets.each do |tweet| %>
-    <hr />
+    <% if !first %>  
+      <hr />
+      <% first = false %>
+    <% end %>
     <div class="tweet">
       <%= sanitize format_tweet(tweet) %>
       <div style="text-align: right;" class="tweet-info">
