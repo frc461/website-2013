@@ -74,7 +74,7 @@
               <li><%= link_to "Photos", albums_path, :class => "dropdown-toggle js-activated" %></li>
               <li><%= link_to "Calendar", events_path, :class => "dropdown-toggle js-activated" %></li>
               <% if can? :read, Todo %>
-              <li><% link_to "To Do", todos_path, :class => "dropdown-toggle js-activated" %></li>
+              <li><%= link_to "To Do", todos_path, :class => "dropdown-toggle js-activated" %></li>
               <% end %>
               <% if can? :read, Forum %>
               <li><%= link_to "Forums", forums_path, :class => "dropdown-toggle js-activated" %></li>
