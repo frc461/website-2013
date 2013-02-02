@@ -19,6 +19,8 @@ class Ability
       can :read, Comment
       can :create, Comment
       can :read, Event
+      can :read, Todo
+      can :write, Todo
       page_access = false
       post_access = false
       photo_access = false
