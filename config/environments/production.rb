@@ -46,7 +46,7 @@ Website::Application.configure do
   config.action_controller.asset_host = "http://assets.boilerinvasion.org"
 
   # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
-  config.assets.precompile += %w( search.js jquery.js jquery_ujs.js )
+  config.assets.precompile += %w( search.js jquery.js jquery_ujs.js fullcalendar.js )
 
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
