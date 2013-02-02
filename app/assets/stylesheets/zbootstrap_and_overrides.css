@@ -6,6 +6,11 @@
   =require twitter-bootstrap-static/fontawesome
 
   */
+.twitter-border {
+  padding: 9px;
+  border-left: 5px solid #fff200;
+  background-color: #222222;
+}
 .fc-state-highlight {
   background-color: rgba(19,21,23,.7) !important;
 }
@@ -157,7 +162,7 @@ td {
 }
 
 body {
-  //padding-top: 128px;
+  padding-top: 128px;
 }
 
 textarea {

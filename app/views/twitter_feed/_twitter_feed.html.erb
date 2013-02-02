@@ -6,7 +6,7 @@
   <div class="well">
     <% tweets = Twitter.user_timeline("team461wbi", options = { :count => 8 } )%>
     <% tweets.each do |tweet| %>
-      <div class="tweet">
+      <p class="tweet">
         <div id="textbox">
           <p class="inline-text-align-left">
             <%= sanitize format_tweet(tweet) %>
@@ -19,7 +19,7 @@
           </p>
           <div style="clear: both;"></div>
         </div>
-      </div>
+      </p>
       <% if tweet != tweets.last%>
       <hr />
       <% end %>
