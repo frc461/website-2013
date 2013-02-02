@@ -51,7 +51,7 @@
           <a class="brand" href="/"><%= image_tag 'logo.png' %></a>
           <br />
           <div class="container-fluid nav-collapse">
-            <div class="pull-left">
+            <div class="pull-left" style="vertical-align: bottom;">
               <ul class="nav">
                 <li><%= link_to "Home", "/", :class => "dropdown-toggle js-activated" %></li>
                 <% Page.where(:navigable => true, :parent_id => nil).each do |page_to_draw|  %>
