@@ -427,3 +427,8 @@ table.social-buttons-navbar > tr > td {
 /*   background-repeat:repeat-x; */
 /*   filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff33b5e5', endColorstr='#ff1dade2', GradientType=0); */
 /* } */
+
+.brand {
+  position: relative;
+  z-index: 100;
+}

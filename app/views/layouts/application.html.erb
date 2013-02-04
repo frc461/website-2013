@@ -48,7 +48,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="/"><%= image_tag 'logo.png' %></a>
+          <a class="brand" href="/"><%= image_tag 'logo.png', :alt => "Westside Boiler Invasion" %></a>
           <br />
           <div class="container-fluid nav-collapse">
             <div class="pull-left" style="vertical-align: bottom;">
@@ -218,11 +218,17 @@
       <footer>
         <center>
           <p>
-            <%= link_to( image_tag("firstlogovector.png", :style => "height: 48px; width: auto;" ), "http://www.usfirst.org/" ) %>
+            <%= link_to( image_tag("firstlogovector.png", :style => "height: 48px; width: auto;", :alt => "FIRST" ), "http://www.usfirst.org/" ) %>
           </p>
-          <a href="https://www.facebook.com/WBI461"     ><%= image_tag 'facebook-icon.png', :class => "social-icon" %></a>
-          <a href="https://twitter.com/team461WBI"      ><%= image_tag 'twitter-icon.png',  :class => "social-icon" %></a>
-          <a href="https://www.youtube.com/user/team461"><%= image_tag 'youtube-icon.png',  :class => "social-icon" %></a>
+          <a href="https://www.facebook.com/WBI461"     ><%= image_tag 'facebook-icon.png', 
+                                                                       :class => "social-icon",
+                                                                       :alt => "Facebook" %></a>
+          <a href="https://twitter.com/team461WBI"      ><%= image_tag 'twitter-icon.png',  
+                                                                       :class => "social-icon",
+                                                                       :alt => "Twitter" %></a>
+          <a href="https://www.youtube.com/user/team461"><%= image_tag 'youtube-icon.png',
+                                                                       :class => "social-icon",
+                                                                       :alt => "Youtube" %></a>
           <p>
             &copy; Copyright Westside Boiler Invasion 2013
             <% if !current_user %>
