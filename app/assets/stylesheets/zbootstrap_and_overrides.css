@@ -432,3 +432,7 @@ table.social-buttons-navbar > tr > td {
   position: relative;
   z-index: 100;
 }
+
+.twitter-border ul{
+  position: relative;
+}
