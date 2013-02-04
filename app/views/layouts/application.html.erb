@@ -153,28 +153,28 @@
               <%# end %>-->
               <% if current_user %>
                 <div class="twitter-border">
-                <ul class="nav nav-list">
-                <!--<hr />-->
-                <li>
-                  <p>Logged in as <%= current_user.name %></p>
-                  <% if can? :update, current_user %>
-                    <table>
-                      <tr class="smallerPadding">
-                        <td rowspan="5"><div class="verticalText"><strong>Admin</strong></div></td>
-                        <td><%= link_to "Users", users_path %></td>
-                      </tr>
-                      <tr>
-                        <td><%= link_to "Groups", groups_path %></td>
-                      </tr>
-                      <tr>
-                        <td><%= link_to "Pages", pages_path %></td>
-                      </tr>
-                    </table>
-                  <% end %>
-                </li>
-                </ul>
+                  <ul class="nav nav-list">
+                    <!--<hr />-->
+                    <li>
+                      <p>Logged in as <%= current_user.name %></p>
+                      <% if can? :update, current_user %>
+                        <table>
+                          <tr class="smallerPadding">
+                            <td rowspan="5"><div class="verticalText"><strong>Admin</strong></div></td>
+                            <td><%= link_to "Users", users_path %></td>
+                          </tr>
+                          <tr>
+                            <td><%= link_to "Groups", groups_path %></td>
+                          </tr>
+                          <tr>
+                            <td><%= link_to "Pages", pages_path %></td>
+                          </tr>
+                        </table>
+                        <% end %>
+                    </li>
+                  </ul>
                 </div>
-                <% end %>
+              <% end %>
             <div class="hidden-desktop">
             <div class="twitter-border">
             <!-- <h3 class="pull-right social-header">Social&nbsp;</h3> -->

@@ -175,10 +175,10 @@ textarea {
   font-family: monospace;
 }
 
-ul.nav {
+/* ul.nav {
   position: absolute;
   bottom: 0px;
-}
+}*/ 
 
 .navbar-fluid-top .nav-collapse {
   //margin-left: 140px;
