@@ -436,3 +436,11 @@ table.social-buttons-navbar > tr > td {
 .twitter-border ul{
   position: relative;
 }
+
+.mass-table {
+  width: 100%;
+}
+
+.mass-table td {
+  padding-right: 20px;
+}

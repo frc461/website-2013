@@ -1,10 +1,21 @@
 class Photo < ActiveRecord::Base
   attr_accessible :album_id, :image
-
   has_attached_file :image,
-    :storage => :filesystem,
-    :path => "app/assets/images/images/:filename",
-    :url => "/assets/images/:filename"
+                    :storage => :filesystem,
+                    :path => "app/assets/images/images/:filename",
+                    :url => "/assets/images/:filename"
+
+  include Rails.application.routes.url_helpers
+
+  def to_jq_upload
+    {
+      "name" => read_attribute(:image_file_name),
+      "size" => read_attribute(:image_file_size),
+      "url" => image.url(:original),
+      "delete_url" => photo_path(self),
+      "delete_type" => "DELETE"
+    }
+  end
 
   belongs_to :album
 

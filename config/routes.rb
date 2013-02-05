@@ -12,7 +12,9 @@ Website::Application.routes.draw do
   resources :todos
   resources :comments
   resources :forums
-  resources :photos
+  resources :photos do
+    get 'mass', :on => :collection
+  end
   resources :albums
   resources :pages
   resources :users
