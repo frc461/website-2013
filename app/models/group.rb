@@ -5,4 +5,5 @@ class Group < ActiveRecord::Base
   has_many :memberships
   has_many :users, :through => :memberships
   has_many :todos
+  has_many :forums
 end

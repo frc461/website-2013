@@ -13,16 +13,36 @@
     </tr>
   </thead>
   <tbody>
-    <% @forums.each do |forum| %>
-    <% if can? :read, forum %>
+<% Forum.where(:group_id => nil).order("name ASC").each do | forum | %>
       <tr>
         <td><%= link_to forum.name, forum_path(forum) %></td>
         <td><%= forum.description %></td>
       </tr>
-    <% end %>
-    <% end %>
+<% end %>
   </tbody>
 </table>
+
+<% Group.order("name ASC").each do | group | %>
+<% if current_user.groups.include?(group) || current_user.admin %>
+<h1><%= group.name %></h1>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:name) %></th>
+      <th><%= model_class.human_attribute_name(:description) %></th>
+    </tr>
+  </thead>
+  <tbody>
+<% group.forums.order("name ASC").each do | forum | %>
+      <tr>
+        <td><%= link_to forum.name, forum_path(forum) %></td>
+        <td><%= forum.description %></td>
+      </tr>
+      <% end %>
+  </tbody>
+</table>
+<% end %>
+<% end %>
 
 <% if can? :write, Forum %>
 <%= link_to t('.new', :default => t("helpers.links.new")),
