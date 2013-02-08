@@ -300,7 +300,6 @@ body {
 ul.nav > li.dropdown > ul.dropdown-menu {
   width: 100%;
   margin-top: 6px;
-  background-color: #202224;
 }
 
 ul.nav > li.dropdown > ul.dropdown-menu > li > a:hover {
