@@ -6,9 +6,7 @@ class PhotosController < InheritedResources::Base
     respond_to do |format|
       if @photo.save
         format.html {
-          render :json => [@photo.to_jq_upload].to_json,
-          :content_type => 'text/html',
-          :layout => false
+          redirect_to photos_path
         }
         format.json { render :json => [@photo.to_jq_upload].to_json, :status => :created, :location => @photo }
       else
