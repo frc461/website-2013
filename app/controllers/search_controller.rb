@@ -4,16 +4,16 @@ class SearchController < ApplicationController
     @results = []
     queries.each do |query|
       @results += Page.tagged_with(query)
-      @results += Page.where("title LIKE ?", ("%" + query + "%"))
+      @results += Page.where("lower(title) LIKE lower(?)", "%" + query + "%")
       @results += Post.tagged_with(query)
-      @results += Post.where("title LIKE ?", ("%" + query + "%"))
+      @results += Post.where("lower(title) LIKE lower(?)", "%" + query + "%")
       if current_user
-        @results += Event.where("title LIKE ?", ("%" + query + "%"))
+        @results += Event.where("lower(title) LIKE lower(?)", "%" + query + "%")
       else
-        @results += Event.where(:public => true).where("title LIKE ?", ("%" + query + "%"))
+        @results += Event.where(:public => true).where("lower(title) LIKE lower(?)", "%" + query + "%")
       end
       @results += Album.tagged_with(query)
-      @results += Album.where("name LIKE ?", ("%" + query + "%"))
+      @results += Album.where("lower(name) LIKE lower(?)", "%" + query + "%")
     end
     @results.uniq!
   end
