@@ -11,6 +11,7 @@ class Ability
     can :read, Album
     can :read, Photo
     can :create, User
+    can :read, Event
     if user.admin
       can :manage, :all
     end
