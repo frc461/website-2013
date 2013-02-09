@@ -9,6 +9,9 @@
   </div>
 
   <div style="padding-left: 32px;">
+    <% if can? :create, Photo %>
+      <a href="/photos/mass?album_id=<%= @album.id %>">Add Photos</a><br />
+    <% end %>
     <strong><%= model_class.human_attribute_name(:description) %>:</strong>
     <div style="padding-left: 4px;">
       <%= @album.description %>
