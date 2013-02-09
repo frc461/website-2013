@@ -101,6 +101,7 @@ a:hover {
 
 #sidebar-span.span3 {
   margin-left: 0px !important;
+  margin-top: 24px;
 }
 
 .carousel-caption {
@@ -172,7 +173,7 @@ td {
 }
 
 body {
-  padding-top: 128px;
+  padding-top: 64px;
 }
 
 textarea {
