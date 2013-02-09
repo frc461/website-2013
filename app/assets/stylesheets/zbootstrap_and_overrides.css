@@ -6,6 +6,9 @@
   =require twitter-bootstrap-static/fontawesome
 
   */
+.searchsidething {
+  height: 50px;
+}
 .twitter-border hr {
   color: #fff200;
   background-color: #fff200;
