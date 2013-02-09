@@ -6,6 +6,9 @@
   =require twitter-bootstrap-static/fontawesome
 
   */
+.searchsidething {
+  height: 50px;
+}
 .twitter-border hr {
   color: #fff200;
   background-color: #fff200;
@@ -304,14 +307,14 @@ ul.nav > li.dropdown > ul.dropdown-menu {
 }
 
 ul.nav > li.dropdown > ul.dropdown-menu > li > a:hover {
-  background-color: transparent;
+//  background-color: transparent;
   background-image: none;
   text-decoration: none;
-  color: #ffffff;
+  color: #333333;
 }
 
 ul.nav > li.dropdown > ul.dropdown-menu > li > a {
-  color: #ffff30;
+  color: #ffff20;
 }
 
 @media (max-width: 767px) {
@@ -394,6 +397,12 @@ div .fb_reset {
 @media (max-width: 767px) {
   .social-header {
     display: inline;
+  }
+}
+
+@media (max-width: 979px) and (min-width: 767px) {
+  .search-query {
+    width: 100px;
   }
 }
 

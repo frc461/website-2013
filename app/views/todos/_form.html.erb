@@ -23,7 +23,7 @@
     <div class="controls">
       <%= f.select(:group_id,
                    [["None", nil]] + current_user.groups.map { |group| [group.name, group.id] },
-                   {:class => "selectpicker"}) %>
+                   {}, {:class => "selectpicker"}) %>
     </div>
   </div>
 
