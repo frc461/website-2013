@@ -19,7 +19,7 @@
   <%# raise "there are tags" %>
   <h3>Tags</h3>
   <% tag_cloud(@post.tags, %w(css1 css2 css3 css4)) do |tag, css_class| %>
-  <%= link_to tag.name, { :action => :show, :tag => tag.name, :controller => :tags }, :class => css_class %>
+  <%= link_to tag.name, "/search?search=" + tag.name, :class => css_class %>
   <% end %>
 <% end %>
 

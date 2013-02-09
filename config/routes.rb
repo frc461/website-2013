@@ -1,4 +1,6 @@
 Website::Application.routes.draw do
+  get "search/search"
+
   get "sitemap" => "sitemap#index"
 
   get "error" => "error#index"
@@ -30,6 +32,7 @@ Website::Application.routes.draw do
   get "sign_up" => "users#new", :as => "sign_up"
   get "groups" => "groups#new", :as => "groups"
   get "users" => "users#index", :as => "users"
+  get "search" => "search#search", :as => "search"
 
   match '/pages/*titles' => "pages#show"
   match '/tags/:tag' => "tags#show"
