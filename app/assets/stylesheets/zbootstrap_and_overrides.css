@@ -399,6 +399,12 @@ div .fb_reset {
   }
 }
 
+@media (max-width: 979px) and (min-width: 767px) {
+  .search-query {
+    width: 100px;
+  }
+}
+
 .social-buttons-navbar {
   text-align: right;
   float: right;
