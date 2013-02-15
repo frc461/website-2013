@@ -113,7 +113,7 @@
         </div>
       </div>
     </div>
-
+    <%= content_for :breadcrumb %>
     <div class="container-fluid">
       <div class="row-fluid">
         <div class="span9 solidBackground pull-right" id="main-span">
@@ -160,6 +160,7 @@
               </div>
             </form>
             </div>
+            <%= content_for :ChildrenPages %>
               <% if current_user %>
                 <div class="twitter-border">
                     <!--<hr />-->

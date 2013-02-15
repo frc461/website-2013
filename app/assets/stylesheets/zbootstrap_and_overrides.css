@@ -6,6 +6,10 @@
   =require twitter-bootstrap-static/fontawesome
 
   */
+.breadcrumb {
+  margin-bottom: -14px;
+padding-left: 18px;
+}
 .searchsidething {
   height: 31px;
 }

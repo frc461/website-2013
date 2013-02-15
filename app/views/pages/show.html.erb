@@ -1,4 +1,28 @@
 <%- model_class = Page -%>
+<% if @page.pages.count > 0  %>
+<% content_for :ChildrenPages do %>
+  <div class="twitter-border">
+    <ul class="nav nav-list">
+      <% @page.pages.each do |children| %>
+        <li><%= link_to_page children %> </li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+<% end %>
+<% content_for :breadcrumb do %>
+<ul class="breadcrumb span12">
+  <li><%= link_to "Home", root_path%><span class="divider">/</span></li>
+  <li><%= link_to "Pages", pages_path%><span class="divider">/</span></li>
+  <% if @page.parent != nil %>
+    <li>
+    <%= link_to_page @page.parent %><span class="divider">/</span></li>
+  <% end %>
+  <li class="active">
+  <%= @page.title %>
+  </li>
+</ul>
+<% end %>
 <% content_for :title do
      @page.title
    end %>
