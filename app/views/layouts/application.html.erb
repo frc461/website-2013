@@ -121,6 +121,7 @@
         </div>
         <!-- SIDEBAR -->
           <div class="span3 pull-left" id="sidebar-span">
+            <br />
             <!-- <center><a class="brand" href="/"><%= image_tag 'logo.png' %></a></center>
             <hr />
             <ul class="nav nav-list">
@@ -155,7 +156,11 @@
             <div class="twitter-border searchsidething">
             <form class="form-search" action="/search">
               <div class="input-append">
-                <input type="text" name="search" class="span9 search-query" placeholder="Search">
+                <input type="text"
+                       name="search"
+                       class="span9 search-query"
+                       placeholder="Search"
+                       <%= 'value=' + params[:search] if(params[:search]) %>>
                 <button type="submit" class="btn"><i class="icon-search"></i></button>
               </div>
             </form>
@@ -204,7 +209,8 @@
               <a href="https://twitter.com/Team461WBI"
                 class="twitter-follow-button"
                 data-show-count="false"
-                data-dnt="true">Follow @Team461WBI</a>
+                data-dnt="true"
+                data-show-screen-name="false">Follow @Team461WBI</a>
               </td></tr>
             </table>
             <!-- <hr class="visible-desktop" /> -->
