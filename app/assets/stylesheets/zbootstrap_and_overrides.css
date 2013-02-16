@@ -8,6 +8,7 @@
   */
 
 .well {
+  border-top: 1px solid #FFF200;
   background-color: #303030;
 }
 
