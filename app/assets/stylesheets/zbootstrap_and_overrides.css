@@ -6,6 +6,11 @@
   =require twitter-bootstrap-static/fontawesome
 
   */
+
+.well {
+  background-color: #404040;
+}
+
 .breadcrumb {
   margin-bottom: -14px;
 padding-left: 18px;
