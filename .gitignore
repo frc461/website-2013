@@ -15,7 +15,7 @@
 /tmp
 *.swp
 *.swo
-*.xcf
+# *.xcf
 *#
 *~
 .#*

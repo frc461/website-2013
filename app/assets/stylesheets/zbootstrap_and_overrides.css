@@ -6,6 +6,22 @@
   =require twitter-bootstrap-static/sprites
 
   */
+
+.well {
+  border-top: 1px solid #FFF200;
+  background-color: #303030;
+}
+
+.well hr {
+  color: #fff200;
+  background-color: #fff200;
+  border-color: #fff200;
+}
+
+.breadcrumb {
+  margin-bottom: -14px;
+padding-left: 18px;
+}
 .searchsidething {
   height: 31px;
 }
@@ -101,7 +117,7 @@ a:hover {
 
 #sidebar-span.span3 {
   margin-left: 0px !important;
-  margin-top: 24px;
+  /* margin-top: 24px; */
 }
 
 .carousel-caption {
@@ -117,8 +133,10 @@ a:hover {
   padding-left: 10px;
   background: #232323;
   overflow: hidden;
-  height: 60px;
+  padding-bottom: 10px;
+  //height: 60px;
 }
+
 .postWithBorder a {
   height: 40px;
 }
@@ -274,10 +292,9 @@ footer a {
 }
 
 body {
-  background-image: url('/assets/bg.png');
+  background-image: url("/assets/bg.png");
+  background-repeat: repeat;
   color: #FFF;
-  background-repeat: no-repeat;
-  background-color: #000;
 }
 
 #konamicodething {
@@ -438,9 +455,10 @@ table.social-buttons-navbar > tr > td {
 /*   filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff33b5e5', endColorstr='#ff1dade2', GradientType=0); */
 /* } */
 
-.brand {
+.navbar .brand {
   position: relative;
   z-index: 100;
+  padding: 0px 20px;
 }
 
 .twitter-border ul{

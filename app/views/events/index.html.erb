@@ -15,7 +15,8 @@ $(document).ready(function() {
   })
 });
 </script>
-
+<% if can? :write, Event %>
 <%= link_to t('.new', :default => t("helpers.links.new")),
             new_event_path,
             :class => 'btn btn-primary' %>
+<% end %>

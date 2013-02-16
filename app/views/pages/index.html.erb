@@ -3,6 +3,7 @@
    end %>
 
 <br class="hidden-phone" />
+<% if can? :update, Page %>
 <% @pages.in_groups_of(3) { | groupofpage |%>
   <div class="row-fluid hidden-phone">
     <% groupofpage.each { | page | %>
@@ -11,12 +12,30 @@
         <h2>
           <%= link_to_page page %>
         </h2>
+        <%= page.content[0..300] %>
         </div>
       <% end %>
     <% } %>
   </div>
   <br />
 <% } %>
+<% else %>
+<% @pages.where("not(title LIKE ?)", "frontpage").in_groups_of(3) { | groupofpage |%>
+  <div class="row-fluid hidden-phone">
+    <% groupofpage.each { | page | %>
+      <% if (page != nil)  %>
+        <div class="span4 postWithBorder">
+        <h2>
+          <%= link_to_page page %>
+        </h2>
+        <%= page.content[0..300] %>
+        </div>
+      <% end %>
+    <% } %>
+  </div>
+  <br />
+<% } %>
+<% end %>
 <div class="visible-phone">
   <% @pages.each { | page | %>
     <% if (page != nil)  %>
@@ -24,6 +43,7 @@
         <h2>
           <%= link_to_page page %>
         </h2>
+        <%= page.content[0..300] %>
       </div>
         <br class="visible-phone" />
     <% end %>

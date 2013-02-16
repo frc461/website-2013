@@ -18,6 +18,11 @@ class PagesController < InheritedResources::Base
           Page.where("title LIKE ?", t.gsub(/_/, ' ')).first
         end
         params[:titles].each do |p|
+          if params[:titles].first.id == p.id
+            if p.parent_id
+              raise "misformed url, base haz a parent"
+            end
+          end
           if p.id != params[:titles].last.id
             if params[:titles][(params[:titles].index(p) + 1)].parent_id != p.id
               raise "nope, page is " + p.title + " w/ index " + params[:titles].index(p).to_s + " & parid " + p.parent_id.to_s
