@@ -237,7 +237,7 @@ ul.nav {
 
 .brand :hover {
   /* padding: 15px 15px 14px; */
-  padding-bottom: 3px;
+  padding-bottom: 2px;
   border-bottom: 1px solid #fff200;
   background-color: #252a30 !important;
 }
