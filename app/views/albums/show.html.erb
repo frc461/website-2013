@@ -42,11 +42,25 @@
     <% end %>
     </div>
   </div>
-
   <div id="carouselnav">
     <a class="btn" href="#theCarousel" data-slide="prev">&lsaquo;</a>
     <a class="btn pull-right" href="#theCarousel" data-slide="next">&rsaquo;</a>
   </div>
+  <div id="photogrid">
+    <% count = 0 %>
+    <% @album.photos.in_groups_of(4).each do |photogroup| %>
+      <br />
+      <div class="row-fluid">
+        <% photogroup.each do |photo| %>
+          <% if photo %>
+            <%= image_tag photo.image.url, :class => "span3", :onclick => "$('.carousel').carousel(" + count.to_s + ");$('html, body').animate({ scrollTop: 0 }, 'fast');" %>
+            <% count += 1 %>
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+
 
   <% if can? :remove, current_user %>
   <div class="form-actions">
@@ -58,3 +72,12 @@
   </div>
   <% end %>
 </div>
+<script type="text/javascript">
+  $('.carousel').carousel({
+    interval: 5000
+    pause: "hover"
+  })
+/*  $('.item img').onmouseover = function(){
+    $('.carousel').carousel('pause')
+  } */
+</script>

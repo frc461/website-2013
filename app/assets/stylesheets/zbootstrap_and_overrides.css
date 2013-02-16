@@ -178,12 +178,12 @@ input {
 .carousel-inner {
   padding: 0px;
   margin: 0px;
-  height: 256px;
+  height: 512px;
 }
 
 .carousel-inner img {
   margin: auto;
-  max-height: 256px;
+  max-height: 512px;
   width: auto;
 }
 
