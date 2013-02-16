@@ -16,7 +16,8 @@
   color: #fff200;
   background-color: #fff200;
   border-color: #fff200;
-  border-width: 1px;
+  height: 1px;
+  border: none;
 }
 
 .breadcrumb {
