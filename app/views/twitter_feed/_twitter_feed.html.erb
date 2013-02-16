@@ -1,11 +1,12 @@
 <!-- BEGIN TWITTER FEED -->
+<% require 'timeout' %>
  
 <hr>
 <% begin %>
   <h2>Tweets by <a href="https://www.twitter.com/team461wbi">@Team461WBI</a></h2>
   <div class="well">
     <% tweets = Twitter.user_timeline("team461wbi", options = { :count => 8 } )%>
-    <% tweets.each do |tweet| %>
+    <% Timeout::timeout(5) do tweets.each do |tweet| %>
       <p class="tweet">
         <div id="textbox">
           <p class="inline-text-align-left">
@@ -23,7 +24,7 @@
       <% if tweet != tweets.last%>
       <hr />
       <% end %>
-    <% end %>
+    <% end end %>
   </div>
 <% rescue %>
 <p>Error: No internet connection</p>
