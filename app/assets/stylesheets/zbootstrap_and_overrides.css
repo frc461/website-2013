@@ -304,10 +304,10 @@ footer {
 footer a {
   color: inherit;
 }
-
+#page{
+  margin-top: -13px;
+  background: url("/assets/bg.png") 50% 0 repeat fixed;}
 body {
-  background-image: url("/assets/bg.png");
-  background-repeat: repeat;
   color: #FFF;
 }
 

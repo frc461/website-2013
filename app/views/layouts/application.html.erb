@@ -40,6 +40,7 @@
     <!-- Size should be 32 x 32 pixels -->
     <%= favicon_link_tag '/favicon.ico', :rel => 'shortcut icon' %>
   </head>
+  <section id="page" data-type="background" data-speed="10">
   <body>
     <div class="navbar navbar-fluid-top navbar-fixed-top">
       <div class="navbar-inner">
@@ -113,6 +114,7 @@
         </div>
       </div>
     </div>
+    <article>
     <%= content_for :breadcrumb %>
     <div class="container-fluid">
       <div class="row-fluid">
@@ -231,6 +233,7 @@
           <%= bootstrap_flash %>
       </div>
     </div> <!-- /container -->
+    </article>
 
     <!-- Javascripts
     ================================================== -->
@@ -277,4 +280,5 @@
     });
     </script>
   </body>
+  </section>
 </html>
