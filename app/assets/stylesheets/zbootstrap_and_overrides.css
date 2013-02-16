@@ -8,7 +8,13 @@
   */
 
 .well {
-  background-color: #404040;
+  background-color: #303030;
+}
+
+.well hr {
+  color: #fff200;
+  background-color: #fff200;
+  border-color: #fff200;
 }
 
 .breadcrumb {
