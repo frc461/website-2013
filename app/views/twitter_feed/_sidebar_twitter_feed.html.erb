@@ -1,4 +1,4 @@
-<%# begin %>
+<% begin %>
   <% tweets = Twitter.user_timeline("team461wbi", options = { :count => 4 } ) %>
   <% tweets.each do |tweet| %>
   <hr />
@@ -10,6 +10,6 @@
     </div>
   </div>
   <% end %>
-<!--<%# rescue %>
+<% rescue %>
   <p>Error: No internet connection</p>
-<%# end %>-->
+<% end %>
