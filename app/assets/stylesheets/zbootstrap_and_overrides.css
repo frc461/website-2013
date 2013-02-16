@@ -3,7 +3,7 @@
 
   Use Font Awesome icons (default)
   To use Glyphicons sprites instead of Font Awesome, replace with "require twitter-bootstrap-static/sprites"
-  =require twitter-bootstrap-static/fontawesome
+  =require twitter-bootstrap-static/sprites
 
   */
 
@@ -305,10 +305,10 @@ footer {
 footer a {
   color: inherit;
 }
-
+#page{
+  margin-top: -13px;
+  background: url("/assets/bg.png") 50% 0 repeat fixed;}
 body {
-  background-image: url("/assets/bg.png");
-  background-repeat: repeat;
   color: #FFF;
 }
 
