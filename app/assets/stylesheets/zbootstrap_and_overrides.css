@@ -278,10 +278,9 @@ footer a {
 }
 
 body {
-  background-image: url('/assets/bg.png');
+  background-image: url("/assets/bg.png");
+  background-repeat: repeat;
   color: #FFF;
-  background-repeat: no-repeat;
-  background-color: #000;
 }
 
 #konamicodething {

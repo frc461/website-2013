@@ -36,3 +36,4 @@ $(function() {
     pick12HourFormat: false
   });
 });
+//$(#theCarousel).carousel
