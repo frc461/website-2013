@@ -13,7 +13,7 @@
           <h2>
             <%= link_to(post.title, post, :class => "") %>
           </h2>
-          <%= format post.content.lines.first(10).join %>
+          <%= post.content[0..300] %>
         </div>
       </div>
       <br />
