@@ -442,9 +442,10 @@ table.social-buttons-navbar > tr > td {
 /*   filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff33b5e5', endColorstr='#ff1dade2', GradientType=0); */
 /* } */
 
-.brand {
+.navbar .brand {
   position: relative;
   z-index: 100;
+  padding: 0px 20px;
 }
 
 .twitter-border ul{
