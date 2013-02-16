@@ -154,15 +154,17 @@
                 </ul>
               <%# end %>-->
             <div class="twitter-border searchsidething">
-            <form class="form-search" action="/search">
-              <div class="input-append">
+            <form id="formfilters" class="form-search" action="/search">
+              <fieldset>
+              <div class="input-append search-div">
                 <input type="text"
                        name="search"
-                       class="span9 search-query"
+                       class="search-query span9"
                        placeholder="Search"
-                       <%= 'value=' + params[:search] if(params[:search]) %>>
+                       <%= 'value=' + params[:search] if(params[:search]) %> />
                 <button type="submit" class="btn"><i class="icon-search"></i></button>
               </div>
+              </fieldset>
             </form>
             </div>
             <%= content_for :ChildrenPages %>
@@ -273,6 +275,14 @@
         js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
         fjs.parentNode.insertBefore(js, fjs);
       }(document, 'script', 'facebook-jssdk'));
+    </script>
+    <script type="text/javascript">
+      function sizing() {
+        var formfilterswidth=$("#formfilters").width();
+        $("#msisdn").width((formfilterswidth-46)+"px");
+      }
+      $(document).ready(sizing);
+      $(window).resize(sizing);​
     </script>
     <script type="text/javascript">
       (function() {
