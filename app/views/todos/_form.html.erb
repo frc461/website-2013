@@ -26,7 +26,7 @@
                    [["None", nil]] + current_user.groups.map { |group| [group.name, group.id] },
                    {}, {:class => "selectpicker"}) %>
       <% else %>
-      <% f.select(:group_id,
+      <%= f.select(:group_id,
           [["None", nil]] + Group.all.map { |group| [group.name, group.id] },
           {}, {:class => "selectpicker"}) %>
       <% end %>
