@@ -5,8 +5,10 @@ class SearchController < ApplicationController
     queries.each do |query|
       @results += Page.tagged_with(query)
       @results += Page.where("lower(title) LIKE lower(?)", "%" + query + "%")
+      @results += Page.where("lower(content) LIKE lower(?)", "%" + query + "%")
       @results += Post.tagged_with(query)
       @results += Post.where("lower(title) LIKE lower(?)", "%" + query + "%")
+      @results += Post.where("lower(content) LIKE lower(?)", "%" + query + "%")
       if current_user
         @results += Event.where("lower(title) LIKE lower(?)", "%" + query + "%")
       else
