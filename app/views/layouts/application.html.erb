@@ -49,7 +49,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <!-- <a class="brand" href="/"><%= image_tag 'logo.png', :alt => "Westside Boiler Invasion" %></a> -->
+          <a class="brand" href="/"><%= image_tag 'logo.png', :alt => "Westside Boiler Invasion" %></a>
           <!-- <br /> -->
           <div class="container-fluid nav-collapse">
             <div class="pull-left" style="vertical-align: bottom;">
@@ -166,26 +166,26 @@
             </form>
             </div>
             <%= content_for :ChildrenPages %>
-              <% if current_user %>
-                <div class="twitter-border">
-                    <!--<hr />-->
-                      <p>Logged in as <%= current_user.name %></p>
-                      <% if can? :update, current_user %>
-                        <table>
-                          <tr class="smallerPadding">
-                            <td rowspan="5"><div class="verticalText"><strong>Admin</strong></div></td>
-                            <td><%= link_to "Users", users_path %></td>
-                          </tr>
-                          <tr>
-                            <td><%= link_to "Groups", groups_path %></td>
-                          </tr>
-                          <tr>
-                            <td><%= link_to "Pages", pages_path %></td>
-                          </tr>
-                        </table>
-                        <% end %>
-                </div>
-              <% end %>
+            <% if current_user %>
+              <div class="twitter-border">
+                  <!--<hr />-->
+                    <p>Logged in as <%= current_user.name %></p>
+                    <% if can? :update, current_user %>
+                    <table>
+                      <tr class="smallerPadding">
+                        <td rowspan="5"><div class="verticalText"><strong>Admin</strong></div></td>
+                        <td><%= link_to "Users", users_path %></td>
+                      </tr>
+                      <tr>
+                        <td><%= link_to "Groups", groups_path %></td>
+                      </tr>
+                      <tr>
+                        <td><%= link_to "Pages", pages_path %></td>
+                      </tr>
+                    </table>
+                    <% end %>
+              </div>
+            <% end %>
             <div class="twitter-border">
             <!-- <h3 class="pull-right social-header">Social&nbsp;</h3> -->
             <table class="social-buttons">

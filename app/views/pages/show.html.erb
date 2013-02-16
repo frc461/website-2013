@@ -1,9 +1,16 @@
 <%- model_class = Page -%>
-<% if @page.pages.count > 0  %>
+<% childs = @page.pages %>
+<% childs_limited = [] %>
+<% childs.map do |child|
+     if child.navigable
+       childs_limited += [child]
+     end
+   end %>
+<% if childs_limited.count > 0  %>
 <% content_for :ChildrenPages do %>
   <div class="twitter-border">
     <ul class="nav nav-list">
-      <% @page.pages.each do |children| %>
+      <% childs_limited.each do |children| %>
         <li><%= link_to_page children %> </li>
       <% end %>
     </ul>
