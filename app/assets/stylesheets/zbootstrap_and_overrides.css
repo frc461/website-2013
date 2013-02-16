@@ -16,14 +16,21 @@
   color: #fff200;
   background-color: #fff200;
   border-color: #fff200;
+  border-width: 1px;
 }
 
 .breadcrumb {
   margin-bottom: -14px;
-padding-left: 18px;
+  padding-left: 18px;
 }
 .searchsidething {
   height: 31px;
+}
+/* .search-div { */
+/*   width: 100%; */
+/* } */
+.form-search fieldset {
+  padding-right: 4px;
 }
 .twitter-border hr {
   color: #fff200;
@@ -228,6 +235,13 @@ ul.nav {
   background-color: #252a30 !important;
 }
 
+.brand :hover {
+  /* padding: 15px 15px 14px; */
+  padding-bottom: 3px;
+  border-bottom: 1px solid #fff200;
+  background-color: #252a30 !important;
+}
+
 a :hover{
   color: #020202;
   text-decoration: none;
@@ -418,11 +432,11 @@ div .fb_reset {
   }
 }
 
-@media (max-width: 979px) and (min-width: 767px) {
-  .search-query {
-    width: 100px;
-  }
-}
+/* @media (max-width: 979px) and (min-width: 767px) { */
+/*   .search-query { */
+/*     width: 100px; */
+/*   } */
+/* } */
 
 .social-buttons-navbar {
   text-align: right;
