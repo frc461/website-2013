@@ -3,7 +3,7 @@
 
   Use Font Awesome icons (default)
   To use Glyphicons sprites instead of Font Awesome, replace with "require twitter-bootstrap-static/sprites"
-  =require twitter-bootstrap-static/fontawesome
+  =require twitter-bootstrap-static/sprites
 
   */
 
@@ -16,7 +16,8 @@
   color: #fff200;
   background-color: #fff200;
   border-color: #fff200;
-  border-width: 1px;
+  height: 1px;
+  border: none;
 }
 
 .breadcrumb {
@@ -237,7 +238,7 @@ ul.nav {
 
 .brand :hover {
   /* padding: 15px 15px 14px; */
-  padding-bottom: 3px;
+  padding-bottom: 2px;
   border-bottom: 1px solid #fff200;
   background-color: #252a30 !important;
 }
