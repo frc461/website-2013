@@ -122,41 +122,10 @@
         <!-- SIDEBAR -->
           <div class="span3 pull-left" id="sidebar-span">
             <br />
-            <!-- <center><a class="brand" href="/"><%= image_tag 'logo.png' %></a></center>
-            <hr />
-            <ul class="nav nav-list">
-              <li><%# link_to "Home", "/"  %></li>
-              <%# Page.where(:navigable => true, :parent_id => nil).each do |page_to_draw| %>
-                <li><%#= link_to_page page_to_draw %></li>
-                <%# if page_to_draw.pages.count > 0 %>
-                  <ul id="forumLinks">
-                    <# page_to_draw.pages.each do |subpage| %>
-                    <li><%# link_to_page subpage %></li>
-                    <%# end %>
-                  </ul>
-                <%# end %>
-              <%# end %>
-
-              <li><%# link_to "Blog", posts_path %></li>
-              <li><%# link_to "Photo Albums", albums_path %></li>
-              <li><%# link_to "Calendar", events_path %></li>
-              <%# if can? :read, Todo %>
-                <li><%# link_to "To Do", todos_path %></li>
-              <%# end %>
-              <%# if can? :read, Forum %>
-                <li><%# link_to "Forums", forums_path %></li>
-                <ul id="forumLinks">
-                  <%# Forum.all.each do |forum_checking| %>
-                    <%# if can? :read, forum_checking %>
-                      <li><%# link_to forum_checking.name, forum_checking %></li>
-                    <%# end %>
-                  <%# end %>
-                </ul>
-              <%# end %>-->
-            <div class="twitter-border searchsidething">
+            <div class="well searchsidething">
             <form id="formfilters" class="form-search" action="/search">
               <fieldset>
-              <div class="input-append search-div">
+              <div class="input-append">
                 <input type="text"
                        name="search"
                        class="search-query span9"
@@ -169,7 +138,7 @@
             </div>
             <%= content_for :ChildrenPages %>
             <% if current_user %>
-              <div class="twitter-border">
+              <div class="well">
                   <!--<hr />-->
                     <p>Logged in as <%= current_user.name %></p>
                     <% if can? :update, current_user %>
@@ -188,7 +157,7 @@
                     <% end %>
               </div>
             <% end %>
-            <div class="twitter-border">
+            <div class="well">
             <!-- <h3 class="pull-right social-header">Social&nbsp;</h3> -->
             <table class="social-buttons">
             <tr class="smallerPadding">
@@ -219,7 +188,7 @@
             <!-- </div> -->
         </div><!--/span-->
             <div id="tweetbox" class="visible-desktop">
-              <div class="twitter-border">
+              <div class="well">
               <center><h4>Latest tweets from <a href="https://www.twitter.com/team461wbi">@Team461WBI</a></h4></center>
               <%= render :partial => "twitter_feed/sidebar_twitter_feed" %>
               </div>
