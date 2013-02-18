@@ -1,4 +1,7 @@
 Website::Application.routes.draw do
+  resources :documents
+
+
   get "search/search"
 
   get "sitemap" => "sitemap#index"

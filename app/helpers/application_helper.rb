@@ -11,6 +11,7 @@ module ApplicationHelper
   def markdown(text)
     photocheck(text)
     linkcheck(text)
+    doccheck(text)
     BlueCloth::new(text).to_html
   end
 
@@ -51,6 +52,23 @@ module ApplicationHelper
         end
       rescue
         "!! NO SUCH PAGE !!"
+      end
+    end
+  end
+
+  def doccheck(text)
+    gsubber = text.gsub!(/\[[Dd]oc(ument)? ([^\[\]]+)\](\[([^\[\]]+)\])?/) do |s|
+      if s != ""
+        begin
+          doc = Document.where("name LIKE ?", $2).first
+          if $4
+            link_to $4, doc.filename
+          else
+            link_to doc.name, doc.filename
+          end
+        rescue
+          "!! NO SUCH DOCUMENT !!"
+        end
       end
     end
   end
