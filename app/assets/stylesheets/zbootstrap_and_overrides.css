@@ -335,7 +335,7 @@ body {
 }
 
 ul.nav > li.dropdown > ul.dropdown-menu {
-  width: 100%;
+  width: auto;
   margin-top: 6px;
 }
 
