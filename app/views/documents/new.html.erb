@@ -5,8 +5,8 @@
 </div>
 <%= render :partial => 'form' %>
 
-<% if @page.errors.any? %>
-  <% @page.errors.full_messages.each do |error| %>
+<% if @document.errors.any? %>
+  <% @document.errors.full_messages.each do |error| %>
       <p><%= error %></p>
   <% end %>
 <% end %>
