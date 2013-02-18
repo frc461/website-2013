@@ -50,7 +50,7 @@ module ApplicationHelper
           link_to_page Page.where("title LIKE ?", $1).first
         end
       rescue
-        "!! NO SUCH PAGE !!"
+        "Error: !! NO SUCH PAGE !!"
       end
     end
   end
@@ -81,6 +81,9 @@ module ApplicationHelper
     end
     tweet.media.each do |media|
       text.gsub!(media.url, "<a href=\"" + media.expanded_url + "\">" + media.display_url + "</a>")
+    end
+    tweet.hashtags.each do |hashtag|
+      text.gsub!("#" + hashtag.text, "<a href=\"https://twitter.com/search/?q=%23" + hashtag.text + "\">" + "#" + hashtag.text + "</a>")
     end
     text
   end
