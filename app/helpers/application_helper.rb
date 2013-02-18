@@ -106,4 +106,11 @@ module ApplicationHelper
     text
   end
 
+  def uri?(string)
+    if string.match(/^https?:\/\//)
+      true
+    else
+      false
+    end
+  end
 end
