@@ -12,7 +12,7 @@
     </tr>
   </thead>
   <tbody>
-    <% @documents.each do |document| %>
+    <% @documents.all.sort_by(&:updated_at).reverse.each do |document| %>
       <tr>
         <td><%= link_to document.id, document_path(document) %></td>
         <td><%= document.name %></td>
