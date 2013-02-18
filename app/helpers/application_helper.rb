@@ -83,7 +83,7 @@ module ApplicationHelper
       text.gsub!(media.url, "<a href=\"" + media.expanded_url + "\">" + media.display_url + "</a>")
     end
     tweet.hashtags.each do |hashtag|
-      text.gsub!("#" + hashtag.text, "<a href=\"https://twitter.com/search/?q=%23" + hashtag.text + "\">" + "#" + hashtag.text + "</a>")
+      text.gsub!("#" + hashtag.text, "<a href=\"https://twitter.com/search/?q=%23" + hashtag.text + "\" target=\"_blank\">" + "#" + hashtag.text + "</a>")
     end
     text
   end
