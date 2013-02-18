@@ -7,6 +7,10 @@
 
   */
 
+.grey-text {
+  color: #404040;
+}
+
 .well {
   border-top: 1px solid #FFF200;
   background-color: #303030;
@@ -207,7 +211,7 @@ textarea {
 }
 
 ul.nav {
-  position: absolute;
+/*  position: absolute;*/
   bottom: 0px;
 }
 
@@ -335,7 +339,7 @@ body {
 }
 
 ul.nav > li.dropdown > ul.dropdown-menu {
-  width: 100%;
+  width: auto;
   margin-top: 6px;
 }
 

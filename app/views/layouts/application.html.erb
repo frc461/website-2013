@@ -1,4 +1,9 @@
 <!DOCTYPE html>
+<% print_debug = true %>
+<% if print_debug %>
+  <% debug_string = Digest::MD5.hexdigest("{ \"" + (current_user ? current_user.name : "NO USER NAME" ) + "\", \"" + (print_debug ? "true" : "false") +"\" };") %>
+<% else %>
+<% end %>
 <html lang="en">
   <head>
     <%= javascript_include_tag "jquery" %>
@@ -40,7 +45,7 @@
     <!-- Size should be 32 x 32 pixels -->
     <%= favicon_link_tag '/favicon.ico', :rel => 'shortcut icon' %>
   </head>
-  <section id="page" data-type="background" data-speed="10">
+  <section id="page" data-type="background" data-speed="5">
   <body>
     <div class="navbar navbar-fluid-top navbar-fixed-top">
       <div class="navbar-inner">
@@ -216,11 +221,14 @@
                                                                        :class => "social-icon",
                                                                        :alt => "Youtube" %></a>
           <p>
-            &copy; Copyright Westside Boiler Invasion 2013
+            &copy; Copyright Westside Boiler Invasion 2013<br />
             <% if !current_user %>
-              <br /><%= link_to "Log in", log_in_path, :id => "login" %>
+              <%= link_to "Log in", log_in_path, :id => "login" %><br />
             <% else %>
-              <br /><%= link_to "Log out", log_out_path %>
+              <%= link_to "Log out", log_out_path %><br />
+            <% end %>
+            <% if print_debug %>
+              <p class="grey-text">Debugging data: <%= debug_string %></p>
             <% end %>
           </p>
         </center>
@@ -254,7 +262,7 @@
         $("#msisdn").width((formfilterswidth-46)+"px");
       }
       $(document).ready(sizing);
-      $(window).resize(sizing);​
+      $(window).resize(sizing);
     </script>
     <script type="text/javascript">
       (function() {
