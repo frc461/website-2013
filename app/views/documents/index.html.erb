@@ -16,12 +16,8 @@
     <% @documents.all.sort_by(&:updated_at).reverse.each do |document| %>
       <tr>
         <td><%= link_to document.id, document_path(document) %></td>
-        <td><%= document.name %></td>
-        <% if uri? document.filename %>
-        <td><a href="<%= document.filename %>"><%= document.name %></a></td>
-        <% else %>
+        <td><%= link_to document.name, document.filename %></td>
         <td><%= document.filename %></td>
-        <% end %>
         <td><%= time_ago_in_words(document.updated_at) + " ago" %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
