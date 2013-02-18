@@ -5,10 +5,11 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
-      <th><%= model_class.human_attribute_name(:name) %></th>
-      <th><%= model_class.human_attribute_name(:filename) %></th>
-      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+      <th><%= "ID" %></th>
+      <th><%= "Document name" %></th>
+      <th><%= "Filename" %></th>
+      <th><%= "Updated" %></th>
+      <th><%= "[Actions]" %></th>
     </tr>
   </thead>
   <tbody>
@@ -17,6 +18,7 @@
         <td><%= link_to document.id, document_path(document) %></td>
         <td><%= document.name %></td>
         <td><%= document.filename %></td>
+        <td><%= time_ago_in_words(document.updated_at) + " ago" %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_document_path(document), :class => 'btn btn-mini' %>
