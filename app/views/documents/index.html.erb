@@ -6,8 +6,7 @@
   <thead>
     <tr>
       <th><%= "ID" %></th>
-      <th><%= "Document name" %></th>
-      <th><%= "Filename" %></th>
+      <th><%= "Document" %></th>
       <th><%= "Updated" %></th>
       <th><%= "[ Actions ]" %></th>
     </tr>
@@ -17,7 +16,6 @@
       <tr>
         <td><%= link_to document.id, document_path(document) %></td>
         <td><%= link_to document.name, document.filename %></td>
-        <td><%= document.filename %></td>
         <td><%= time_ago_in_words(document.updated_at) + " ago" %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
