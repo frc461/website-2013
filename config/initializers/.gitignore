@@ -2,5 +2,5 @@
 # see github.com/sferik/twitter
 twitter.rb
 # moved now to secret.rb
-# now includes SECRET_CODE
+# now includes SECRET_CODE and DOCUMENT_SECRET_CODE
 secret.rb
