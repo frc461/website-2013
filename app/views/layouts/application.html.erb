@@ -196,9 +196,9 @@
           <p>
             &copy; Copyright Westside Boiler Invasion 2013<br />
             <% if !current_user %>
-              <%= link_to "Log in", log_in_path, :id => "login" %><br />
+              <%= link_to "Log in", log_in_path, :id => "login" %>
             <% else %>
-              <%= link_to "Log out", log_out_path %><br />
+              <%= link_to "Log out", log_out_path %>
             <% end %>
             <% if print_debug %>
               <p class="grey-text">Debugging data: <%= debug_string %></p>
