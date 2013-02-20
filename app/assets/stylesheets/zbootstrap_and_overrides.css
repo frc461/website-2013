@@ -316,6 +316,13 @@ body {
   color: #FFF;
 }
 
+.background {
+  background-image: url("/assets/bg.png");
+  background-repeat: repeat;
+width:auto;
+height: auto;
+}
+
 #konamicodething {
   display: none;
 }
@@ -355,6 +362,10 @@ ul.nav > li.dropdown > ul.dropdown-menu > li > a {
 }
 
 @media (max-width: 767px) {
+  body {
+    background-image: url("/assets/bg.png");
+    background-repeat: repeat;
+  }
   .postWithBorder {
     padding-top: 1px;
     padding-bottom: 1px;
