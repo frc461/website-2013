@@ -105,12 +105,12 @@
           <div class="span3 pull-left" id="sidebar-span">
             <br />
             <div class="well searchsidething">
-            <form id="formfilters" class="form-search" action="/search">
+            <form id="formfilters" class="form-search span12" action="/search">
               <fieldset>
-              <div class="input-append">
+              <div class="input-append span12">
                 <input type="text"
                        name="search"
-                       class="search-query span9"
+                       class="search-query"
                        placeholder="Search"
                        <%= 'value=' + params[:search] if(params[:search]) %> />
                 <button type="submit" class="btn"><i class="icon-search"></i></button>
