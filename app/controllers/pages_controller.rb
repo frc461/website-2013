@@ -7,7 +7,10 @@ class PagesController < InheritedResources::Base
       if params[:id] =~ /^\d+$/
         @page = Page.find(params[:id])
       else
-        @page = Page.where("title LIKE ?", params[:id].gsub(/_/, ' ')).first
+        testpage = Page.where("title LIKE ?", params[:id].gsub(/_/, ' ').gsub(/~/, ':')).first
+        if !testpage.parent_id
+          @page = testpage
+        end
       end
     elsif params[:titles].is_a? String
       if params[:titles] =~ /^\d+$/
@@ -15,7 +18,7 @@ class PagesController < InheritedResources::Base
       else
         params[:titles] = params[:titles].split("/")
         params[:titles].map! do |t|
-          Page.where("title LIKE ?", t.gsub(/_/, ' ')).first
+          Page.where("title LIKE ?", t.gsub(/_/, ' ').gsub(/~/, ':')).first
         end
         params[:titles].each do |p|
           if params[:titles].first.id == p.id

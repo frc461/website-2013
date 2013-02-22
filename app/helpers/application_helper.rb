@@ -82,7 +82,7 @@ module ApplicationHelper
         titles.unshift(Page.find(titles.first.parent_id))
       end
       titles.map! do |t|
-        t.title.gsub(/ /,"_")
+        t.title.gsub(/ /,"_").gsub(/:/, "~")
       end
       '/pages/' + titles.join("/")
     end
