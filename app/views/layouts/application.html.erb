@@ -68,7 +68,7 @@
                       page_to_draw.title + " <i class=\"icon-chevron-down\"></i>",
                       'class="dropdown-toggle js-activated"'%> 
                   <ul class="dropdown-menu">
-                  <% page_to_draw.pages.each do | childs_to_draw |%>
+                  <% page_to_draw.pages.where(:navigable => true).each do |childs_to_draw| %>
                     <li> <%= link_to_page childs_to_draw %> </li>
                   <% end %> 
                   </ul>
@@ -79,7 +79,9 @@
               <% end %>
               <li><%= link_to "Blog", posts_path, :class => "dropdown-toggle js-activated" %></li>
               <li><%= link_to "Photos", albums_path, :class => "dropdown-toggle js-activated" %></li>
+              <% if can? :read, Event %>
               <li><%= link_to "Calendar", events_path, :class => "dropdown-toggle js-activated" %></li>
+              <% end %>
               <% if can? :read, Todo %>
               <li><%= link_to "To Do", todos_path, :class => "dropdown-toggle js-activated" %></li>
               <% end %>
@@ -103,12 +105,12 @@
           <div class="span3 pull-left" id="sidebar-span">
             <br />
             <div class="well searchsidething">
-            <form id="formfilters" class="form-search" action="/search">
+            <form id="formfilters" class="form-search span12" action="/search">
               <fieldset>
-              <div class="input-append">
+              <div class="input-append span12">
                 <input type="text"
                        name="search"
-                       class="search-query span9"
+                       class="search-query"
                        placeholder="Search"
                        <%= 'value=' + params[:search] if(params[:search]) %> />
                 <button type="submit" class="btn"><i class="icon-search"></i></button>

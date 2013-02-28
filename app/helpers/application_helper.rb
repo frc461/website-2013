@@ -21,16 +21,16 @@ module ApplicationHelper
         begin
           if $4
             if $4 == "r"
-              image_tag(Photo.where("album_id LIKE ? and id LIKE ?",
+              image_tag(Photo.where("album_id = ? and id = ?",
                                     Album.where("name LIKE ?", $1).first.id, $2.to_i).first.image.url,
                         :class => "pull-right floating-content-img")
             elsif $4 == "l"
-              image_tag(Photo.where("album_id LIKE ? and id LIKE ?",
+              image_tag(Photo.where("album_id = ? and id = ?",
                                     Album.where("name LIKE ?", $1).first.id, $2.to_i).first.image.url,
                         :class => "pull-left floating-content-img")
             end
           else
-            image_tag(Photo.where("album_id LIKE ? and id LIKE ?",
+            image_tag(Photo.where("album_id = ? and id = ?",
                                   Album.where("name LIKE ?", $1).first.id, $2.to_i).first.image.url,
                       :class => "content-img")
           end
@@ -82,7 +82,7 @@ module ApplicationHelper
         titles.unshift(Page.find(titles.first.parent_id))
       end
       titles.map! do |t|
-        t.title.gsub(/ /,"_")
+        t.title.gsub(/ /,"_").gsub(/:/, "~")
       end
       '/pages/' + titles.join("/")
     end

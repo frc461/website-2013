@@ -19,7 +19,9 @@
 $(document).ready(function() {
   $('#calendar').fullCalendar({
     events: '/events.json'
-  })
+  });
+    $("calendar .fc-header")[0].hidden = true;
+    $("calendar .fc-content")[0].hidden = true;
 });
 </script>
 <% if can? :write, Event %>
