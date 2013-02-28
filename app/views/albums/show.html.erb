@@ -21,7 +21,6 @@
 
   <div style="padding-left: 32px;">
     <% if can? :create, Photo %>
-      <a href="/photos/mass?album_id=<%= @album.id %>">Add Photos</a><br />
     <% end %>
     <strong><%= model_class.human_attribute_name(:description) %>:</strong>
     <div style="padding-left: 4px;">
@@ -80,6 +79,7 @@
     <%= link_to "Deletify", album_path(@album), :method => 'delete',
                 :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
                 :class => 'btn btn-danger' %>
+      <a class="btn btn-success" href="/photos/mass?album_id=<%= @album.id %>">Add Photos</a><br />
   </div>
   <% end %>
 </div>
