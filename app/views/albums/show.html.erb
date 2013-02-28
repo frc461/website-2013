@@ -4,6 +4,16 @@
      "Photos | " + @album.name
    end %>
 
+<% content_for :breadcrumb do %>
+<ul class="breadcrumb span12">
+  <li><%= link_to "Home", root_path%><span class="divider">/</span></li>
+  <li><%= link_to "Album", albums_path%><span class="divider">/</span></li>
+  <li class="active">
+  <%= @album.name %>
+  </li>
+</ul>
+<% end %>
+
 <div class="twitter-border">
   <div class="page-header">
     <h1><%= @album.name %></h1>

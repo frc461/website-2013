@@ -3,6 +3,13 @@
      "Photos"
    end %>
 
+<% content_for :breadcrumb do %>
+<ul class="breadcrumb span12">
+  <li><%= link_to "Home", root_path%><span class="divider">/</span></li>
+  <li class="active">Albums</li>
+</ul>
+<% end %>
+
 <div class="page-header">
   <h1><%= "Album".pluralize %></h1>
 </div>

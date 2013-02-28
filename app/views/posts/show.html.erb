@@ -3,6 +3,14 @@
      "Blog | " + @post.title
    end %>
 
+<% content_for :breadcrumb do %>
+<ul class="breadcrumb span12">
+  <li><%= link_to "Home", root_path%><span class="divider">/</span></li>
+  <li><%= link_to "Blog", posts_path %><span class="divider">/</span></li>
+  <li class="active"><%= @post.title %></li>
+</ul>
+<% end %>
+
 <div class="pull-right post-info">
   <%= User.find(@post.user_id).name %> <br />
   <%=l @post.created_at, :format => :long %>

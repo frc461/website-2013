@@ -1,6 +1,12 @@
 <% content_for :title do
      "Listing Pages"
    end %>
+<% content_for :breadcrumb do %>
+<ul class="breadcrumb span12">
+  <li><%= link_to "Home", root_path%><span class="divider">/</span></li>
+  <li class="active">Pages</li>
+</ul>
+<% end %>
 
 <br class="hidden-phone" />
 <% if can? :update, Page %>

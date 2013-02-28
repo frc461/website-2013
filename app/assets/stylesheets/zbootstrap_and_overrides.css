@@ -6,7 +6,10 @@
   =require twitter-bootstrap-static/sprites
 
   */
-
+body {
+  background-image:url('/assets/bg.png');
+  background-repeat: repeat;
+}
 .grey-text {
   color: #404040;
 }
