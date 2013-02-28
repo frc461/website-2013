@@ -21,8 +21,7 @@
                      {:class => "selectpicker"} ) %>
       <% else %>
         <%= f.select(:parent_id,
-                     [["None", nil]] + Page.all.map { |page| [page.title, page.id] },
-                     {}, 
+                     [["None", nil]] + Page.all.map { |page| [page.title, page.id] }, 
                      {:class => "selectpicker"} ) %>
       <% end %>
     </div>
