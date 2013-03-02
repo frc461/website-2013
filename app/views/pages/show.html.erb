@@ -3,7 +3,7 @@
 <% content_for :ChildrenPages do %>
   <div class="well">
     <ul class="nav nav-list">
-      <% @page.pages.where(:navigable => true).each do |children| %>
+      <% @page.pages.where(:navigable => true).sort_by(&:sort_index).each do |children| %>
         <li><%= link_to_page children %> </li>
       <% end %>
     </ul>
