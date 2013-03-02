@@ -1,10 +1,14 @@
 <% content_for :title do
      "Search Results"
    end %>
+
+<div class="page-header">
+  <h1>Search Results for <%= params[:search] %></h1>
+</div>
+
 <% if @pagethings.count + @postthings.count + @eventhings.count + @albuthings.count >= 1 %>
-  <p>Results for <%= params[:search] %></p>
   <div class="row-fluid">
-    <div class="span4 postWithBorder">
+    <div class="span12 postWithBorder">
       <h2>
         Pages
       </h2>
@@ -16,9 +20,9 @@
     <% groupofresult.each do |thing| %>
       <% if thing != nil %>
         <div class="span4 postWithBorder">
-          <h2>
+          <h3>
           <%= link_to_page thing %>
-          </h2>
+          </h3>
         </div>
       <% end %>
     <% end %>
@@ -26,7 +30,7 @@
     <br />
   <% end %>
   <div class="row-fluid">
-    <div class="span4 postWithBorder">
+    <div class="span12 postWithBorder">
       <h2>
         Posts
       </h2>
@@ -38,9 +42,9 @@
     <% groupofresult.each do |thing| %>
       <% if thing != nil %>
         <div class="span4 postWithBorder">
-          <h2>
+          <h3>
           <%= link_to thing.title, thing %>
-          </h2>
+          </h3>
         </div>
       <% end %>
     <% end %>
@@ -48,7 +52,7 @@
     <br />
   <% end %>
   <div class="row-fluid">
-    <div class="span4 postWithBorder">
+    <div class="span12 postWithBorder">
       <h2>
         Events
       </h2>
@@ -60,9 +64,9 @@
     <% groupofresult.each do |thing| %>
       <% if thing != nil %>
         <div class="span4 postWithBorder">
-          <h2>
+          <h3>
           <%= link_to thing.title, thing %>
-          </h2>
+          </h3>
         </div>
       <% end %>
     <% end %>
@@ -70,7 +74,7 @@
     <br />
   <% end %>
   <div class="row-fluid">
-    <div class="span4 postWithBorder">
+    <div class="span12 postWithBorder">
       <h2>
         Albums
       </h2>
@@ -82,9 +86,9 @@
     <% groupofresult.each do |thing| %>
       <% if thing != nil %>
         <div class="span4 postWithBorder">
-          <h2>
+          <h3>
           <%= link_to thing.name, thing %>
-          </h2>
+          </h3>
         </div>
       <% end %>
     <% end %>
