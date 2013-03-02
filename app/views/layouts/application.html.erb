@@ -61,14 +61,14 @@
             <div class="pull-left" style="vertical-align: bottom;">
               <ul class="nav">
                 <li><%= link_to "Home", "/", :class => "dropdown-toggle js-activated" %></li>
-                <% Page.where(:navigable => true, :parent_id => nil).sort_by(&:sort_index).each do |page_to_draw|  %>
+                <% Page.where(:navigable => true, :parent_id => nil).order("sort_index, title").each do |page_to_draw|  %>
                 <% if page_to_draw.pages.first %>
                 <li class="dropdown"> 
                   <%= link_to_page page_to_draw,
                       page_to_draw.title + " <i class=\"icon-chevron-down\"></i>",
                       'class="dropdown-toggle js-activated"'%> 
                   <ul class="dropdown-menu">
-                  <% page_to_draw.pages.where(:navigable => true).sort_by(&:sort_index).each do |childs_to_draw| %>
+                  <% page_to_draw.pages.where(:navigable => true).order("sort_index, title").each do |childs_to_draw| %>
                     <li> <%= link_to_page childs_to_draw %> </li>
                   <% end %> 
                   </ul>

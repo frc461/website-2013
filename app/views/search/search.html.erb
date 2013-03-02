@@ -1,31 +1,101 @@
 <% content_for :title do
      "Search Results"
    end %>
-<div class="page-header"><h1>Search Results</h1></div>
-<% if @results.count >= 1 %>
-  <p>Results for <%= params[:search] %></p>
-  <% @results.in_groups_of(3) do |groupofresult| %>
+
+<div class="page-header">
+  <h1>Search Results for <%= params[:search] %></h1>
+</div>
+
+<% if @pagethings.count + @postthings.count + @eventhings.count + @albuthings.count >= 1 %>
+  <div class="row-fluid">
+    <div class="span12 postWithBorder">
+      <h2>
+        Pages
+      </h2>
+    </div>
+  </div>
+  <br />
+  <% @pagethings.in_groups_of(3) do |groupofresult| %>
     <div class="row-fluid">
     <% groupofresult.each do |thing| %>
       <% if thing != nil %>
         <div class="span4 postWithBorder">
-          <h2>
-          <% if thing.is_a? Page %>
-            <%= link_to_page thing %>
-          <% else %>
-            <% if thing.is_a? Album %>
-              <%= link_to thing.name, thing %>
-            <% else %>
-              <%= link_to thing.title, thing %>
-            <% end %>
-          <% end %>
-          </h2>
+          <h3>
+          <%= link_to_page thing %>
+          </h3>
         </div>
+      <% end %>
     <% end %>
+    </div>
+    <br />
   <% end %>
+  <div class="row-fluid">
+    <div class="span12 postWithBorder">
+      <h2>
+        Posts
+      </h2>
+    </div>
+  </div>
+  <br />
+  <% @postthings.in_groups_of(3) do |groupofresult| %>
+    <div class="row-fluid">
+    <% groupofresult.each do |thing| %>
+      <% if thing != nil %>
+        <div class="span4 postWithBorder">
+          <h3>
+          <%= link_to thing.title, thing %>
+          </h3>
+        </div>
+      <% end %>
+    <% end %>
+    </div>
+    <br />
+  <% end %>
+  <div class="row-fluid">
+    <div class="span12 postWithBorder">
+      <h2>
+        Events
+      </h2>
+    </div>
+  </div>
+  <br />
+  <% @eventhings.in_groups_of(3) do |groupofresult| %>
+    <div class="row-fluid">
+    <% groupofresult.each do |thing| %>
+      <% if thing != nil %>
+        <div class="span4 postWithBorder">
+          <h3>
+          <%= link_to thing.title, thing %>
+          </h3>
+        </div>
+      <% end %>
+    <% end %>
+    </div>
+    <br />
+  <% end %>
+  <div class="row-fluid">
+    <div class="span12 postWithBorder">
+      <h2>
+        Albums
+      </h2>
+    </div>
+  </div>
+  <br />
+  <% @albuthings.in_groups_of(3) do |groupofresult| %>
+    <div class="row-fluid">
+    <% groupofresult.each do |thing| %>
+      <% if thing != nil %>
+        <div class="span4 postWithBorder">
+          <h3>
+          <%= link_to thing.name, thing %>
+          </h3>
+        </div>
+      <% end %>
+    <% end %>
     </div>
     <br />
   <% end %>
 <% else %>
 <p>No matches for <%= params[:search] %></p>
 <% end %>
+<br />

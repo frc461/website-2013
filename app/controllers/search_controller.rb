@@ -1,22 +1,28 @@
 class SearchController < ApplicationController
   def search
     queries = params[:search].split(' ')
-    @results = []
+    @pagethings = []
+    @postthings = []
+    @eventhings = []
+    @albuthings = []
     queries.each do |query|
-      @results += Page.tagged_with(query)
-      @results += Page.where("lower(title) LIKE lower(?)", "%" + query + "%")
-      @results += Page.where("lower(content) LIKE lower(?)", "%" + query + "%")
-      @results += Post.tagged_with(query)
-      @results += Post.where("lower(title) LIKE lower(?)", "%" + query + "%")
-      @results += Post.where("lower(content) LIKE lower(?)", "%" + query + "%")
+      @pagethings += Page.tagged_with(query)
+      @pagethings += Page.where("lower(title) LIKE lower(?)", "%" + query + "%")
+      @pagethings += Page.where("lower(content) LIKE lower(?)", "%" + query + "%")
+      @postthings += Post.tagged_with(query)
+      @postthings += Post.where("lower(title) LIKE lower(?)", "%" + query + "%")
+      @postthings += Post.where("lower(content) LIKE lower(?)", "%" + query + "%")
       if current_user
-        @results += Event.where("lower(title) LIKE lower(?)", "%" + query + "%")
+        @eventhings += Event.where("lower(title) LIKE lower(?)", "%" + query + "%")
       else
-        @results += Event.where(:public => true).where("lower(title) LIKE lower(?)", "%" + query + "%")
+        @eventhings += Event.where(:public => true).where("lower(title) LIKE lower(?)", "%" + query + "%")
       end
-      @results += Album.tagged_with(query)
-      @results += Album.where("lower(name) LIKE lower(?)", "%" + query + "%")
+      @albuthings += Album.tagged_with(query)
+      @albuthings += Album.where("lower(name) LIKE lower(?)", "%" + query + "%")
     end
-    @results.uniq!
+    @pagethings.uniq!
+    @postthings.uniq!
+    @eventhings.uniq!
+    @albuthings.uniq!
   end
 end
