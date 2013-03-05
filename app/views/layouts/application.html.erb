@@ -140,53 +140,56 @@
               </div>
             <% end %>
             <div class="well">
-            <center>
-              <p>
-                <%= link_to( image_tag("firstlogovector.png", :style => "height: 48px; width: auto;", :alt => "FIRST" ), "http://www.usfirst.org/" ) %>
-              </p>
-              <h3>
-              FRC Team 461
-              </h3>
-            </center>
+              <center>
+                <p>
+                  <%= link_to(image_tag("firstlogovector.png", :style => "height: 48px; width: auto;", :alt => "FIRST"),
+                      "http://www.usfirst.org/") %>
+                </p>
+                <h3>FRC Team 461</h3>
+              </center>
             </div>
             <div class="well">
             <!-- <h3 class="pull-right social-header">Social&nbsp;</h3> -->
             <table class="social-buttons">
-            <tr class="smallerPadding">
-            <td class="hidden-tablet" rowspan="5"><div class="verticalText"><strong>Social</strong></div></td>
-              <td>
-              <div class="fb-like"
-                  data-layout="button_count"
-                  data-colorscheme="light"
-                  data-action="like"
-                  data-href="http://www.facebook.com/WBI461">
+              <tr class="smallerPadding">
+                <td class="hidden-tablet" rowspan="5"><div class="verticalText"><strong>Social</strong></div></td>
+                <td>
+                  <div class="fb-like"
+                       data-layout="button_count"
+                       data-colorscheme="light"
+                       data-action="like"
+                       data-href="http://www.facebook.com/WBI461">
                     Like us on Facebook
-              </div>
-              </td></tr><tr><td>
-              <div class="g-plusone"
-                  data-size="medium"
-                  data-href="http://boilerinvasion.org">
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="g-plusone"
+                       data-size="medium"
+                       data-href="http://boilerinvasion.org">
                     1+ on Google+
-              </div>
-              </td></tr><tr><td>              
-              <a href="https://twitter.com/Team461WBI"
-                class="twitter-follow-button"
-                data-show-count="false"
-                data-dnt="true"
-                data-show-screen-name="false">Follow @Team461WBI</a>
-              </td></tr>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>              
+                  <a href="https://twitter.com/Team461WBI"
+                     class="twitter-follow-button"
+                     data-show-count="false"
+                     data-dnt="true"
+                     data-show-screen-name="false">Follow @Team461WBI</a>
+                </td>
+              </tr>
             </table>
-            <!-- <hr class="visible-desktop" /> -->
-            <!-- </div> -->
-        </div><!--/span-->
-            <div id="tweetbox" class="visible-desktop">
-              <div class="well">
-              <center><h4>Latest tweets from <a href="https://www.twitter.com/team461wbi">@Team461WBI</a></h4></center>
-              <%= render :partial => "twitter_feed/twitter_feed" %>
-              </div>
+          </div><!--/span-->
+          <div id="tweetbox" class="visible-desktop">
+            <div class="well">
+            <center><h4>Latest tweets from <a href="https://www.twitter.com/team461wbi">@Team461WBI</a></h4></center>
+            <%= render :partial => "twitter_feed/twitter_feed" %>
             </div>
+          </div>
         </div><!--/span-->
-        <!-- CONTENT -->
       </div><!--/row-->
 
       <br class="visible-phone" />
@@ -316,7 +319,6 @@
               </div>
             <% end %>
             <div class="well">
-            <!-- <h3 class="pull-right social-header">Social&nbsp;</h3> -->
             <table class="social-buttons">
             <tr class="smallerPadding">
             <td class="hidden-tablet" rowspan="5"><div class="verticalText"><strong>Social</strong></div></td>
