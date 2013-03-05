@@ -4,6 +4,9 @@
   <% debug_string = Digest::MD5.hexdigest("{ \"" + (current_user ? current_user.name : "NO USER NAME" ) + "\", \"" + (print_debug ? "true" : "false") +"\" };") %>
 <% else %>
 <% end %>
+
+<% teamnum = TEAM_NUMBER %>
+
 <html lang="en">
   <head>
     <%= javascript_include_tag "jquery" %>
@@ -145,7 +148,7 @@
                   <%= link_to(image_tag("firstlogovector.png", :style => "height: 48px; width: auto;", :alt => "FIRST"),
                       "http://www.usfirst.org/") %>
                 </p>
-                <h3>FRC Team 461</h3>
+                <h3>FRC Team <%= teamnum %></h3>
               </center>
             </div>
             <div class="well">
