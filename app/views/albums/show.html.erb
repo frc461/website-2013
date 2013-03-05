@@ -40,7 +40,7 @@
       <% else %>
       <div class="item">
       <% end %>
-        <%= image_tag photo.image.url %>
+        <%= image_tag photo.image.url(:medium) %>
         <% if can?(:write, Post) %>
         <div class="carousel-caption">
           <p>
@@ -63,7 +63,7 @@
       <div class="row-fluid">
         <% photogroup.each do |photo| %>
           <% if photo %>
-            <%= image_tag photo.image.url, :class => "span3", :onclick => "$('.carousel').carousel(" + count.to_s + ");$('html, body').animate({ scrollTop: 0 }, 'fast');" %>
+            <%= image_tag photo.image.url(:thumb), :class => "span3", :onclick => "$('.carousel').carousel(" + count.to_s + ");$('html, body').animate({ scrollTop: 0 }, 'fast');" %>
             <% count += 1 %>
           <% end %>
         <% end %>

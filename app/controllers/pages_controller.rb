@@ -2,40 +2,39 @@ class PagesController < InheritedResources::Base
   load_and_authorize_resource
   skip_load_and_authorize_resource :only => :show
 
-  def show
-    if params[:id]
-      if params[:id] =~ /^\d+$/
-        @page = Page.find(params[:id])
+  def selectpage(id, titles)
+    if id
+      if id =~ /^\d+$/
+        return Page.find(id)
       else
-        testpage = Page.where("title LIKE ?", params[:id].gsub(/_/, ' ').gsub(/~/, ':')).first
+        testpage = Page.where("title LIKE ?", id.gsub(/_/, ' ').gsub(/~/, ':')).first
         if !testpage.parent_id
-          @page = testpage
+          return testpage
         end
       end
-    elsif params[:titles].is_a? String
-      if params[:titles] =~ /^\d+$/
-        @page = Page.find(params[:titles])
+    elsif titles.is_a? String
+      if titles =~ /^\d+$/
+        return Page.find(titles)
       else
-        params[:titles] = params[:titles].split("/")
-        params[:titles].map! do |t|
+        titles = titles.split("/")
+        titles.map! do |t|
           Page.where("title LIKE ?", t.gsub(/_/, ' ').gsub(/~/, ':')).first
         end
-        params[:titles].each do |p|
-          if params[:titles].first.id == p.id
+        titles.each do |p|
+          if titles.first.id == p.id
             if p.parent_id
               raise "misformed url, base haz a parent"
             end
           end
-          if p.id != params[:titles].last.id
-            if params[:titles][(params[:titles].index(p) + 1)].parent_id != p.id
-              raise "nope, page is " + p.title + " w/ index " + params[:titles].index(p).to_s + " & parid " + p.parent_id.to_s
+          if p.id != titles.last.id
+            if titles[(titles.index(p) + 1)].parent_id != p.id
+              raise "nope, page is " + p.title + " w/ index " + titles.index(p).to_s + " & parid " + p.parent_id.to_s
             end
           end
         end
-        @page = Page.find(params[:titles].last.id)
+        return Page.find(titles.last.id)
       end
     end
-
     # if params[:title] || params[:id]
     #   if params[:id] =~ /^\d+(\.\d+)?$/
     #     @page = Page.find(params[:id])
@@ -61,4 +60,16 @@ class PagesController < InheritedResources::Base
     # end
     # redirect_to root_url unless @page
   end
+
+  # for some reason this doesn't work
+  # def delete
+  #   @page = selectpage(params[:id], params[:titles])
+  #   @page.destroy
+  # end
+
+  def show
+    @page = selectpage(params[:id], params[:titles])
+  end
+
+
 end

@@ -44,7 +44,7 @@
 <div class="form-actions">
   <%= link_to "Back", pages_path, :class => 'btn'  %>
   <%= link_to "Edit", edit_page_path(@page), :class => 'btn' %>
-  <%= link_to "Deletify", page_path(@page), :method => 'delete',
+  <%= link_to "Deletify", "/pages/" + @page.id.to_s, :method => 'delete',
               :data => { :confirm => "Are ye sure?" }, :class => 'btn btn-danger' %>
 </div>
 <% end %>
