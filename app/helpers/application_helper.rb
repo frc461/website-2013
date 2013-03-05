@@ -15,6 +15,10 @@ module ApplicationHelper
     BlueCloth::new(text).to_html
   end
 
+  def markback(text)
+    return format(text).gsub(/<[^<>]+>/, '')
+  end
+  
   def photocheck(text)
     gsubber = text.gsub!(/\[[Aa]lbum ([^\[\]]+)\]\[[Pp]hoto (\d+)\](\[([rl])\])?/) do |s|
       if s != ""
