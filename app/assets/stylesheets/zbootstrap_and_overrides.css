@@ -50,8 +50,8 @@ body {
   border-left: 5px solid #fff200;
   background-color: #232323;
   margin-bottom: 10px;
-  border-radius: 3px;
-  -moz-border-radius: 3px;
+  border-radius: 1px;
+  -moz-border-radius: 1px;
 }
 .fc-state-highlight {
   background-color: rgba(19,21,23,.7) !important;
@@ -152,8 +152,8 @@ a:hover {
   overflow: hidden;
   padding-bottom: 10px;
   //height: 60px;
-  border-radius: 3px;
-  -moz-border-radius: 3px;
+  border-radius: 1px;
+  -moz-border-radius: 1px;
 }
 
 .postWithBorder a {
