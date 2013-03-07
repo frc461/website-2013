@@ -129,16 +129,10 @@
                     <p>Logged in as <%= current_user.name %></p>
                     <% if can? :update, current_user %>
                     <table>
-                      <tr class="smallerPadding">
-                        <td rowspan="5"><div class="verticalText"><strong>Admin</strong></div></td>
-                        <td><%= link_to "Users", users_path %></td>
-                      </tr>
-                      <tr>
-                        <td><%= link_to "Groups", groups_path %></td>
-                      </tr>
-                      <tr>
-                        <td><%= link_to "Pages", pages_path %></td>
-                      </tr>
+                      <tr class="smallerPadding"><td rowspan="5"><div class="verticalTextUpLeft"><strong>Admin</strong></div></td></tr>
+                      <tr><td><%= link_to "Users", users_path %></td></tr>
+                      <tr><td><%= link_to "Groups", groups_path %></td></tr>
+                      <tr><td><%= link_to "Pages", pages_path %></td></tr>
                     </table>
                     <% end %>
               </div>
@@ -148,7 +142,7 @@
               <div class="span6" style="margin-top: 10px;">
                 <table class="social-buttons">
                   <tr class="smallerPadding">
-                    <td class="hidden-tablet" rowspan="5"><div class="verticalText"><strong>Social</strong></div></td>
+                    <td class="hidden-tablet" rowspan="5"><div class="verticalTextUpLeft"><strong>Social</strong></div></td>
                     <td>
                       <div class="fb-like"
                            data-layout="button_count"
@@ -234,8 +228,8 @@
       </div>
     </div> <!-- /container -->
     </article>
-    </section>
-   <div class="background hidden-desktop"> 
+  </section>
+  <div class="background hidden-desktop"> 
     <div class="navbar navbar-fluid-top navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container-fluid">
@@ -311,16 +305,10 @@
                     <p>Logged in as <%= current_user.name %></p>
                     <% if can? :update, current_user %>
                     <table>
-                      <tr class="smallerPadding">
-                        <td rowspan="5"><div class="verticalText"><strong>Admin</strong></div></td>
-                        <td><%= link_to "Users", users_path %></td>
-                      </tr>
-                      <tr>
-                        <td><%= link_to "Groups", groups_path %></td>
-                      </tr>
-                      <tr>
-                        <td><%= link_to "Pages", pages_path %></td>
-                      </tr>
+                      <tr class="smallerPadding"><td rowspan="5"><div class="verticalTextUpLeft"><strong>Admin</strong></div></td></tr>
+                      <tr><td><%= link_to "Users", users_path %></td></tr>
+                      <tr><td><%= link_to "Groups", groups_path %></td></tr>
+                      <tr><td><%= link_to "Pages", pages_path %></td></tr>
                     </table>
                     <% end %>
               </div>
@@ -328,7 +316,7 @@
             <div class="well">
             <table class="social-buttons">
             <tr class="smallerPadding">
-            <td class="hidden-tablet" rowspan="5"><div class="verticalText"><strong>Social</strong></div></td>
+            <td class="hidden-tablet" rowspan="5"><div class="verticalTextUpLeft"><strong>Social</strong></div></td>
               <td>
               <div class="fb-like"
                   data-layout="button_count"
@@ -385,7 +373,12 @@
               <%= link_to "Log out", log_out_path %>
             <% end %>
             <% if print_debug %>
-              <p class="grey-text">Debugging data: <%= debug_string %></p>
+              <p class="grey-text">
+                Debugging data: <%= debug_string %>,
+              </p>
+              <p class="visible-desktop grey-text">desktop</p>
+              <p class="visible-tablet grey-text">tablet</p>
+              <p class="visible-phone grey-text">phone</p>
             <% end %>
           </p>
         </center>
