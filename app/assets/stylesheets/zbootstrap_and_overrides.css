@@ -168,6 +168,10 @@ a:hover {
          -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=2.988)"; /* IE8 */
 }
 
+.centerey {
+  margin: auto;
+}
+
 .css1 { font-size: 1.0em; }
 .css2 { font-size: 1.2em; }
 .css3 { font-size: 1.4em; }

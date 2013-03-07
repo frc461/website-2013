@@ -2,6 +2,9 @@
 <% if @page.pages.count > 0  %>
 <% content_for :ChildrenPages do %>
   <div class="well">
+    <h4 style="margin-top: -2px; margin-bottom: 2px;"><strong>
+      Subpages:
+    </strong></h4>
     <ul class="nav nav-list">
       <% @page.pages.where(:navigable => true).sort_by(&:sort_index).each do |children| %>
         <li><%= link_to_page children %> </li>
