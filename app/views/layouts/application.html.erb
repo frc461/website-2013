@@ -144,49 +144,52 @@
               </div>
             <% end %>
             <div class="well">
-              <center>
-                <p>
-                  <%= link_to(image_tag("firstlogovector.png", :style => "height: 48px; width: auto;", :alt => "FIRST"),
-                      "http://www.usfirst.org/") %>
-                </p>
-                <h3>FRC Team <%= teamnum %></h3>
-              </center>
+              <div class="container row-fluid" style="margin-bottom: -5px;">
+              <div class="span6" style="margin-top: 10px;">
+                <table class="social-buttons">
+                  <tr class="smallerPadding">
+                    <td class="hidden-tablet" rowspan="5"><div class="verticalText"><strong>Social</strong></div></td>
+                    <td>
+                      <div class="fb-like"
+                           data-layout="button_count"
+                           data-colorscheme="light"
+                           data-action="like"
+                           data-href="http://www.facebook.com/WBI461">
+                        Like us on Facebook
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="g-plusone"
+                           data-size="medium"
+                           data-href="http://boilerinvasion.org">
+                        1+ on Google+
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>              
+                      <a href="https://twitter.com/Team461WBI"
+                         class="twitter-follow-button"
+                         data-show-count="false"
+                         data-dnt="true"
+                         data-show-screen-name="false">Follow @Team461WBI</a>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+              <div class="span6" style="">
+                <center>
+                  <p>
+                    <%= link_to(image_tag("firstlogovector.png", :style => "height: 48px; width: auto;", :alt => "FIRST"),
+                        "http://www.usfirst.org/") %>
+                    <h3>FRC Team <%= teamnum %></h3>
+                  </p>
+                </center>
+              </div>
+              </div>
             </div>
-            <div class="well">
-            <!-- <h3 class="pull-right social-header">Social&nbsp;</h3> -->
-            <table class="social-buttons">
-              <tr class="smallerPadding">
-                <td class="hidden-tablet" rowspan="5"><div class="verticalText"><strong>Social</strong></div></td>
-                <td>
-                  <div class="fb-like"
-                       data-layout="button_count"
-                       data-colorscheme="light"
-                       data-action="like"
-                       data-href="http://www.facebook.com/WBI461">
-                    Like us on Facebook
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <div class="g-plusone"
-                       data-size="medium"
-                       data-href="http://boilerinvasion.org">
-                    1+ on Google+
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>              
-                  <a href="https://twitter.com/Team461WBI"
-                     class="twitter-follow-button"
-                     data-show-count="false"
-                     data-dnt="true"
-                     data-show-screen-name="false">Follow @Team461WBI</a>
-                </td>
-              </tr>
-            </table>
-          </div><!--/span-->
           <div id="tweetbox" class="visible-desktop">
             <div class="well">
             <center><h4>Latest tweets from <a href="https://www.twitter.com/team461wbi">@Team461WBI</a></h4></center>

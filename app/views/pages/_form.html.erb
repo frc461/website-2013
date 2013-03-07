@@ -28,12 +28,13 @@
     <div class="controls">
       <% if @page.id %>
         <%= f.select(:parent_id,
-                     [["None", nil]] + Page.where("id != ?", @page.id).map { |page| [page.title, page.id] },
+                     [["None", nil]] + Page.where("id != ?", @page.id).order("title").map{ |page| [page.title, page.id]},
                      {}, 
                      {:class => "selectpicker"} ) %>
       <% else %>
         <%= f.select(:parent_id,
-                     [["None", nil]] + Page.all.map { |page| [page.title, page.id] }, 
+                     [["None", nil]] + Page.order("title").map { |page| [page.title, page.id] },
+                     {}, 
                      {:class => "selectpicker"} ) %>
       <% end %>
     </div>
