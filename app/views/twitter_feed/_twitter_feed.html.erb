@@ -1,35 +1,15 @@
-<!-- BEGIN TWITTER FEED -->
-<% require 'timeout' %>
- 
-<hr>
 <% begin %>
-  <h2>Tweets by <a href="https://www.twitter.com/team461wbi">@Team461WBI</a></h2>
-  <div class="well">
-    <% tweets = Twitter.user_timeline("team461wbi", options = { :count => 8 } )%>
-    <% Timeout::timeout(5) do tweets.each do |tweet| %>
-      <p class="tweet">
-        <div id="textbox">
-          <p class="inline-text-align-left">
-            <%= sanitize format_tweet(tweet) %>
-          </p>
-          <p class="inline-text-align-right">
-            <a href="https://twitter.com/<%= tweet.from_user() %>">@<%= tweet.from_user() %></a>,
-            <a href="https://twitter.com/<%= tweet.from_user() %>/statuses/<%= tweet.id() %>">
-              <%= time_ago_in_words(tweet.created_at()) %>     ago 
-            </a>
-          </p>
-          <div style="clear: both;"></div>
-        </div>
-      </p>
-      <% if tweet != tweets.last%>
-      <hr />
-      <% end %>
-    <% end end %>
+  <% tweets = Twitter.user_timeline("team461wbi", options = { :count => 4 } ) %>
+  <% tweets.each do |tweet| %>
+  <hr />
+  <div class="tweet">
+    <%= sanitize format_tweet(tweet) %>
+    <div style="text-align: right;" class="tweet-info">
+      <a href="https://twitter.com/<%= tweet.from_user() %>">@<%= tweet.from_user() %></a>, 
+      <a href="https://twitter.com/<%= tweet.from_user() %>/status/<%= tweet.id() %>"><%= time_ago_in_words(tweet.created_at()) %> ago </a>
+    </div>
   </div>
+  <% end %>
 <% rescue %>
-<p>Error: No internet connection</p>
-</div>
+  <p>Error: No internet connection</p>
 <% end %>
-
-
-<!-- END TWITTER FEED -->

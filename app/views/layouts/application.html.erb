@@ -4,6 +4,10 @@
   <% debug_string = Digest::MD5.hexdigest("{ \"" + (current_user ? current_user.name : "NO USER NAME" ) + "\", \"" + (print_debug ? "true" : "false") +"\" };") %>
 <% else %>
 <% end %>
+
+<% _TEAM_NUMBER = "461" %>
+<% teamnum = _TEAM_NUMBER %>
+
 <html lang="en">
   <head>
     <%= javascript_include_tag "jquery" %>
@@ -140,52 +144,62 @@
               </div>
             <% end %>
             <div class="well">
+              <center>
+                <p>
+                  <%= link_to(image_tag("firstlogovector.png", :style => "height: 48px; width: auto;", :alt => "FIRST"),
+                      "http://www.usfirst.org/") %>
+                </p>
+                <h3>FRC Team <%= teamnum %></h3>
+              </center>
+            </div>
+            <div class="well">
             <!-- <h3 class="pull-right social-header">Social&nbsp;</h3> -->
             <table class="social-buttons">
-            <tr class="smallerPadding">
-            <td class="hidden-tablet" rowspan="5"><div class="verticalText"><strong>Social</strong></div></td>
-              <td>
-              <div class="fb-like"
-                  data-layout="button_count"
-                  data-colorscheme="light"
-                  data-action="like"
-                  data-href="http://www.facebook.com/WBI461">
+              <tr class="smallerPadding">
+                <td class="hidden-tablet" rowspan="5"><div class="verticalText"><strong>Social</strong></div></td>
+                <td>
+                  <div class="fb-like"
+                       data-layout="button_count"
+                       data-colorscheme="light"
+                       data-action="like"
+                       data-href="http://www.facebook.com/WBI461">
                     Like us on Facebook
-              </div>
-              </td></tr><tr><td>
-              <div class="g-plusone"
-                  data-size="medium"
-                  data-href="http://boilerinvasion.org">
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="g-plusone"
+                       data-size="medium"
+                       data-href="http://boilerinvasion.org">
                     1+ on Google+
-              </div>
-              </td></tr><tr><td>              
-              <a href="https://twitter.com/Team461WBI"
-                class="twitter-follow-button"
-                data-show-count="false"
-                data-dnt="true"
-                data-show-screen-name="false">Follow @Team461WBI</a>
-              </td></tr>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>              
+                  <a href="https://twitter.com/Team461WBI"
+                     class="twitter-follow-button"
+                     data-show-count="false"
+                     data-dnt="true"
+                     data-show-screen-name="false">Follow @Team461WBI</a>
+                </td>
+              </tr>
             </table>
-            <!-- <hr class="visible-desktop" /> -->
-            <!-- </div> -->
-        </div><!--/span-->
-            <div id="tweetbox" class="visible-desktop">
-              <div class="well">
-              <center><h4>Latest tweets from <a href="https://www.twitter.com/team461wbi">@Team461WBI</a></h4></center>
-              <%= render :partial => "twitter_feed/sidebar_twitter_feed" %>
-              </div>
+          </div><!--/span-->
+          <div id="tweetbox" class="visible-desktop">
+            <div class="well">
+            <center><h4>Latest tweets from <a href="https://www.twitter.com/team461wbi">@Team461WBI</a></h4></center>
+            <%= render :partial => "twitter_feed/twitter_feed" %>
             </div>
+          </div>
         </div><!--/span-->
-        <!-- CONTENT -->
       </div><!--/row-->
 
       <br class="visible-phone" />
 
       <footer>
         <center>
-          <p>
-            <%= link_to( image_tag("firstlogovector.png", :style => "height: 48px; width: auto;", :alt => "FIRST" ), "http://www.usfirst.org/" ) %>
-          </p>
           <a href="https://www.facebook.com/WBI461"     ><%= image_tag 'icon/facebook-icon.png', 
                                                                        :class => "social-icon",
                                                                        :alt => "Facebook" %></a>
@@ -309,7 +323,6 @@
               </div>
             <% end %>
             <div class="well">
-            <!-- <h3 class="pull-right social-header">Social&nbsp;</h3> -->
             <table class="social-buttons">
             <tr class="smallerPadding">
             <td class="hidden-tablet" rowspan="5"><div class="verticalText"><strong>Social</strong></div></td>
@@ -341,7 +354,7 @@
             <div id="tweetbox" class="visible-desktop">
               <div class="well">
               <center><h4>Latest tweets from <a href="https://www.twitter.com/team461wbi">@Team461WBI</a></h4></center>
-              <%= render :partial => "twitter_feed/sidebar_twitter_feed" %>
+              <%= render :partial => "twitter_feed/twitter_feed" %>
               </div>
             </div>
         </div><!--/span-->
@@ -352,9 +365,6 @@
 
       <footer>
         <center>
-          <p>
-            <%= link_to( image_tag("firstlogovector.png", :style => "height: 48px; width: auto;", :alt => "FIRST" ), "http://www.usfirst.org/" ) %>
-          </p>
           <a href="https://www.facebook.com/WBI461"     ><%= image_tag 'icon/facebook-icon.png', 
                                                                        :class => "social-icon",
                                                                        :alt => "Facebook" %></a>
@@ -392,44 +402,64 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <%= javascript_include_tag "application" %>
-    <div id="fb-root"></div>
-    <script type="text/javascript">(function(d, s, id) {
-      var js, fjs = d.getElementsByTagName(s)[0];
-      if (d.getElementById(id)) return;
-        js = d.createElement(s); js.id = id;
-        js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
-        fjs.parentNode.insertBefore(js, fjs);
-      }(document, 'script', 'facebook-jssdk'));
-    </script>
-    <script type="text/javascript">
-      function sizing() {
-        var formfilterswidth=$("#formfilters").width();
-        $("#msisdn").width((formfilterswidth-46)+"px");
-      }
-      $(document).ready(sizing);
-      $(window).resize(sizing);
-    </script>
-    <script type="text/javascript">
-      (function() {
-        var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-        po.src = 'https://apis.google.com/js/plusone.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-      })();
-    </script>
-    <script>
-      !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
-    </script>
-    <script type="text/javascript">
-      konami = new Konami()
-      konami.code = function () {
-        document.getElementById("konamicodething").style.display = "block";
-      }
-      konami.load()
-    </script>
-    <script>
+  <div id="fb-root"></div>
+  <script type="text/javascript">(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+  </script>
+  <script type="text/javascript">
+    function sizing() {
+      var formfilterswidth=$("#formfilters").width();
+      $("#msisdn").width((formfilterswidth-46)+"px");
+    }
+    $(document).ready(sizing);
+    $(window).resize(sizing);
+  </script>
+  <script type="text/javascript">
+    (function() {
+      var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+      po.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+    })();
+  </script>
+  <script>
+      !function(d,s,id){
+        var js,fjs=d.getElementsByTagName(s)[0];
+        if(!d.getElementById(id)) {
+          js=d.createElement(s);
+          js.id=id;
+          js.src="//platform.twitter.com/widgets.js";
+          fjs.parentNode.insertBefore(js,fjs);
+        }
+      }(document,"script","twitter-wjs");
+  </script>
+  <script type="text/javascript">
+    konami = new Konami()
+    konami.code = function () {
+      document.getElementById("konamicodething").style.display = "block";
+    }
+    konami.load()
+  </script>
+  <script>
     // very simple to use!
     $(document).ready(function() {
       $('.js-activated').dropdownHover(true);
     });
-    </script>
+  </script>
+  <!-- GOOGLE ANALYTICS -->
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-39061039-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script> 
 </html>
