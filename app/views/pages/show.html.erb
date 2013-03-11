@@ -1,25 +1,43 @@
 <%- model_class = Page -%>
-<% if @page.pages.count > 0  %>
+<% if @page.pages.count > 0 || @page.parent_id %>
 <% content_for :ChildrenPages do %>
+<% if @page.pages.count > 0 %>
   <div class="well">
     <h4 style="margin-top: -2px; margin-bottom: 2px;"><strong>
       Subpages:
     </strong></h4>
     <ul class="nav nav-list">
-      <% @page.pages.where(:navigable => true).sort_by(&:sort_index).each do |children| %>
-        <li><%= link_to_page children %> </li>
+      <% @page.pages.where(:navigable => true).sort_by(&:sort_index).each do |child| %>
+        <li><%= link_to_page child %> </li>
       <% end %>
     </ul>
   </div>
+<% end %>
+<% if @page.parent_id %>
+<% parent = Page.find(@page.parent_id) %>
+  <div class="well">
+    <h4 style="margin-top: -2px; margin-bottom: 2px;"><strong>
+      <%= link_to_page parent %>
+    </strong></h4>
+    <ul class="nav nav-list">
+      <% parent.pages.where(:navigable => true).sort_by(&:sort_index).each do |child| %>
+        <% if child.id == @page.id%>
+        <li class="active"><%= child.title %></li>
+        <% else %>
+        <li><%= link_to_page child %> </li>
+        <% end %>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
 <% end %>
 <% end %>
 <% content_for :breadcrumb do %>
 <ul class="breadcrumb span12">
   <li><%= link_to "Home", root_path%><span class="divider">/</span></li>
   <li><%= link_to "Pages", pages_path%><span class="divider">/</span></li>
-  <% if @page.parent != nil %>
-    <li>
-    <%= link_to_page @page.parent %><span class="divider">/</span></li>
+  <% parent_array(@page).each do |parent| %>
+    <li><%= link_to_page parent %><span class="divider">/</span></li>
   <% end %>
   <li class="active">
   <%= @page.title %>

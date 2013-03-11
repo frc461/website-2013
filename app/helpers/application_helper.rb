@@ -110,6 +110,14 @@ module ApplicationHelper
     text
   end
 
+  def parent_array (page)
+    if !page.parent_id
+      []
+    else
+      parent_array(Page.find(page.parent_id)) + [Page.find(page.parent_id)]
+    end
+  end
+
 #  def uri?(string)
 #    if string.match(/^https?:\/\//)
 #      true
