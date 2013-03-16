@@ -28,7 +28,6 @@ namespace :photo do
       else
         puts "Post failed for #{e}"
       end
-			
       local.delete
     end
     puts "Uploaded #{count} files!"

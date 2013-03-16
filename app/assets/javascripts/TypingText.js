@@ -24,7 +24,7 @@ Functions defined:
 
 TypingText = function(element, interval, cursor, finishedCallback) {
   if((typeof document.getElementById == "undefined") || (typeof element.innerHTML == "undefined")) {
-    this.running = true;	// Never run.
+    this.running = true;  // Never run.
     return;
   }
   this.element = element;
@@ -52,7 +52,7 @@ TypingText.runAll = function() {
 TypingText.prototype.run = function() {
   if(this.running) return;
   if(typeof this.origText == "undefined") {
-    setTimeout("document.getElementById('" + this.element.id + "').typingText.run()", this.interval);	// We haven't finished loading yet.  Have patience.
+    setTimeout("document.getElementById('" + this.element.id + "').typingText.run()", this.interval);  // We haven't finished loading yet.  Have patience.
     return;
   }
   if(this.currentText == "") this.element.innerHTML = "";
@@ -102,9 +102,9 @@ TypingText.prototype.run = function() {
     this.currentChar++;
     setTimeout("document.getElementById('" + this.element.id + "').typingText.run()", this.interval);
   } else {
-	this.currentText = "";
-	this.currentChar = 0;
-        this.running = false;
-        this.finishedCallback();
+    this.currentText = "";
+    this.currentChar = 0;
+    this.running = false;
+    this.finishedCallback();
   }
 }
