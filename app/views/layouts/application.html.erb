@@ -173,7 +173,9 @@
                   </tr>
                 </table>
               </div>
-              <div class="span6" style="">
+              </div>
+              </div>
+             <div class="well">
                 <center>
                   <p>
                     <%= link_to(image_tag("firstlogovector.png", :style => "height: 48px; width: auto;", :alt => "FIRST"),
@@ -182,8 +184,6 @@
                   </p>
                 </center>
               </div>
-              </div>
-            </div>
           <div id="tweetbox" class="visible-desktop">
             <div class="well">
             <center><h4>Latest tweets from <a href="https://www.twitter.com/team461wbi">@Team461WBI</a></h4></center>
@@ -207,7 +207,7 @@
                                                                        :class => "social-icon",
                                                                        :alt => "Youtube" %></a>
           <p>
-            &copy; Copyright Westside Boiler Invasion 2013<br />
+            &copy; Copyright Westside Boiler Invasion Team 461 2013<br />
             <% if !current_user %>
               <%= link_to "Log in", log_in_path, :id => "login" %>
             <% else %>
@@ -342,6 +342,15 @@
             <!-- <hr class="visible-desktop" /> -->
             <!-- </div> -->
         </div><!--/span-->
+        <div class="well">
+                <center>
+                  <p>
+                    <%= link_to(image_tag("firstlogovector.png", :style => "height: 48px; width: auto;", :alt => "FIRST"),
+                        "http://www.usfirst.org/") %>
+                    <h3>FRC Team <%= teamnum %></h3>
+                  </p>
+                </center>
+              </div>
             <div id="tweetbox" class="visible-desktop">
               <div class="well">
               <center><h4>Latest tweets from <a href="https://www.twitter.com/team461wbi">@Team461WBI</a></h4></center>
