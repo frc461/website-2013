@@ -467,12 +467,17 @@ div .fb_reset {
   }
 }
 
-/* @media (max-width: 979px) and (min-width: 767px) { */
-/*   .search-query { */
-/*     width: 100px; */
-/*   } */
-/* } */
+ @media (max-width: 979px) and (min-width: 767px) { 
+   .search-query { 
+     width: 76%; 
+   } 
+ } 
 
+ @media (min-width: 979px) { 
+   .search-query { 
+     width: 76%; 
+   } 
+ } 
 .social-buttons-navbar {
   text-align: right;
   float: right;
