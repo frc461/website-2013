@@ -2,7 +2,7 @@ class Photo < ActiveRecord::Base
   attr_accessible :album_id, :image
   has_attached_file :image,
                     :storage => :filesystem,
-                    :styles => { :medium => "x512<", :thumb => "250x>" },
+                    :styles => { :medium => "x512", :thumb => "250x>" },
                     :path => "app/assets/images/images/:style-:filename",
                     :url => "/assets/images/:style-:filename"
 
