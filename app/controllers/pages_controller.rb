@@ -71,5 +71,10 @@ class PagesController < InheritedResources::Base
     @page = selectpage(params[:id], params[:titles])
   end
 
+  def destroy
+    @page = Page.find(params[:id])
+    @page.delete
 
+    redirect_to pages_path, :notice => "Removed page."
+  end
 end
