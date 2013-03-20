@@ -29,7 +29,7 @@
 </table>
 
 <% Group.all.each do | group |%>
-<% if current_user.groups.include?(group) || current_user.admin %>
+<% if group.forums.count > 0 && (current_user.groups.include?(group) || current_user.admin) %>
 <h1><%= group.name %></h1>
 <table class="table table-striped">
   <tr>
