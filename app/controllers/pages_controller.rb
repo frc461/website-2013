@@ -8,7 +8,7 @@ class PagesController < InheritedResources::Base
         return Page.find(id)
       else
         testpage = Page.where("title LIKE ?", id.gsub(/_/, ' ').gsub(/~/, ':')).first
-        if !testpage.parent_id
+        if testpage && !testpage.parent_id
           return testpage
         end
       end
