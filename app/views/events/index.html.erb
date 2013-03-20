@@ -13,6 +13,11 @@
 <div class="page-header">
   <h1> Calendar </h1>
 </div>
+<% if can? :write, Event %>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_event_path,
+            :class => 'btn btn-primary' %>
+<% end %>
 <div id='calendar'></div>
 <br />
 <script>
@@ -24,8 +29,3 @@ $(document).ready(function() {
     $("calendar .fc-content")[0].hidden = true;
 });
 </script>
-<% if can? :write, Event %>
-<%= link_to t('.new', :default => t("helpers.links.new")),
-            new_event_path,
-            :class => 'btn btn-primary' %>
-<% end %>
