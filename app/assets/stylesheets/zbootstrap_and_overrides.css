@@ -91,6 +91,10 @@ blockquote {
   background-color: #131517 !important;
 }
 
+.text_area {
+  width: 100%;
+}
+
 .text-error {
   color: #FFF200;
 }
