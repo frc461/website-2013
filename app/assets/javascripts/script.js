@@ -8,7 +8,8 @@
  */
 
 
-$(document).ready(function(){
+// PARALLAX SCROLLING
+/*$(document).ready(function(){
   // Cache the Window object
   $window = $(window);
   $('section[data-type="background"]').each(function(){
@@ -27,6 +28,7 @@ $(document).ready(function(){
     }); // window scroll Ends
  });
 });
+*/
 
 /* 
  * Create HTML5 elements for IE's sake
