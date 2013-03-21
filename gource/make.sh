@@ -8,7 +8,7 @@ gource -s 1 \
        --caption-size 10 \
        --caption-duration 2 \
        -1920x1080 \
-       -r 3p0 \
+       -r 30 \
        -o - \
        .. \
 | \
