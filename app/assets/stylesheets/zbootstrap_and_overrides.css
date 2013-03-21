@@ -9,9 +9,14 @@
 article a:hover {
   color: #fff;
 }
+
 body {
   background-image:url('/assets/bg.png');
   background-repeat: repeat;
+}
+
+blockquote {
+  font-style: italic;
 }
 
 .grey-text {
@@ -68,7 +73,7 @@ body {
 }
 
 .bootstrap-datetimepicker-widget td.day:hover {
-  background-color: #FFF200;
+-  background-color: #FFF200;
   color: #131517;
 }
 
