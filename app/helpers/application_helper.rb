@@ -38,16 +38,16 @@ module ApplicationHelper
           if $5
             if $5 == "r"
               image_tag(Photo.where("album_id = ? and id = ?",
-                                    Album.where("name LIKE ?", $1).first.id, $2.to_i).first.image.url(:medium),
+                                    Album.where("name LIKE ?", $1).first.id, $2.to_i).first.image.url(style),
                         :class => "pull-right floating-content-img")
             elsif $5 == "l"
               image_tag(Photo.where("album_id = ? and id = ?",
-                                    Album.where("name LIKE ?", $1).first.id, $2.to_i).first.image.url(:medium),
+                                    Album.where("name LIKE ?", $1).first.id, $2.to_i).first.image.url(style),
                         :class => "pull-left floating-content-img")
             end
           else
             image_tag(Photo.where("album_id = ? and id = ?",
-                                  Album.where("name LIKE ?", $1).first.id, $2.to_i).first.image.url(:medium),
+                                  Album.where("name LIKE ?", $1).first.id, $2.to_i).first.image.url(style),
                       :class => "content-img")
           end
         rescue
