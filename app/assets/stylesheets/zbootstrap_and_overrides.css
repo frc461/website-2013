@@ -10,6 +10,7 @@ body {
   background-image:url('/assets/bg.png');
   background-repeat: repeat;
 }
+
 .grey-text {
   color: #404040;
 }
@@ -31,20 +32,25 @@ body {
   margin-bottom: -14px;
   padding-left: 18px;
 }
+
 .searchsidething {
   height: 31px;
 }
+
 /* .search-div { */
 /*   width: 100%; */
 /* } */
+
 .form-search fieldset {
   padding-right: 4px;
 }
+
 .twitter-border hr {
   color: #fff200;
   background-color: #fff200;
   border-color: #fff200;
 }
+
 .twitter-border {
   padding: 9px;
   border-left: 5px solid #fff200;
@@ -53,27 +59,34 @@ body {
   border-radius: 1px;
   -moz-border-radius: 1px;
 }
+
 .fc-state-highlight {
   background-color: rgba(19,21,23,.7) !important;
 }
+
 .bootstrap-datetimepicker-widget td.day:hover {
   background-color: #FFF200;
   color: #131517;
 }
+
 .bootstrap-datetimepicker-widget td span:hover {
   background-color: #FFF200;
   color: #131517;
 }
+
 .bootstrap-datetimepicker-widget thead tr:first-child th:hover {
   background-color: #FFF200 !important;
   color: #131517;
 }
+
 .add-on {
   background-color: #131517 !important;
 }
+
 .text-error {
   color: #FFF200;
 }
+
 a.text-error:hover {
   color: #FFFFFF;
 }
@@ -254,7 +267,7 @@ ul.nav {
 
 
 .navbar .nav > li > a:hover{
-  padding: 15px 15px 14px;
+//  padding: 15px 15px 14px;
   border-bottom: 1px solid #fff200;
   background-color: #252a30 !important;
 }
@@ -263,7 +276,7 @@ ul.nav {
   /* padding: 15px 15px 14px; */
   padding-bottom: 2px;
   border-bottom: 1px solid #fff200;
-  background-color: #000000 !important;
+  background-color: #252a30 !important;
 }
 
 a :hover{
@@ -328,9 +341,13 @@ footer {
 footer a {
   color: inherit;
 }
+
 #page{
-  margin-top: -13px;
-  background: url("/assets/bg.png") 50% 0 repeat fixed;}
+//  margin-top: -13px;
+//  background: url("/assets/bg.png") 50% 0 repeat fixed;
+  background: url("/assets/bg.png") 50% 0 repeat;
+}
+
 body {
   color: #FFF;
 }
@@ -338,8 +355,8 @@ body {
 .background {
   background-image: url("/assets/bg.png");
   background-repeat: repeat;
-width:auto;
-height: auto;
+  width:auto;
+  height: auto;
 }
 
 #konamicodething {
@@ -406,15 +423,24 @@ ul.nav > li.dropdown > ul.dropdown-menu > li > a {
     margin-left: 0px;
     position: relative;
   }
+  .navbar-fixed-top .navbar-inner {
+    padding-top: 0px;
+    padding-bottom: 0px;
+  }
   
-  .navbar .nav>li>a{
-    padding-left:15px;
+  .navbar .nav > li > a {
+    padding-left: 15px;
+  }
+
+  .nav-collapse .nav {
+    margin-bottom: 10px;
+    margin-top: 10px;
   }
   
   .navbar .nav>li>a:hover{
-    padding: 9px 15px;
+    //padding: 9px 15px;
     padding-left: 14px;
-    border-left :1px solid #fff200;
+    border-left: 1px solid #fff200;
     border-bottom: 0px;
     text-decoration: none;
   }
@@ -426,12 +452,21 @@ ul.nav > li.dropdown > ul.dropdown-menu > li > a {
     margin-bottom: 6px;
   }
 
+  .navbar .brand {
+    padding-bottom: 1px !important;
+  }
+
+  .brand :hover {
+    padding-bottom: 0px;
+  }
+
   ul.nav > li.dropdown > ul.dropdown-menu > li > a:hover {
     padding: 9px 15px;
     padding-left: 14px;
     border-left:1px solid #fff200;
     border-bottom:0px;
     background-color: #252a30
+    color: #ffff20;
   }
   
   ul.nav > li.dropdown > a > i.icon-chevron-down {

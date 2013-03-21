@@ -50,95 +50,95 @@
     <%= favicon_link_tag '/favicon.ico', :rel => 'shortcut icon' %>
   </head>
   <body>
-  <section id="page" data-type="background" data-speed="5" class="visible-desktop">
-    <div class="navbar navbar-fluid-top navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container-fluid">
-          <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <a class="brand" href="/"><%= image_tag 'logo.png', :alt => "Westside Boiler Invasion" %></a>
-          <!-- <br /> -->
-          <div class="container-fluid nav-collapse">
-            <div class="pull-left" style="vertical-align: bottom;">
-              <ul class="nav">
-                <li><%= link_to "Home", "/", :class => "dropdown-toggle js-activated" %></li>
-                <% Page.where(:navigable => true, :parent_id => nil).order("sort_index, title").each do |page_to_draw|  %>
-                <% if page_to_draw.pages.first %>
-                <li class="dropdown"> 
-                  <%= link_to_page page_to_draw,
-                      page_to_draw.title + " <i class=\"icon-chevron-down\"></i>",
-                      'class="dropdown-toggle js-activated"'%> 
-                  <ul class="dropdown-menu">
-                  <% page_to_draw.pages.where(:navigable => true).order("sort_index, title").each do |childs_to_draw| %>
-                    <li> <%= link_to_page childs_to_draw %> </li>
-                  <% end %> 
-                  </ul>
-                </li>
-                <% else %>
-                <li><%= link_to_page page_to_draw, page_to_draw.title, 'class="dropdown-toggle js-activated"' %></li>
-                <% end %>
-              <% end %>
-              <li><%= link_to "Blog", posts_path, :class => "dropdown-toggle js-activated" %></li>
-              <li><%= link_to "Photos", albums_path, :class => "dropdown-toggle js-activated" %></li>
-              <% if can? :read, Event %>
-              <li><%= link_to "Calendar", events_path, :class => "dropdown-toggle js-activated" %></li>
-              <% end %>
-              <% if can? :read, Todo %>
-              <li><%= link_to "To Do", todos_path, :class => "dropdown-toggle js-activated" %></li>
-              <% end %>
-              <% if can? :read, Forum %>
-              <li><%= link_to "Forums", forums_path, :class => "dropdown-toggle js-activated" %></li>
-              <% end %>
-              </ul>
+    <section id="page" data-type="background" data-speed="5">
+      <div class="navbar navbar-fluid-top navbar-fixed-top">
+        <div class="navbar-inner">
+          <div class="container-fluid">
+            <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </a>
+            <a class="brand" href="/"><%= image_tag 'logo.png', :alt => "Westside Boiler Invasion" %></a>
+            <!-- <br /> -->
+            <div class="container-fluid nav-collapse">
+              <div class="pull-left" style="vertical-align: bottom;">
+                <ul class="nav">
+                  <li><%= link_to "Home", "/", :class => "dropdown-toggle js-activated" %></li>
+                  <% Page.where(:navigable => true, :parent_id => nil).order("sort_index, title").each do |page_to_draw| %>
+                  <% if page_to_draw.pages.first %>
+                  <li class="dropdown"> 
+                    <%= link_to_page page_to_draw,
+                        page_to_draw.title + " <i class=\"icon-chevron-down\"></i>",
+                        'class="dropdown-toggle js-activated"'%> 
+                    <ul class="dropdown-menu">
+                    <% page_to_draw.pages.where(:navigable => true).order("sort_index, title").each do |childs_to_draw| %>
+                      <li><%= link_to_page childs_to_draw %></li>
+                    <% end %> 
+                    </ul>
+                  </li>
+                  <% else %>
+                  <li><%= link_to_page page_to_draw, page_to_draw.title, 'class="dropdown-toggle js-activated"' %></li>
+                  <% end %>
+                  <% end %>
+                  <li><%= link_to "Blog", posts_path, :class => "dropdown-toggle js-activated" %></li>
+                  <li><%= link_to "Photos", albums_path, :class => "dropdown-toggle js-activated" %></li>
+                  <% if can? :read, Event %>
+                  <li><%= link_to "Calendar", events_path, :class => "dropdown-toggle js-activated" %></li>
+                  <% end %>
+                  <% if can? :read, Todo %>
+                  <li><%= link_to "To Do", todos_path, :class => "dropdown-toggle js-activated" %></li>
+                  <% end %>
+                  <% if can? :read, Forum %>
+                  <li><%= link_to "Forums", forums_path, :class => "dropdown-toggle js-activated" %></li>
+                  <% end %>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-    <article>
-    <%= content_for :breadcrumb %>
-    <div class="container-fluid">
-      <div class="row-fluid">
-        <div class="span9 solidBackground pull-right" id="main-span">
-          <%= yield %>
-        </div>
-        <!-- SIDEBAR -->
-          <div class="span3 pull-left" id="sidebar-span">
-            <br />
-            <div class="well searchsidething">
-            <form id="formfilters" class="form-search span12" action="/search">
-              <fieldset>
-              <div class="input-append">
-                <input type="text"
-                       name="search"
-                       class="search-query span9"
-                       placeholder="Search"
-                       <%= 'value=' + params[:search] if(params[:search]) %> />
-                <button type="submit" class="btn"><i class="icon-search"></i></button>
-              </div>
+      <article>
+        <%= content_for :breadcrumb %>
+        <div class="container-fluid">
+          <div class="row-fluid">
+            <div class="span9 solidBackground pull-right" id="main-span">
+              <%= yield %>
+            </div>
+            <!-- SIDEBAR -->
+            <div class="span3 pull-left" id="sidebar-span">
+              <br />
+              <div class="well searchsidething">
+              <form id="formfilters" class="form-search span12" action="/search">
+                <fieldset>
+                <div class="input-append">
+                  <input type="text"
+                         name="search"
+                         class="search-query span9"
+                         placeholder="Search"
+                         <%= 'value=' + params[:search] if(params[:search]) %> />
+
+                  <button type="submit" class="btn"><i class="icon-search"></i></button>
+                </div>
               </fieldset>
             </form>
-            </div>
-            <%= content_for :ChildrenPages %>
-            <% if current_user %>
-              <div class="well">
-                  <!--<hr />-->
-                    <p>Logged in as <%= current_user.name %></p>
-                    <% if can? :update, current_user %>
-                    <table>
-                      <tr class="smallerPadding"><td rowspan="5"><div class="verticalTextUpLeft"><strong>Admin</strong></div></td></tr>
-                      <tr><td><%= link_to "Users", users_path %></td></tr>
-                      <tr><td><%= link_to "Groups", groups_path %></td></tr>
-                      <tr><td><%= link_to "Pages", pages_path %></td></tr>
-                    </table>
-                    <% end %>
-              </div>
+          </div>
+          <%= content_for :ChildrenPages %>
+          <% if current_user %>
+          <div class="well">
+            <p>Logged in as <%= current_user.name %></p>
+            <% if can? :update, current_user %>
+            <table>
+              <tr class="smallerPadding"><td rowspan="5"><div class="verticalTextUpLeft"><strong>Admin</strong></div></td></tr>
+              <tr><td><%= link_to "Users", users_path %></td></tr>
+              <tr><td><%= link_to "Groups", groups_path %></td></tr>
+              <tr><td><%= link_to "Pages", pages_path %></td></tr>
+            </table>
             <% end %>
-            <div class="well">
-              <div class="container row-fluid" style="margin-bottom: -5px;">
+          </div>
+          <% end %>
+          <div class="well">
+            <div class="container row-fluid" style="margin-bottom: -5px;">
               <div class="span6" style="margin-top: 10px;">
                 <table class="social-buttons">
                   <tr class="smallerPadding">
@@ -173,21 +173,21 @@
                   </tr>
                 </table>
               </div>
-              </div>
-              </div>
-             <div class="well">
-                <center>
-                  <p>
-                    <%= link_to(image_tag("firstlogovector.png", :style => "height: 48px; width: auto;", :alt => "FIRST"),
-                        "http://www.usfirst.org/") %>
-                    <h3>FRC Team <%= teamnum %></h3>
-                  </p>
-                </center>
-              </div>
+            </div>
+          </div>
+          <div class="well">
+            <center>
+              <p>
+                <%= link_to(image_tag("firstlogovector.png", :style => "height: 48px; width: auto;", :alt => "FIRST"),
+                    "http://www.usfirst.org/") %>
+                <h3>FRC Team <%= teamnum %></h3>
+              </p>
+            </center>
+          </div>
           <div id="tweetbox" class="visible-desktop">
             <div class="well">
-            <center><h4>Latest tweets from <a href="https://www.twitter.com/team461wbi">@Team461WBI</a></h4></center>
-            <%= render :partial => "twitter_feed/twitter_feed" %>
+              <center><h4>Latest tweets from <a href="https://www.twitter.com/team461wbi">@Team461WBI</a></h4></center>
+              <%= render :partial => "twitter_feed/twitter_feed" %>
             </div>
           </div>
         </div><!--/span-->
@@ -197,274 +197,105 @@
 
       <footer>
         <center>
-          <a href="https://www.facebook.com/WBI461"     ><%= image_tag 'icon/facebook-icon.png', 
-                                                                       :class => "social-icon",
-                                                                       :alt => "Facebook" %></a>
-          <a href="https://twitter.com/team461WBI"      ><%= image_tag 'icon/twitter-icon.png',  
-                                                                       :class => "social-icon",
-                                                                       :alt => "Twitter" %></a>
-          <a href="https://www.youtube.com/user/team461"><%= image_tag 'icon/youtube-icon.png',
-                                                                       :class => "social-icon",
-                                                                       :alt => "Youtube" %></a>
+          <a href="https://www.facebook.com/WBI461">
+            <%= image_tag 'icon/facebook-icon.png', :class => "social-icon", :alt => "Facebook" %>
+          </a>
+          <a href="https://twitter.com/team461WBI">
+            <%= image_tag 'icon/twitter-icon.png', :class => "social-icon", :alt => "Twitter" %>
+          </a>
+          <a href="https://www.youtube.com/user/team461">
+            <%= image_tag 'icon/youtube-icon.png', :class => "social-icon", :alt => "Youtube" %>
+          </a>
           <p>
             &copy; Copyright Westside Boiler Invasion Team 461 2013<br />
             <% if !current_user %>
-              <%= link_to "Log in", log_in_path, :id => "login" %>
+            <%= link_to "Log in", log_in_path, :id => "login" %>
             <% else %>
-              <%= link_to "Log out", log_out_path %>
+            <%= link_to "Log out", log_out_path %>
             <% end %>
             <% if print_debug %>
-              <p class="grey-text">Debugging data: <%= debug_string %></p>
+            <p class="grey-text">Debugging data: <%= debug_string %></p>
+            <p class="visible-desktop grey-text">desktop</p>
+            <p class="visible-tablet grey-text">tablet</p>
+            <p class="visible-phone grey-text">phone</p> 
             <% end %>
           </p>
         </center>
       </footer>
       <div class="alerts-holder">
-              <div id="konamicodething" class="alert fade in alert-success">
-                <button class="close" data-dismiss="alert">&times;</button>
-                Woah, you know the Konami code! Unfortunately, we can't give you any extra lives. Or anything else. Carry on.
-              </div>
-          <%= bootstrap_flash %>
+        <div id="konamicodething" class="alert fade in alert-success">
+           <button class="close" data-dismiss="alert">&times;</button>
+           Woah, you know the Konami code! Unfortunately, we can't give you any extra lives. Or anything else. Carry on.
+        </div>
+        <%= bootstrap_flash %>
       </div>
     </div> <!-- /container -->
-    </article>
-  </section>
-  <div class="background hidden-desktop"> 
-    <div class="navbar navbar-fluid-top navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container-fluid">
-          <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <a class="brand" href="/"><%= image_tag 'logo.png', :alt => "Westside Boiler Invasion" %></a>
-          <!-- <br /> -->
-          <div class="container-fluid nav-collapse">
-            <div class="pull-left" style="vertical-align: bottom;">
-              <ul class="nav">
-                <li><%= link_to "Home", "/", :class => "dropdown-toggle js-activated" %></li>
-                <% Page.where(:navigable => true, :parent_id => nil).each do |page_to_draw|  %>
-                <% if page_to_draw.pages.first %>
-                <li class="dropdown"> 
-                  <%= link_to_page page_to_draw,
-                      page_to_draw.title + " <i class=\"icon-chevron-down\"></i>",
-                      'class="dropdown-toggle js-activated"'%> 
-                  <ul class="dropdown-menu">
-                  <% page_to_draw.pages.each do | childs_to_draw |%>
-                    <li> <%= link_to_page childs_to_draw %> </li>
-                  <% end %> 
-                  </ul>
-                </li>
-                <% else %>
-                <li><%= link_to_page page_to_draw, page_to_draw.title, 'class="dropdown-toggle js-activated"' %></li>
-                <% end %>
-              <% end %>
-              <li><%= link_to "Blog", posts_path, :class => "dropdown-toggle js-activated" %></li>
-              <li><%= link_to "Photos", albums_path, :class => "dropdown-toggle js-activated" %></li>
-              <li><%= link_to "Calendar", events_path, :class => "dropdown-toggle js-activated" %></li>
-              <% if can? :read, Todo %>
-              <li><%= link_to "To Do", todos_path, :class => "dropdown-toggle js-activated" %></li>
-              <% end %>
-              <% if can? :read, Forum %>
-              <li><%= link_to "Forums", forums_path, :class => "dropdown-toggle js-activated" %></li>
-              <% end %>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <%= content_for :breadcrumb %>
-    <div class="container-fluid">
-      <div class="row-fluid">
-        <div class="span9 solidBackground pull-right" id="main-span">
-          <%= yield %>
-        </div>
-        <!-- SIDEBAR -->
-          <div class="span3 pull-left" id="sidebar-span">
-            <br />
-            <div class="well searchsidething">
-            <form id="formfilters" class="form-search" action="/search">
-              <fieldset>
-              <div class="input-append">
-                <input type="text"
-                       name="search"
-                       class="search-query span9"
-                       placeholder="Search"
-                       <%= 'value=' + params[:search] if(params[:search]) %> />
-                <button type="submit" class="btn"><i class="icon-search"></i></button>
-              </div>
-              </fieldset>
-            </form>
-            </div>
-            <%= content_for :ChildrenPages %>
-            <% if current_user %>
-              <div class="well">
-                  <!--<hr />-->
-                    <p>Logged in as <%= current_user.name %></p>
-                    <% if can? :update, current_user %>
-                    <table>
-                      <tr class="smallerPadding"><td rowspan="5"><div class="verticalTextUpLeft"><strong>Admin</strong></div></td></tr>
-                      <tr><td><%= link_to "Users", users_path %></td></tr>
-                      <tr><td><%= link_to "Groups", groups_path %></td></tr>
-                      <tr><td><%= link_to "Pages", pages_path %></td></tr>
-                    </table>
-                    <% end %>
-              </div>
-            <% end %>
-            <div class="well">
-            <table class="social-buttons">
-            <tr class="smallerPadding">
-            <td class="hidden-tablet" rowspan="5"><div class="verticalTextUpLeft"><strong>Social</strong></div></td>
-              <td>
-              <div class="fb-like"
-                  data-layout="button_count"
-                  data-colorscheme="light"
-                  data-action="like"
-                  data-href="http://www.facebook.com/WBI461">
-                    Like us on Facebook
-              </div>
-              </td></tr><tr><td>
-              <div class="g-plusone"
-                  data-size="medium"
-                  data-href="http://boilerinvasion.org">
-                    1+ on Google+
-              </div>
-              </td></tr><tr><td>              
-              <a href="https://twitter.com/Team461WBI"
-                class="twitter-follow-button"
-                data-show-count="false"
-                data-dnt="true"
-                data-show-screen-name="false">Follow @Team461WBI</a>
-              </td></tr>
-            </table>
-            <!-- <hr class="visible-desktop" /> -->
-            <!-- </div> -->
-        </div><!--/span-->
-        <div class="well">
-                <center>
-                  <p>
-                    <%= link_to(image_tag("firstlogovector.png", :style => "height: 48px; width: auto;", :alt => "FIRST"),
-                        "http://www.usfirst.org/") %>
-                    <h3>FRC Team <%= teamnum %></h3>
-                  </p>
-                </center>
-              </div>
-            <div id="tweetbox" class="visible-desktop">
-              <div class="well">
-              <center><h4>Latest tweets from <a href="https://www.twitter.com/team461wbi">@Team461WBI</a></h4></center>
-              <%= render :partial => "twitter_feed/twitter_feed" %>
-              </div>
-            </div>
-        </div><!--/span-->
-        <!-- CONTENT -->
-      </div><!--/row-->
+  </article>
+</section>
+</div>
+</body>
 
-      <br class="visible-phone" />
-
-      <footer>
-        <center>
-          <a href="https://www.facebook.com/WBI461"     ><%= image_tag 'icon/facebook-icon.png', 
-                                                                       :class => "social-icon",
-                                                                       :alt => "Facebook" %></a>
-          <a href="https://twitter.com/team461WBI"      ><%= image_tag 'icon/twitter-icon.png',  
-                                                                       :class => "social-icon",
-                                                                       :alt => "Twitter" %></a>
-          <a href="https://www.youtube.com/user/team461"><%= image_tag 'icon/youtube-icon.png',
-                                                                       :class => "social-icon",
-                                                                       :alt => "Youtube" %></a>
-          <p>
-            &copy; Copyright Westside Boiler Invasion 2013<br />
-            <% if !current_user %>
-              <%= link_to "Log in", log_in_path, :id => "login" %>
-            <% else %>
-              <%= link_to "Log out", log_out_path %>
-            <% end %>
-            <% if print_debug %>
-              <p class="grey-text">
-                Debugging data: <%= debug_string %>,
-              </p>
-              <p class="visible-desktop grey-text">desktop</p>
-              <p class="visible-tablet grey-text">tablet</p>
-              <p class="visible-phone grey-text">phone</p>
-            <% end %>
-          </p>
-        </center>
-      </footer>
-      <div class="alerts-holder">
-              <div id="konamicodething" class="alert fade in alert-success">
-                <button class="close" data-dismiss="alert">&times;</button>
-                Woah, you know the Konami code! Unfortunately, we can't give you any extra lives. Or anything else. Carry on.
-              </div>
-          <%= bootstrap_flash %>
-      </div>
-    </div> <!-- /container -->
-    </div>
-    </body>
-
-    <!-- Javascripts
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <%= javascript_include_tag "application" %>
-  <div id="fb-root"></div>
-  <script type="text/javascript">(function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-      js = d.createElement(s); js.id = id;
-      js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
-      fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
-  </script>
-  <script type="text/javascript">
-    function sizing() {
-      var formfilterswidth=$("#formfilters").width();
-      $("#msisdn").width((formfilterswidth-46)+"px");
-    }
-    $(document).ready(sizing);
-    $(window).resize(sizing);
-  </script>
-  <script type="text/javascript">
-    (function() {
-      var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-      po.src = 'https://apis.google.com/js/plusone.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-    })();
-  </script>
-  <script>
-      !function(d,s,id){
-        var js,fjs=d.getElementsByTagName(s)[0];
-        if(!d.getElementById(id)) {
-          js=d.createElement(s);
-          js.id=id;
-          js.src="//platform.twitter.com/widgets.js";
-          fjs.parentNode.insertBefore(js,fjs);
-        }
-      }(document,"script","twitter-wjs");
-  </script>
-  <script type="text/javascript">
-    konami = new Konami()
-    konami.code = function () {
-      document.getElementById("konamicodething").style.display = "block";
-    }
-    konami.load()
-  </script>
-  <script>
-    // very simple to use!
-    $(document).ready(function() {
-      $('.js-activated').dropdownHover(true);
-    });
-  </script>
-  <!-- GOOGLE ANALYTICS -->
-  <script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-39061039-1']);
-    _gaq.push(['_trackPageview']);
-
-    (function() {
-      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-  </script> 
+<!-- Javascripts
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<%= javascript_include_tag "application" %>
+<div id="fb-root"></div>
+<script type="text/javascript">(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+</script>
+<script type="text/javascript">
+  function sizing() {
+    var formfilterswidth=$("#formfilters").width();
+    $("#msisdn").width((formfilterswidth-46)+"px");
+  }
+  $(document).ready(sizing);
+  $(window).resize(sizing);
+</script>
+<script type="text/javascript">
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script>
+<script>
+  !function(d,s,id){
+     var js,fjs=d.getElementsByTagName(s)[0];
+     if(!d.getElementById(id)) {
+       js=d.createElement(s);
+       js.id=id;
+       js.src="//platform.twitter.com/widgets.js";
+       fjs.parentNode.insertBefore(js,fjs);
+     }
+   }(document,"script","twitter-wjs");
+</script>
+<script type="text/javascript">
+  konami = new Konami()
+  konami.code = function () {
+    document.getElementById("konamicodething").style.display = "block";
+  } 
+  konami.load()
+</script>
+<script>
+  // very simple to use!
+  $(document).ready(function() {
+    $('.js-activated').dropdownHover(true);
+  });
+</script>
+<!-- GOOGLE ANALYTICS -->
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-39061039-1']);
+  _gaq.push(['_trackPageview']);
+   (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script> 
 </html>
