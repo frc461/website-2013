@@ -36,7 +36,7 @@ class PagesController < InheritedResources::Base
         return Page.find(titles.last.id)
       end
     end
-   rescue Excpetion => ex
+   rescue Exception => ex
     redirect_to error_path
    end
     # if params[:title] || params[:id]
