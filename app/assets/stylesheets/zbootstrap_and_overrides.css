@@ -275,14 +275,14 @@ ul.nav {
   background-color: #252a30 !important;
 }
 
-.brand :hover {
+.brand:hover {
   /* padding: 15px 15px 14px; */
   padding-bottom: 2px;
   border-bottom: 1px solid #fff200;
   background-color: #252a30 !important;
 }
 
-a :hover{
+a:hover{
   color: #020202;
   text-decoration: none;
 }
@@ -474,7 +474,7 @@ ul.nav > li.dropdown > ul.dropdown-menu > li > a {
     padding-left: 14px;
     border-left:1px solid #fff200;
     border-bottom:0px;
-    background-color: #252a30
+    background-color: #252a30;
     color: #ffff20;
   }
   
