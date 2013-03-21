@@ -343,9 +343,15 @@ footer a {
 }
 
 #page{
-//  margin-top: -13px;
-//  background: url("/assets/bg.png") 50% 0 repeat fixed;
-  background: url("/assets/bg.png") 50% 0 repeat;
+  margin-top: -13px;
+  background: url("/assets/bg.png") 50% 0 repeat fixed;
+//  background: url("/assets/bg.png") 50% 0 repeat;
+}
+
+@media(max-width: 979px) {
+  #page {
+    margin-top: 0px;
+  }
 }
 
 body {
