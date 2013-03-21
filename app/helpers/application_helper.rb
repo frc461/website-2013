@@ -20,22 +20,34 @@ module ApplicationHelper
   end
   
   def photocheck(text)
-    gsubber = text.gsub!(/\[[Aa]lbum ([^\[\]]+)\]\[[Pp]hoto (\d+)\](\[([rl])\])?/) do |s|
+    gsubber = text.gsub!(/\[[Aa]lbum ([^\[\]]+)\]\[[Pp]hoto (\d+)([\w])\](\[([rl])\])?/) do |s|
       if s != ""
         begin
-          if $4
-            if $4 == "r"
+          style = case $4.downcase
+            when 'o'
+              :original
+            when 't'
+              :thumb
+            when 'm'
+              :medium
+            else
+              :thumb
+          end
+
+	  
+          if $5
+            if $5 == "r"
               image_tag(Photo.where("album_id = ? and id = ?",
-                                    Album.where("name LIKE ?", $1).first.id, $2.to_i).first.image.url,
+                                    Album.where("name LIKE ?", $1).first.id, $2.to_i).first.image.url(:medium),
                         :class => "pull-right floating-content-img")
-            elsif $4 == "l"
+            elsif $5 == "l"
               image_tag(Photo.where("album_id = ? and id = ?",
-                                    Album.where("name LIKE ?", $1).first.id, $2.to_i).first.image.url,
+                                    Album.where("name LIKE ?", $1).first.id, $2.to_i).first.image.url(:medium),
                         :class => "pull-left floating-content-img")
             end
           else
             image_tag(Photo.where("album_id = ? and id = ?",
-                                  Album.where("name LIKE ?", $1).first.id, $2.to_i).first.image.url,
+                                  Album.where("name LIKE ?", $1).first.id, $2.to_i).first.image.url(:medium),
                       :class => "content-img")
           end
         rescue

@@ -3,6 +3,7 @@ class PagesController < InheritedResources::Base
   skip_load_and_authorize_resource :only => :show
 
   def selectpage(id, titles)
+   begin
     if id
       if id =~ /^\d+$/
         return Page.find(id)
@@ -35,6 +36,9 @@ class PagesController < InheritedResources::Base
         return Page.find(titles.last.id)
       end
     end
+   rescue Excpetion => ex
+    redirect_to error_path
+   end
     # if params[:title] || params[:id]
     #   if params[:id] =~ /^\d+(\.\d+)?$/
     #     @page = Page.find(params[:id])

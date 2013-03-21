@@ -10,6 +10,10 @@ class ApplicationController < ActionController::Base
     redirect_to root_url, :alert => exception.message
   end
 
+  rescue_from ActionView::MissingTemplate do |e|
+    redirect_to error_path
+  end
+
 #rescue_from Exception, :with => :handle_error
 #rescue_from ActionController::RoutingError, :with => :handle_error 
 
