@@ -25,15 +25,15 @@
     </url>
   <% end %>
     <url>
-      <loc><%= posts_path %></loc>
+      <loc><%= request.protocol + request.host_with_port + posts_path %></loc>
     </url>
     <url>
-      <loc><%= albums_path %></loc>
+      <loc><%= request.protocol + request.host_with_port + albums_path %></loc>
     </url>
     <url>
-      <loc><%= events_path %></loc>
+      <loc><%= request.protocol + request.host_with_port + events_path %></loc>
     </url>
     <url>
-      <loc><%= sitemap_path %></loc>
+      <loc><%= request.protocol + request.host_with_port + sitemap_path %></loc>
     </url>
 </urlset>
