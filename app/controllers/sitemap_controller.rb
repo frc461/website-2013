@@ -11,7 +11,13 @@ class SitemapController < ApplicationController
   end
 
   def robots
+    # respond_to :txt
     @pages = Page.all
-    render 'sitemap/robots.txt'
+    render 'sitemap/robots.txt.erb'
+    # respond_to do |format|
+    #   format.txt{
+    #     render 'sitemap/robots.txt'
+    #     respond_with @pages}
+    # end
   end
 end
