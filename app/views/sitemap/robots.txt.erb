@@ -3,3 +3,17 @@
 # To ban all spiders from the entire site uncomment the next two lines:
 # User-Agent: *
 # Disallow: /
+
+Sitemap: /sitemap.xml
+
+User-Agent: *
+Disallow: /log-in
+
+User-Agent: *
+Disallow: /sign-up
+
+<% @pages.each do |page| %>
+User-Agent: *
+Disallow: /pages/<%= page.id %>
+
+<% end %>

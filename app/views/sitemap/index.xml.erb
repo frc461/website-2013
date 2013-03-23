@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schmas/sitemaps/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemaps/0.9">
   <% @posts.each do |post| %>
     <url>
       <loc><%= post_url post %></loc>
@@ -8,8 +8,32 @@
   <% end %>
   <% @pages.each do |page| %>
     <url>
-      <loc><%= page_url page %></loc>
+      <loc><%= request.protocol + request.host_with_port + page_path(page) %></loc>
       <lastmod><%= page.updated_at.strftime("%Y-%m-%d") %> </lastmod>
     </url>
   <% end %>
+  <% @albums.each do |album| %>
+    <url>
+      <loc><%= album_url album %></loc>
+      <lastmod><%= album.updated_at.strftime("%Y-%m-%d") %> </lastmod>
+    </url>
+  <% end %>
+  <% @events.each do |event| %>
+    <url>
+      <loc><%= event_url event %></loc>
+      <lastmod><%= event.updated_at.strftime("%Y-%m-%d") %> </lastmod>
+    </url>
+  <% end %>
+    <url>
+      <loc><%= request.protocol + request.host_with_port + posts_path %></loc>
+    </url>
+    <url>
+      <loc><%= request.protocol + request.host_with_port + albums_path %></loc>
+    </url>
+    <url>
+      <loc><%= request.protocol + request.host_with_port + events_path %></loc>
+    </url>
+    <url>
+      <loc><%= request.protocol + request.host_with_port + sitemap_path %></loc>
+    </url>
 </urlset>

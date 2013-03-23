@@ -3,9 +3,24 @@
 </div>
 
 <div class="row-fluid">
+<% @pages.each do |page| %>
+  <div class="span6 pageWithBorder">
+    <h2><%= link_to_page page %></h2>
+  </div>
+<% end %>
 <% @posts.each do |post| %>
   <div class="span6 postWithBorder">
     <h2><%= link_to post.title, post_path(post) %></h2>
+  </div>
+<% end %>
+<% @events.each do |event| %>
+  <div class="span6 eventWithBorder">
+    <h2><%= link_to event.title, event_path(event) %></h2>
+  </div>
+<% end %>
+<% @albums.each do |album| %>
+  <div class="span6 albumWithBorder">
+    <h2><%= link_to album.name, album_path(album) %></h2>
   </div>
 <% end %>
 </div>
