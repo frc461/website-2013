@@ -45,9 +45,9 @@ blockquote {
   height: 31px;
 }
 
-/* .search-div { */
-/*   width: 100%; */
-/* } */
+.input-append {
+  width: 200px;
+}
 
 .form-search fieldset {
   padding-right: 4px;
@@ -521,15 +521,15 @@ div .fb_reset {
 }
 
  @media (max-width: 979px) and (min-width: 767px) { 
-   .search-query { 
-     width: 76%; 
+   .input-append { 
+     width: 130px; 
    } 
  } 
 
  @media (min-width: 979px) { 
-   .search-query { 
-     width: 76%; 
-   } 
+   /* .search-query {  */
+   /*   width: 76%;  */
+   /* }  */
  } 
 .social-buttons-navbar {
   text-align: right;

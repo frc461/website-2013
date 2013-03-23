@@ -22,9 +22,8 @@
   <dd><%= check_box_tag "", "", @group.forum_access, :disabled => "disabled" %></dd>
   <dt><strong><%= model_class.human_attribute_name(:group_access) %>:</strong></dt>
   <dd><%= check_box_tag "", "", @group.group_access, :disabled => "disabled" %></dd>
-  <dt><strong>Users:</strong></dt> 
+  <dt><strong>Users:</strong></dt>
   <dd><%= @group.users.map do |usr| link_to(usr.name, usr) end.join(", ").html_safe%></dd>
-  <dd><strong>
 </dl>
 
 <div class="form-actions">
