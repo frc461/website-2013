@@ -109,20 +109,22 @@
             <div class="span3 pull-left" id="sidebar-span">
               <br />
               <div class="well searchsidething">
-              <form id="formfilters" class="form-search span12" action="/search">
-                <fieldset>
-                <div class="input-append">
-                  <input type="text"
-                         name="search"
-                         class="search-query span9"
-                         placeholder="Search"
-                         <%= 'value=' + params[:search] if(params[:search]) %> />
+                <center>
+                  <form id="formfilters" class="form-search span12" action="/search">
+                    <fieldset>
+                      <div class="input-append">
+                        <input type="text"
+                               name="search"
+                               class="search-query span9"
+                               placeholder="Search"
+                        <%= 'value=' + params[:search] if(params[:search]) %> />
 
-                  <button type="submit" class="btn"><i class="icon-search"></i></button>
-                </div>
-              </fieldset>
-            </form>
-          </div>
+                        <button type="submit" class="btn"><i class="icon-search"></i></button>
+                      </div>
+                    </fieldset>
+                  </form>
+                </center>
+              </div>
           <%= content_for :ChildrenPages %>
           <% if current_user %>
           <div class="well">
