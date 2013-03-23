@@ -5,6 +5,7 @@ Website::Application.routes.draw do
   get "search/search"
 
   get "sitemap" => "sitemap#index"
+  match "robots.txt" => "sitemap#robots"
 
   # kind of unnecessary...
   # get "error" => "error#index" 
