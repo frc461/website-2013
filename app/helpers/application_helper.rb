@@ -5,35 +5,67 @@ module ApplicationHelper
   end
 
   def format(text)
-    sanitize(markdown(text))
+    markdown(text).html_safe
   end
 
   def markdown(text)
+    carouselcheck(text)
     photocheck(text)
     linkcheck(text)
     doccheck(text)
-    BlueCloth::new(text).to_html
+    text = BlueCloth::new(text).to_html
   end
 
   def markback(text)
     return format(text).gsub(/<[^<>]+>/, '')
   end
+
+  def carouselcheck(text)
+   thingnum = 0
+    gsubber = text.gsub!(/\[carousel\]\[([0-9,]+)\]\[(right|left)\]/) do |s|
+      thingnum = 1 + thingnum
+      thing = "<div id=\"carousel"+ thingnum.to_s + "\" class=\"carousel slide\">
+                <div class=\"carousel-inner\">
+                  <div class=\"item active\">" 
+                    thing += image_tag(Photo.find($1.split(",").first).image.url(:medium))
+                  thing +="</div>"
+                   $1.split(",").drop(1).each do |photo|
+                      thing += " <div class=\"item\">" +
+                      image_tag(Photo.find(photo).image.url(:medium)) +
+                      "</div>"
+                  end
+                thing += "</div>
+                <a class=\"left carousel-control\" href=\"#carousel" + thingnum.to_s + "\" data-slide=\"prev\">&lsaquo;</a>
+                <a class=\"right carousel-control\" href=\"#carousel" + thingnum.to_s + "\" data-slide=\"next\">&rsaquo;</a>
+              </div>
+
+<script type=\"text/javascript\">
+
+$('.carousel').carousel()
+</script>"
+    end
+  end
+  
+      
   
   def photocheck(text)
-    gsubber = text.gsub!(/\[[Aa]lbum ([^\[\]]+)\]\[[Pp]hoto (\d+)([\w])\](\[([rl])\])?/) do |s|
+    gsubber = text.gsub!(/\[[Aa]lbum ([^\[\]]+)\]\[[Pp]hoto (\d+)([otm])?\](\[([rl])\])?/) do |s|
       if s != ""
         begin
-          style = case $4.downcase
-            when 'o'
-              :original
-            when 't'
-              :thumb
-            when 'm'
-              :medium
-            else
-              :thumb
+          if $4
+            style = case $4.downcase
+                    when 'o'
+                      :original
+                    when 't'
+                      :thumb
+                    when 'm'
+                      :medium
+                    else
+                      :thumb
+                    end
+          else
+            style = :thumb
           end
-
 	  
           if $5
             if $5 == "r"
