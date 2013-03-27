@@ -8,7 +8,8 @@ Website::Application.routes.draw do
   match "robots.txt" => "sitemap#robots"
 
   # kind of unnecessary...
-  # get "error" => "error#index" 
+  # Completely necessary for production error handling to work!!!
+  get "error" => "error#index" 
 
   resources :events
 

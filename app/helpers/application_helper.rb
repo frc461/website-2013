@@ -22,7 +22,7 @@ module ApplicationHelper
 
   def carouselcheck(text)
    thingnum = 0
-    gsubber = text.gsub!(/\[carousel\]\[([0-9,]+)\]\[(right|left)\]/) do |s|
+    gsubber = text.gsub!(/\[carousel\]\[([0-9,]+)\](\[(right|left)\])?/) do |s|
       thingnum = 1 + thingnum
       thing = "<div id=\"carousel"+ thingnum.to_s + "\" class=\"carousel slide\">
                 <div class=\"carousel-inner\">
