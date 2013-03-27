@@ -233,7 +233,7 @@ input {
 .carousel-inner {
   padding: 0px;
   margin: 0px;
-  height: 512px;
+/*  height: 512px; Make carousels work on smaller screens */
 }
 
 .carousel-inner img {
