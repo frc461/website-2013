@@ -41,7 +41,8 @@ module ApplicationHelper
 
 <script type=\"text/javascript\">
 
-$('.carousel').carousel()
+$('#carousel" + thingnum + "').carousel({interval: 8000})
+$('#carousel" + thingnum + "').carousel('cycle')
 </script>"
     end
   end
