@@ -73,6 +73,7 @@ class PagesController < InheritedResources::Base
 
   def show
     @page = selectpage(params[:id], params[:titles])
+    redirect_to error_path unless @page 
   end
 
   def destroy
