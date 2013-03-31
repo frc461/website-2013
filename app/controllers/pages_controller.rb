@@ -37,7 +37,8 @@ class PagesController < InheritedResources::Base
       end
     end
    rescue Exception => ex
-    redirect_to error_path
+     # redirect_to error_path
+     render "error/index", :status => 404
    end
     # if params[:title] || params[:id]
     #   if params[:id] =~ /^\d+(\.\d+)?$/
@@ -73,7 +74,8 @@ class PagesController < InheritedResources::Base
 
   def show
     @page = selectpage(params[:id], params[:titles])
-    redirect_to error_path unless @page 
+    # redirect_to error_path unless @page
+    render "error/index", :status => 404 unless @page
   end
 
   def destroy
