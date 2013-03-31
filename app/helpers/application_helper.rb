@@ -22,9 +22,11 @@ module ApplicationHelper
 
   def carouselcheck(text)
    thingnum = 0
-    gsubber = text.gsub!(/\[carousel\]\[([0-9,]+)\](\[(right|left)\])?/) do |s|
+    gsubber = text.gsub!(/\[carousel\]\[([0-9,]+)\]\[([0-9,]+)\]/) do |s|
       thingnum = 1 + thingnum
-      thing = "<div id=\"carousel"+ thingnum.to_s + "\" class=\"carousel slide\">
+      thing = "<div class=\"container row-fluid\">
+<div class=\"span6\">
+<div id=\"carousel"+ thingnum.to_s + "\" class=\"carousel slide\">
                 <div class=\"carousel-inner\">
                   <div class=\"item active\">" 
                     thing += image_tag(Photo.find($1.split(",").first).image.url(:medium))
@@ -37,7 +39,23 @@ module ApplicationHelper
                 thing += "</div>
                 <a class=\"left carousel-control\" href=\"#carousel" + thingnum.to_s + "\" data-slide=\"prev\">&lsaquo;</a>
                 <a class=\"right carousel-control\" href=\"#carousel" + thingnum.to_s + "\" data-slide=\"next\">&rsaquo;</a>
-              </div>
+              </div></div>"
+      thingnum = 1 + thingnum
+      thing += "<div class=\"span6\">
+<div id=\"carousel"+ thingnum.to_s + "\" class=\"carousel slide\">
+                <div class=\"carousel-inner\">
+                  <div class=\"item active\">" 
+                    thing += image_tag(Photo.find($2.split(",").first).image.url(:medium))
+                  thing +="</div>"
+                   $2.split(",").drop(1).each do |photo|
+                      thing += " <div class=\"item\">" +
+                      image_tag(Photo.find(photo).image.url(:medium)) +
+                      "</div>"
+                  end
+                thing += "</div>
+                <a class=\"left carousel-control\" href=\"#carousel" + thingnum.to_s + "\" data-slide=\"prev\">&lsaquo;</a>
+                <a class=\"right carousel-control\" href=\"#carousel" + thingnum.to_s + "\" data-slide=\"next\">&rsaquo;</a>
+              </div></div>
 
 <script type=\"text/javascript\">
 
