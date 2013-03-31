@@ -17,3 +17,5 @@ User-Agent: *
 Disallow: /pages/<%= page.id %>
 
 <% end %>
+
+# <%= `git --no-pager log --pretty=format:'%h' -n 8`.gsub(/\n/, "\n# ") %>
