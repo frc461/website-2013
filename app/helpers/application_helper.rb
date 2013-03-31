@@ -42,7 +42,7 @@ module ApplicationHelper
               </div></div>"
       thingnum = 1 + thingnum
       thing += "<div class=\"span6\">
-<div id=\"carousel"+ thingnum.to_s + "\" class=\"carousel slide\">
+<div id=\"carousel"+ thingnum.to_s + "\" class=\"carousel slide hidden-phone\">
                 <div class=\"carousel-inner\">
                   <div class=\"item active\">" 
                     thing += image_tag(Photo.find($2.split(",").first).image.url(:medium))
