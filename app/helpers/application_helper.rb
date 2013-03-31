@@ -55,9 +55,11 @@ module ApplicationHelper
                 thing += "</div>
                 <a class=\"left carousel-control\" href=\"#carousel" + thingnum.to_s + "\" data-slide=\"prev\">&lsaquo;</a>
                 <a class=\"right carousel-control\" href=\"#carousel" + thingnum.to_s + "\" data-slide=\"next\">&rsaquo;</a>
-              </div></div>
+              </div></div></div>
 
 <script type=\"text/javascript\">
+$('#carousel" + (thingnum - 1).to_s + "').carousel({interval: 10000})
+$('#carousel" + (thingnum - 1).to_s + "').carousel('cycle')
 
 $('#carousel" + thingnum.to_s + "').carousel({interval: 10000})
 $('#carousel" + thingnum.to_s + "').carousel('cycle')
