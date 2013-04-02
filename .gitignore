@@ -21,3 +21,6 @@
 .#*
 /public/system
 *.sh
+
+# Ignore generated files
+commit_hashes
