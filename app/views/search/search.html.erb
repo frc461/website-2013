@@ -7,6 +7,7 @@
 </div>
 
 <% if @pagethings.count + @postthings.count + @eventhings.count + @albuthings.count >= 1 %>
+  <% if @pagethings.count > 0 %>
   <div class="row-fluid">
     <div class="span12 postWithBorder">
       <h2>
@@ -20,15 +21,17 @@
     <% groupofresult.each do |thing| %>
       <% if thing != nil %>
         <div class="span4 postWithBorder">
-          <h3>
+          <h4>
           <%= link_to_page thing %>
-          </h3>
+          </h4>
         </div>
       <% end %>
     <% end %>
     </div>
     <br />
   <% end %>
+  <% end %>
+  <% if @postthings.count > 0 %>
   <div class="row-fluid">
     <div class="span12 postWithBorder">
       <h2>
@@ -42,15 +45,17 @@
     <% groupofresult.each do |thing| %>
       <% if thing != nil %>
         <div class="span4 postWithBorder">
-          <h3>
+          <h4>
           <%= link_to thing.title, thing %>
-          </h3>
+          </h4>
         </div>
       <% end %>
     <% end %>
     </div>
     <br />
   <% end %>
+  <% end %>
+  <% if @eventhings.count > 0 %>
   <div class="row-fluid">
     <div class="span12 postWithBorder">
       <h2>
@@ -64,15 +69,17 @@
     <% groupofresult.each do |thing| %>
       <% if thing != nil %>
         <div class="span4 postWithBorder">
-          <h3>
+          <h4>
           <%= link_to thing.title, thing %>
-          </h3>
+          </h4>
         </div>
       <% end %>
     <% end %>
     </div>
     <br />
   <% end %>
+  <% end %>
+  <% if @albuthings.count > 0 %>
   <div class="row-fluid">
     <div class="span12 postWithBorder">
       <h2>
@@ -86,14 +93,15 @@
     <% groupofresult.each do |thing| %>
       <% if thing != nil %>
         <div class="span4 postWithBorder">
-          <h3>
+          <h4>
           <%= link_to thing.name, thing %>
-          </h3>
+          </h4>
         </div>
       <% end %>
     <% end %>
     </div>
     <br />
+  <% end %>
   <% end %>
 <% else %>
 <p>No matches for <%= params[:search] %></p>

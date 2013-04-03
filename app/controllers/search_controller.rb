@@ -11,6 +11,7 @@ class SearchController < ApplicationController
       queries.each do |query|
         # TODO: FIX SUBSTRING MATCHING (eg "hi" matching "this")
         # Also: make sure we aren't matching something that will be parsed out
+        # Lastly: make sure all are navigable
         @pagethings += Page.tagged_with(query)
         @pagethings += Page.where("lower(title) LIKE lower(?)", "%" + query + "%")
         #@pagethings += Page.where("lower(content) LIKE lower(?)", "%" + query + "%") Don't think this and below content checker really work unless we also filter out keywords like "in" or "and"
@@ -31,6 +32,10 @@ class SearchController < ApplicationController
       @postthings.uniq!
       @eventhings.uniq!
       @albuthings.uniq!
+      @pagethings.delete("")
+      @postthings.delete("")
+      @eventhings.delete("")
+      @albuthings.delete("")
       # render 'search/search'
     end
   end
