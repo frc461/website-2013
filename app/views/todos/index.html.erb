@@ -17,7 +17,7 @@
   <% Todo.where(:group_id => nil).order("done ASC, created_at DESC").each do | todo |%>
     <tr>
       <td><%= link_to todo.name, todo %></td>
-      <td class="hidden-phone"><%= todo.content %></td>
+      <td class="hidden-phone"><%= markback todo.content %></td>
       <td>
       <%= form_for(todo, :remote => true) do |f|%>
         <%= f.check_box :done, :class => "checkthing" %>
@@ -41,7 +41,7 @@
   <% group.todos.order("done ASC, created_at DESC").each do |todo| %>
   <tr>
     <td><%= link_to todo.name, todo %></td>
-    <td class="hidden-phone"><%= todo.content %></td>
+    <td class="hidden-phone"><%= markback todo.content %></td>
     <td>
     <%= form_for(todo, :remote => true) do |f|%>
       <%= f.check_box :done, :class => "checkthing" %>

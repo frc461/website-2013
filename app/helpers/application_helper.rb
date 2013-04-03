@@ -17,7 +17,7 @@ module ApplicationHelper
   end
 
   def markback(text)
-    return format(text).gsub(/<[^<>]+>/, '')
+    return strip_tags(sanitize(format(text))) #lisp
   end
 
   def carouselcheck(text)

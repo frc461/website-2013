@@ -1,3 +1,8 @@
+<% content_for :title do
+     "Home"
+   end
+   %>
+
 <div class="page-header"><h1>Welcome!</h1></div>
 
 <% if Page.where("title LIKE ?", "frontpage").first %>
@@ -15,15 +20,13 @@
 <% Post.last(2).reverse.each do | post | %>
   <% if (post != nil) %>
   <div class="row-fluid">
-    <div class="span12 postWithBorder" style="padding: x">
+    <div class="span12 postWithBorder"><!-- what is x? style="padding: x"> -->
       <h2>
         <%= link_to(post.title, post, :class => "") %>
       </h2>
-      <%= format post.content.lines.first(2).join %>
+      <%= markback(post.content).lines.first(2).join %>
     </div>
   </div>
     <br />
   <% end %>
 <% end %>
-
-<!--<%# render :partial => "twitter_feed/twitter_feed" %>-->

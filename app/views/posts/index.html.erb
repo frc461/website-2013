@@ -21,7 +21,7 @@
           <h2>
             <%= link_to(post.title, post, :class => "") %>
           </h2>
-          <%= post.content[0..300] %>
+          <%= markback(post.content)[0..300] %>
         </div>
       </div>
       <br />
