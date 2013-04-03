@@ -19,5 +19,5 @@ Disallow: /pages/<%= page.id %>
 <% end %>
 
 <% f = File.new("commit_hashes") %>
-# <%= f.read.gsub(/\n/, "\n# ") %>
+<%= f.read.gsub(/^/, "# ") %>
 <% f.close %>
