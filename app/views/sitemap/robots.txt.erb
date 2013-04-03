@@ -18,4 +18,6 @@ Disallow: /pages/<%= page.id %>
 
 <% end %>
 
-# <%= `git --no-pager log --pretty=format:'%h' -n 8`.gsub(/\n/, "\n# ") %>
+<% f = File.new("commit_hashes") %>
+# <%= f.read.gsub(/\n/, "\n# ") %>
+<% f.close %>
