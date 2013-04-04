@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   helper_method :current_user
+  before_filter :debuggy
 
   def handle_error
     redirect_to error_path
@@ -12,6 +13,19 @@ class ApplicationController < ActionController::Base
 
   rescue_from ActionView::MissingTemplate do |e|
     redirect_to error_path
+  end
+  
+  def debuggy
+    @print_debug = true
+    if @print_debug
+      @debug_string = Digest::MD5.hexdigest(
+        "{ \"" +
+        (current_user ? current_user.name : "NO USER NAME" ) +
+        "\", \"" +
+        (@print_debug ? "true" : "false") +
+        "\" };")
+    else
+    end
   end
 
 #rescue_from Exception, :with => :handle_error
