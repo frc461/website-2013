@@ -1,9 +1,5 @@
 require 'bluecloth'
 module ApplicationHelper
-  def super_format(text)
-    
-  end
-
   def format(text)
     markdown(text).html_safe
   end
@@ -60,11 +56,11 @@ module ApplicationHelper
               </div></div></div>
 
 <script type=\"text/javascript\">
-$('#carousel" + (thingnum - 1).to_s + "').carousel({interval: 10000})
-$('#carousel" + (thingnum - 1).to_s + "').carousel('cycle')
+  $('#carousel" + (thingnum - 1).to_s + "').carousel({interval: 10000})
+  $('#carousel" + (thingnum - 1).to_s + "').carousel('cycle')
 
-$('#carousel" + thingnum.to_s + "').carousel({interval: 10000})
-$('#carousel" + thingnum.to_s + "').carousel('cycle')
+  $('#carousel" + thingnum.to_s + "').carousel({interval: 10000})
+  $('#carousel" + thingnum.to_s + "').carousel('cycle')
 </script>"
     end
   end
@@ -188,11 +184,11 @@ $('#carousel" + thingnum.to_s + "').carousel('cycle')
     end
   end
 
-#  def uri?(string)
-#    if string.match(/^https?:\/\//)
-#      true
-#    else
-#      false
-#    end
-#  end
+  def uri?(string)
+    if string.match(/https?:\/\//)
+      true
+    else
+      false
+    end
+  end
 end
