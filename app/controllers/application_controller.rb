@@ -16,17 +16,13 @@ class ApplicationController < ActionController::Base
   end
   
   def debuggy
-    @print_debug = Rails.env.development?
-    if @print_debug
-      @debug_string = Digest::MD5.hexdigest(
-        "{ \"" +
-        (current_user ? current_user.name : "NO USER NAME" ) +
-        # Why? Obviously this will always be true.
-        # "\", \"" +
-        # (@print_debug ? "true" : "false") +
-        "\" };")
-    else
-    end
+    @print_debug = true
+    @debug_string = Digest::MD5.hexdigest(
+      "{ \"" +
+      (current_user ? current_user.name : "NOT LOGGED IN" ) +
+      "\", \"" +
+      (@print_debug ? "true" : "false") +
+      "\" };")
   end
 
 #rescue_from Exception, :with => :handle_error
