@@ -1,7 +1,7 @@
 class SitemapController < ApplicationController
   def index 
     @posts = Post.all
-    @pages = Page.all
+    @pages = Page.where(:parent_id => nil, :navigable => true)
     @albums = Album.all
     @events = Event.all
     respond_to do |format|

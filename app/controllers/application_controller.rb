@@ -16,13 +16,14 @@ class ApplicationController < ActionController::Base
   end
   
   def debuggy
-    @print_debug = true
+    @print_debug = Rails.env.development?
     if @print_debug
       @debug_string = Digest::MD5.hexdigest(
         "{ \"" +
         (current_user ? current_user.name : "NO USER NAME" ) +
-        "\", \"" +
-        (@print_debug ? "true" : "false") +
+        # Why? Obviously this will always be true.
+        # "\", \"" +
+        # (@print_debug ? "true" : "false") +
         "\" };")
     else
     end
