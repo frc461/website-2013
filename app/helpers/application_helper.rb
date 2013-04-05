@@ -20,6 +20,8 @@ module ApplicationHelper
     return strip_tags(sanitize(format(text))) #lisp
   end
 
+# I'm not going to even try.
+# four04 - BEGIN DISREGARD
   def carouselcheck(text)
    thingnum = 0
     gsubber = text.gsub!(/\[carousel\]\[([0-9,]+)\]\[([0-9,]+)\]/) do |s|
@@ -66,8 +68,7 @@ $('#carousel" + thingnum.to_s + "').carousel('cycle')
 </script>"
     end
   end
-  
-      
+# four04 - END DISREGARD
   
   def photocheck(text)
     gsubber = text.gsub!(/\[[Aa]lbum ([^\[\]]+)\]\[[Pp]hoto (\d+)([otm])?\](\[([rl])\])?/) do |s|
@@ -104,7 +105,7 @@ $('#carousel" + thingnum.to_s + "').carousel('cycle')
                       :class => "content-img")
           end
         rescue
-          "!! NO SUCH PHOTO !!"
+          "/!\\ NO SUCH PHOTO /!\\"
         end
       else s
       end
@@ -120,7 +121,7 @@ $('#carousel" + thingnum.to_s + "').carousel('cycle')
           link_to_page Page.where("title LIKE ?", $1).first
         end
       rescue
-        "Error: !! NO SUCH PAGE !!"
+        "Error: /!\\ NO SUCH PAGE /!\\"
       end
     end
   end
@@ -136,7 +137,7 @@ $('#carousel" + thingnum.to_s + "').carousel('cycle')
             link_to doc.name, doc.filename
           end
         rescue
-          "!! NO SUCH DOCUMENT !!"
+          "/!\\ NO SUCH DOCUMENT /!\\"
         end
       end
     end
