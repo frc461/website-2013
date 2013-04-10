@@ -63,10 +63,14 @@
 
 <% if can?(:read, @page) && can?(:write, @page) %>
 <div class="form-actions">
-  This page is "<%= @page.title %>," sort index <%= @page.sort_index %>, id <%= @page.id %>, and was last updated on <%= @page.updated_at.strftime("%Y-%m-%d %H:%M %Ss (%Z)") %>
+  <p>
   <%= link_to "Back", pages_path, :class => 'btn'  %>
   <%= link_to "Edit", edit_page_path(@page), :class => 'btn' %>
   <%= link_to "Deletify", "/pages/" + @page.id.to_s, :method => 'delete',
               :data => { :confirm => "Are ye sure?" }, :class => 'btn btn-danger' %>
+  </p>
+  <p>
+    This page is "<%= @page.title %>," sort index <%= @page.sort_index %>, id <%= @page.id %>, and was last updated on <%= @page.updated_at.strftime("%Y-%m-%d %H:%M %Ss (%Z)") %>
+  </p>
 </div>
 <% end %>
