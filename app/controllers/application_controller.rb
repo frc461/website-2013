@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
   rescue_from ActionView::MissingTemplate do |e|
     redirect_to error_path
   end
-  
+ 
   def debuggy
     @print_debug = true
     @debug_string = Digest::MD5.hexdigest(

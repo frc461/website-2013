@@ -17,14 +17,13 @@
                 <%= link_to "Log out", log_out_path %>
                 <% end %>
                 <% if @print_debug == true %>
-                <p class="grey-text">
-                  <code style="background: #101010; border: transparent; color: #404040; font-size: 8px;">
-                    <%= @debug_string %>
-                  </code>
-                </p>
-                <!--<p class="visible-desktop grey-text">desktop</p>
-                <p class="visible-tablet grey-text">tablet</p>
-                <p class="visible-phone grey-text">phone</p>-->
+                <br />
+                <code style="background: #101010;
+                             border: transparent;
+                             color: #404040;
+                             font-size: 8px;">
+                  <%= @debug_string %>
+                </code>
                 <% end %>
               </p>
             </center>
