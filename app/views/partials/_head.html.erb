@@ -17,9 +17,12 @@
 
     <%= stylesheet_link_tag "application", :media => "all" %>
 
-    <% if DATE_OVERRIDE || Date.today.to_s.match(/\d{4}-04-01/i) != nil %>
+    <%# Change to use ugly CSS on a date other than xxxx-04-01 %>
+    <% dateoverride = false %>
+    <% if dateoverride || Date.today.to_s.match(/\d{4}-04-01/i) != nil %>
       <%= stylesheet_link_tag "application_override", :media => "all" %>
     <% end %>
+
     <%# stylesheet_link_tag "bootstrap-responsive", :media => "all" %>
 
     <!-- For third-generation iPad with high-resolution Retina display: -->
