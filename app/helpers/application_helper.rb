@@ -70,8 +70,8 @@ module ApplicationHelper
     gsubber = text.gsub!(/\[[Aa]lbum ([^\[\]]+)\]\[[Pp]hoto (\d+)([otm])?\](\[([rl])\])?/) do |s|
       if s != ""
         begin
-          if $4
-            style = case $4.downcase
+          if $3
+            style = case $3.downcase
                     when 'o'
                       :original
                     when 't'
