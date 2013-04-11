@@ -1,3 +1,24 @@
+/* UGLY CSS Here! */
+
 .well {
-  background-color: #FF0080;
+  background-color: #020202;
+  border-top: 16px solid #FFF200;
+  border-left: 16px solid #FFF200;
+  border-right: 16px solid #FFF200;
+  border-bottom: 16px solid #FFF200;
+  border-radius: 64px;
+}
+
+/* Actually, not completely bad! */
+
+.searchsidething {
+  border-top: 2px solid #FFF200;
+  border-left: 2px solid #FFF200;
+  border-right: 2px solid #FFF200;
+  border-bottom: 2px solid #FFF200;
+  border-radius: 16px;
+}
+
+footer a:hover {
+  color: #FF0080;
 }

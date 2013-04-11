@@ -17,7 +17,7 @@
 
     <%= stylesheet_link_tag "application", :media => "all" %>
 
-    <% if Date.today.to_s.match(/\d{4}-04-01/i) != nil %>
+    <% if DATE_OVERRIDE || Date.today.to_s.match(/\d{4}-04-01/i) != nil %>
       <%= stylesheet_link_tag "application_override", :media => "all" %>
     <% end %>
     <%# stylesheet_link_tag "bootstrap-responsive", :media => "all" %>
