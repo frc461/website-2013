@@ -19,7 +19,8 @@
 
     <%# Change to use ugly CSS on a date other than xxxx-04-01 %>
     <% dateoverride = false %>
-    <% if dateoverride || Date.today.to_s.match(/\d{4}-04-01/i) != nil %>
+    <% if dateoverride || Date.today.to_s.match(/\d{4}-04-01/i) %>
+      <% puts Date.today.to_s %>
       <%= stylesheet_link_tag "application_override", :media => "all" %>
     <% end %>
 
