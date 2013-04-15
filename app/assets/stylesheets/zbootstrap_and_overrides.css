@@ -312,6 +312,10 @@ a:hover{
   text-decoration: none;
 }
 
+ul p {
+  margin-bottom: 0;
+}
+
 #sidebar .nav-list {
   padding-bottom: 5px;
 }
