@@ -63,7 +63,7 @@
 <% if can?(:read, @page) && can?(:write, @page) %>
 <div class="form-actions">
   <p>
-  <%= link_to "Back", pages_path, :class => 'btn'  %>
+  <%= link_to "Back", "/", :class => 'btn'  %>
   <%= link_to "Edit", edit_page_path(@page), :class => 'btn' %>
   <%= link_to "Deletify", "/pages/" + @page.id.to_s, :method => 'delete',
               :data => { :confirm => "Are ye sure?" }, :class => 'btn btn-danger' %>
