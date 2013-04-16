@@ -31,7 +31,7 @@
                   </tr>
                   <% if can?(:write, User) %><tr><td><%= link_to "Users", users_path %></td></tr><% end %>
                   <% if can?(:write, Group) %><tr><td><%= link_to "Groups", groups_path %></td></tr><% end %>
-                  <% if can?(:write, Page) %><tr><td><%= link_to "Pages", pages_path %></td></tr><% end %>
+                  <% if can?(:write, Page) %><tr><td><%= link_to "New Page", "/pages/new" %></td></tr><% end %>
                 </table>
                 <% end %>
               </div>

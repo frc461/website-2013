@@ -35,7 +35,6 @@
 <% content_for :breadcrumb do %>
 <ul class="breadcrumb span12">
   <li><%= link_to "Home", root_path%><span class="divider">/</span></li>
-  <li><%= link_to "Pages", pages_path%><span class="divider">/</span></li>
   <% parent_array(@page).each do |parent| %>
     <li><%= link_to_page parent %><span class="divider">/</span></li>
   <% end %>
