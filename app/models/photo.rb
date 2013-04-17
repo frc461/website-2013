@@ -1,5 +1,6 @@
 class Photo < ActiveRecord::Base
   attr_accessible :album_id, :image
+  validate :unique_filename_thingy
   has_attached_file :image,
                     :storage => :filesystem,
                     :styles => { :medium => "x512", :thumb => "250x>" },
@@ -16,6 +17,10 @@ class Photo < ActiveRecord::Base
       "delete_url" => photo_path(self),
       "delete_type" => "DELETE"
     }
+  end
+
+  def unique_filename_thingy
+    errors.add(:base, "Already added this photo") unless Photo.where(:image_file_name => self.image_file_name).empty?
   end
 
   belongs_to :album
