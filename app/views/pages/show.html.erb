@@ -35,7 +35,6 @@
 <% content_for :breadcrumb do %>
 <ul class="breadcrumb span12">
   <li><%= link_to "Home", root_path%><span class="divider">/</span></li>
-  <li><%= link_to "Pages", pages_path%><span class="divider">/</span></li>
   <% parent_array(@page).each do |parent| %>
     <li><%= link_to_page parent %><span class="divider">/</span></li>
   <% end %>
@@ -64,7 +63,7 @@
 <% if can?(:read, @page) && can?(:write, @page) %>
 <div class="form-actions">
   <p>
-  <%= link_to "Back", pages_path, :class => 'btn'  %>
+  <%= link_to "Back", "/", :class => 'btn'  %>
   <%= link_to "Edit", edit_page_path(@page), :class => 'btn' %>
   <%= link_to "Deletify", "/pages/" + @page.id.to_s, :method => 'delete',
               :data => { :confirm => "Are ye sure?" }, :class => 'btn btn-danger' %>
