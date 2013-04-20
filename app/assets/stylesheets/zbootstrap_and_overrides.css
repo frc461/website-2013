@@ -486,7 +486,24 @@ ul.nav > li.dropdown > ul.dropdown-menu > li > a {
     border-left: 1px solid #fff200;
     border-bottom: 0px;
     background-color: #252a30;
-    /* color: #fff200; */
+    color: #000000;
+  }
+
+  ul.nav > li.dropdown > ul.dropdown-menu > li > a {
+    color: #fff200;
+  }
+
+  .dropdown-submenu > a:after {
+    border-left: transparent;
+  }
+
+  .dropdown-submenu:hover > a:after {
+    border-left: transparent;
+  }
+
+
+  li.dropdown-submenu .dropdown-menu a {
+    display: none;
   }
   
   ul.nav > li.dropdown > a > i.icon-chevron-down {
