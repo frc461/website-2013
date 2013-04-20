@@ -84,4 +84,8 @@ class PagesController < InheritedResources::Base
 
     redirect_to pages_path, :notice => "Removed page."
   end
+
+  def index
+    redirect_to sitemap_path, :status => 302
+  end
 end

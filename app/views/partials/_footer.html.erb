@@ -1,0 +1,30 @@
+          <footer>
+            <center>
+              <a href="https://www.facebook.com/WBI461">
+                <%= image_tag 'icon/facebook-icon.png', :class => "social-icon", :alt => "Facebook" %>
+              </a>
+              <a href="https://twitter.com/team461WBI">
+                <%= image_tag 'icon/twitter-icon.png', :class => "social-icon", :alt => "Twitter" %>
+              </a>
+              <a href="https://www.youtube.com/user/team461">
+                <%= image_tag 'icon/youtube-icon.png', :class => "social-icon", :alt => "Youtube" %>
+              </a>
+              <p>
+                &copy; Copyright Westside Boiler Invasion Team 461 2013<br />
+                <% if !current_user %>
+                <%= link_to "Log in", log_in_path, :id => "login" %>
+                <% else %>
+                <%= link_to "Log out", log_out_path %>
+                <% end %>
+                <% if @print_debug == true %>
+                <br />
+                <code style="background: #101010;
+                             border: transparent;
+                             color: #404040;
+                             font-size: 8px;">
+                  <%= @debug_string %>
+                </code>
+                <% end %>
+              </p>
+            </center>
+          </footer>

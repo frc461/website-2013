@@ -1,5 +1,5 @@
 class Album < ActiveRecord::Base
-  attr_accessible :description, :name, :tag_list
+  attr_accessible :description, :visible, :name, :tag_list
 
   has_many :photos
 
