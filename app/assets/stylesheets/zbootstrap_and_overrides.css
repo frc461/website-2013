@@ -280,17 +280,29 @@ ul.nav {
 
 .page_body h1 {
   font-size: 240%;
-  color: #e0e0e0;
   font-weight: bold;
   border-bottom: 1px solid #242424;
 }
 
 .page_body h2 {
-  font-size: 150%;
-  color: #e0e0e0;
+  font-size: 200%;
   font-weight: bold;
 }
 
+.page_body h3 {
+  font-size: 150%;
+  font-weight: bold;
+}
+
+.page_body h4 {
+  font-size: 125%;
+  font-weight: bold;
+}
+
+.page_body h5 {
+  font-size: 115%;
+  font-weight: bold;
+}
 
 .navbar .nav > li > a:hover{
   border-bottom: 1px solid #fff200;
@@ -498,7 +510,24 @@ ul.nav > li.dropdown > ul.dropdown-menu > li > a {
     border-left: 1px solid #fff200;
     border-bottom: 0px;
     background-color: #252a30;
-    /* color: #fff200; */
+    color: #000000;
+  }
+
+  ul.nav > li.dropdown > ul.dropdown-menu > li > a {
+    color: #fff200;
+  }
+
+  .dropdown-submenu > a:after {
+    border-left: transparent;
+  }
+
+  .dropdown-submenu:hover > a:after {
+    border-left: transparent;
+  }
+
+
+  li.dropdown-submenu .dropdown-menu a {
+    display: none;
   }
   
   ul.nav > li.dropdown > a > i.icon-chevron-down {
