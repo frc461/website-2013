@@ -63,6 +63,8 @@ $('#carousel" + (thingnum - 1).to_s + "').carousel('cycle')
 
 $('#carousel" + thingnum.to_s + "').carousel({interval: 10000})
 $('#carousel" + thingnum.to_s + "').carousel('cycle')
+$('#carousel1').hover(function(){$('#carousel1 .left.carouselcontrol').animate({left: -50}, 1500, 'easeOutQuad');$('#carousel1 .right.carouselcontrol').animate({right: -50}, 1500, 'easeOutQuad');},function(){});
+document.getElementByID('carousel1').addEventListener('mouseout',,false);
 </script>"
     end
   end
