@@ -7,6 +7,18 @@
 
   */
 
+#MoveR {
+  padding: 10px;
+}
+
+#Move L {
+  padding: 10px;
+}
+
+#NotMove {
+  padding: 10px;
+}
+
 article a:hover {
   color: #fff;
 }
