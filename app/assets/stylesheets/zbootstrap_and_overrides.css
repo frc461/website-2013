@@ -408,13 +408,13 @@ ul.nav > li.dropdown > ul.dropdown-menu {
 }
 
 ul.nav > li.dropdown > ul.dropdown-menu > li > a:hover {
-  background-image: none;
+  /* background-image: none; */
   text-decoration: none;
-  color: #333333;
+  /* color: #333333; */
 }
 
 ul.nav > li.dropdown > ul.dropdown-menu > li > a {
-  color: #ffff20;
+  /* color: #ffff20; */
 }
 
 @media (max-width: 767px) {
@@ -486,7 +486,7 @@ ul.nav > li.dropdown > ul.dropdown-menu > li > a {
     border-left: 1px solid #fff200;
     border-bottom: 0px;
     background-color: #252a30;
-    color: #fff200;
+    /* color: #fff200; */
   }
   
   ul.nav > li.dropdown > a > i.icon-chevron-down {
@@ -512,6 +512,18 @@ li.dropdown a {
 
 li.dropdown a:hover {
   color: #000000;
+}
+
+.dropdown-submenu:hover > a {
+  color: #000000 !important;
+}
+
+.dropdown-submenu > a:after {
+  border-left-color: #fff200;
+}
+
+.dropdown-submenu:hover > a:after {
+  border-left-color: #000000;
 }
 
 .social-header {
