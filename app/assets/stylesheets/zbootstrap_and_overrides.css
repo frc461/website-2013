@@ -486,7 +486,7 @@ ul.nav > li.dropdown > ul.dropdown-menu > li > a {
     border-left: 1px solid #fff200;
     border-bottom: 0px;
     background-color: #252a30;
-    color: #ffff20;
+    color: #fff200;
   }
   
   ul.nav > li.dropdown > a > i.icon-chevron-down {
@@ -504,6 +504,14 @@ ul.nav > li.dropdown > ul.dropdown-menu > li > a {
 
 div .fb_reset {
   display: inline;
+}
+
+li.dropdown a {
+  color: #fff200;
+}
+
+li.dropdown a:hover {
+  color: #000000;
 }
 
 .social-header {
