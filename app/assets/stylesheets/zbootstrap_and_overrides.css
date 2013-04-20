@@ -561,3 +561,8 @@ table.social-buttons-navbar > tr > td {
   padding-right: 20px;
 }
 
+@media (max-width: 1400px) and (min-width: 767px) {
+  .custom-visible-desktop {
+    display: none;
+  }
+}
