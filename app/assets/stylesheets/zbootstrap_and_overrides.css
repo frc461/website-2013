@@ -11,16 +11,25 @@
   padding: 10px;
 }
 
-#Move L {
+#MoveL {
   padding: 10px;
+  padding-left: 39px;
 }
 
 #NotMove {
   padding: 10px;
 }
 
+td.setwidth {
+  width: 242px
+}
+
 article a:hover {
   color: #fff;
+}
+
+.alt-logos {
+  padding: 8px;
 }
 
 body {
