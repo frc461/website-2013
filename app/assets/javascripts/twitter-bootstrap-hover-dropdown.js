@@ -26,16 +26,16 @@
 
         return this.each(function() {
             var $this = $(this).parent(),
-                defaults = {
-                    delay: 500,
-                    instantlyCloseOthers: true
-                },
-                data = {
-                    delay: $(this).data('delay'),
-                    instantlyCloseOthers: $(this).data('close-others')
-                },
-                options = $.extend(true, {}, defaults, options, data),
-                timeout;
+            defaults = {
+                delay: 500,
+                instantlyCloseOthers: true
+            },
+            data = {
+                delay: $(this).data('delay'),
+                instantlyCloseOthers: $(this).data('close-others')
+            },
+            options = $.extend(true, {}, defaults, options, data),
+            timeout;
 
             $this.hover(function() {
                 if(options.instantlyCloseOthers === true)

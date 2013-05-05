@@ -1,66 +1,66 @@
 /* UGLY CSS Here! */
 
 .well {
-  background-color: #FF08FF;
-  border-top: 16px solid #FFFF00;
-  border-left: 16px solid #FFFF00;
-  border-right: 16px solid #FFF200;
-  border-bottom: 16px solid #FFF200;
-  border-radius: 64px;
-  color: #FF0080;
+	background-color: #FF08FF;
+	border-top: 16px solid #FFFF00;
+	border-left: 16px solid #FFFF00;
+	border-right: 16px solid #FFF200;
+	border-bottom: 16px solid #FFF200;
+	border-radius: 64px;
+	color: #FF0080;
 }
 
 /* Actually, not completely bad! */
 
 .searchsidething {
-  border-top: 2px solid #FFF200;
-  border-left: 2px solid #FFF200;
-  border-right: 2px solid #FFF200;
-  border-bottom: 2px solid #FFF200;
-  border-radius: 8px;
+	border-top: 2px solid #FFF200;
+	border-left: 2px solid #FFF200;
+	border-right: 2px solid #FFF200;
+	border-bottom: 2px solid #FFF200;
+	border-radius: 8px;
 }
 
 .page_body {
-  font-family: monospace;
+	font-family: monospace;
 }
 
 .navbar {
-  font-family: 'Papyrus';
+	font-family: 'Papyrus';
 }
 
 body {
-  font-family: 'Comic Sans MS',cursive;
+	font-family: 'Comic Sans MS',cursive;
 }
 
 .twitter-border {
-  border-radius: 128px;
+	border-radius: 128px;
 }
 
 h1 {
-  color: #08FF08;
-  font-family: 'Comic Sans MS',cursive;
+	color: #08FF08;
+	font-family: 'Comic Sans MS',cursive;
 }
 
 h2 {
-  font-family: 'Comic Sans MS',cursive;
+	font-family: 'Comic Sans MS',cursive;
 }
 
 h3 {
-  font-family: 'Comic Sans MS',cursive;
+	font-family: 'Comic Sans MS',cursive;
 }
 
 h4 {
-  font-family: 'Comic Sans MS',cursive;
+	font-family: 'Comic Sans MS',cursive;
 }
 
 h5 {
-  font-family: 'Comic Sans MS',cursive;
+	font-family: 'Comic Sans MS',cursive;
 }
 
 footer a:hover {
-  color: #FF0080;
+	color: #FF0080;
 }
 
 p {
-  color: #FF0080;
+	color: #FF0080;
 }
