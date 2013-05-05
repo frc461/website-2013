@@ -1,29 +1,29 @@
 <%= form_for @post, :html => { :class => 'form-horizontal' } do |f| %>
-  <div class="control-group">
+<div class="control-group">
     <%= f.label :title, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :title, :class => 'text_field' %>
+		<%= f.text_field :title, :class => 'text_field' %>
     </div>
-  </div>
-  <div class="control-group">
+</div>
+<div class="control-group">
     <%= f.label :content, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_area :content, :class => 'text_area' %>
+		<%= f.text_area :content, :class => 'text_area' %>
     </div>
-  </div>
+</div>
 
-  <div class="control-group">
+<div class="control-group">
     <%= f.label :tag_list, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_area :tag_list, :class => 'text_area' %>
+		<%= f.text_area :tag_list, :class => 'text_area' %>
     </div>
-  </div>
+</div>
 
-  <%= f.hidden_field :user_id, :value => current_user.id %>
+<%= f.hidden_field :user_id, :value => current_user.id %>
 
-  <div class="form-actions">
+<div class="form-actions">
     <%= f.submit nil, :class => 'btn btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                posts_path, :class => 'btn' %>
-  </div>
+    posts_path, :class => 'btn' %>
+</div>
 <% end %>

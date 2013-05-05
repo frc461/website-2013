@@ -1,35 +1,35 @@
 <%- model_class = Post -%>
 <% content_for :title do
-     "Blog"
+   "Blog"
    end %>
 <% content_for :breadcrumb do %>
 <ul class="breadcrumb span12">
-  <li><%= link_to "Home", root_path%><span class="divider">/</span></li>
-  <li class="active">Blog</li>
+	<li><%= link_to "Home", root_path%><span class="divider">/</span></li>
+	<li class="active">Blog</li>
 </ul>
 <% end %>
 
 <div class="page-header">
-  <h1>Blog</h1>
+	<h1>Blog</h1>
 </div>
 
 <% @posts.in_groups_of(10) do | groupOfPosts | %>
-  <% groupOfPosts.each do | post | %>
-    <% if (post != nil) %>
-      <div class="row-fluid">
-        <div class="span12 postWithBorder">
-          <h2>
+<% groupOfPosts.each do | post | %>
+<% if (post != nil) %>
+<div class="row-fluid">
+    <div class="span12 postWithBorder">
+        <h2>
             <%= link_to(post.title, post, :class => "") %>
-          </h2>
-          <%= markback(post.content)[0..300] %>
-        </div>
-      </div>
-      <br />
-    <% end %>
-  <% end %>
+        </h2>
+        <%= markback(post.content)[0..300] %>
+    </div>
+</div>
+<br />
+<% end %>
+<% end %>
 <% end %>
 <% if can?(:write, Post) || can?(:remove, Post) %>
-  <%= link_to t('.new', :default => t("helpers.links.new")),
-              new_post_path,
-              :class => 'btn btn-primary' %>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+new_post_path,
+:class => 'btn btn-primary' %>
 <% end %>

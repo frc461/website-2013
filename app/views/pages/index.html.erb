@@ -1,64 +1,64 @@
 <% content_for :title do
-     "Listing Pages"
+   "Listing Pages"
    end %>
 <% content_for :breadcrumb do %>
 <ul class="breadcrumb span12">
-  <li><%= link_to "Home", root_path%><span class="divider">/</span></li>
-  <li class="active">Pages</li>
+	<li><%= link_to "Home", root_path%><span class="divider">/</span></li>
+	<li class="active">Pages</li>
 </ul>
 <% end %>
 
 <br class="hidden-phone" />
 <% if can? :update, Page %>
 <% @pages.in_groups_of(3) { | groupofpage |%>
-  <div class="row-fluid hidden-phone">
+<div class="row-fluid hidden-phone">
     <% groupofpage.each { | page | %>
-      <% if (page != nil)  %>
-        <div class="span4 postWithBorder">
+    <% if (page != nil)  %>
+    <div class="span4 postWithBorder">
         <h2>
-          <%= link_to_page page %>
+			<%= link_to_page page %>
         </h2>
         <%= markback(page.content[0..300]) %>
-        </div>
-      <% end %>
+    </div>
+    <% end %>
     <% } %>
-  </div>
-  <br />
+</div>
+<br />
 <% } %>
 <% else %>
 <% @pages.where("not(title LIKE ?)", "frontpage").in_groups_of(3) { | groupofpage |%>
-  <div class="row-fluid hidden-phone">
+<div class="row-fluid hidden-phone">
     <% groupofpage.each { | page | %>
-      <% if (page != nil)  %>
-        <div class="span4 postWithBorder">
+    <% if (page != nil)  %>
+    <div class="span4 postWithBorder">
         <h2>
-          <%= link_to_page page %>
+			<%= link_to_page page %>
         </h2>
         <%= markback(page.content[0..300]) %>
-        </div>
-      <% end %>
+    </div>
+    <% end %>
     <% } %>
-  </div>
-  <br />
+</div>
+<br />
 <% } %>
 <% end %>
 <div class="visible-phone">
-  <% @pages.each { | page | %>
+	<% @pages.each { | page | %>
     <% if (page != nil)  %>
-      <div class="postWithBorder">
+    <div class="postWithBorder">
         <h2>
-          <%= link_to_page page %>
+			<%= link_to_page page %>
         </h2>
         <%= markback(page.content[0..300]) %>
-      </div>
-        <br class="visible-phone" />
+    </div>
+    <br class="visible-phone" />
     <% end %>
-  <% } %>
+	<% } %>
 </div>
 <br class="visible-phone" />
 <br class="visible-phone" />
 <% if can? :write, Page %>
 <%= link_to t('.new', :default => t("helpers.links.new")),
-            new_page_path,
-            :class => 'btn btn-primary' %>
+new_page_path,
+:class => 'btn btn-primary' %>
 <% end %>

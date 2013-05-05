@@ -1,92 +1,92 @@
-            <div class="span3 pull-left" id="sidebar-span">
-              <br />
-              <div class="well searchsidething">
-                <center>
-                  <form id="formfilters" class="form-search span12" action="/search">
-                    <fieldset>
-                      <div class="input-append">
+<div class="span3 pull-left" id="sidebar-span">
+    <br />
+    <div class="well searchsidething">
+        <center>
+            <form id="formfilters" class="form-search span12" action="/search">
+                <fieldset>
+                    <div class="input-append">
                         <input type="text"
                                name="search"
                                class="search-query span9"
                                placeholder="Search"
-                          <%= 'value="'.html_safe + params[:search] + '"'.html_safe if(params[:search] != "") if(params[:search]) %> />
+							   <%= 'value="'.html_safe + params[:search] + '"'.html_safe if(params[:search] != "") if(params[:search]) %> />
                         <button type="submit" class="btn"><i class="icon-search"></i></button>
-                      </div>
-                    </fieldset>
-                  </form>
-                </center>
-              </div>
-              <%= content_for :ChildrenPages %>
-              <% if current_user %>
-              <div class="well">
-                <p>Logged in as <%= current_user.name %></p>
-                <% if can?(:update, current_user) || can?(:write, Page) || can?(:write,Group) || can?(:write,User) %>
-                <table>
-                  <tr class="smallerPadding">
-                    <td rowspan="5">
-                      <div class="verticalTextUpLeft">
+                    </div>
+                </fieldset>
+            </form>
+        </center>
+    </div>
+    <%= content_for :ChildrenPages %>
+    <% if current_user %>
+    <div class="well">
+        <p>Logged in as <%= current_user.name %></p>
+        <% if can?(:update, current_user) || can?(:write, Page) || can?(:write,Group) || can?(:write,User) %>
+        <table>
+            <tr class="smallerPadding">
+                <td rowspan="5">
+                    <div class="verticalTextUpLeft">
                         <strong>Manage</strong>
-                      </div>
-                    </td>
-                  </tr>
-                  <% if can?(:write, User) %><tr><td><%= link_to "Users", users_path %></td></tr><% end %>
-                  <% if can?(:write, Group) %><tr><td><%= link_to "Groups", groups_path %></td></tr><% end %>
-                  <% if can?(:write, Page) %><tr><td><%= link_to "New Page", "/pages/new" %></td></tr><% end %>
-                </table>
-                <% end %>
-              </div>
-              <% end %>
-              <div class="well">
-                <center>
-                  <p>
-                    <%= link_to(image_tag("firstlogovector.png", :style => "height: 48px; width: auto;", :alt => "FIRST"),
-                      "http://www.usfirst.org/") %>
-                    <h3>FRC Team <%= "461" %></h3>
-                  </p>
-                </center>
-                <hr class="custom-visible-desktop" />
-                <div class="container row-fluid custom-visible-desktop" style="margin-bottom: -5px;">
-                  <div class="span12" style="margin-top: 10px;">
-                    <table class="social-buttons" width="100%">
-                      <tr style="margin: auto;">
+                    </div>
+                </td>
+            </tr>
+            <% if can?(:write, User) %><tr><td><%= link_to "Users", users_path %></td></tr><% end %>
+            <% if can?(:write, Group) %><tr><td><%= link_to "Groups", groups_path %></td></tr><% end %>
+            <% if can?(:write, Page) %><tr><td><%= link_to "New Page", "/pages/new" %></td></tr><% end %>
+        </table>
+        <% end %>
+    </div>
+    <% end %>
+    <div class="well">
+        <center>
+            <p>
+                <%= link_to(image_tag("firstlogovector.png", :style => "height: 48px; width: auto;", :alt => "FIRST"),
+                "http://www.usfirst.org/") %>
+                <h3>FRC Team <%= "461" %></h3>
+            </p>
+        </center>
+        <hr class="custom-visible-desktop" />
+        <div class="container row-fluid custom-visible-desktop" style="margin-bottom: -5px;">
+            <div class="span12" style="margin-top: 10px;">
+                <table class="social-buttons" width="100%">
+                    <tr style="margin: auto;">
                         <td width="33%">
-                          <center>
-                          <div class="g-plusone"
-                               data-size="medium"
-                               data-href="http://boilerinvasion.org">
-                            1+ on Google+
-                          </div>
-                          </center>
+							<center>
+								<div class="g-plusone"
+									 data-size="medium"
+									 data-href="http://boilerinvasion.org">
+									1+ on Google+
+								</div>
+							</center>
                         </td>
                         <td width="33%">
-                          <center>
-                          <div class="fb-like"
-                               data-layout="button_count"
-                               data-colorscheme="light"
-                               data-action="like"
-                               data-href="http://www.facebook.com/WBI461">
-                            Like us on Facebook
-                          </div>
-                          </center>
+							<center>
+								<div class="fb-like"
+									 data-layout="button_count"
+									 data-colorscheme="light"
+									 data-action="like"
+									 data-href="http://www.facebook.com/WBI461">
+									Like us on Facebook
+								</div>
+							</center>
                         </td>
                         <td width="33%">
-                          <center>
-                          <a href="https://twitter.com/Team461WBI"
-                             class="twitter-follow-button"
-                             data-show-count="false"
-                             data-dnt="true"
-                             data-show-screen-name="false">Follow @Team461WBI</a>
+							<center>
+								<a href="https://twitter.com/Team461WBI"
+								   class="twitter-follow-button"
+								   data-show-count="false"
+								   data-dnt="true"
+								   data-show-screen-name="false">Follow @Team461WBI</a>
                         </td>
                         </center>
-                      </tr>
-                    </table>
-                  </div>
-                </div>
-              </div>
-              <div id="tweetbox" class="visible-desktop">
-                <div class="well">
-                  <center><h4>Latest tweets from <a href="https://www.twitter.com/team461wbi">@Team461WBI</a></h4></center>
-                  <%= render :partial => "twitter_feed/twitter_feed" %>
-                </div>
-              </div>
+                    </tr>
+                </table>
             </div>
+        </div>
+    </div>
+    <div id="tweetbox" class="visible-desktop">
+        <div class="well">
+            <center><h4>Latest tweets from <a href="https://www.twitter.com/team461wbi">@Team461WBI</a></h4></center>
+            <%= render :partial => "twitter_feed/twitter_feed" %>
+        </div>
+    </div>
+</div>

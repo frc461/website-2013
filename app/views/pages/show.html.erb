@@ -2,74 +2,74 @@
 <% if @page.pages.count > 0 || @page.parent_id %>
 <% content_for :ChildrenPages do %>
 <% if @page.pages.count > 0 %>
-  <div class="well">
+<div class="well">
     <h4 style="margin-top: -2px; margin-bottom: 2px;"><strong>
-      Subpages:
+			Subpages:
     </strong></h4>
     <ul class="nav nav-list">
-      <% @page.pages.where(:navigable => true).sort_by(&:sort_index).each do |child| %>
+		<% @page.pages.where(:navigable => true).sort_by(&:sort_index).each do |child| %>
         <li><%= link_to_page child %> </li>
-      <% end %>
+		<% end %>
     </ul>
-  </div>
+</div>
 <% end %>
 <% if @page.parent_id %>
 <% parent = Page.find(@page.parent_id) %>
-  <div class="well">
+<div class="well">
     <h4 style="margin-top: -2px; margin-bottom: 2px;"><strong>
-      <%= link_to_page parent %>
+			<%= link_to_page parent %>
     </strong></h4>
     <ul class="nav nav-list">
-      <% parent.pages.where(:navigable => true).sort_by(&:sort_index).each do |child| %>
+		<% parent.pages.where(:navigable => true).sort_by(&:sort_index).each do |child| %>
         <% if child.id == @page.id%>
         <li class="active"><%= child.title %></li>
         <% else %>
         <li><%= link_to_page child %> </li>
         <% end %>
-      <% end %>
+		<% end %>
     </ul>
-  </div>
+</div>
 <% end %>
 <% end %>
 <% end %>
 <% content_for :breadcrumb do %>
 <ul class="breadcrumb span12">
-  <li><%= link_to "Home", root_path%><span class="divider">/</span></li>
-  <% parent_array(@page).each do |parent| %>
+	<li><%= link_to "Home", root_path%><span class="divider">/</span></li>
+	<% parent_array(@page).each do |parent| %>
     <li><%= link_to_page parent %><span class="divider">/</span></li>
-  <% end %>
-  <li class="active">
-  <%= @page.title %>
-  </li>
+	<% end %>
+	<li class="active">
+		<%= @page.title %>
+	</li>
 </ul>
 <% end %>
 <% content_for :title do
-     @page.title
+   @page.title
    end %>
 
 <div class="page-header">
-  <h1><%= @page.title %></h1>
+	<h1><%= @page.title %></h1>
 </div>
 
 <div class="page_body">
-  <%= format @page.content %>
+	<%= format @page.content %>
 </div>
 
 <!--<dl class="dl-horizontal">
-  <dt><strong>Children:</strong></dt>
-  <dd><%# sanitize(@page.pages.map do |pg| link_to(pg.title, pg) end.join(", ".html_safe)) %></dd>
+	<dt><strong>Children:</strong></dt>
+	<dd><%# sanitize(@page.pages.map do |pg| link_to(pg.title, pg) end.join(", ".html_safe)) %></dd>
 </dl>-->
 
 <% if can?(:read, @page) && can?(:write, @page) %>
 <div class="form-actions">
-  <p>
-  <%= link_to "Back", "/", :class => 'btn'  %>
-  <%= link_to "Edit", edit_page_path(@page), :class => 'btn' %>
-  <%= link_to "Deletify", "/pages/" + @page.id.to_s, :method => 'delete',
-              :data => { :confirm => "Are ye sure?" }, :class => 'btn btn-danger' %>
-  </p>
-  <p>
-    This page is "<%= @page.title %>," sort index <%= @page.sort_index %>, id <%= @page.id %>, and was last updated on <%= @page.updated_at.strftime("%Y-%m-%d %H:%M %Ss (%Z)") %>
-  </p>
+	<p>
+		<%= link_to "Back", "/", :class => 'btn'  %>
+		<%= link_to "Edit", edit_page_path(@page), :class => 'btn' %>
+		<%= link_to "Deletify", "/pages/" + @page.id.to_s, :method => 'delete',
+        :data => { :confirm => "Are ye sure?" }, :class => 'btn btn-danger' %>
+	</p>
+	<p>
+		This page is "<%= @page.title %>," sort index <%= @page.sort_index %>, id <%= @page.id %>, and was last updated on <%= @page.updated_at.strftime("%Y-%m-%d %H:%M %Ss (%Z)") %>
+	</p>
 </div>
 <% end %>

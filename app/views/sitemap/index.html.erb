@@ -3,31 +3,31 @@
    end%>
 
 <div class="page-header">
-<h1>Sitemap</h1>
+	<h1>Sitemap</h1>
 </div>
 
 <h2>Pages</h2>
 <ul>
-<% @pages.each do |page| %>
-  <li><%= link_to_page page %></li>
-  <%= page_ul(page) if page.pages.count > 0 %>
-<% end %>
+	<% @pages.each do |page| %>
+	<li><%= link_to_page page %></li>
+	<%= page_ul(page) if page.pages.count > 0 %>
+	<% end %>
 </ul>
 <h2><%= link_to "Blog Posts", posts_path %></h2>
 <ul>
-<% @posts.each do |post| %>
-  <li><%= link_to post.title, post_path(post) %></li>
-<% end %>
+	<% @posts.each do |post| %>
+	<li><%= link_to post.title, post_path(post) %></li>
+	<% end %>
 </ul>
 <h2><%= link_to "Events", events_path %></h2>
 <ul>
-<% @events.each do |event| %>
-  <li><%= link_to event.title, event_path(event) %></li>
-<% end %>
+	<% @events.each do |event| %>
+	<li><%= link_to event.title, event_path(event) %></li>
+	<% end %>
 </ul>
 <h2><%= link_to "Photo Albums", albums_path %></h2>
 <ul>
-<% @albums.each do |album| %>
-   <li><%= link_to album.name, album_path(album) %></li>
-<% end %>
+	<% @albums.each do |album| %>
+	<li><%= link_to album.name, album_path(album) %></li>
+	<% end %>
 </ul>

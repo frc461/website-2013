@@ -1,15 +1,15 @@
 <% begin %>
-  <% tweets = Twitter.user_timeline("team461wbi", options = { :count => 4 } ) %>
-  <% tweets.each do |tweet| %>
-  <hr />
-  <div class="tweet">
+<% tweets = Twitter.user_timeline("team461wbi", options = { :count => 4 } ) %>
+<% tweets.each do |tweet| %>
+<hr />
+<div class="tweet">
     <%= sanitize format_tweet(tweet) %>
     <div style="text-align: right;" class="tweet-info">
-      <a href="https://twitter.com/<%= tweet.from_user() %>">@<%= tweet.from_user() %></a>, 
-      <a href="https://twitter.com/<%= tweet.from_user() %>/status/<%= tweet.id() %>"><%= time_ago_in_words(tweet.created_at()) %> ago </a>
+		<a href="https://twitter.com/<%= tweet.from_user() %>">@<%= tweet.from_user() %></a>, 
+		<a href="https://twitter.com/<%= tweet.from_user() %>/status/<%= tweet.id() %>"><%= time_ago_in_words(tweet.created_at()) %> ago </a>
     </div>
-  </div>
-  <% end %>
+</div>
+<% end %>
 <% rescue %>
-  <p>Error: No internet connection</p>
+<p>Error: No internet connection</p>
 <% end %>

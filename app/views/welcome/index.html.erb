@@ -1,15 +1,15 @@
 <% content_for :title do
-     "Home"
+   "Home"
    end
    %>
 
 <div class="page-header"><h1>Welcome!</h1></div>
 
 <% if Page.where("title LIKE ?", "frontpage").first %>
-  <div class="page_body">
+<div class="page_body">
     <%= format Page.where("title LIKE ?", "frontpage").first.content %>
-  </div>
-  <hr>
+</div>
+<hr>
 <% end %>
 
 <% if Post.count > 0 %>
@@ -18,15 +18,15 @@
 <h3>No blog posts to show.</h3>
 <% end %>
 <% Post.last(2).reverse.each do | post | %>
-  <% if (post != nil) %>
-  <div class="row-fluid">
+<% if (post != nil) %>
+<div class="row-fluid">
     <div class="span12 postWithBorder"><!-- what is x? style="padding: x"> -->
-      <h2>
-        <%= link_to(post.title, post, :class => "") %>
-      </h2>
-      <%= markback(post.content).lines.first(2).join %>
+		<h2>
+			<%= link_to(post.title, post, :class => "") %>
+		</h2>
+		<%= markback(post.content).lines.first(2).join %>
     </div>
-  </div>
-    <br />
-  <% end %>
+</div>
+<br />
+<% end %>
 <% end %>

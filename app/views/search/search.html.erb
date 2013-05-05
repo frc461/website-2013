@@ -1,108 +1,108 @@
 <% content_for :title do
-     "Search Results"
+   "Search Results"
    end %>
 
 <div class="page-header">
-  <h1>Search Results for <%= params[:search] %></h1>
+	<h1>Search Results for <%= params[:search] %></h1>
 </div>
 
 <% if @pagethings.count + @postthings.count + @eventhings.count + @albuthings.count >= 1 %>
-  <% if @pagethings.count > 0 %>
-  <div class="row-fluid">
+<% if @pagethings.count > 0 %>
+<div class="row-fluid">
     <div class="span12 postWithBorder">
-      <h2>
-        Pages
-      </h2>
+		<h2>
+			Pages
+		</h2>
     </div>
-  </div>
-  <br />
-  <% @pagethings.in_groups_of(3) do |groupofresult| %>
-    <div class="row-fluid">
+</div>
+<br />
+<% @pagethings.in_groups_of(3) do |groupofresult| %>
+<div class="row-fluid">
     <% groupofresult.each do |thing| %>
-      <% if thing != nil %>
-        <div class="span4 postWithBorder">
-          <h4>
-          <%= link_to_page thing %>
-          </h4>
-        </div>
-      <% end %>
-    <% end %>
+    <% if thing != nil %>
+    <div class="span4 postWithBorder">
+        <h4>
+			<%= link_to_page thing %>
+        </h4>
     </div>
-    <br />
-  <% end %>
-  <% end %>
-  <% if @postthings.count > 0 %>
-  <div class="row-fluid">
+    <% end %>
+    <% end %>
+</div>
+<br />
+<% end %>
+<% end %>
+<% if @postthings.count > 0 %>
+<div class="row-fluid">
     <div class="span12 postWithBorder">
-      <h2>
-        Posts
-      </h2>
+		<h2>
+			Posts
+		</h2>
     </div>
-  </div>
-  <br />
-  <% @postthings.in_groups_of(3) do |groupofresult| %>
-    <div class="row-fluid">
+</div>
+<br />
+<% @postthings.in_groups_of(3) do |groupofresult| %>
+<div class="row-fluid">
     <% groupofresult.each do |thing| %>
-      <% if thing != nil %>
-        <div class="span4 postWithBorder">
-          <h4>
-          <%= link_to thing.title, thing %>
-          </h4>
-        </div>
-      <% end %>
-    <% end %>
+    <% if thing != nil %>
+    <div class="span4 postWithBorder">
+        <h4>
+			<%= link_to thing.title, thing %>
+        </h4>
     </div>
-    <br />
-  <% end %>
-  <% end %>
-  <% if @eventhings.count > 0 %>
-  <div class="row-fluid">
+    <% end %>
+    <% end %>
+</div>
+<br />
+<% end %>
+<% end %>
+<% if @eventhings.count > 0 %>
+<div class="row-fluid">
     <div class="span12 postWithBorder">
-      <h2>
-        Events
-      </h2>
+		<h2>
+			Events
+		</h2>
     </div>
-  </div>
-  <br />
-  <% @eventhings.in_groups_of(3) do |groupofresult| %>
-    <div class="row-fluid">
+</div>
+<br />
+<% @eventhings.in_groups_of(3) do |groupofresult| %>
+<div class="row-fluid">
     <% groupofresult.each do |thing| %>
-      <% if thing != nil %>
-        <div class="span4 postWithBorder">
-          <h4>
-          <%= link_to thing.title, thing %>
-          </h4>
-        </div>
-      <% end %>
-    <% end %>
+    <% if thing != nil %>
+    <div class="span4 postWithBorder">
+        <h4>
+			<%= link_to thing.title, thing %>
+        </h4>
     </div>
-    <br />
-  <% end %>
-  <% end %>
-  <% if @albuthings.count > 0 %>
-  <div class="row-fluid">
+    <% end %>
+    <% end %>
+</div>
+<br />
+<% end %>
+<% end %>
+<% if @albuthings.count > 0 %>
+<div class="row-fluid">
     <div class="span12 postWithBorder">
-      <h2>
-        Albums
-      </h2>
+		<h2>
+			Albums
+		</h2>
     </div>
-  </div>
-  <br />
-  <% @albuthings.in_groups_of(3) do |groupofresult| %>
-    <div class="row-fluid">
+</div>
+<br />
+<% @albuthings.in_groups_of(3) do |groupofresult| %>
+<div class="row-fluid">
     <% groupofresult.each do |thing| %>
-      <% if thing != nil %>
-        <div class="span4 postWithBorder">
-          <h4>
-          <%= link_to thing.name, thing %>
-          </h4>
-        </div>
-      <% end %>
-    <% end %>
+    <% if thing != nil %>
+    <div class="span4 postWithBorder">
+        <h4>
+			<%= link_to thing.name, thing %>
+        </h4>
     </div>
-    <br />
-  <% end %>
-  <% end %>
+    <% end %>
+    <% end %>
+</div>
+<br />
+<% end %>
+<% end %>
 <% else %>
 <p>No matches for <%= params[:search] %></p>
 <% end %>

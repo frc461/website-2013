@@ -1,60 +1,60 @@
 <%- model_class = Forum -%>
 <% content_for :title do
-     "Forums"
+   "Forums"
    end %>
 
 <% content_for :breadcrumb do %>
 <ul class="breadcrumb span12">
-  <li><%= link_to "Home", root_path%><span class="divider">/</span></li>
-  <li class="active">Forums</li>
+	<li><%= link_to "Home", root_path%><span class="divider">/</span></li>
+	<li class="active">Forums</li>
 </ul>
 <% end %>
 
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
+	<h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
 </div>
 <table class="table table-striped">
-  <thead>
-    <tr>
-      <th><%= model_class.human_attribute_name(:name) %></th>
-      <th><%= model_class.human_attribute_name(:description) %></th>
-    </tr>
-  </thead>
-  <tbody>
-<% Forum.where(:group_id => nil).order("name ASC").each do | forum | %>
-      <tr>
-        <td><%= link_to forum.name, forum_path(forum) %></td>
-        <td><%= forum.description %></td>
-      </tr>
-<% end %>
-  </tbody>
+	<thead>
+		<tr>
+			<th><%= model_class.human_attribute_name(:name) %></th>
+			<th><%= model_class.human_attribute_name(:description) %></th>
+		</tr>
+	</thead>
+	<tbody>
+		<% Forum.where(:group_id => nil).order("name ASC").each do | forum | %>
+		<tr>
+			<td><%= link_to forum.name, forum_path(forum) %></td>
+			<td><%= forum.description %></td>
+		</tr>
+		<% end %>
+	</tbody>
 </table>
 
 <% Group.order("name ASC").each do | group | %>
 <% if group.forums.count > 0 && (current_user.groups.include?(group) || current_user.admin) %>
 <h1><%= group.name %></h1>
 <table class="table table-striped">
-  <thead>
-    <tr>
-      <th><%= model_class.human_attribute_name(:name) %></th>
-      <th><%= model_class.human_attribute_name(:description) %></th>
-    </tr>
-  </thead>
-  <tbody>
-<% group.forums.order("name ASC").each do | forum | %>
-      <tr>
-        <td><%= link_to forum.name, forum_path(forum) %></td>
-        <td><%= forum.description %></td>
-      </tr>
-      <% end %>
-  </tbody>
+	<thead>
+		<tr>
+			<th><%= model_class.human_attribute_name(:name) %></th>
+			<th><%= model_class.human_attribute_name(:description) %></th>
+		</tr>
+	</thead>
+	<tbody>
+		<% group.forums.order("name ASC").each do | forum | %>
+		<tr>
+			<td><%= link_to forum.name, forum_path(forum) %></td>
+			<td><%= forum.description %></td>
+		</tr>
+		<% end %>
+	</tbody>
 </table>
 <% end %>
 <% end %>
 
 <% if can? :write, Forum %>
 <%= link_to t('.new', :default => t("helpers.links.new")),
-            new_forum_path,
-            :class => 'btn btn-primary' %>
+new_forum_path,
+:class => 'btn btn-primary' %>
 <% end %>
 <br />

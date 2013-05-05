@@ -1,62 +1,62 @@
 <%= form_for @group, :html => { :class => 'form-horizontal' } do |f| %>
-  <div class="control-group">
+<div class="control-group">
     <%= f.label :name, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :name, :class => 'text_field' %>
+		<%= f.text_field :name, :class => 'text_field' %>
     </div>
-  </div>
-  <div class="control-group">
+</div>
+<div class="control-group">
     <%= f.label :joinable, :class => 'control-label' %>
     <div class="controls">
-      <%= f.check_box :joinable, :class => 'check_box' %>
+		<%= f.check_box :joinable, :class => 'check_box' %>
     </div>
-  </div>
-  <div class="control-group">
+</div>
+<div class="control-group">
     <%= f.label :page_access, :class => 'control-label' %>
     <div class="controls">
-      <%= f.check_box :page_access, :class => 'check_box' %>
+		<%= f.check_box :page_access, :class => 'check_box' %>
     </div>
-  </div>
-  <div class="control-group">
+</div>
+<div class="control-group">
     <%= f.label :post_access, :class => 'control-label' %>
     <div class="controls">
-      <%= f.check_box :post_access, :class => 'check_box' %>
+		<%= f.check_box :post_access, :class => 'check_box' %>
     </div>
-  </div>
-  <div class="control-group">
+</div>
+<div class="control-group">
     <%= f.label :photo_access, :class => 'control-label' %>
     <div class="controls">
-      <%= f.check_box :photo_access, :class => 'check_box' %>
+		<%= f.check_box :photo_access, :class => 'check_box' %>
     </div>
-  </div>
-  <div class="control-group">
+</div>
+<div class="control-group">
     <%= f.label :event_access, :class => 'control-label' %>
     <div class="controls">
-      <%= f.check_box :event_access, :class => 'check_box' %>
+		<%= f.check_box :event_access, :class => 'check_box' %>
     </div>
-  </div>
-  <div class="control-group">
+</div>
+<div class="control-group">
     <%= f.label :user_access, :class => 'control-label' %>
     <div class="controls">
-      <%= f.check_box :user_access, :class => 'check_box' %>
+		<%= f.check_box :user_access, :class => 'check_box' %>
     </div>
-  </div>
-  <div class="control-group">
+</div>
+<div class="control-group">
     <%= f.label :forum_access, :class => 'control-label' %>
     <div class="controls">
-      <%= f.check_box :forum_access, :class => 'check_box' %>
+		<%= f.check_box :forum_access, :class => 'check_box' %>
     </div>
-  </div>
-  <div class="control-group">
+</div>
+<div class="control-group">
     <%= f.label :group_access, :class => 'control-label' %>
     <div class="controls">
-      <%= f.check_box :group_access, :class => 'check_box' %>
+		<%= f.check_box :group_access, :class => 'check_box' %>
     </div>
-  </div>
+</div>
 
-  <div class="form-actions">
+<div class="form-actions">
     <%= f.submit nil, :class => 'btn btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                groups_path, :class => 'btn' %>
-  </div>
+    groups_path, :class => 'btn' %>
+</div>
 <% end %>

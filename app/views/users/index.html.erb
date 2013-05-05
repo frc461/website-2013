@@ -1,26 +1,26 @@
 <%- model_class = User -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
+	<h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
 </div>
 <table class="table table-striped">
-  <thead>
-    <tr>
-      <th><%= model_class.human_attribute_name(:name) %></th>
-      <th><%= model_class.human_attribute_name(:email) %></th>
-      <th><%= model_class.human_attribute_name(:admin) %></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @users.each do |user| %>
-      <tr>
-        <td><%= link_to user.name, user_path(user)  %></td>
-        <td><%= user.email %></td>
-        <td><%= user.admin %></td>
-      </tr>
-    <% end %>
-  </tbody>
+	<thead>
+		<tr>
+			<th><%= model_class.human_attribute_name(:name) %></th>
+			<th><%= model_class.human_attribute_name(:email) %></th>
+			<th><%= model_class.human_attribute_name(:admin) %></th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @users.each do |user| %>
+		<tr>
+			<td><%= link_to user.name, user_path(user)  %></td>
+			<td><%= user.email %></td>
+			<td><%= user.admin %></td>
+		</tr>
+		<% end %>
+	</tbody>
 </table>
 
 <%= link_to t('.new', :default => t("helpers.links.new")),
-            new_user_path,
-            :class => 'btn btn-primary' %>
+new_user_path,
+:class => 'btn btn-primary' %>

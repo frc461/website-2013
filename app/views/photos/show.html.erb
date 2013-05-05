@@ -1,21 +1,21 @@
 <%- model_class = Photo -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human %></h1>
+	<h1><%=t '.title', :default => model_class.model_name.human %></h1>
 </div>
 
 <dl class="dl-horizontal">
-  <% if @photo.album_id != nil %>
+	<% if @photo.album_id != nil %>
     <dt><strong><%= model_class.human_attribute_name(:album_id) %>:</strong></dt>
     <dd><%= @photo.album_id %></dd>
-  <% end %>
-  <dt><strong>Image:</strong></dt>
-  <dd><%= image_tag @photo.image.url %>
+	<% end %>
+	<dt><strong>Image:</strong></dt>
+	<dd><%= image_tag @photo.image.url %>
 </dl>
 
 <div class="form-actions">
-  <%= link_to "Back", photos_path, :class => 'btn' %>
-  <%= link_to "Edit", edit_photo_path(@photo), :class => 'btn' %>
-  <%= link_to "Deletify", photo_path(@photo), :method => 'delete',
-              :data => { :confirm => "Are you sure?" },
-              :class => 'btn btn-danger' %>
+	<%= link_to "Back", photos_path, :class => 'btn' %>
+	<%= link_to "Edit", edit_photo_path(@photo), :class => 'btn' %>
+	<%= link_to "Deletify", photo_path(@photo), :method => 'delete',
+    :data => { :confirm => "Are you sure?" },
+    :class => 'btn btn-danger' %>
 </div>

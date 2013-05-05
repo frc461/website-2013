@@ -1,68 +1,68 @@
 <%- model_class = Forum -%>
 <% content_for :breadcrumb do %>
 <ul class="breadcrumb span12">
-  <li><%= link_to "Home", root_path%><span class="divider">/</span></li>
-  <li><%= link_to "Forums", forums_path%><span class="divider">/</span></li>
-  <li class="active"><%= @forum.name %></li>
+	<li><%= link_to "Home", root_path%><span class="divider">/</span></li>
+	<li><%= link_to "Forums", forums_path%><span class="divider">/</span></li>
+	<li class="active"><%= @forum.name %></li>
 </ul>
 <% end %>
 <% content_for :title do
-     "Forums | " + @forum.name
+   "Forums | " + @forum.name
    end %>
 <div class="page-header">
-  <h1><%= @forum.name %></h1>
+	<h1><%= @forum.name %></h1>
 </div>
 
 <p>
-  <%= @forum.description %>
+	<%= @forum.description %>
 </p>
 
 <% if @forum.comments.where(:parent_id => nil).count < 1 %>
-<p>No threads yet.</p>
-<% else %>
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>Thread</th>
-      <th>User</th>
-      <th>Sticky</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @forum.comments.where(:parent_id => nil, :sticky => true).each do |comment| %>
-      <tr>
-        <% if comment.important %>
-        <td><%= link_to comment.title, comment, :class => "text-error" %></td>
-        <% else %>
-        <td><%= link_to comment.title, comment %></td>
-        <% end %>
-        <td><%= comment.user.name %></td>
-        <td>Sticky</td>
-      </tr>
-    <% end %>
-    <% @forum.comments.where(:parent_id => nil, :sticky => false).each do |comment| %>
-      <tr>
-        <% if comment.important %>
-        <td><%= link_to comment.title, comment_path(comment), :class => "text-error" %></td>
-        <% else %>
-        <td><%= link_to comment.title, comment_path(comment) %></td>
-        <% end %>
-        <td><%= comment.user.name %></td>
-        <td></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-<% end %>
+	<p>No threads yet.</p>
+	<% else %>
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>Thread</th>
+				<th>User</th>
+				<th>Sticky</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @forum.comments.where(:parent_id => nil, :sticky => true).each do |comment| %>
+			<tr>
+				<% if comment.important %>
+				<td><%= link_to comment.title, comment, :class => "text-error" %></td>
+				<% else %>
+				<td><%= link_to comment.title, comment %></td>
+				<% end %>
+				<td><%= comment.user.name %></td>
+				<td>Sticky</td>
+			</tr>
+			<% end %>
+			<% @forum.comments.where(:parent_id => nil, :sticky => false).each do |comment| %>
+			<tr>
+				<% if comment.important %>
+				<td><%= link_to comment.title, comment_path(comment), :class => "text-error" %></td>
+				<% else %>
+				<td><%= link_to comment.title, comment_path(comment) %></td>
+				<% end %>
+				<td><%= comment.user.name %></td>
+				<td></td>
+			</tr>
+			<% end %>
+		</tbody>
+	</table>
+	<% end %>
 
-<div class="form-actions">
-  <%= link_to "New Thread", new_comment_path(:forum_id => @forum.id), :class => 'btn' %>
-</div>
+	<div class="form-actions">
+		<%= link_to "New Thread", new_comment_path(:forum_id => @forum.id), :class => 'btn' %>
+	</div>
 
-<div class="form-actions">
-  <%= link_to "Back", forums_path, :class => 'btn'  %>
-  <%= link_to "Edit", edit_forum_path(@forum), :class => 'btn' %>
-  <%= link_to "Deletify", forum_path(@forum), :method => 'delete',
-              :data => { :confirm => 'Are you sure?' },
-              :class => 'btn btn-danger' %>
-</div>
+	<div class="form-actions">
+		<%= link_to "Back", forums_path, :class => 'btn'  %>
+		<%= link_to "Edit", edit_forum_path(@forum), :class => 'btn' %>
+		<%= link_to "Deletify", forum_path(@forum), :method => 'delete',
+        :data => { :confirm => 'Are you sure?' },
+        :class => 'btn btn-danger' %>
+	</div>

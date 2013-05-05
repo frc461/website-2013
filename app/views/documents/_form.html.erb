@@ -1,23 +1,23 @@
 <%= form_for @document, :html => { :class => 'form-horizontal' } do |f| %>
-  <div class="control-group">
+<div class="control-group">
     <%= f.label :name, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :name, :class => 'text_field' %>
+		<%= f.text_field :name, :class => 'text_field' %>
     </div>
-  </div>
-  <div class="control-group">
+</div>
+<div class="control-group">
     <%= f.label :filename, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :filename, :class => 'text_field' %>
+		<%= f.text_field :filename, :class => 'text_field' %>
     </div>
-  </div>
-  <% if current_user && current_user.admin %>
-    <%= f.hidden_field :secret_code, :value => DOCUMENT_SECRET_CODE %>
-  <% end %>
+</div>
+<% if current_user && current_user.admin %>
+<%= f.hidden_field :secret_code, :value => DOCUMENT_SECRET_CODE %>
+<% end %>
 
-  <div class="form-actions">
+<div class="form-actions">
     <%= f.submit nil, :class => 'btn btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                documents_path, :class => 'btn' %>
-  </div>
+    documents_path, :class => 'btn' %>
+</div>
 <% end %>
