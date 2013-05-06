@@ -30,13 +30,13 @@ class Ability
       forum_access = false
       group_access = false
       user.groups.each do |g|
-        page_access ||= g.page_access
-        post_access ||= g.post_access
-        photo_access ||= g.photo_access
-        event_access ||= g.event_access
-        user_access ||= g.user_access
-        forum_access ||= g.forum_access
-        group_access ||= g.group_access
+        page_access ||=  g.page_access
+        post_access ||=  g.post_access
+       photo_access ||= g.photo_access
+       event_access ||= g.event_access
+        user_access ||=  g.user_access
+       forum_access ||= g.forum_access
+       group_access ||= g.group_access
       end
       if page_access
         can :manage, Page
