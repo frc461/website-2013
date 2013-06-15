@@ -28,7 +28,7 @@
 <% end %>
 <% end %>
 <% end %>
-<% if can?(:write, Post) || can?(:remove, Post) %>
+<% if can?(:manage, Post) %>
 <%= link_to t('.new', :default => t("helpers.links.new")),
 new_post_path,
 :class => 'btn btn-primary' %>

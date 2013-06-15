@@ -60,7 +60,7 @@
 	<dd><%# sanitize(@page.pages.map do |pg| link_to(pg.title, pg) end.join(", ".html_safe)) %></dd>
 </dl>-->
 
-<% if can?(:read, @page) && can?(:write, @page) %>
+<% if can? :manage, Page %>
 <div class="form-actions">
 	<p>
 		<%= link_to "Back", "/", :class => 'btn'  %>

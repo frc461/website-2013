@@ -72,7 +72,7 @@
 		</div>
 
 
-		<% if can? :remove, current_user %>
+		<% if can? :manage, Album %>
 		<div class="form-actions">
 			<%= link_to "Back", albums_path, :class => 'btn'  %>
 			<%= link_to "Edit", edit_album_path(@album), :class => 'btn' %>

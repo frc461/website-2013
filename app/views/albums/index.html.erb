@@ -26,7 +26,7 @@
 </div>
 <% end %>
 
-<% if can? :write, current_user %>
+<% if can? :manage, Album %>
 <%= link_to t('.new', :default => t("helpers.links.new")),
 new_album_path,
 :class => 'btn btn-primary' %>
