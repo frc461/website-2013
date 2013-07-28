@@ -7,6 +7,11 @@ To use Glyphicons sprites instead of Font Awesome, replace with "require twitter
 
 */
 
+.carousel {
+
+  border-top: 8px solid #eed033;
+}
+
 #MoveR {
 	padding: 10px;
 }
@@ -418,8 +423,9 @@ body {
 }
 
 .floating-content-img {
+  margin: 10px;
+  border-right: 8px solid #eed033;
 	max-width: 50%;
-	padding: 10px;
 }
 
 .content-img {
