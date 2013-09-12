@@ -1,12 +1,12 @@
 class Event < ActiveRecord::Base
-	attr_accessible :content, :endDate, :location, :public, :startDate, :title
-	def calendarify()
-		r={}
+	attr_accessible :content, :end_date, :location, :public, :start_date, :title, :weeks_repeat, :end_repeat
+	def calendarify
+		r = {}
 		r[:id] = self.id
-		r[:start] = self.startDate.iso8601
-		r[:end] = self.endDate.iso8601
+		r[:start] = self.start_date.iso8601
+		r[:end] = self.end_date.iso8601
 		r[:title] = self.title
 		r[:url] = "/events/#{id}"
-		return(r)
+		r
 	end
 end

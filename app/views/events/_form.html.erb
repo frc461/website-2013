@@ -12,10 +12,22 @@
     </div>
 </div>
 <div class="control-group">
-    <%= f.label :startDate, :class => 'control-label' %>
+    <%= f.label :start_date, :class => 'control-label' %>
     <div class="controls">
 		<div class="datetimepicker input-append">
-			<%= f.text_field :startDate, :"data-format" => "dd/MM/yyyy hh:mm:ss" %>
+			<%= f.text_field :start_date, :"data-format" => "dd/MM/yyyy hh:mm:ss" %>
+			<span class="add-on">
+				<i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
+			</span>
+		</div>
+		<br />(If repeating event, this is the first occurance.)
+    </div>
+</div>
+<div class="control-group">
+    <%= f.label :end_date, :class => 'control-label' %>
+    <div class="controls">
+		<div class="datetimepicker input-append">
+			<%= f.text_field :end_date, :"data-format" => "dd/MM/yyyy hh:mm:ss" %>
 			<span class="add-on">
 				<i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
 			</span>
@@ -23,10 +35,16 @@
     </div>
 </div>
 <div class="control-group">
-    <%= f.label :endDate, :class => 'control-label' %>
+	<label class="control-label" for="event_weeks_repeat">Repeat every # weeks</label>
+    <div class="controls">
+		<%= f.number_field :weeks_repeat, :in => 0...8 %>
+    </div>
+</div>
+<div class="control-group">
+    <%= f.label :end_repeat, :class => 'control-label' %>
     <div class="controls">
 		<div class="datetimepicker input-append">
-			<%= f.text_field :endDate, :"data-format" => "dd/MM/yyyy hh:mm:ss" %>
+			<%= f.text_field :end_repeat, :"data-format" => "dd/MM/yyyy hh:mm:ss" %>
 			<span class="add-on">
 				<i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
 			</span>
