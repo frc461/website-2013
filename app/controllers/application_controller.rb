@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
 	
 	def debuggy
 		@print_debug = true
-		@debug_string = Digest::MD5.hexdigest("{empty string};")
+		@debug_string = "mrc {" + @@most_recent_commit_string + "}"
 	end
 
 	#rescue_from Exception, :with => :handle_error
