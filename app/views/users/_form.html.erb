@@ -1,6 +1,14 @@
-<% if current_user && current_user.admin
-   groups=Group.all else groups=Group.where(:joinable => true)
-end %>
+<%
+if current_user && current_user.admin
+  groups=Group.all
+else
+  groups=Group.where(:joinable => true)
+end
+if current_user
+  groups += current_user.groups
+  groups.uniq!
+end
+%>
 
 <%= form_for @user, :html => { :class => 'form-horizontal' } do |f| %>
 <% if @user.errors.any? %>

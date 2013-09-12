@@ -636,3 +636,7 @@ table.social-buttons-navbar > tr > td {
 		display: none;
 	}
 }
+
+.manage-table {
+	min-height: 55px;
+}

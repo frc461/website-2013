@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
 	end
 
 	rescue_from ActionView::MissingTemplate do |e|
-		redirect_to error_path
+		render "error/index", :status => 404
 	end
 	
 	def debuggy

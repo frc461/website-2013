@@ -21,7 +21,7 @@
     <div class="well">
         <p>Logged in as <%= current_user.name %></p>
         <% if can?(:update, current_user) || can?(:write, Page) || can?(:write,Group) || can?(:write,User) %>
-        <table>
+        <table class="manage-table">
             <tr class="smallerPadding">
                 <td rowspan="5">
                     <div class="verticalTextUpLeft">
@@ -29,6 +29,8 @@
                     </div>
                 </td>
             </tr>
+			<% if can?(:update, current_user) %><tr><td><%= link_to "Account Details", edit_user_path(current_user) %></td></tr><% end %>
+			<% if can?(:update, current_user) %><tr><td><%= link_to "Account Details", edit_user_path(current_user) %></td></tr><% end %>
             <% if can?(:write, User) %><tr><td><%= link_to "Users", users_path %></td></tr><% end %>
             <% if can?(:write, Group) %><tr><td><%= link_to "Groups", groups_path %></td></tr><% end %>
             <% if can?(:write, Page) %><tr><td><%= link_to "New Page", "/pages/new" %></td></tr><% end %>

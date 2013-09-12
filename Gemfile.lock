@@ -61,6 +61,7 @@ GEM
     hike (1.2.1)
     httpclient (2.3.3)
     i18n (0.6.1)
+    icalendar (1.4.1)
     inherited_resources (1.3.1)
       has_scope (~> 0.5.0)
       responders (~> 0.6)
@@ -167,6 +168,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   fb_graph
   fullcalendar-rails
+  icalendar
   inherited_resources
   jquery-fileupload-rails
   jquery-rails
