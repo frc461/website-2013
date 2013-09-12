@@ -2,9 +2,9 @@ class EventsController < InheritedResources::Base
 	require 'icalendar'
 	# include Icaldendar
 	load_and_authorize_resource
-	def icalendarify
+	def icalendarify (event_list)
 		cal = Icalendar::Calendar.new # icalendar
-		@events.each do |ev|
+		event_list.each do |ev|
 			cal.event do
 				dtstart     ev.start_date
 				dtend       ev.end_date
@@ -47,14 +47,14 @@ class EventsController < InheritedResources::Base
 			respond_to do |format|
 				format.html # index.html.erb
 				format.json { render json: unrepeatify().map{|a| a.calendarify} }
-				format.ics { render text: icalendarify }
+				format.ics { render text: icalendarify(unrepeatify) }
 			end
 		else
 			@events = Event.where(:public => true)
 			respond_to do |format|
 				format.html # index.html.erb
 				format.json { render json: unrepeatify().map{|a| a.calendarify()} }
-				format.ics { render text: icalendarify }
+				format.ics { render text: icalendarify(unrepeatify) }
 			end
 		end
 	end
