@@ -17,7 +17,12 @@ class ApplicationController < ActionController::Base
 	
 	def debuggy
 		@print_debug = true
-		@debug_string = Digest::MD5.hexdigest("{empty string};")
+		@debug_string = Digest::MD5.hexdigest(
+		                                      "{ \"" +
+		                                      (current_user ? current_user.name : "NOT LOGGED IN" ) +
+		                                      "\", \"" +
+		                                      (@print_debug ? "true" : "false") +
+		                                      "\" };")
 	end
 
 	#rescue_from Exception, :with => :handle_error
