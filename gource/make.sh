@@ -7,6 +7,7 @@ gource -s 1 \
        --caption-file commit_log \
        --caption-size 10 \
        --caption-duration 2 \
+       --caption-offset 32 \
        -1920x1080 \
        -r 60 \
        -o - \
