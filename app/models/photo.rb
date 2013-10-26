@@ -1,11 +1,11 @@
 class Photo < ActiveRecord::Base
 	attr_accessible :album_id, :image
 	validate :unique_filename_thingy
-	has_attached_file :image,
-	:storage => :filesystem,
-	:styles => { :medium => "x512", :thumb => "250x>" },
-	:path => "app/assets/images/images/:style-:filename",
-	:url => "/assets/images/:style-:filename"
+	has_attached_file(:image,
+	                  :storage => :filesystem,
+	                  :styles => { :medium => "x512", :thumb => "250x>" },
+	                  :path => "app/assets/images/images/:style-:filename",
+	                  :url => "/assets/images/:style-:filename")
 
 	include Rails.application.routes.url_helpers
 

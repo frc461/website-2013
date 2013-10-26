@@ -15,14 +15,21 @@
 <%= @event.location %>
 <br />
 <% if @event.weeks_repeat && @event.weeks_repeat > 0 %>
-Every <%= @event.weeks_repeat > 1 ? ActiveSupport::Inflector::ordinalize(@event.weeks_repeat) : "" %>
-<%= @event.start_date.in_time_zone.strftime("%A %R") %> - <%= @event.end_date.in_time_zone.strftime("%A %R") %>
-<% if @event.end_repeat %> until <%= @event.end_repeat.strftime("%A %m/%d/%Y") %> <% end %>
-starting on <%= @event.start_date.strftime "%m/%d/%Y" %>
+	<!-- Every third -->
+	Every <%= @event.weeks_repeat > 1 ? ActiveSupport::Inflector::ordinalize(@event.weeks_repeat) : "" %>
+	<!-- Friday 18:30 - Friday 20:30 -->
+	<%= @event.start_date.in_time_zone.strftime("%A %R") %> - <%= @event.end_date.in_time_zone.strftime("%A %R") %>
+	<!-- until Saturday 12/20/2014 -->
+	<% if @event.end_repeat %> until <%= @event.end_repeat.strftime("%A %m/%d/%Y") %> <% end %>
+	<!-- starting on 12/20/2013 -->
+	starting on <%= @event.start_date.strftime "%m/%d/%Y" %>
 <% else %>
-<%= @event.start_date.in_time_zone.strftime("%A %m/%d/%Y %R") %> - <%= @event.end_date.in_time_zone.strftime("%A %m/%d/%Y %R") %>
+	<!-- Friday 12/20/2013 18:30 - Friday 12/20/2013 20:30 -->
+	<%= @event.start_date.in_time_zone.strftime("%A %m/%d/%Y %R") %> - <%= @event.end_date.in_time_zone.strftime("%A %m/%d/%Y %R") %>
 <% end %>
+<% if @event.content %>
 <hr />
+<% end %>
 <%= @event.content %>
 
 <div class="form-actions">
