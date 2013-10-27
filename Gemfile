@@ -31,3 +31,10 @@ gem 'jquery-fileupload-rails'
 gem 'thin'
 gem 'fb_graph'
 gem 'icalendar'
+
+# Rails 3 gems to help with transition
+gem 'protected_attributes'
+gem 'rails-observers'
+gem 'actionpack-page_caching'
+gem 'actionpack-action_caching'
+gem 'activerecord-deprecated_finders'
