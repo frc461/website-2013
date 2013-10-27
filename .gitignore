@@ -24,3 +24,5 @@
 
 # Ignore generated files
 commit_hashes
+
+.rspec
