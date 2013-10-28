@@ -39,6 +39,12 @@ describe "UpdateSelf" do
 		page.should have_content "Logged in!"
 		page.should have_content user.name
 
-		visit users_path + user.id.to_s
+		# update
+		click_link "Account Details"
+		fill_in "Name", :with => "Another Tester"
+		click_button "Update"
+
+		# checks
+		page.should have_content "Another Tester"
 	end
 end
