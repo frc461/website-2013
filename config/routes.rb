@@ -5,7 +5,7 @@ Website::Application.routes.draw do
 	get "search/search"
 
 	get "sitemap" => "sitemap#index"
-	match "robots.txt" => "sitemap#robots"
+	get "robots.txt" => "sitemap#robots"
 
 	# kind of unnecessary...
 	# Completely necessary for production error handling to work!!!
@@ -36,12 +36,12 @@ Website::Application.routes.draw do
 	get "log_in" => "sessions#new", :as => "log_in"
 	get "log_out" => "sessions#destroy", :as => "log_out"
 	get "sign_up" => "users#new", :as => "sign_up"
-	get "groups" => "groups#new", :as => "groups"
-	get "users" => "users#index", :as => "users"
+	# get "groups" => "groups#new", :as => "groups"
+	# get "users" => "users#index", :as => "users"
 	get "search" => "search#search", :as => "search"
 
-	match '/pages/*titles' => "pages#show"
-	match '/tags/:tag' => "tags#show"
+	get '/pages/*titles' => "pages#show"
+	get '/tags/:tag' => "tags#show"
 
 	# The priority is based upon order of creation:
 	# first created -> highest priority.
@@ -101,5 +101,5 @@ Website::Application.routes.draw do
 	# match ':controller(/:action(/:id))(.:format)'
 
 	# error
-	match "*path" => "error#index"
+	get "*path" => "error#index"
 end

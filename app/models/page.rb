@@ -1,6 +1,6 @@
 class Page < ActiveRecord::Base
 	attr_accessible :content, :navigable, :parent_id, :title, :tag_list, :sort_index
-	validates_format_of :title, :with => /^[a-zA-Z0-9\-: ]+$/
+	validates_format_of :title, :with => /\A[a-zA-Z0-9\-: ]+\Z/
 	validates_presence_of :sort_index
 	validates_uniqueness_of :title
 	has_many :pages, :foreign_key => :parent_id

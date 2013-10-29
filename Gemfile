@@ -11,7 +11,7 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'uglifier', '>= 1.3.0'
 
 group :development do
-      gem "rails-erd"
+  gem "rails-erd"
 end
 
 gem 'twitter-bootstrap-rails'
@@ -34,10 +34,6 @@ gem 'icalendar'
 
 # Rails 3 gems to help with transition
 gem 'protected_attributes'
-gem 'rails-observers'
-gem 'actionpack-page_caching'
-gem 'actionpack-action_caching'
-gem 'activerecord-deprecated_finders'
 
 # testing stuffs
 gem "rspec-rails", :group => [:test, :development]
