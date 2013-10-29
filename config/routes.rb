@@ -4,12 +4,12 @@ Website::Application.routes.draw do
 
 	get "search/search"
 
-	get "sitemap" => "sitemap#index"
-	get "robots.txt" => "sitemap#robots"
+	get "sitemap", to: "sitemap#index"
+	get "robots.txt", to: "sitemap#robots"
 
 	# kind of unnecessary...
 	# Completely necessary for production error handling to work!!!
-	get "error" => "error#index" 
+	get "error", to: "error#index" 
 
 	resources :events
 
@@ -33,15 +33,15 @@ Website::Application.routes.draw do
 
 	get "sessions/new"
 	get "welcome/index"
-	get "log_in" => "sessions#new", :as => "log_in"
-	get "log_out" => "sessions#destroy", :as => "log_out"
-	get "sign_up" => "users#new", :as => "sign_up"
-	# get "groups" => "groups#new", :as => "groups"
-	# get "users" => "users#index", :as => "users"
-	get "search" => "search#search", :as => "search"
+	get "log_in", to: "sessions#new", :as => "log_in"
+	get "log_out", to: "sessions#destroy", :as => "log_out"
+	get "sign_up", to: "users#new", :as => "sign_up"
+	# get "groups", to: "groups#new", :as => "groups"
+	# get "users", to: "users#index", :as => "users"
+	get "search", to: "search#search", :as => "search"
 
-	get '/pages/*titles' => "pages#show"
-	get '/tags/:tag' => "tags#show"
+	get '/pages/*titles', to: "pages#show"
+	get '/tags/:tag', to: "tags#show"
 
 	# The priority is based upon order of creation:
 	# first created -> highest priority.
@@ -101,5 +101,5 @@ Website::Application.routes.draw do
 	# match ':controller(/:action(/:id))(.:format)'
 
 	# error
-	get "*path" => "error#index"
+	get "*path", to: "error#index"
 end
