@@ -42,23 +42,31 @@ class Ability
 			end
 			if page_access
 				can :manage, Page
+				cannot :destroy, Page
 			end
 			if post_access
 				can :manage, Post
+				cannot :destroy, Post
 			end
 			if photo_access
 				can :manage, Photo
+				cannot :destroy, Photo
 				can :manage, Album
+				cannot :destroy, Album
 			end
 			if user_access
 				can :manage, User
+				cannot :destroy, User
 			end
 			if forum_access
 				can :manage, Forum
+				cannot :destroy, Forum
 				can :manage, Comment
+				cannot :destroy, Comment
 			end
 			if group_access
 				can :manage, Group
+				cannot :destroy, Group
 			end
 		end
 	end
