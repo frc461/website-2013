@@ -91,7 +91,7 @@ var Konami = function() {
 						konami.iphone.capture = false;
 
 						konami.iphone.check_direction();
-                    }
+					}
 				});
 
 				konami.addEvent(document, "touchend", function(evt)
@@ -107,8 +107,8 @@ var Konami = function() {
 
 					konami.iphone.tap = true;
 					konami.iphone.capture = true;
-                });               
-            },
+				});
+            		},
 
 			check_direction: function(link)
 			{
