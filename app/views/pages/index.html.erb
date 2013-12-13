@@ -57,7 +57,7 @@
 </div>
 <br class="visible-phone" />
 <br class="visible-phone" />
-<% if can? :write, Page %>
+<% if can? :create, Page %>
 <%= link_to t('.new', :default => t("helpers.links.new")),
 new_page_path,
 :class => 'btn btn-primary' %>

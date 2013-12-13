@@ -56,7 +56,7 @@
 
 <br />
 
-<% if can?(:write, Todo) || can?(:remove, Todo) %>
+<% if can?(:update, Todo) %>
 <%= link_to t('.new', :default => t("helpers.links.new")),
 new_todo_path,
 :class => 'btn btn-primary' %>

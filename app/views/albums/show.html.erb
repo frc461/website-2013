@@ -20,8 +20,6 @@
 	</div>
 
 	<div style="padding-left: 32px;">
-		<% if can? :create, Photo %>
-		<% end %>
 		<strong><%= model_class.human_attribute_name(:description) %>:</strong>
 		<div style="padding-left: 4px;">
 			<%= @album.description %>
@@ -41,7 +39,7 @@
 				<div class="item">
 					<% end %>
 					<%= image_tag photo.image.url(:medium) %>
-					<% if can?(:write, Post) %>
+					<% if can? :update, Photo # not sure exactly what we should put right above this, but this is definitely better than what was there %>
 					<div class="carousel-caption">
 						<p>
 							ID: <%= photo.id %>
@@ -72,16 +70,14 @@
 		</div>
 
 
-		<% if can? :manage, Album %>
 		<div class="form-actions">
-			<%= link_to "Back", albums_path, :class => 'btn'  %>
-			<%= link_to "Edit", edit_album_path(@album), :class => 'btn' %>
+			<%= link_to "Back", albums_path, :class => 'btn' %>
+			<%= link_to "Edit", edit_album_path(@album), :class => 'btn' if can? :update, @album %>
 			<%= link_to "Deletify", album_path(@album), :method => 'delete',
             :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-            :class => 'btn btn-danger' %>
-			<a class="btn btn-success" href="/photos/mass?album_id=<%= @album.id %>">Add Photos</a><br />
+            :class => 'btn btn-danger' if can? :destroy, @album %>
+			<%= link_to "Add Photos", "/photos/mass?album_id=" + @album.id.to_s, :class => "btn btn-success" if can? :create, Photo %>
 		</div>
-		<% end %>
 	</div>
 	<script type="text/javascript">
 		$('.carousel').carousel({
