@@ -21,6 +21,10 @@ class Ability
 			can :read, Forum
 			can :read, Comment
 			can :create, Comment
+			can :manage, Comment, :user_id => user.id
+			cannot :destroy, Comment do |comment|
+				!comment.comments.empty? && !comment.parent
+			end
 			can :read, Event
 			can :read, Todo
 			can :write, Todo
