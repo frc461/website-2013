@@ -44,7 +44,7 @@
     <%= f.label :end_repeat, :class => 'control-label' %>
     <div class="controls">
 		<div class="datetimepicker input-append">
-			<%= f.text_field :end_repeat, :value => @event.end_repeat ? @event.end_repeat.in_time_zone.strftime("%d/%m/%Y %R:%S") : nil, :"data-format" => "dd/MM/yyyy hh:mm:ss" %>
+			<%= f.text_field :end_repeat, :value => @event.end_repeat ? @event.end_repeat.strftime("%d/%m/%Y") : nil, :"data-format" => "dd/MM/yyyy hh:mm:ss" %>
 			<span class="add-on">
 				<i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
 			</span>
