@@ -3,6 +3,7 @@ class PhotosController < InheritedResources::Base
 
 	def create
 		@photo = Photo.new(params[:photo])
+		
 		respond_to do |format|
 			if @photo.save
 				format.html {
@@ -15,5 +16,4 @@ class PhotosController < InheritedResources::Base
 			end
 		end
 	end
-	
 end
