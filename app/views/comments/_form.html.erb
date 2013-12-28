@@ -1,5 +1,5 @@
 <%= form_for @comment, :html => { :class => 'form-horizontal' } do |f| %>
-	<%= f.hidden_field :user_id, :value => current_user.id %>
+	<%= f.hidden_field :user_id, :value => (@comment.user ? @comment.user.id : current_user.id) %>
 	<%= f.hidden_field :forum_id, :value => (params[:forum_id] || @comment.forum_id) %>
 	
 	<% unless @comment.parent %>

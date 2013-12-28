@@ -37,8 +37,7 @@
 </div>
 <br />
 
-<% Comment.where(:parent_id => @comment.id).each do |comment| %>
-
+<% Comment.where(:parent_id => @comment.id).order(:created_at).each do |comment| %>
 	<div class="border">
 		<table class="comment"> 
 			<tr>
