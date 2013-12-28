@@ -17,11 +17,14 @@ Website::Application.routes.draw do
 	get "permissions/create"
 	get "permissions/destroy"
 
-	resources :todos
+	resources :todos do
+		get "complete", :on => :member
+		get "uncomplete", :on => :member
+	end
 	resources :comments
 	resources :forums
 	resources :photos do
-		get 'mass', :on => :collection
+		get "mass", :on => :collection
 	end
 	resources :albums
 	resources :pages
