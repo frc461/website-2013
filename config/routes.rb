@@ -32,7 +32,10 @@ Website::Application.routes.draw do
 	resources :permissions
 	resources :sessions
 	resources :posts
-	resources :groups
+	resources :groups do
+		get "join", :on => :member
+		get "unjoin", :on => :member
+	end
 
 	get "sessions/new"
 	get "welcome/index"
