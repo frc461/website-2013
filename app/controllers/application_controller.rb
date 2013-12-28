@@ -25,11 +25,6 @@ class ApplicationController < ActionController::Base
 		                                      "\" };")
 	end
 
-	#rescue_from Exception, :with => :handle_error
-	#rescue_from ActionController::RoutingError, :with => :handle_error 
-
-	#, ActionController::UnknownController, AbstractController::ActionNotFound, ActiveRecord::RecordNotFound  def handle_error
-
 	private
 	def current_user
 		@current_user ||= User.find(session[:user_id]) if session[:user_id]
