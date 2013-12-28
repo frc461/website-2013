@@ -13,7 +13,7 @@ class CommentsController < InheritedResources::Base
 		@comment = Comment.new(params[:comment])
 		
 		if @comment.save && @comment.errors.count == 0
-			flash[:notice] = "Created comment #{@comment.id} successfully"
+			flash[:notice] = (current_user.admin? ? "Created comment #{@comment.id} successfully!" : "Created comment successfully!")
 			
 			if @comment.parent_id
 				redirect_to @comment.parent
