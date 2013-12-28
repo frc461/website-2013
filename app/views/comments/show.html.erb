@@ -1,16 +1,16 @@
 <%- model_class = Comment -%>
 
 <% content_for :breadcrumb do %>
-<ul class="breadcrumb span12">
-	<li><%= link_to "Home", root_path%><span class="divider">/</span></li>
-	<li><%= link_to "Forums", forums_path%><span class="divider">/</span></li>
-	<li><%= link_to @comment.forum.name, @comment.forum %><span class="divider">/</span></li>
-	<li class="active"><%= @comment.title %>
-</ul>
+	<ul class="breadcrumb span12">
+		<li><%= link_to "Home", root_path%><span class="divider">/</span></li>
+		<li><%= link_to "Forums", forums_path%><span class="divider">/</span></li>
+		<li><%= link_to @comment.forum.name, @comment.forum %><span class="divider">/</span></li>
+		<li class="active"><%= @comment.title %>
+	</ul>
 <% end %>
 
 <% content_for :title do
-   "Forums | " + @comment.title 
+	   "Forums | " + @comment.title 
    end %>
 
 <div class="page-header">
@@ -27,6 +27,7 @@
 				<% if @comment.important %><br /><strong>Important!</strong><% end %>
 				<% if @comment.sticky %><br /><strong>Sticky!</strong><% end %>
 				<br /><%= @comment.created_at.strftime("%d %b %Y %H:%M") %>
+				<br /><%= link_to "Edit", edit_comment_path(@comment), :class => "btn btn-warning" if can? :update, @comment %>
 			</td>
 			<td class="content">
 				<%= @comment.content.split("\r\n").join("<br />").html_safe %>
@@ -38,47 +39,53 @@
 
 <% Comment.where(:parent_id => @comment.id).each do |comment| %>
 
-<div class="border">
-	<table class="comment"> 
-		<tr>
-			<td class="username">
-				<%= comment.user.name %>
-				<br /><%= comment.created_at.strftime("%d %b %Y %H:%M") %>
-			</td>
-			<td class="content">
-				<%= comment.content.split("\r\n").join("<br />").html_safe %>
-			</td>
-		</tr>
-	</table>
-</div>
-<br />
+	<div class="border">
+		<table class="comment"> 
+			<tr>
+				<td class="username">
+					<%= comment.user.name %>
+					<br /><%= comment.created_at.strftime("%d %b %Y %H:%M") %>
+					<% if current_user == comment.user || current_user.admin %>
+						<br />
+						<%= link_to "Edit", edit_comment_path(comment), :class => "btn btn-warning" %>
+					<% end %>
+				</td>
+				<td class="content">
+					<%= comment.content.split("\r\n").join("<br />").html_safe %>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<br />
 <% end %>
 
 <%= form_for Comment.new, :html => {:class => 'form-horizontal' } do |f| %>
-<div class="border">
-	<table class="comment">
-		<tr>
-			<td class="username">
-				<%= current_user.name %>
-			</td>
-			<td class="content">
-				<%= f.text_area :content, :class => 'text_area' %>
-			</td>
-		</tr>
-	</table>
-</div>
-<%= f.hidden_field :user_id, :value => current_user.id %>
-<%= f.hidden_field :parent_id, :value => @comment.id %>
-<%= f.hidden_field :sticky, :value => false %>
-<%= f.hidden_field :important, :value => false %>
-<div class="form-actions">
-	<%= f.submit nil, :class => 'btn btn-primary' %>
-</div>
+	<div class="border">
+		<table class="comment">
+			<tr>
+				<td class="username">
+					<%= current_user.name %>
+				</td>
+				<td class="content">
+					<%= f.text_area :content, :class => 'text_area' %>
+				</td>
+			</tr>
+		</table>
+	</div>
+	
+	<%= f.hidden_field :user_id, :value => current_user.id %>
+	<%= f.hidden_field :parent_id, :value => @comment.id %>
+	<%= f.hidden_field :sticky, :value => false %>
+	<%= f.hidden_field :important, :value => false %>
+	<%= f.hidden_field :forum_id, :value => @comment.forum_id %>
+	
+	<div class="form-actions">
+		<%= f.submit nil, :class => 'btn btn-primary' %>
+	</div>
 <% end %>
 
 <div class="form-actions">
 	<%= link_to "Back", @comment.forum, :class => 'btn'  %>
-	<%= link_to "Edit", edit_comment_path(@comment), :class => 'btn' if can? :update, @comment %>
 	<%= link_to "Deletify!", comment_path(@comment),
         :method => 'delete', :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger' if can? :destroy, @comment %>
 </div>

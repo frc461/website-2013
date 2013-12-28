@@ -13,7 +13,7 @@ class CommentsController < InheritedResources::Base
 		@comment = Comment.new(params[:comment])
 		
 		if @comment.save && @comment.errors.count == 0
-			flash[:notice] = ["Created comment", @comment.id, "successfully"].join(" ")
+			flash[:notice] = "Created comment #{@comment.id} successfully"
 			
 			if @comment.parent_id
 				redirect_to @comment.parent
@@ -28,6 +28,14 @@ class CommentsController < InheritedResources::Base
 			else
 				redirect_to :new
 			end
+		end
+	end
+
+	def show
+		@comment = Comment.find(params[:id])
+
+		if @comment.parent
+			redirect_to @comment.parent
 		end
 	end
 
