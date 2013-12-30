@@ -12,7 +12,7 @@ class CommentsController < InheritedResources::Base
 	def create
 		@comment = Comment.new(params[:comment])
 		
-		if @comment.save && @comment.errors.count == 0
+		if @comment.save
 			flash[:notice] = (current_user.admin? ? "Created comment #{@comment.id} successfully!" : "Created comment successfully!")
 			
 			if @comment.parent_id
@@ -26,7 +26,7 @@ class CommentsController < InheritedResources::Base
 			if @comment.parent_id
 				redirect_to @comment.parent
 			else
-				redirect_to :new
+				render :new
 			end
 		end
 	end
@@ -41,7 +41,7 @@ class CommentsController < InheritedResources::Base
 
 	def destroy
 		forum = @comment.forum
-		has_comments = @comment.parent.comments.count > 0
+		has_comments = @comment.parent ? @comment.parent.comments.count > 0 : false
 		parent = @comment.parent
 
 		@comment.comments.each do |comment|

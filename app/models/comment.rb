@@ -16,6 +16,7 @@ class Comment < ActiveRecord::Base
 
 	def priorToSave
 		setvalues
+		
 		if self.content.to_s.empty?
 			self.errors.add(:base, "Cannot create a comment/thread with empty content")
 		end
