@@ -41,11 +41,17 @@ class CommentsController < InheritedResources::Base
 
 	def destroy
 		forum = @comment.forum
+		has_comments = @comment.parent.comments.count > 0
+		parent = @comment.parent
+
+		@comment.comments.each do |comment|
+			comment.destroy
+		end
 		
 		@comment.destroy
 		
 		respond_to do |format|
-			format.html { redirect_to forum }
+			format.html { redirect_to (has_comments ? parent : forum) }
 			format.json { head :no_content }
 		end
 	end

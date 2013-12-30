@@ -24,6 +24,7 @@
 				<% if @comment.sticky %><br /><strong>Sticky!</strong><% end %>
 				<br /><%= @comment.created_at.strftime("%d %b %Y %H:%M") %>
 				<br /><%= link_to "Edit", edit_comment_path(@comment), :class => "btn btn-warning" if can? :update, @comment %>
+				<%= link_to "Deletify", @comment, :method => "delete", :data => { :confirm => "Are you sure?  This will delete the whole thread." }, :class => "btn btn-danger" if can? :destroy, @comment %>
 			</td>
 			<td class="content">
 				<%= @comment.content.split("\r\n").join("<br />").html_safe %>
@@ -43,6 +44,7 @@
 					<% if current_user == comment.user || current_user.admin %>
 						<br />
 						<%= link_to "Edit", edit_comment_path(comment), :class => "btn btn-warning" %>
+						<%= link_to "Deletify", comment, :method => "delete", :data => { :confirm => "Are you sure?" }, :class => "btn btn-danger" if can? :destroy, comment %>
 					<% end %>
 				</td>
 				<td class="content">
@@ -81,6 +83,4 @@
 
 <div class="form-actions">
 	<%= link_to "Back", @comment.forum, :class => 'btn'  %>
-	<%= link_to "Deletify!", comment_path(@comment),
-        :method => 'delete', :data => { :confirm => "Are you sure?" }, :class => 'btn btn-danger' if can? :destroy, @comment %>
 </div>
