@@ -6,11 +6,15 @@
 	<% if @todo.users.count > 0 %>
 		<%= @todo.done ? "Was assigned" : "Assigned" %> to
 		
-		<% @todo.users.each do |user| %>
-			<%= form_tag unassign_todo_path(@todo), :style => "display: inline" do %>
-				<%= submit_tag user.name.to_s, :class => "btn btn-danger btn-mini" %>
-			<% end %>
-		<% end %>.
+		<% if current_user.admin %>
+			<% @todo.users.each do |user| %>
+				<%= form_tag unassign_todo_path(@todo), :style => "display: inline" do %>
+					<%= submit_tag user.name.to_s, :class => "btn btn-danger btn-mini" %>
+				<% end %>
+			<% end %>.
+		<% else %>
+			<%= User.all.map { |u| u.name }.join(", ").html_safe %>.
+		<% end %>
 	<% else %>
 		<p>
 			<%= @todo.done ? "Was not" : "Not" %> assigned to anybody.
