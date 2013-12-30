@@ -31,10 +31,16 @@ class TodosController < InheritedResources::Base
 
 	def assign
 		@todo = Todo.find(params[:id])
-		
-		@todo.users << User.where(:name => params[:name]).first
 
-		redirect_to @todo, :notice => "Successfully assigned #{params[:name]}!"
+		user_to_add = User.where(:name => params[:name]).first
+
+		if !@todo.users.include? user_to_add
+			@todo.users << User.where(:name => params[:name]).first
+
+			redirect_to @todo, :notice => "Successfully assigned #{who(params[:name])}!"
+		else
+			redirect_to @todo, :alert => "#{who(params[:name], false).capitalize} already assigned!"
+		end
 	end
 
 	def unassign
@@ -42,6 +48,16 @@ class TodosController < InheritedResources::Base
 		
 		@todo.users.delete(User.where(:name => params[:commit]).first)
 
-		redirect_to @todo, :notice => "Successfully un-assigned #{params[:commit]}!"
+		redirect_to @todo, :notice => "Successfully un-assigned #{who(params[:commit])}!"
+	end
+
+	private
+	# Compares current_user.name and name
+	def who(name, yourself = true)
+		if yourself
+			current_user.name == name ? "yourself" : name
+		else
+			current_user.name == name ? "you are" : "#{name} is"
+		end
 	end
 end
