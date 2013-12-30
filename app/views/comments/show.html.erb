@@ -1,5 +1,3 @@
-<%- model_class = Comment -%>
-
 <% title "Forums | " + @comment.title %>
 
 <% content_for :breadcrumb do %>
@@ -84,5 +82,5 @@
 <div class="form-actions">
 	<%= link_to "Back", @comment.forum, :class => 'btn'  %>
 	<%= link_to "Deletify!", comment_path(@comment),
-        :method => 'delete', :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger' if can? :destroy, @comment %>
+        :method => 'delete', :data => { :confirm => "Are you sure?" }, :class => 'btn btn-danger' if can? :destroy, @comment %>
 </div>
