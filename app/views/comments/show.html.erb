@@ -1,5 +1,7 @@
 <%- model_class = Comment -%>
 
+<% title "Forums | " + @comment.title %>
+
 <% content_for :breadcrumb do %>
 	<ul class="breadcrumb span12">
 		<li><%= link_to "Home", root_path%><span class="divider">/</span></li>
@@ -8,8 +10,6 @@
 		<li class="active"><%= @comment.title %>
 	</ul>
 <% end %>
-
-<% title "Forums | " + @comment.title %>
 
 <div class="page-header">
 	<h1>
