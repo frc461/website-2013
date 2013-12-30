@@ -32,6 +32,12 @@ class TodosController < InheritedResources::Base
 	def assign
 		@todo = Todo.find(params[:id])
 
+		if User.where(:name => params[:name]).count == 0
+			redirect_to @todo, :alert => "#{params[:name]} does not exist!"
+
+			return
+		end
+
 		user_to_add = User.where(:name => params[:name]).first
 
 		if !@todo.users.include? user_to_add
