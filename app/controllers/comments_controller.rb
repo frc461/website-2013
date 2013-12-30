@@ -12,7 +12,7 @@ class CommentsController < InheritedResources::Base
 	def create
 		@comment = Comment.new(params[:comment])
 		
-		if @comment.save
+		if @comment.save && @comment.errors.count == 0
 			flash[:notice] = (current_user.admin? ? "Created comment #{@comment.id} successfully!" : "Created comment successfully!")
 			
 			if @comment.parent_id
@@ -27,6 +27,30 @@ class CommentsController < InheritedResources::Base
 				redirect_to @comment.parent
 			else
 				render :new
+			end
+
+			@comment.destroy
+		end
+	end
+
+	def update
+		@comment = Comment.find(params[:id])
+
+		if @comment.update_attributes(params[:comment]) && @comment.errors.count == 0
+			flash[:notice] = (current_user.admin? ? "Edited comment #{@comment.id} successfully!" : "Edited comment successfully!")
+			
+			if @comment.parent_id
+				redirect_to @comment.parent
+			else
+				redirect_to @comment
+			end
+		else
+			flash[:error] = @comment.errors.to_a.join(", ")
+			
+			if @comment.parent_id
+				redirect_to @comment.parent
+			else
+				render :edit
 			end
 		end
 	end
