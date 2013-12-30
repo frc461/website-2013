@@ -45,6 +45,8 @@
 				<% if can? :update, Photo # not sure exactly what we should put right above this, but this is definitely better than what was there %>
 					<div class="carousel-caption">
 						<%= link_to "Deletify", photo, :method => "delete", :class => "btn btn-danger btn-mini" %>
+						<br />
+						ID: <%= photo.id %>
 					</div>
 				<% end %>
 				
