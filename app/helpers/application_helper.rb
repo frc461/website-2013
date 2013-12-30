@@ -199,4 +199,8 @@ module ApplicationHelper
 			false
 		end
 	end
+
+	def title(title_string)
+		content_for :title, title_string.to_s
+	end
 end
