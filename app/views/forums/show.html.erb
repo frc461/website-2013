@@ -23,6 +23,8 @@
 			<tr>
 				<th>Thread</th>
 				<th>User</th>
+				<th>Created at</th>
+				<th>Last commented on at</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -40,6 +42,8 @@
 						<%= link_to comment.title, comment %>
 					</td>
 					<td><%= comment.user.name %></td>
+					<td><%= comment.created_at.strftime("%-m/%-d/%Y %-l:%M %p") %></td>
+					<td><%= comment.comments.count > 0 ? comment.comments.last.created_at.strftime("%-m/%-d/%Y %-l:%M %p") : comment.created_at.strftime("%-m/%-d/%Y %-l:%M %p") %></td>
 				</tr>
 			<% end %>
 			<% @forum.comments.where(:parent_id => nil, :sticky => false).order("created_at DESC").each do |comment| %>
@@ -56,6 +60,8 @@
 						<%= link_to comment.title, comment %>
 					</td>
 					<td><%= comment.user.name %></td>
+					<td><%= comment.created_at.strftime("%-m/%-d/%Y %-l:%M %p") %></td>
+					<td><%= comment.comments.count > 0 ? comment.comments.last.created_at.strftime("%-m/%-d/%Y %-l:%M %p") : comment.created_at.strftime("%-m/%-d/%Y %-l:%M %p") %></td>
 				</tr>
 			<% end %>
 		</tbody>
