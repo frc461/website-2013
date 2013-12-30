@@ -28,4 +28,20 @@ class TodosController < InheritedResources::Base
 
 		redirect_to todos_path, :notice => "To Do item un-completed!"
 	end
+
+	def assign
+		@todo = Todo.find(params[:id])
+		
+		@todo.users << User.where(:name => params[:name]).first
+
+		redirect_to @todo, :notice => "Successfully assigned #{params[:name]}!"
+	end
+
+	def unassign
+		@todo = Todo.find(params[:id])
+		
+		@todo.users.delete(User.where(:name => params[:commit]).first)
+
+		redirect_to @todo, :notice => "Successfully un-assigned #{params[:commit]}!"
+	end
 end

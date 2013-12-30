@@ -647,3 +647,9 @@ table.social-buttons-navbar > tr > td {
 .manage-table {
 	min-height: 55px;
 }
+
+.dropdown-menu .active > a, .dropdown-menu .active > a:hover {
+	background-color: rgb(255, 242, 0);
+	color: black;
+	background-image: none;
+}

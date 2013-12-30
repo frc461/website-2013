@@ -20,6 +20,8 @@ Website::Application.routes.draw do
 	resources :todos do
 		get "complete", :on => :member
 		get "uncomplete", :on => :member
+		post "assign", :on => :member
+		post "unassign", :on => :member
 	end
 	resources :comments
 	resources :forums

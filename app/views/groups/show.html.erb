@@ -26,7 +26,7 @@
 	<dt><strong>Users:</strong></dt>
 	<dd>
 		<% if @group.users.count > 0 %>
-			<%= @group.users.map do |usr| link_to(usr.name, usr) end.join(", ").html_safe%>
+			<%= @group.users.map do |usr| link_to(usr.name, usr) end.join(", ").html_safe %>
 		<% else %>
 			None
 		<% end %>

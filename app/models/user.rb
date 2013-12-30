@@ -3,11 +3,13 @@ class User < ActiveRecord::Base
 	attr_accessible :admin, :email, :name, :group_ids, :password, :password_confirmation, :password_hash, :password_salt, :secret_code
 	attr_accessor :password, :secret_code
 	before_save :encrypt_password, :set_admin
+	
 	validates_each :secret_code do |record, attr, value|
 		if record.secret_code != SECRET_CODE #defined in secret.rb
 			record.errors.add :secret_code, "is not correct"
 		end
 	end
+	
 	validates_confirmation_of :password
 	validates_presence_of :password, :on => :create
 	validates_presence_of :email
@@ -48,6 +50,8 @@ class User < ActiveRecord::Base
 
 	has_many :memberships
 	has_many :groups, :through => :memberships
+	has_many :assignments
+	has_many :todos, :through => :assignments
 	has_many :posts
 	has_many :comments
 end
