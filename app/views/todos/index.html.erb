@@ -9,16 +9,15 @@
 	<thead>
 		<tr>
 			<th>Title</th>
-			<th class="hidden-phone">Content</th>
 			<th>Done</th>
 			<th>Actions</th>
+			<th>Created at</th>
 		</tr>
 	</thead>
 	<tbody>
 		<% Todo.where(:group_id => nil).order("done ASC, created_at DESC").each do |todo| %>
 			<tr>
 				<td><%= link_to todo.name, todo %></td>
-				<td class="hidden-phone"><%= markback todo.content %></td>
 				<td>
 					<%= form_for(todo, :remote => true) do |f| %>
 						<%= f.check_box :done, :disabled => true, :class => "checkthing" %>
@@ -31,8 +30,9 @@
 						<%= link_to "Complete", complete_todo_path(todo), :class => "btn btn-success btn-mini" %>
 					<% end %>
 				</td>
+				<td><%= todo.created_at.strftime("%-m/%-d/%Y %-l:%M %p") %></td>
 			</tr>
-			<% end %>
+		<% end %>
 	</tbody>
 </table>
 
