@@ -11,12 +11,12 @@
 		</tr>
 	</thead>
 	<tbody>
-		<% @users.each do |user| %>
-		<tr>
-			<td><%= link_to user.name, user_path(user)  %></td>
-			<td><%= user.email %></td>
-			<td><%= user.admin %></td>
-		</tr>
+		<% @users.order(:created_at).each do |user| %>
+			<tr>
+				<td><%= link_to user.name, user_path(user)  %></td>
+				<td><%= user.email %></td>
+				<td><%= user.admin %></td>
+			</tr>
 		<% end %>
 	</tbody>
 </table>
