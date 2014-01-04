@@ -15,7 +15,7 @@
     <%= f.label :start_date, :class => 'control-label' %>
     <div class="controls">
 		<div class="datetimepicker input-append">
-			<%= f.text_field :start_date, :value => (@event.start_date ? @event.start_date : DateTime.new(DateTime.now.year, DateTime.now.mon, DateTime.now.day, DateTime.now.hour + 3, DateTime.now.min, DateTime.now.sec, DateTime.now.offset)).in_time_zone.strftime("%d/%m/%Y %R:%S"), :"data-format" => "dd/MM/yyyy hh:mm:ss" %>
+			<%= f.text_field :start_date, :value => (@event.start_date ? @event.start_date : DateTime.now).in_time_zone.strftime("%d/%m/%Y %R:%S"), :"data-format" => "dd/MM/yyyy hh:mm:ss" %>
 			<span class="add-on">
 				<i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
 			</span>
@@ -27,7 +27,7 @@
     <%= f.label :end_date, :class => 'control-label' %>
     <div class="controls">
 		<div class="datetimepicker input-append">
-			<%= f.text_field :end_date, :value => (@event.end_date ? @event.end_date : DateTime.now).in_time_zone.strftime("%d/%m/%Y %R:%S"), :"data-format" => "dd/MM/yyyy hh:mm:ss" %>
+			<%= f.text_field :end_date, :value => (@event.end_date ? @event.end_date : DateTime.now.change(:hour => DateTime.now.hour + 3, :min => DateTime.now.min, :sec => DateTime.now.sec)).in_time_zone.strftime("%d/%m/%Y %R:%S"), :"data-format" => "dd/MM/yyyy hh:mm:ss" %>
 			<span class="add-on">
 				<i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
 			</span>
