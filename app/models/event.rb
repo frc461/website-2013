@@ -2,12 +2,11 @@ class Event < ActiveRecord::Base
 	attr_accessible :content, :end_date, :location, :public, :start_date, :title, :weeks_repeat, :end_repeat
 
 	validates :title, :start_date, :end_date, presence: true
+	validate :end_date_cannot_be_before_start_date
 
-	before_save :check_for_errors
-
-	def check_for_errors
-		if self.start_date && self.end_date
-			# check for start_date before end_date
+	def end_date_cannot_be_before_start_date
+		if end_date.present? && start_date.present? && end_date < start_date
+			errors.add(:end_date, "cannot be before start date")
 		end
 	end
 	
