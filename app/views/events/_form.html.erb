@@ -27,7 +27,7 @@
     <%= f.label :end_date, :class => 'control-label' %>
     <div class="controls">
 		<div class="datetimepicker input-append">
-			<%= f.text_field :end_date, :value => (@event.end_date ? @event.end_date : DateTime.now.change(:hour => DateTime.now.hour + 3, :min => DateTime.now.min, :sec => DateTime.now.sec)).in_time_zone.strftime("%d/%m/%Y %R:%S"), :"data-format" => "dd/MM/yyyy hh:mm:ss" %>
+			<%= f.text_field :end_date, :value => (@event.end_date ? @event.end_date : DateTime.now.change(:day => (DateTime.now.hour + 3 > 23 ? DateTime.now.day + 1 : DateTime.now.day), :hour => (DateTime.now.hour + 3 > 23 ? (DateTime.now.hour + 3) % 24 : DateTime.now.hour + 3), :min => DateTime.now.min, :sec => DateTime.now.sec)).in_time_zone.strftime("%d/%m/%Y %R:%S"), :"data-format" => "dd/MM/yyyy hh:mm:ss" %>
 			<span class="add-on">
 				<i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
 			</span>
