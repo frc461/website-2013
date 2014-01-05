@@ -21,7 +21,7 @@ class CommentsController < InheritedResources::Base
 				redirect_to @comment
 			end
 		else
-			flash[:error] = @comment.errors.to_a.join(", ")
+			flash[:error] = @comment.errors.to_a.join("  ")
 			
 			if @comment.parent_id
 				redirect_to @comment.parent
