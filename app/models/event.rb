@@ -15,10 +15,10 @@ class Event < ActiveRecord::Base
 	def calendarify
 		r = {}
 		
-		r[:id] = self.id
-		r[:start] = self.start_date.iso8601
-		r[:end] = self.end_date.iso8601
-		r[:title] = self.title
+		r[:id] = id
+		r[:start] = start_date.iso8601
+		r[:end] = end_date.iso8601
+		r[:title] = title
 		r[:url] = "/events/#{id}"
 		
 		r

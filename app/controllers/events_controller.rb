@@ -54,9 +54,7 @@ class EventsController < InheritedResources::Base
 		else
 			flash[:error] = (@event.errors.to_a.join(", ") + ".").capitalize
 
-			redirect_to new_event_path
-
-			@event.destroy
+			render :new
 		end
 	end
 
