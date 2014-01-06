@@ -6,13 +6,7 @@ class Comment < ActiveRecord::Base
 	belongs_to :user
 	belongs_to :parent, :foreign_key => :parent_id, :class_name => :Comment
 
-	before_save :priorToSave
+	validates :content, :presence => true
 
 	acts_as_taggable
-
-	def priorToSave
-		if self.content.to_s.empty?
-			self.errors.add(:base, "Cannot create a comment/thread with empty content!")
-		end
-	end
 end
