@@ -203,4 +203,8 @@ module ApplicationHelper
 	def title(title_string)
 		content_for :title, title_string.to_s
 	end
+
+	def join_errors(errors)
+		(errors.to_a.join(", ") + ".").capitalize
+	end
 end

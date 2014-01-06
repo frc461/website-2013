@@ -52,7 +52,7 @@ class EventsController < InheritedResources::Base
 		if @event.save
 			redirect_to @event, :notice => "Event created successfully!"
 		else
-			flash[:error] = (@event.errors.to_a.join(", ") + ".").capitalize
+			flash[:error] = view_context.join_errors(@event.errors)
 
 			render :new
 		end
@@ -64,7 +64,7 @@ class EventsController < InheritedResources::Base
 		if @event.save
 			redirect_to @event, :notice => "Event updated successfully!"
 		else
-			flash[:error] = (@event.errors.to_a.join(", ") + ".").capitalize
+			flash[:error] = view_context.join_errors(@event.errors)
 
 			render :edit
 		end

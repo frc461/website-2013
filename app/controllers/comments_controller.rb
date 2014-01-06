@@ -21,7 +21,7 @@ class CommentsController < InheritedResources::Base
 				redirect_to @comment
 			end
 		else
-			flash[:error] = (@comment.errors.to_a.join(", ") + ".").capitalize
+			flash[:error] = view_context.join_errors(@comment.errors)
 			
 			if @comment.parent_id
 				redirect_to @comment.parent
