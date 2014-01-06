@@ -107,6 +107,7 @@ GEM
     method_source (0.8.2)
     mime-types (2.0)
     mini_portile (0.5.2)
+    minitest (4.7.5)
     multi_json (1.8.2)
     multipart-post (1.2.0)
     mysql2 (0.3.13)
@@ -223,6 +224,7 @@ DEPENDENCIES
   inherited_resources
   jquery-fileupload-rails
   jquery-rails
+  minitest
   mysql2
   paperclip
   paperclipftp

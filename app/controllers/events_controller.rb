@@ -46,6 +46,29 @@ class EventsController < InheritedResources::Base
 		events_with_repeats
 	end
 
+	def create
+		@event = Event.new(params[:event])
+
+		if @event.save
+			redirect_to @event, :notice => "Event created successfully!"
+		else
+			flash[:error] = (@event.errors.to_a.join(", ") + ".").capitalize
+
+			render :new
+		end
+	end
+
+	def update
+		@event = Event.new(params[:event])
+
+		if @event.save
+			redirect_to @event, :notice => "Event updated successfully!"
+		else
+			flash[:error] = (@event.errors.to_a.join(", ") + ".").capitalize
+
+			render :edit
+		end
+	end
 
 	def index
 		if current_user
