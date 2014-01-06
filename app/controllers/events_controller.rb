@@ -49,10 +49,10 @@ class EventsController < InheritedResources::Base
 	def create
 		@event = Event.new(params[:event])
 
-		if @event.save && @event.errors.count == 0
+		if @event.save
 			redirect_to @event, :notice => "Event created successfully!"
 		else
-			flash[:error] = @event.errors.to_a.join("  ")
+			flash[:error] = @event.errors.to_a.join(", ") + "."
 
 			redirect_to new_event_path
 
@@ -63,10 +63,10 @@ class EventsController < InheritedResources::Base
 	def update
 		@event = Event.new(params[:event])
 
-		if @event.save && @event.errors.count == 0
+		if @event.save
 			redirect_to @event, :notice => "Event updated successfully!"
 		else
-			flash[:error] = @event.errors.to_a.join("  ")
+			flash[:error] = @event.errors.to_a.join(", ") + "."
 
 			render :edit
 		end
