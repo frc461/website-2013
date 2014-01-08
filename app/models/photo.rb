@@ -11,11 +11,7 @@ class Photo < ActiveRecord::Base
 	                  :path => "app/assets/images/images/:style-:filename",
 	                  :url => "/assets/images/:style-:filename")
 	
-	validate :unique_filename
-
-	def unique_filename
-		errors.add(:base, "Already added this photo") unless Photo.where(:image_file_name => self.image_file_name).empty?
-	end
+	validates :image_file_name, uniqueness: true
 
 	def to_jq_upload
 		{
