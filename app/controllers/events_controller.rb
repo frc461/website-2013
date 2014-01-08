@@ -59,9 +59,9 @@ class EventsController < InheritedResources::Base
 	end
 
 	def update
-		@event = Event.find(params[:event])
+		@event = Event.find(params[:id])
 
-		if @event.save
+		if @event.update_attributes(params[:event])
 			redirect_to @event, :notice => "Event updated successfully!"
 		else
 			flash[:error] = view_context.join_errors(@event.errors)

@@ -34,7 +34,7 @@ class CommentsController < InheritedResources::Base
 	def update
 		@comment = Comment.find(params[:id])
 
-		if @comment.update_attributes(params[:comment]) && @comment.errors.count == 0
+		if @comment.update_attributes(params[:comment])
 			flash[:notice] = (current_user.admin? ? "Edited comment #{@comment.id} successfully!" : "Edited comment successfully!")
 			
 			if @comment.parent_id
