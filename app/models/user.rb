@@ -28,23 +28,28 @@ class User < ActiveRecord::Base
 	end
 
 	def set_admin
-		if self.admin == nil
-			self.admin = false
-		end
+		self.admin = false if self.admin.nil?
+
+		# Return true because this is in before_save,
+		# and if it does not return true then saving
+		# will die.  It would return false otherwise,
+		# because self.admin is set to false above.
 		true
 	end
 
 	def all_permissions
-		shopping_cart = []
-		shopping_cart.insert(self.permissions).flatten
+		shopping_cart = self.permissions.dup.flatten
+		
 		self.groups.each do |grp|
 			shopping_cart.insert(grp.permissions).flatten
 		end
+		
 		shopping_cart
 	end
 
 	def self.authenticate(email, password)
-		user = User.where(:email => email).first
+		user = User.where(email: email).first
+		
 		if user && user.password_hash == BCrypt::Engine.hash_secret(password, user.password_salt)
 			user
 		else
