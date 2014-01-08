@@ -1,20 +1,35 @@
 require "bcrypt"
+
 class User < ActiveRecord::Base
 	attr_accessible :admin, :email, :name, :group_ids, :password, :password_confirmation, :password_hash, :password_salt, :secret_code
 	attr_accessor :password, :secret_code
+
+	has_many :memberships
+	has_many :groups, :through => :memberships
+	has_many :assignments
+	has_many :todos, :through => :assignments
+	has_many :posts
+	has_many :comments
+	
 	before_save :encrypt_password, :set_admin
+	
+	validates :password, confirmation: true
+	validates :password, presence: true, on: :create
+	validates :email, :name, presence: true
+	validates :email, uniqueness: true
 	
 	validates_each :secret_code do |record, attr, value|
 		if record.secret_code != SECRET_CODE #defined in secret.rb
 			record.errors.add :secret_code, "is not correct"
 		end
 	end
-	
-	validates_confirmation_of :password
-	validates_presence_of :password, :on => :create
-	validates_presence_of :email
-	validates_presence_of :name
-	validates_uniqueness_of :email
+
+	def encrypt_password
+		if password.present?
+			self.password_salt = BCrypt::Engine.generate_salt
+			self.password_hash = BCrypt::Engine.hash_secret(password, password_salt)
+		end
+	end
 
 	def set_admin
 		if self.admin == nil
@@ -40,18 +55,4 @@ class User < ActiveRecord::Base
 			nil
 		end
 	end
-
-	def encrypt_password
-		if password.present?
-			self.password_salt = BCrypt::Engine.generate_salt
-			self.password_hash = BCrypt::Engine.hash_secret(password, password_salt)
-		end
-	end
-
-	has_many :memberships
-	has_many :groups, :through => :memberships
-	has_many :assignments
-	has_many :todos, :through => :assignments
-	has_many :posts
-	has_many :comments
 end

@@ -1,13 +1,21 @@
 class Photo < ActiveRecord::Base
+	include Rails.application.routes.url_helpers
+	
 	attr_accessible :album_id, :image
-	validate :unique_filename_thingy
+
+	belongs_to :album
+	
 	has_attached_file(:image,
 	                  :storage => :filesystem,
 	                  :styles => { :medium => "x512", :thumb => "250x>" },
 	                  :path => "app/assets/images/images/:style-:filename",
 	                  :url => "/assets/images/:style-:filename")
+	
+	validate :unique_filename
 
-	include Rails.application.routes.url_helpers
+	def unique_filename
+		errors.add(:base, "Already added this photo") unless Photo.where(:image_file_name => self.image_file_name).empty?
+	end
 
 	def to_jq_upload
 		{
@@ -18,12 +26,6 @@ class Photo < ActiveRecord::Base
 			"delete_type" => "DELETE"
 		}
 	end
-
-	def unique_filename_thingy
-		errors.add(:base, "Already added this photo") unless Photo.where(:image_file_name => self.image_file_name).empty?
-	end
-
-	belongs_to :album
 
 	acts_as_taggable
 end
