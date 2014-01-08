@@ -1,8 +1,4 @@
-<br />
-<%- model_class = Album -%>
-<% content_for :title do
-	   "Photos | " + @album.name
-   end %>
+<% title "Photos | " + @album.name %>
 
 <% content_for :breadcrumb do %>
 	<ul class="breadcrumb span12">
@@ -16,11 +12,13 @@
 
 <div class="twitter-border">
 	<div class="page-header">
-		<h1><%= @album.name %></h1>
+		<h1>
+			<%= @album.name %>
+		</h1>
 	</div>
 
 	<div style="padding-left: 32px;">
-		<strong><%= model_class.human_attribute_name(:description) %>:</strong>
+		<strong>Description:</strong>
 		<div style="padding-left: 4px;">
 			<%= @album.description %>
 		</div>
@@ -42,11 +40,13 @@
 				
 				<%= image_tag photo.image.url(:medium) %>
 				
-				<% if can? :update, Photo # not sure exactly what we should put right above this, but this is definitely better than what was there %>
+				<% if can? :update, Photo %>
 					<div class="carousel-caption">
 						<%= link_to "Deletify", photo, :method => "delete", :class => "btn btn-danger btn-mini" %>
+						
 						<br />
-						ID: <%= photo.id %>
+						
+						<strong>ID</strong>: <%= photo.id %>
 					</div>
 				<% end %>
 				
@@ -63,8 +63,10 @@
 		
 		<div id="photogrid">
 			<% count = 0 %>
+			
 			<% @album.photos.in_groups_of(4).each do |photogroup| %>
 				<br />
+				
 				<div class="row-fluid">
 					<% photogroup.each do |photo| %>
 						<% if photo %>
@@ -78,14 +80,16 @@
 
 
 		<div class="form-actions">
-			<%= link_to "Back", albums_path, :class => 'btn' %>
-			<%= link_to "Edit", edit_album_path(@album), :class => 'btn' if can? :update, @album %>
-			<%= link_to "Deletify Album", album_path(@album), :method => 'delete',
+			<%= link_to "Back", albums_path, :class => "btn" %>
+			<%= link_to "Edit", edit_album_path(@album), :class => "btn" if can? :update, @album %>
+			<%= link_to "Deletify Album", album_path(@album),
+				:method => "delete",
 				:data => { :confirm => "Are you sure you want to delete #{@album.name}?" },
-				:class => 'btn btn-danger' if can? :destroy, @album %>
-			<%= link_to "Add Photos", "/photos/mass?album_id=" + @album.id.to_s, :class => "btn btn-success" if can? :create, Photo %>
+				:class => "btn btn-danger" if can? :destroy, @album %>
+			<%= link_to "Add Photos", mass_photos_path(album_id: @album.id), :class => "btn btn-success" if can? :create, Photo %>
 		</div>
 	</div>
+	
 	<script type="text/javascript">
 		$('.carousel').carousel({
 		interval: 5000
