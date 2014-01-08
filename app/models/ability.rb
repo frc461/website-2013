@@ -2,7 +2,7 @@ class Ability
 	include CanCan::Ability
 
 	def initialize(user)
-		logged_in = true if current_user
+		logged_in = true if user
 
 		# Guest user.
 		user ||= User.new
