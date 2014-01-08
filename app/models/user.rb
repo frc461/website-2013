@@ -17,12 +17,8 @@ class User < ActiveRecord::Base
 	validates :password, presence: true, on: :create
 	validates :email, :name, presence: true
 	validates :email, uniqueness: true
-	
-	validates_each :secret_code do |record, attr, value|
-		if record.secret_code != SECRET_CODE #defined in secret.rb
-			record.errors.add :secret_code, "is not correct"
-		end
-	end
+	# Hacky way to validate that :secret_code equals SECRET_CODE.
+	validates :secret_code, format: { with: /\A#{SECRET_CODE}\z/, message: "is not correct" }
 
 	def encrypt_password
 		if password.present?
