@@ -59,7 +59,7 @@ class EventsController < InheritedResources::Base
 	end
 
 	def update
-		@event = Event.new(params[:event])
+		@event = Event.find(params[:event])
 
 		if @event.save
 			redirect_to @event, :notice => "Event updated successfully!"
