@@ -1,7 +1,7 @@
-<%= form_for Photo.new, :html => { :multipart => true, :id => "fileupload"  } do |f| %>
+<%= form_for Photo.new, html: { multipart: true, id: "fileupload"  } do |f| %>
 	Album: <%= f.select(:album_id,
 						[["None", nil]] + Album.all.map { |abm| [abm.name, abm.id] },
-						:selected => params[:album_id]) %>
+						selected: params[:album_id]) %>
 	<!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
 	<!-- The fileinput-button span is used to style the file input field as button -->
 	<div class="row fileupload-buttonbar">
@@ -9,7 +9,7 @@
 			<span class="btn btn-success fileinput-button">
 				<i class="icon-plus icon-white"></i>
 				<span>Add files...</span>
-				<%= f.file_field :image, :multiple => true, :name => "photo[image]" %>
+				<%= f.file_field :image, multiple: true, name: "photo[image]" %>
 			</span>
 			<button type="submit" class="btn btn-primary start">
 				<i class="icon-upload icon-white"></i>
@@ -84,6 +84,7 @@
 	</tr>
 	{% } %}
 </script>
+
 <!-- The template to display files available for download -->
 <script id="template-download" type="text/x-tmpl">
 	{% for (var i=0, file; file=o.files[i]; i++) { %}
