@@ -1,5 +1,6 @@
+require 'icalendar'
+
 class EventsController < InheritedResources::Base
-	require 'icalendar'
 	load_and_authorize_resource
 	
 	def icalendarify (event_list)
