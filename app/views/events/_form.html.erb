@@ -51,11 +51,11 @@
 			</div>
 		</div>
 	</div>
-	<!--Here-->
+	<!-- Here -->
 	<div class="control-group">
 		<%=f.label :color, :class => 'control-label'%>
 		<div class="controls">
-			<%= f.text_field :color, :class => 'text_field' %>
+			<%= f.text_field :color, :class => 'text_field', @event.color || :value => "black"  %>
 		</div>
 	</div>
 	<div class="control-group">
