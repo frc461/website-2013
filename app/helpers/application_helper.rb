@@ -1,4 +1,5 @@
 require 'bluecloth'
+
 module ApplicationHelper
 	def format(text)
 		markdown(text).html_safe
@@ -16,6 +17,13 @@ module ApplicationHelper
 		return strip_tags(sanitize(format(text))) #lisp
 	end
 
+	def yt(text)
+		gsubber = text.gsub!(/\[yt\]\[([A-Za-z0-9]+)\]/) do |s|
+		"<iframe id=\"ytplayer\" type=\"text/html\" width=\"640\" height=\"390\"
+  src=\"http://www.youtube.com/embed/" + s + " frameborder=\"0\"/>"
+		end
+	end
+
 	# I'm not going to even try.
 	# four04 - BEGIN DISREGARD
 	def carouselcheck(text)
@@ -26,7 +34,7 @@ module ApplicationHelper
 <div class=\"span6\">
 <div id=\"carousel" + thingnum.to_s + "\" class=\"carousel slide\">
                 <div class=\"carousel-inner\">
-                  <div class=\"item active\">" 
+                  <div class=\"item active\">"
 			thing += image_tag(Photo.find($1.split(",").first).image.url(:medium))
 			thing +="</div>"
 			$1.split(",").drop(1).each do |photo|
@@ -42,7 +50,7 @@ module ApplicationHelper
 			thing += "<div class=\"span6\">
 <div id=\"carousel"+ thingnum.to_s + "\" class=\"carousel slide hidden-phone\">
                 <div class=\"carousel-inner\">
-                  <div class=\"item active\">" 
+                  <div class=\"item active\">"
 			thing += image_tag(Photo.find($2.split(",").first).image.url(:medium))
 			thing +="</div>"
 			$2.split(",").drop(1).each do |photo|
@@ -65,7 +73,7 @@ module ApplicationHelper
 		end
 	end
 	# four04 - END DISREGARD
-	
+
 	def photocheck(text)
 		gsubber = text.gsub!(/\[[Aa]lbum ([^\[\]]+)\]\[[Pp]hoto (\d+)([otm])?\](\[([rl])\])?/) do |s|
 			if s != ""
@@ -84,7 +92,7 @@ module ApplicationHelper
 					else
 						style = :thumb
 					end
-					
+
 					if $5
 						if $5 == "r"
 							image_tag(Photo.where("album_id = ? and id = ?",
@@ -153,7 +161,7 @@ module ApplicationHelper
 			'/pages/' + titles.join("/")
 		end
 	end
-	
+
 	def link_to_page (page, text = nil, html = "")
 		begin
 			('<a href="' + page_path(page) + '" ' + html +'>' + (text ? text : page.title) + '</a>').html_safe
@@ -198,5 +206,13 @@ module ApplicationHelper
 		else
 			false
 		end
+	end
+
+	def title(title_string)
+		content_for :title, title_string.to_s
+	end
+
+	def join_errors(errors)
+		(errors.to_a.join(", ") + ".").capitalize
 	end
 end

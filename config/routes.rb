@@ -13,15 +13,19 @@ Website::Application.routes.draw do
 
 	resources :events
 
-
 	get "permissions/create"
 	get "permissions/destroy"
 
-	resources :todos
+	resources :todos do
+		get "complete", :on => :member
+		get "uncomplete", :on => :member
+		post "assign", :on => :member
+		post "unassign", :on => :member
+	end
 	resources :comments
 	resources :forums
 	resources :photos do
-		get 'mass', :on => :collection
+		get "mass", :on => :collection
 	end
 	resources :albums
 	resources :pages
@@ -29,7 +33,10 @@ Website::Application.routes.draw do
 	resources :permissions
 	resources :sessions
 	resources :posts
-	resources :groups
+	resources :groups do
+		get "join", :on => :member
+		get "unjoin", :on => :member
+	end
 
 	get "sessions/new"
 	get "welcome/index"

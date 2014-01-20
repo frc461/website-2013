@@ -5,28 +5,26 @@
 <table class="table table-striped">
 	<thead>
 		<tr>
-			<th><%= model_class.human_attribute_name(:id) %></th>
-			<th><%= model_class.human_attribute_name(:user_id) %></th>
+			<% if current_user.admin? %><th>User</th><% end %>
 			<th><%= model_class.human_attribute_name(:content) %></th>
-			<th><%= model_class.human_attribute_name(:title) %></th>
-			<th><%= model_class.human_attribute_name(:parent_id) %></th>
-			<th><%= model_class.human_attribute_name(:sticky) %></th>
-			<th><%= model_class.human_attribute_name(:important) %></th>
-			<th><%= model_class.human_attribute_name(:created_at) %></th>
+			<th>Thread</th>
+			<th>Forum</th>
 			<th><%=t '.actions', :default => t("helpers.actions") %></th>
 		</tr>
 	</thead>
 	<tbody>
 		<% @comments.each do |comment| %>
 		<tr>
-			<td><%= link_to comment.id, comment_path(comment) %></td>
-			<td><%= comment.user_id %></td>
+			<% if current_user.admin? %><td><%= comment.user.name %></td><% end %>
 			<td><%= comment.content %></td>
-			<td><%= comment.title %></td>
-			<td><%= comment.parent_id %></td>
-			<td><%= comment.sticky %></td>
-			<td><%= comment.important %></td>
-			<td><%=l comment.created_at %></td>
+			<td><%=
+				if comment.parent
+					link_to comment.parent.title, comment.parent
+				else
+					link_to comment.title, comment
+				end
+				   %></td>
+			<td><%= link_to (comment.forum || comment.parent.forum).name, (comment.forum || comment.parent.forum) %>
 			<td>
 				<%= link_to t('.edit', :default => t("helpers.links.edit")),
                 edit_comment_path(comment), :class => 'btn btn-mini' %>

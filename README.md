@@ -1,5 +1,4 @@
-team461/website
-===============
+# team461/website
 
 This is the semi-final code for the website.
 We're going to try to keep everything in this pertinent to the final production;
@@ -9,8 +8,7 @@ keep that private.
 
 Eventually, this will be up at [our site](http://boilerinvasion.org).
 
-Installation
-------------
+## Installation
 
     git clone git@github.com/team461WBI/website.git
 
@@ -35,8 +33,7 @@ After all this, you should be able to do `rails server` and access the http serv
 port 3000. (Visit localhost:3000 in a web browser.)
 
 
-Setting up logins
------------------
+## Setting up logins
 
 When initially configured, the database contains no users.
 And, when the website is initially loaded, and there are no users,
@@ -67,3 +64,30 @@ panel) will only be displayed if the user-logged-in-as is an administrator.
 Of course, all of the above information is subject to change as the stuff
 does, so this may be outdated (direct all issues to our 
 [issues page](https://github.com/team461WBI/website/issues))
+
+## Contributing
+If you see an improvement that should be made, you are more than welcome to
+make your change on a fork and submit a pull request, or, if you are a contributor
+to the repository, you could push it.
+Keep in mind the following things:
+
+* Keep it simple.
+If you're submitting a larger change, spread it out over multiple commits.
+This helps us know all of the changes you made and quickly reference a certain
+commit that we don't like or that causes problems.
+
+* Keep it stable.
+If stuff is broken, please don't submit it.
+If you need to fix more stuff before you commit, then fix more stuff before you
+commit.
+If you need to make a large change over time, use branches so you can keep
+up-to-date and not cause problems.
+
+* Keep it clean and consistent.
+While it is a pain, it is incredibly important to keep the code consistent and clean.
+If you happen to be using a coding style that is different from the project's coding
+style, please make at least some effort to match the coding style.
+It's relatively simple to do so.
+Not only that, if you're submitting something that must to be approved, it can be seen
+much more easily and effectively than if you're alternating between coding styles on a
+line-by-line basis.

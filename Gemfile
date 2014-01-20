@@ -2,16 +2,18 @@ source 'https://rubygems.org'
 
 gem 'rails', '4.0.0'
 
+# ActiveSupport requires this, for some reason
+gem "minitest"
+
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sass-rails',   '~> 4.0.0'
+gem 'sass-rails', '~> 4.0.0'
 gem 'coffee-rails', '~> 4.0.0'
-# gem 'therubyracer', :platforms => :ruby
 gem 'uglifier', '>= 1.3.0'
 
 group :development do
-  gem "rails-erd"
+	gem "rails-erd"
 end
 
 gem 'twitter-bootstrap-rails'
@@ -23,7 +25,7 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'paperclip'
 gem 'acts-as-taggable-on'
 gem 'cancan'
-gem 'twitter'
+gem 'twitter', '4.4.2'
 gem 'inherited_resources'
 gem 'paperclipftp'
 gem 'fullcalendar-rails'
@@ -38,7 +40,7 @@ gem 'protected_attributes'
 # testing stuffs
 gem "rspec-rails", :group => [:test, :development]
 group :test do
-  gem "factory_girl_rails"
-  gem "capybara"
-  gem "guard-rspec"
+	gem "factory_girl_rails"
+	gem "capybara"
+	gem "guard-rspec"
 end

@@ -1,33 +1,37 @@
-<%- model_class = Album -%>
-<% content_for :title do
-   "Photos"
-   end %>
+<% title "Photos" %>
 
 <% content_for :breadcrumb do %>
-<ul class="breadcrumb span12">
-	<li><%= link_to "Home", root_path%><span class="divider">/</span></li>
-	<li class="active">Albums</li>
-</ul>
+	<ul class="breadcrumb span12">
+		<li>
+			<%= link_to "Home", root_path %><span class="divider">/</span>
+		</li>
+		
+		<li class="active">Albums</li>
+	</ul>
 <% end %>
 
 <div class="page-header">
-	<h1><%= "Album".pluralize %></h1>
+	<h1>
+		Albums
+	</h1>
 </div>
 
 <% @albums.in_groups_of(3) do |grp| %>
-<div class="row-fluid">
-	<% grp.each do |albm| %>
-    <% if albm %>
-    <div class="span4 twitter-border">
-		<h4><%= link_to albm.name, album_path(albm) %></h4>
-    </div>
-    <% end %>
-	<% end %>
-</div>
+	<div class="row-fluid">
+		<% grp.each do |albm| %>
+			<% if albm %>
+				<div class="span4 twitter-border">
+					<h4>
+						<%= link_to albm.name, album_path(albm) %>
+					</h4>
+				</div>
+			<% end %>
+		<% end %>
+	</div>
 <% end %>
 
-<% if can? :manage, Album %>
-<%= link_to t('.new', :default => t("helpers.links.new")),
-new_album_path,
-:class => 'btn btn-primary' %>
+<% if can? :create, Album %>
+	<%= link_to "New",
+		new_album_path,
+		:class => "btn btn-primary" %>
 <% end %>

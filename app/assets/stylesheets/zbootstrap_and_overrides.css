@@ -104,7 +104,8 @@ blockquote {
 }
 
 .fc-state-highlight {
-	background-color: rgba(19,21,23,.7) !important;
+	background-color: rgba(127,127,127,0.5) !important;
+	border: 2px solid #ccb000 !important;
 }
 
 .bootstrap-datetimepicker-widget td.day:hover {
@@ -252,7 +253,7 @@ input {
 
 #forumLinks li>a:hover {
 	color: #fff;
-	background: none; 
+	background: none;
 }
 
 .carousel-inner {
@@ -462,21 +463,21 @@ ul.nav > li.dropdown > ul.dropdown-menu > li > a {
 		background-image: url("/assets/bg.png");
 		background-repeat: repeat;
 	}
-	
+
 	.postWithBorder {
 		padding-top: 1px;
 		padding-bottom: 1px;
 		padding-right: 10px;
 	}
-	
+
 	#main-span.span9 {
 		float: none;
 	}
-	
+
 	#sidebar-span.span3 {
 		float: none;
 	}
-	
+
 	#tweetbox {
 		display:none;
 	}
@@ -487,12 +488,12 @@ ul.nav > li.dropdown > ul.dropdown-menu > li > a {
 		margin-left: 0px;
 		position: relative;
 	}
-	
+
 	.navbar-fixed-top .navbar-inner {
 		padding-top: 0px;
 		padding-bottom: 0px;
 	}
-	
+
 	.navbar .nav > li > a {
 		padding-left: 15px;
 	}
@@ -501,14 +502,14 @@ ul.nav > li.dropdown > ul.dropdown-menu > li > a {
 		margin-bottom: 10px;
 		margin-top: 10px;
 	}
-	
+
 	.navbar .nav>li>a:hover{
 		padding-left: 14px;
 		border-left: 1px solid #fff200;
 		border-bottom: 0px;
 		text-decoration: none;
 	}
-	
+
 	ul.nav > li.dropdown > ul.dropdown-menu {
 		display: block;
 		padding-left: 15px;
@@ -545,15 +546,15 @@ ul.nav > li.dropdown > ul.dropdown-menu > li > a {
 	li.dropdown-submenu .dropdown-menu a {
 		display: none;
 	}
-	
+
 	ul.nav > li.dropdown > a > i.icon-chevron-down {
 		display: none;
 	}
-	
+
 	body {
 		padding-top: 0px;
 	}
-	
+
 	.content-img {
 		max-width: 100%;
 	}
@@ -599,17 +600,17 @@ li.dropdown a:hover {
 	}
 }
 
-@media (max-width: 979px) and (min-width: 767px) { 
-	.input-append { 
-		width: 130px; 
-	} 
-} 
+@media (max-width: 979px) and (min-width: 767px) {
+	.input-append {
+		width: 130px;
+	}
+}
 
-@media (max-width: 767px) { 
+@media (max-width: 767px) {
 	.input-append {
 		width: 250px;
 	}
-} 
+}
 .social-buttons-navbar {
 	text-align: right;
 	float: right;
@@ -646,4 +647,10 @@ table.social-buttons-navbar > tr > td {
 
 .manage-table {
 	min-height: 55px;
+}
+
+.dropdown-menu .active > a, .dropdown-menu .active > a:hover {
+	background-color: rgb(255, 242, 0);
+	color: black;
+	background-image: none;
 }

@@ -13,6 +13,9 @@
 <div class="page-header">
 	<h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
 </div>
+
+<%= link_to "All my comments", comments_path %>
+
 <table class="table table-striped">
 	<thead>
 		<tr>
@@ -52,9 +55,7 @@
 <% end %>
 <% end %>
 
-<% if can? :write, Forum %>
 <%= link_to t('.new', :default => t("helpers.links.new")),
 new_forum_path,
-:class => 'btn btn-primary' %>
-<% end %>
+:class => 'btn btn-primary' if can? :create, Forum %>
 <br />

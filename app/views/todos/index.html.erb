@@ -1,5 +1,5 @@
 <% content_for :title do
-   "To Do"
+	   "To Do"
    end %>
 <div class="page-header">
 	<h1>To Do</h1>
@@ -9,60 +9,76 @@
 	<thead>
 		<tr>
 			<th>Title</th>
-			<th class="hidden-phone">Content</th>
 			<th>Done</th>
+			<th>Actions</th>
+			<th>Created at</th>
 		</tr>
 	</thead>
 	<tbody>
-		<% Todo.where(:group_id => nil).order("done ASC, created_at DESC").each do | todo |%>
-		<tr>
-			<td><%= link_to todo.name, todo %></td>
-			<td class="hidden-phone"><%= markback todo.content %></td>
-			<td>
-				<%= form_for(todo, :remote => true) do |f|%>
-				<%= f.check_box :done, :class => "checkthing" %>
-				<%end%>
-			</td>
-		</tr>
+		<% Todo.where(:group_id => nil).order("done ASC, created_at DESC").each do |todo| %>
+			<tr>
+				<td><%= link_to todo.name, todo %></td>
+				<td>
+					<%= form_for(todo, :remote => true) do |f| %>
+						<%= f.check_box :done, :disabled => true, :class => "checkthing" %>
+					<% end %>
+				</td>
+				<td>
+					<% if todo.done %>
+						<%= link_to "Un-complete", uncomplete_todo_path(todo), :class => "btn btn-danger btn-mini" %>
+					<% else %>
+						<%= link_to "Complete", complete_todo_path(todo), :class => "btn btn-success btn-mini" %>
+					<% end %>
+				</td>
+				<td><%= todo.created_at.strftime("%-m/%-d/%Y %-l:%M %p") %></td>
+			</tr>
 		<% end %>
 	</tbody>
 </table>
 
 <% Group.all.each do | group |%>
-<% if group.todos.count > 0 && (current_user.groups.include?(group) || current_user.admin) %>
-<h1><%= group.name %></h1>
-<table class="table table-striped">
-	<tr>
-		<th>Title</th>
-		<th class="hidden-phone">Content</th>
-		<th>Done</th>
-	</tr>
+	<% if group.todos.count > 0 && (current_user.groups.include?(group) || current_user.admin) %>
+		<h1><%= group.name %></h1>
+		<table class="table table-striped">
+			<tr>
+				<th>Title</th>
+				<th>Done</th>
+				<th>Actions</th>
+				<th>Created at</th>
+			</tr>
 
-	<% group.todos.order("done ASC, created_at DESC").each do |todo| %>
-	<tr>
-		<td><%= link_to todo.name, todo %></td>
-		<td class="hidden-phone"><%= markback todo.content %></td>
-		<td>
-			<%= form_for(todo, :remote => true) do |f|%>
-			<%= f.check_box :done, :class => "checkthing" %>
-			<%end%>
-		</td>
-	</tr>
-	<% end %>
-</table>
-<br />
-<%end%>
-<%end%>
+			<% group.todos.order("done ASC, created_at DESC").each do |todo| %>
+				<tr>
+					<td><%= link_to todo.name, todo %></td>
+					<td>
+						<%= form_for(todo, :remote => true) do |f|%>
+							<%= f.check_box :done, :class => "checkthing" %>
+							<%end%>
+					</td>
+					<td>
+						<% if todo.done %>
+							<%= link_to "Un-complete", uncomplete_todo_path(todo), :class => "btn btn-danger btn-mini" %>
+						<% else %>
+							<%= link_to "Complete", complete_todo_path(todo), :class => "btn btn-success btn-mini" %>
+						<% end %>
+					</td>
+					<td><%= todo.created_at.strftime("%-m/%-d/%Y %-l:%M %p") %></td>
+				</tr>
+				<% end %>
+		</table>
+		<br />
+		<%end%>
+		<%end%>
 
-<br />
+		<br />
 
-<% if can?(:write, Todo) || can?(:remove, Todo) %>
-<%= link_to t('.new', :default => t("helpers.links.new")),
-new_todo_path,
-:class => 'btn btn-primary' %>
-<% end %>
-<script>
-	$('.checkthing').live("click", function() {
-    $('.checkthing').parent('form').submit();
-	});
-</script>
+		<% if can?(:update, Todo) %>
+			<%= link_to t('.new', :default => t("helpers.links.new")),
+				new_todo_path,
+				:class => 'btn btn-primary' %>
+		<% end %>
+		<script>
+			$('.checkthing').live("click", function() {
+			$('.checkthing').parent('form').submit();
+			});
+		</script>

@@ -1,17 +1,17 @@
 <br />
 <%- model_class = Album -%>
 <% content_for :title do
-   "Photos | " + @album.name
+	   "Photos | " + @album.name
    end %>
 
 <% content_for :breadcrumb do %>
-<ul class="breadcrumb span12">
-	<li><%= link_to "Home", root_path%><span class="divider">/</span></li>
-	<li><%= link_to "Albums", albums_path%><span class="divider">/</span></li>
-	<li class="active">
-		<%= @album.name %>
-	</li>
-</ul>
+	<ul class="breadcrumb span12">
+		<li><%= link_to "Home", root_path%><span class="divider">/</span></li>
+		<li><%= link_to "Albums", albums_path%><span class="divider">/</span></li>
+		<li class="active">
+			<%= @album.name %>
+		</li>
+	</ul>
 <% end %>
 
 <div class="twitter-border">
@@ -20,8 +20,6 @@
 	</div>
 
 	<div style="padding-left: 32px;">
-		<% if can? :create, Photo %>
-		<% end %>
 		<strong><%= model_class.human_attribute_name(:description) %>:</strong>
 		<div style="padding-left: 4px;">
 			<%= @album.description %>
@@ -33,55 +31,60 @@
 	<div id="theCarousel" class="carousel slide">
 		<div class="carousel-inner">
 			<% first = true %>
+			
 			<% @album.photos.each do |photo| %>
-			<% if first %>
-			<div class="item active">
-				<% first = false %>
-				<% else %>
-				<div class="item">
-					<% end %>
-					<%= image_tag photo.image.url(:medium) %>
-					<% if can?(:write, Post) %>
-					<div class="carousel-caption">
-						<p>
-							ID: <%= photo.id %>
-						</p>
-					</div>
-					<% end %>
-				</div>
+				<% if first %>
+					<div class="item active">
+						<% first = false %>
+					<% else %>
+						<div class="item">
 				<% end %>
+				
+				<%= image_tag photo.image.url(:medium) %>
+				
+				<% if can? :update, Photo # not sure exactly what we should put right above this, but this is definitely better than what was there %>
+					<div class="carousel-caption">
+						<%= link_to "Deletify", photo, :method => "delete", :class => "btn btn-danger btn-mini" %>
+						<br />
+						ID: <%= photo.id %>
+					</div>
+				<% end %>
+				
+				</div>
+			<% end %>
+			
 			</div>
 		</div>
+		
 		<div id="carouselnav">
 			<a class="btn" href="#theCarousel" data-slide="prev">&lsaquo;</a>
 			<a class="btn pull-right" href="#theCarousel" data-slide="next">&rsaquo;</a>
 		</div>
+		
 		<div id="photogrid">
 			<% count = 0 %>
 			<% @album.photos.in_groups_of(4).each do |photogroup| %>
-			<br />
-			<div class="row-fluid">
-				<% photogroup.each do |photo| %>
-				<% if photo %>
-				<%= image_tag photo.image.url(:thumb), :class => "span3", :onclick => "$('.carousel').carousel(" + count.to_s + ");$('html, body').animate({ scrollTop: 0 }, 'fast');" %>
-				<% count += 1 %>
-				<% end %>
-				<% end %>
-			</div>
+				<br />
+				<div class="row-fluid">
+					<% photogroup.each do |photo| %>
+						<% if photo %>
+							<%= image_tag photo.image.url(:thumb), :class => "span3", :onclick => "$('.carousel').carousel(" + count.to_s + ");$('html, body').animate({ scrollTop: 0 }, 'fast');" %>
+							<% count += 1 %>
+						<% end %>
+					<% end %>
+				</div>
 			<% end %>
 		</div>
 
 
-		<% if can? :manage, Album %>
 		<div class="form-actions">
-			<%= link_to "Back", albums_path, :class => 'btn'  %>
-			<%= link_to "Edit", edit_album_path(@album), :class => 'btn' %>
-			<%= link_to "Deletify", album_path(@album), :method => 'delete',
-            :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-            :class => 'btn btn-danger' %>
-			<a class="btn btn-success" href="/photos/mass?album_id=<%= @album.id %>">Add Photos</a><br />
+			<%= link_to "Back", albums_path, :class => 'btn' %>
+			<%= link_to "Edit", edit_album_path(@album), :class => 'btn' if can? :update, @album %>
+			<%= link_to "Deletify Album", album_path(@album), :method => 'delete',
+				:data => { :confirm => "Are you sure you want to delete #{@album.name}?" },
+				:class => 'btn btn-danger' if can? :destroy, @album %>
+			<%= link_to "Add Photos", "/photos/mass?album_id=" + @album.id.to_s, :class => "btn btn-success" if can? :create, Photo %>
 		</div>
-		<% end %>
 	</div>
 	<script type="text/javascript">
 		$('.carousel').carousel({
