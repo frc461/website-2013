@@ -31,16 +31,17 @@ class UsersController < InheritedResources::Base
 		end
 		
 		@user = User.new(params[:user])
-
-		if (group = Group.where(:name => "Everybody")).count > 0
-			group.first.users << @user
-		end
 		
 		if @user.save
 			if !(current_user && current_user.admin)
 				redirect_to root_url, :notice => "Signed up!"
 			else
 				redirect_to root_url, :notice => "New user created!"
+			end
+
+			# Only add the user to the group if the user is valid.
+			if (group = Group.where(:name => "Everybody")).count > 0
+				group.first.users << @user
 			end
 			
 			session[:user_id] = @user.id if !(current_user && current_user.admin)
