@@ -10,6 +10,7 @@ module ApplicationHelper
 		photocheck(text)
 		linkcheck(text)
 		doccheck(text)
+                yt(text)
 		text = BlueCloth::new(text).to_html
 	end
 
@@ -20,7 +21,7 @@ module ApplicationHelper
 	def yt(text)
 		gsubber = text.gsub!(/\[yt\]\[([A-Za-z0-9]+)\]/) do |s|
 		"<iframe id=\"ytplayer\" type=\"text/html\" width=\"640\" height=\"390\"
-  src=\"http://www.youtube.com/embed/" + s + " frameborder=\"0\"/>"
+  src=\"http://www.youtube.com/embed/" + $1 + "\" frameborder=\"0\"></iframe>"
 		end
 	end
 

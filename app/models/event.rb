@@ -1,5 +1,5 @@
 class Event < ActiveRecord::Base
-	attr_accessible :content, :end_date, :location, :public, :start_date, :title, :weeks_repeat, :end_repeat
+	attr_accessible :content, :end_date, :location, :public, :start_date, :title, :weeks_repeat, :end_repeat, :color
 
 	validates :title, :start_date, :end_date, presence: true
 	validates :weeks_repeat, numericality: { only_integer: true, greater_than_or_equal_to: 0 }, allow_blank: true
@@ -11,16 +11,17 @@ class Event < ActiveRecord::Base
 			errors.add(:end_date, "cannot be before start date")
 		end
 	end
-	
+
 	def calendarify
 		r = {}
-		
+
 		r[:id] = id
 		r[:start] = start_date.iso8601
 		r[:end] = end_date.iso8601
 		r[:title] = title
 		r[:url] = "/events/#{id}"
-		
+		r[:color] = color
+
 		r
 	end
 end
