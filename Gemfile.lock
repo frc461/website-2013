@@ -244,7 +244,6 @@ DEPENDENCIES
   inherited_resources
   jquery-fileupload-rails
   jquery-rails
-  minitest
   mysql2
   paperclip
   paperclipftp
