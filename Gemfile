@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails'
+gem 'rails', '3.2.16'
 
 # ActiveSupport requires this, for some reason
 gem "minitest"
@@ -26,7 +26,7 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'paperclip'
 gem 'acts-as-taggable-on'
 gem 'cancan'
-gem 'twitter'
+gem 'twitter', '4.4.2'
 gem 'inherited_resources'
 gem 'paperclipftp'
 gem 'fullcalendar-rails'

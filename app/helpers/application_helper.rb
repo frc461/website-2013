@@ -1,4 +1,5 @@
 require 'bluecloth'
+
 module ApplicationHelper
 	def format(text)
 		markdown(text).html_safe
@@ -17,7 +18,7 @@ module ApplicationHelper
 	end
 
 	def yt(text)
-		gsubber = text.gsub!(/\[yt\]\[([A-Za-z0-9]+)\]) do |s|
+		gsubber = text.gsub!(/\[yt\]\[([A-Za-z0-9]+)\]/) do |s|
 		"<iframe id=\"ytplayer\" type=\"text/html\" width=\"640\" height=\"390\"
   src=\"http://www.youtube.com/embed/" + s + " frameborder=\"0\"/>"
 		end
