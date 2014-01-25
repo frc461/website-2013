@@ -20,6 +20,7 @@
 *~
 .#*
 /public/system
+/public/assets
 *.sh
 
 # Ignore generated files
