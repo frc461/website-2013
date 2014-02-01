@@ -36,7 +36,7 @@
 		<%= link_to "Edit", edit_post_path, :class => "btn" %>
 	<% end %>
 	<% if can? :destroy, @post %>
-		<%= link_to "Deletify", post_path, :method => "delete",
+		<%= link_to "Delete", post_path, :method => "delete",
 			:data => { :confirm => "Are you sure?"}, :class => "btn btn-danger" %>
 	<% end %>
 </div>

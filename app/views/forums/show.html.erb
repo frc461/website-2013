@@ -72,7 +72,7 @@
 	<%= link_to "Back", forums_path, :class => 'btn'  %>
 	<%= link_to "New Thread", new_comment_path(:forum_id => @forum.id), :class => 'btn' if can? :create, Comment%>
 	<%= link_to "Edit", edit_forum_path(@forum), :class => 'btn' if can? :update, @forum %>
-	<%= link_to "Deletify", forum_path(@forum), :method => 'delete',
+	<%= link_to "Delete", forum_path(@forum), :method => 'delete',
         :data => { :confirm => 'Are you sure?' },
         :class => 'btn btn-danger' if can? :destroy, @forum %>
 </div>

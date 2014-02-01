@@ -63,8 +63,10 @@
 	<p>
 		<%= link_to "Back", "/", :class => "btn"  %>
 		<%= link_to "Edit", edit_page_path(@page), :class => "btn" if can? :update, @page %>
-		<%= link_to "Deletify", "/pages/" + @page.id.to_s, :method => "delete",
-			:data => { :confirm => "Are you sure?" }, :class => "btn btn-danger" if can? :destroy, @page %>
+		<%= link_to "Delete", "/pages/" + @page.id.to_s,
+			:method => "delete",
+			:data => { :confirm => "Are you sure?" },
+			:class => "btn btn-danger" if can? :destroy, @page %>
 	</p>
 
 	<p>

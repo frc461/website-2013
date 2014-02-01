@@ -43,7 +43,7 @@
 				
 				<% if can? :update, Photo %>
 					<div class="carousel-caption">
-						<%= link_to "Deletify", photo, :method => "delete", :class => "btn btn-danger btn-mini" %>
+						<%= link_to "Delete", photo, :method => "delete", :class => "btn btn-danger btn-mini" %>
 						
 						<br />
 						
@@ -83,7 +83,7 @@
 		<div class="form-actions">
 			<%= link_to "Back", albums_path, :class => "btn" %>
 			<%= link_to "Edit", edit_album_path(@album), :class => "btn" if can? :update, @album %>
-			<%= link_to "Deletify Album", album_path(@album),
+			<%= link_to "Delete Album", album_path(@album),
 				:method => "delete",
 				:data => { :confirm => "Are you sure you want to delete #{@album.name}?" },
 				:class => "btn btn-danger" if can? :destroy, @album %>

@@ -41,7 +41,7 @@
 	<% else %>
 		<%= link_to "Join", join_group_path(@group), :class => "btn btn-success" %>
 	<% end %>
-	<%= link_to "Deletify",
+	<%= link_to "Delete",
 		group_path(@group),
 		:method => 'delete',
 		:data => { :confirm => "Are you sure?" },
