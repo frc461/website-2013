@@ -1,4 +1,5 @@
-<%- model_class = Forum -%>
+<% title "Forums | " + @forum.name %>
+
 <% content_for :breadcrumb do %>
 	<ul class="breadcrumb span12">
 		<li><%= link_to "Home", root_path%><span class="divider">/</span></li>
@@ -6,7 +7,6 @@
 		<li class="active"><%= @forum.name %></li>
 	</ul>
 <% end %>
-<% title "Forums | " + @forum.name %>
 <div class="page-header">
 	<h1><%= @forum.name %></h1>
 </div>

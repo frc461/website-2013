@@ -1,9 +1,8 @@
-<%- model_class = Post -%>
 <% title "Blog | " + @post.title %>
 
 <% content_for :breadcrumb do %>
 	<ul class="breadcrumb span12">
-		<li><%= link_to "Home", root_path%><span class="divider">/</span></li>
+		<li><%= link_to "Home", root_path %><span class="divider">/</span></li>
 		<li><%= link_to "Blog", posts_path %><span class="divider">/</span></li>
 		<li class="active"><%= @post.title %></li>
 	</ul>
@@ -12,7 +11,7 @@
 <div class="pull-right post-info">
 	<%= author @post %>
 	<br />
-	<%= l @post.created_at, :format => :long %>
+	<%= @post.created_at %>
 </div>
 <div class="page-header">
 	<h1><%= @post.title %></h1>
@@ -37,6 +36,7 @@
 	<% end %>
 	<% if can? :destroy, @post %>
 		<%= link_to "Delete", post_path, :method => "delete",
-			:data => { :confirm => "Are you sure?"}, :class => "btn btn-danger" %>
+			:data => { :confirm => "Are you sure?"},
+			:class => "btn btn-danger" %>
 	<% end %>
 </div>
