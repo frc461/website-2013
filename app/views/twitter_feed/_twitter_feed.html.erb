@@ -1,15 +1,27 @@
 <% begin %>
-<% tweets = Twitter.user_timeline("team461wbi", options = { :count => 4 } ) %>
+<% tweets = $twitterClient.user_timeline("team461wbi", options = { :count => 4 } ) %>
 <% tweets.each do |tweet| %>
 <hr />
-<div class="tweet">
+
+<div id="tweet">
     <%= sanitize format_tweet(tweet) %>
-    <div style="text-align: right;" class="tweet-info">
-		<a href="https://twitter.com/<%= tweet.from_user() %>">@<%= tweet.from_user() %></a>, 
-		<a href="https://twitter.com/<%= tweet.from_user() %>/status/<%= tweet.id() %>"><%= time_ago_in_words(tweet.created_at()) %> ago </a>
+    <div class="pull-right tweet-info">
+        <a href="https://twitter.com/<%= tweet.user.screen_name %>">@<%= tweet.user.screen_name %></a>,
+         <a href="https://twitter.com/<%= tweet.user.screen_name %>/status/<%= tweet.id() %>"><%= time_ago_in_words(tweet.created_at()) %> ago </a>
     </div>
+
 </div>
+
 <% end %>
-<% rescue %>
-<p>Error: No internet connection</p>
+<% rescue Exception => e %>
+<% if current_user && current_user.admin %>
+	<p><%= e.message %><p>
+	<ul><% e.backtrace.each do |b| %>
+		<li><%= b.to_s %></li>
+<% end %>
+	</ul>
+<% else %>
+	<p>Something has gone wrong with our connection to Twitter!</p>
+	<p><a href="https://www.twitter.com/team461wbi">See our tweets here</a></p>
+<% end %>
 <% end %>

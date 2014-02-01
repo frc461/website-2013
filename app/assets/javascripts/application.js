@@ -11,6 +11,7 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require twitter/bootstrap
+//= require jquery-fileupload
 //= require_tree .
 
 $('.selectpicker').selectpicker({

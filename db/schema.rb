@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131230175120) do
+ActiveRecord::Schema.define(:version => 20140120200242) do
 
   create_table "albums", :force => true do |t|
     t.string   "name"
@@ -58,6 +58,7 @@ ActiveRecord::Schema.define(:version => 20131230175120) do
     t.datetime "updated_at",   :null => false
     t.integer  "weeks_repeat"
     t.date     "end_repeat"
+    t.string   "color"
   end
 
   create_table "forums", :force => true do |t|
