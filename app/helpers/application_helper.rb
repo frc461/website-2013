@@ -172,7 +172,7 @@ module ApplicationHelper
 	end
 
 	def format_tweet (tweet)
-		text = tweet.text
+		text = tweet.text.dup
 
 		# URLs
 		tweet.urls.each do |url|
