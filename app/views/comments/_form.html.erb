@@ -1,40 +1,40 @@
-<%= form_for @comment, :html => { :class => 'form-horizontal' } do |f| %>
+<%= form_for @comment, :html => { :class => "form-horizontal" } do |f| %>
 	<%= f.hidden_field :user_id, :value => (@comment.user ? @comment.user.id : current_user.id) %>
 	<%= f.hidden_field :forum_id, :value => (params[:forum_id] || @comment.forum_id) %>
 	
 	<% unless @comment.parent %>
 		<div class="control-group">
-			<%= f.label :title, :class => 'control-label' %>
+			<%= f.label :title, :class => "control-label" %>
 			<div class="controls">
-				<%= f.text_field :title, :class => 'text_field' %>
+				<%= f.text_field :title, :class => "text_field" %>
 			</div>
 		</div>
 	<% end %>
 	
 	<div class="control-group">
-		<%= f.label :content, :class => 'control-label' %>
+		<%= f.label :content, :class => "control-label" %>
 		<div class="controls">
-			<%= f.text_area :content, :class => 'text_area' %>
+			<%= f.text_area :content, :class => "text_area" %>
 		</div>
 	</div>
 	
 	<% unless @comment.parent %>
 		<div class="control-group">
-			<%= f.label :sticky, :class => 'control-label' %>
+			<%= f.label :sticky, :class => "control-label" %>
 			<div class="controls">
-				<%= f.check_box :sticky, :class => 'check_box' %>
+				<%= f.check_box :sticky, :class => "check_box" %>
 			</div>
 		</div>
 		<div class="control-group">
-			<%= f.label :important, :class => 'control-label' %>
+			<%= f.label :important, :class => "control-label" %>
 			<div class="controls">
-				<%= f.check_box :important, :class => 'check_box' %>
+				<%= f.check_box :important, :class => "check_box" %>
 			</div>
 		</div>
 	<% end %>
 
 	<div class="form-actions">
-		<%= f.submit nil, :class => 'btn btn-primary' %>
-		<%= link_to "Cancel", @comment, :class => 'btn' %>
+		<%= f.submit nil, :class => "btn btn-primary" %>
+		<%= link_to "Cancel", @comment, :class => "btn" %>
 	</div>
 <% end %>
