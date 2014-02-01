@@ -1,7 +1,5 @@
 <%- model_class = Page -%>
-<% content_for :title do
-   "Editing: " + @page.title
-   end %>
+<% title "Editing: " + @page.title %>
 
 <div class="page-header">
 	<h1><%=t '.title', :default => t('helpers.titles.edit', :model => model_class.model_name.human,

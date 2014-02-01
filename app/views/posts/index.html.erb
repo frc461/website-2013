@@ -1,7 +1,5 @@
 <%- model_class = Post -%>
-<% content_for :title do
-   "Blog"
-   end %>
+<% title "Blog" %>
 <% content_for :breadcrumb do %>
 <ul class="breadcrumb span12">
 	<li><%= link_to "Home", root_path%><span class="divider">/</span></li>

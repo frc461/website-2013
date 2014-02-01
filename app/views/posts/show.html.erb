@@ -1,7 +1,5 @@
 <%- model_class = Post -%>
-<% content_for :title do
-	   "Blog | " + @post.title
-   end %>
+<% title "Blog | " + @post.title %>
 
 <% content_for :breadcrumb do %>
 	<ul class="breadcrumb span12">
