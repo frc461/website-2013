@@ -18,11 +18,11 @@
 
 <% @albums.in_groups_of(3) do |grp| %>
 	<div class="row-fluid">
-		<% grp.each do |albm| %>
-			<% if albm %>
+		<% grp.each do |album| %>
+			<% if album %>
 				<div class="span4 twitter-border">
 					<h4>
-						<%= link_to albm.name, album_path(albm) %>
+						<%= link_to album.name, album_path(album) %>
 					</h4>
 				</div>
 			<% end %>
