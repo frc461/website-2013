@@ -3,7 +3,7 @@
 <% tweets.each do |tweet| %>
 <hr />
 
-<div id="tweet">
+<div id="tweet" class="clearfix">
     <%= sanitize format_tweet(tweet) %>
     <div class="pull-right tweet-info">
         <a href="https://twitter.com/<%= tweet.user.screen_name %>">@<%= tweet.user.screen_name %></a>,
