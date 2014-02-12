@@ -189,6 +189,11 @@ module ApplicationHelper
 			text.gsub!("#" + hashtag.text, "<a href=\"https://twitter.com/search/?q=%23" + hashtag.text + "\" target=\"_blank\">" + "#" + hashtag.text + "</a>")
 		end
 
+		# user mentions
+		tweet.user_mentions.each do |user|
+			text.gsub!("@" + user.screen_name, "<a href=\"https://twitter.com/" + user.screen_name + "\">" + "@" + user.screen_name + "</a>")
+		end
+
 		# Return gsubbed crap
 		text
 	end
