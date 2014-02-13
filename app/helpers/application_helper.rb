@@ -1,6 +1,13 @@
 require 'bluecloth'
 
 module ApplicationHelper
+	def yt(text)
+		gsubber = text.gsub!(/\[yt\]\[([A-Za-z0-9]+)\]/) do |s|
+		"<iframe id=\"ytplayer\" type=\"text/html\" width=\"640\" height=\"390\"
+  src=\"http://www.youtube.com/embed/" + $1 + "\" frameborder=\"0\"></iframe>"
+		end
+	end
+
 	def format(text)
 		markdown(text).html_safe
 	end
@@ -16,13 +23,6 @@ module ApplicationHelper
 
 	def markback(text)
 		return strip_tags(sanitize(format(text))) #lisp
-	end
-
-	def yt(text)
-		gsubber = text.gsub!(/\[yt\]\[([A-Za-z0-9]+)\]/) do |s|
-		"<iframe id=\"ytplayer\" type=\"text/html\" width=\"640\" height=\"390\"
-  src=\"http://www.youtube.com/embed/" + $1 + "\" frameborder=\"0\"></iframe>"
-		end
 	end
 
 	# I'm not going to even try.
