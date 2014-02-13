@@ -8,9 +8,11 @@
 			<% tweet.media.each do |med| %>
 				<br />
 				<span class="tweet-photo-holder">
-					<%= link_to (image_tag med.media_url, class: "tweet-photo"), med.expanded_url.to_s %>
-					<div class="tweet-photo-border-top-left"></div>
-					<div class="tweet-photo-border-bottom-right"></div>
+					<a href="<%= med.expanded_url.to_s%>">
+						<%= image_tag med.media_url, class: "tweet-photo" %>
+						<div class="tweet-photo-border-top-left"></div>
+						<div class="tweet-photo-border-bottom-right"></div>
+					</a>
 				</span>
 			<% end %>
 			<div class="pull-right tweet-info">
