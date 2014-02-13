@@ -12,13 +12,19 @@ module ApplicationHelper
 		markdown(text).html_safe
 	end
 
-	def markdown(text)
+	def markdown(text, options = {})
+		options = {
+			escape_html: false,
+			strict_mode: false
+		}.update(options)
+
 		carouselcheck(text)
 		photocheck(text)
 		linkcheck(text)
 		doccheck(text)
-                yt(text)
-		text = BlueCloth::new(text).to_html
+		yt(text)
+
+		text = BlueCloth::new(text, options).to_html
 	end
 
 	def markback(text)
