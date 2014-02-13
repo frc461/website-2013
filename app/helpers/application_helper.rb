@@ -181,7 +181,7 @@ module ApplicationHelper
 
 		# Media
 		tweet.media.each do |media|
-			text.gsub!(media.url, "<a href=\"" + media.expanded_url + "\">" + media.display_url + "</a>")
+			text.gsub!(media.url, "<a href=\"" + media.expanded_url.to_s + "\">" + media.display_url + "</a>")
 		end
 
 		# Hashtags

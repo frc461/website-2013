@@ -1,27 +1,35 @@
 <% begin %>
-<% tweets = $twitterClient.user_timeline("team461wbi", options = { :count => 4 } ) %>
-<% tweets.each do |tweet| %>
-<hr />
+	<% tweets = $twitterClient.user_timeline("team461wbi", options = { :count => 4 } ) %>
+	<% tweets.each do |tweet| %>
+		<hr />
 
-<div id="tweet" class="clearfix">
-    <%= sanitize format_tweet(tweet) %>
-    <div class="pull-right tweet-info">
-        <a href="https://twitter.com/<%= tweet.user.screen_name %>">@<%= tweet.user.screen_name %></a>,
-         <a href="https://twitter.com/<%= tweet.user.screen_name %>/status/<%= tweet.id %>"><%= time_ago_in_words tweet.created_at %> ago </a>
-    </div>
+		<div id="tweet" class="tweet clearfix">
+			<%= sanitize format_tweet(tweet) %>
+			<% tweet.media.each do |med| %>
+				<br />
+				<span class="tweet-photo-holder">
+					<%= link_to (image_tag med.media_url, class: "tweet-photo"), med.expanded_url.to_s %>
+					<div class="tweet-photo-border-top-left"></div>
+					<div class="tweet-photo-border-bottom-right"></div>
+				</span>
+			<% end %>
+			<div class="pull-right tweet-info">
+				<a href="https://twitter.com/<%= tweet.user.screen_name %>">@<%= tweet.user.screen_name %></a>,
+				<a href="https://twitter.com/<%= tweet.user.screen_name %>/status/<%= tweet.id %>"><%= time_ago_in_words tweet.created_at %> ago </a>
+			</div>
 
-</div>
+		</div>
 
-<% end %>
-<% rescue Exception => e %>
-<% if current_user && current_user.admin %>
-	<p><%= e.message %><p>
-	<ul><% e.backtrace.each do |b| %>
-		<li><%= b.to_s %></li>
-<% end %>
-	</ul>
-<% else %>
-	<p>Something has gone wrong with our connection to Twitter!</p>
-	<p><a href="https://www.twitter.com/team461wbi">See our tweets here</a></p>
-<% end %>
+	<% end %>
+	<% rescue Exception => e %>
+	<% if current_user && current_user.admin %>
+		<p><%= e.message %><p>
+			<ul><% e.backtrace.each do |b| %>
+					<li><%= b.to_s %></li>
+				<% end %>
+			</ul>
+		<% else %>
+		<p>Something has gone wrong with our connection to Twitter!</p>
+		<p><a href="https://www.twitter.com/team461wbi">See our tweets here</a></p>
+	<% end %>
 <% end %>
