@@ -19,7 +19,7 @@
     </div>
 </div>
 
-<%= f.hidden_field :user_id, :value => current_user.id %>
+<%= f.hidden_field :user_id, :value => (@post.user_id || current_user.id) %>
 
 <div class="form-actions">
     <%= f.submit nil, :class => 'btn btn-primary' %>

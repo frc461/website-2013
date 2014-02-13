@@ -172,7 +172,7 @@ module ApplicationHelper
 	end
 
 	def format_tweet (tweet)
-		text = tweet.text
+		text = tweet.text.dup
 
 		# URLs
 		tweet.urls.each do |url|
@@ -181,12 +181,17 @@ module ApplicationHelper
 
 		# Media
 		tweet.media.each do |media|
-			text.gsub!(media.url, "<a href=\"" + media.expanded_url + "\">" + media.display_url + "</a>")
+			text.gsub!(media.url, "<a href=\"" + media.expanded_url.to_s + "\">" + media.display_url + "</a>")
 		end
 
 		# Hashtags
 		tweet.hashtags.each do |hashtag|
 			text.gsub!("#" + hashtag.text, "<a href=\"https://twitter.com/search/?q=%23" + hashtag.text + "\" target=\"_blank\">" + "#" + hashtag.text + "</a>")
+		end
+
+		# user mentions
+		tweet.user_mentions.each do |user|
+			text.gsub!("@" + user.screen_name, "<a href=\"https://twitter.com/" + user.screen_name + "\">" + "@" + user.screen_name + "</a>")
 		end
 
 		# Return gsubbed crap
