@@ -1,8 +1,9 @@
 class SitemapController < ApplicationController
 	def index 
 		@posts = Post.all
-		@pages = Page.where(:parent_id => nil, :navigable => true).sort_by{ |p| p.sort_index}
-		@albums = Album.where(:visible => true)
+		@top_pages = Page.where(parent_id: nil, navigable: true).sort_by{ |p| p.sort_index}
+		@all_pages = Page.where(navigable: true).sort_by{ |p| p.sort_index}
+		@albums = Album.where visible: true
 		@events = Event.all
 		respond_to do |format|
 			format.xml { } # sitemap is a named scope
