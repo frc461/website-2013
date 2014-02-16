@@ -1,7 +1,7 @@
 class SitemapController < ApplicationController
 	def index 
 		@posts = Post.all
-		@pages = Page.where(:navigable => true).sort_by{ |p| p.sort_index}
+		@pages = Page.where(:parent_id => nil, :navigable => true).sort_by{ |p| p.sort_index}
 		@albums = Album.where(:visible => true)
 		@events = Event.all
 		respond_to do |format|
