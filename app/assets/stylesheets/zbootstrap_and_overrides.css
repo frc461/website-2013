@@ -404,6 +404,7 @@ input[type="color"]:focus,
 	position: absolute;
 	width: 50%;
 	height: 50%;
+	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 	border-top: 3px solid #eed033;
 	border-left: 3px solid #eed033;
@@ -415,6 +416,7 @@ input[type="color"]:focus,
 	position: absolute;
 	width: 50%;
 	height: 50%;
+	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 	border-bottom: 3px solid #eed033;
 	border-right: 3px solid #eed033;
