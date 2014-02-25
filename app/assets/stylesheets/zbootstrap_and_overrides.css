@@ -263,7 +263,7 @@ input {
 
 .carousel-inner img {
 	margin: auto;
-	max-height: 512px;
+	max-height: 375px;
 	width: auto;
 }
 
