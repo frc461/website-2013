@@ -6,7 +6,7 @@
 
 <h2>Pages</h2>
 <ul>
-	<% @pages.each do |page| %>
+	<% @top_pages.each do |page| %>
 	<li><%= link_to_page page %></li>
 	<%= page_ul(page) if page.pages.count > 0 %>
 	<% end %>

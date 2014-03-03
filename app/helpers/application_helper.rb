@@ -1,28 +1,34 @@
 require 'bluecloth'
 
 module ApplicationHelper
+	def yt(text)
+		gsubber = text.gsub!(/\[yt\]\[([A-Za-z0-9\-_]+)\]/) do |s|
+		"<iframe id=\"ytplayer\" type=\"text/html\" width=\"640\" height=\"390\"
+  src=\"http://www.youtube.com/embed/" + $1 + "\" frameborder=\"0\"></iframe>"
+		end
+	end
+
 	def format(text)
 		markdown(text).html_safe
 	end
 
-	def markdown(text)
+	def markdown(text, options = {})
+		options = {
+			escape_html: false,
+			strict_mode: false
+		}.update(options)
+
 		carouselcheck(text)
 		photocheck(text)
 		linkcheck(text)
 		doccheck(text)
-                yt(text)
-		text = BlueCloth::new(text).to_html
+		yt(text)
+
+		text = BlueCloth::new(text, options).to_html
 	end
 
 	def markback(text)
 		return strip_tags(sanitize(format(text))) #lisp
-	end
-
-	def yt(text)
-		gsubber = text.gsub!(/\[yt\]\[([A-Za-z0-9]+)\]/) do |s|
-		"<iframe id=\"ytplayer\" type=\"text/html\" width=\"640\" height=\"390\"
-  src=\"http://www.youtube.com/embed/" + $1 + "\" frameborder=\"0\"></iframe>"
-		end
 	end
 
 	# I'm not going to even try.
@@ -181,12 +187,17 @@ module ApplicationHelper
 
 		# Media
 		tweet.media.each do |media|
-			text.gsub!(media.url, "<a href=\"" + media.expanded_url + "\">" + media.display_url + "</a>")
+			text.gsub!(media.url, "<a href=\"" + media.expanded_url.to_s + "\">" + media.display_url + "</a>")
 		end
 
 		# Hashtags
 		tweet.hashtags.each do |hashtag|
 			text.gsub!("#" + hashtag.text, "<a href=\"https://twitter.com/search/?q=%23" + hashtag.text + "\" target=\"_blank\">" + "#" + hashtag.text + "</a>")
+		end
+
+		# user mentions
+		tweet.user_mentions.each do |user|
+			text.gsub!("@" + user.screen_name, "<a href=\"https://twitter.com/" + user.screen_name + "\">" + "@" + user.screen_name + "</a>")
 		end
 
 		# Return gsubbed crap

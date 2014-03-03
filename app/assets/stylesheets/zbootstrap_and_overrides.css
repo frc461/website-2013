@@ -263,7 +263,7 @@ input {
 
 .carousel-inner img {
 	margin: auto;
-	max-height: 512px;
+	max-height: 375px;
 	width: auto;
 }
 
@@ -384,6 +384,42 @@ input[type="color"]:focus,
 
 .tweet {
 	color: #eeeeee;
+}
+
+.tweet img.tweet-photo {
+	width: 100%;
+	max-width: 300px;
+}
+
+.tweet span.tweet-photo-holder {
+	margin: 8px auto;
+	vertical-align: middle;
+	display: table;
+	position: relative;
+}
+
+.tweet .tweet-photo-holder div.tweet-photo-border-top-left {
+	top: 0px;
+	left: 0px;
+	position: absolute;
+	width: 50%;
+	height: 50%;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	border-top: 3px solid #eed033;
+	border-left: 3px solid #eed033;
+}
+
+.tweet .tweet-photo-holder div.tweet-photo-border-bottom-right {
+	top: 50%;
+	left: 50%;
+	position: absolute;
+	width: 50%;
+	height: 50%;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	border-bottom: 3px solid #eed033;
+	border-right: 3px solid #eed033;
 }
 
 .tweet .tweet-info {
