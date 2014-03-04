@@ -12,8 +12,13 @@
 <div class="page-header">
 	<h1><%= @event.title %></h1>
 </div>
-<%= @event.location.blank? ? "Unspecified location" : @event.location %>
+
+<strong>Location:</strong>
+<%= @event.location.blank? ? "Unspecified" : @event.location %>
+
 <br />
+
+<strong>Date:</strong>
 <% if @event.weeks_repeat && @event.weeks_repeat > 0 %>
 	<!-- Every third -->
 	Every <%= @event.weeks_repeat > 1 ? ActiveSupport::Inflector::ordinalize(@event.weeks_repeat) : "" %>
@@ -27,7 +32,8 @@
 	<!-- Friday 12/20/2013 18:30 - Friday 12/20/2013 20:30 -->
 	<%=@event.start_date.in_time_zone.strftime("%A %m/%d/%Y %R") %> - <%= @event.end_date.in_time_zone.strftime("%A %m/%d/%Y %R") %>
 <% end %>
-<% if !@event.content.blank? %>
+
+<% unless @event.content.blank? %>
 	<hr />
 
 	<%= format @event.content %>
