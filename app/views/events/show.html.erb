@@ -18,6 +18,7 @@
 
 <br />
 
+<strong>Date:</strong>
 <% if @event.weeks_repeat && @event.weeks_repeat > 0 %>
 	<!-- Every third -->
 	Every <%= @event.weeks_repeat > 1 ? ActiveSupport::Inflector::ordinalize(@event.weeks_repeat) : "" %>
