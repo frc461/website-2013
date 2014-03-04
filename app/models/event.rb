@@ -18,7 +18,7 @@ class Event < ActiveRecord::Base
 		r[:id] = id
 		r[:start] = start_date.iso8601
 		r[:end] = end_date.iso8601
-		r[:title] = title
+		r[:title] = title + " #{start_date.strftime "%l:%M%p"} - #{end_date.strftime "%l:%M%p"}"
 		r[:url] = "/events/#{id}"
 		r[:color] = color
 
