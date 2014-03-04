@@ -1,5 +1,5 @@
 class Event < ActiveRecord::Base
-	attr_accessible :content, :end_date, :location, :public, :start_date, :title, :weeks_repeat, :end_repeat, :color
+	attr_accessible :content, :end_date, :location, :public, :start_date, :title, :weeks_repeat, :end_repeat, :color, :showtime
 
 	validates :title, :start_date, :end_date, presence: true
 	validates :weeks_repeat, numericality: { only_integer: true, greater_than_or_equal_to: 0 }, allow_blank: true
@@ -18,7 +18,7 @@ class Event < ActiveRecord::Base
 		r[:id] = id
 		r[:start] = start_date.iso8601
 		r[:end] = end_date.iso8601
-		r[:title] = title
+		r[:title] = title + (showtime ? " #{start_date.strftime "%l:%M%p"} - #{end_date.strftime "%l:%M%p"}" : "")
 		r[:url] = "/events/#{id}"
 		r[:color] = color
 

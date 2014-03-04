@@ -71,6 +71,13 @@
 		</div>
 	</div>
 
+	<div class="control-group">
+		<%= f.label "Show time on event", :class => 'control-label' %>
+		<div class="controls">
+			<%= f.check_box :showtime, :class => 'check_box' %>
+		</div>
+	</div>
+
 	<div class="form-actions">
 		<%= f.submit nil, :class => 'btn btn-primary' %>
 		<%= link_to t('.cancel', :default => t("helpers.links.cancel")),
