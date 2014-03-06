@@ -35,47 +35,53 @@ module ApplicationHelper
 	# four04 - BEGIN DISREGARD
 	def carouselcheck(text)
 		thingnum = 0
+		
 		gsubber = text.gsub!(/\[carousel\]\[([0-9,]+)\]\[([0-9,]+)\]/) do |s|
 			thingnum += 1
 			thing = "<div class=\"container row-fluid\">
 <div class=\"span6\">
-<div id=\"carousel" + thingnum.to_s + "\" class=\"carousel slide\">
+<div id=\"carousel#{thingnum}\" class=\"carousel slide\">
                 <div class=\"carousel-inner\">
                   <div class=\"item active\">"
 			thing += image_tag(Photo.find($1.split(",").first).image.url(:medium))
 			thing += "</div>"
+			
 			$1.split(",").drop(1).each do |photo|
 				thing += " <div class=\"item\">" +
 					image_tag(Photo.find(photo).image.url(:medium)) +
 					"</div>"
 			end
+			
 			thing += "</div>
-                <a class=\"left carousel-control\" href=\"#carousel" + thingnum.to_s + "\" data-slide=\"prev\">&lsaquo;</a>
-                <a class=\"right carousel-control\" href=\"#carousel" + thingnum.to_s + "\" data-slide=\"next\">&rsaquo;</a>
+                <a class=\"carousel-control left\" href=\"#carousel#{thingnum}\" data-slide=\"prev\">&lsaquo;</a>
+                <a class=\"carousel-control right\" href=\"#carousel#{thingnum}\" data-slide=\"next\">&rsaquo;</a>
               </div></div>"
 			thingnum += 1
+			
 			thing += "<div class=\"span6\">
-<div id=\"carousel" + thingnum.to_s + "\" class=\"carousel slide hidden-phone\">
+<div id=\"carousel#{thingnum}\" class=\"carousel slide hidden-phone\">
                 <div class=\"carousel-inner\">
-                  <div class=\"item active\">"
+                  <div class=\"active item\">"
 			thing += image_tag(Photo.find($2.split(",").first).image.url(:medium))
 			thing += "</div>"
+			
 			$2.split(",").drop(1).each do |photo|
 				thing += " <div class=\"item\">" +
 					image_tag(Photo.find(photo).image.url(:medium)) +
 					"</div>"
 			end
+			
 			thing += "</div>
-                <a class=\"left carousel-control\" href=\"#carousel" + thingnum.to_s + "\" data-slide=\"prev\">&lsaquo;</a>
-                <a class=\"right carousel-control\" href=\"#carousel" + thingnum.to_s + "\" data-slide=\"next\">&rsaquo;</a>
+                <a class=\"left carousel-control\" href=\"#carousel#{thingnum}\" data-slide=\"prev\">&lsaquo;</a>
+                <a class=\"right carousel-control\" href=\"#carousel#{thingnum}\" data-slide=\"next\">&rsaquo;</a>
               </div></div></div>
 
 <script type=\"text/javascript\">
-  $('#carousel" + (thingnum - 1).to_s + "').carousel({interval: 10000})
-  $('#carousel" + (thingnum - 1).to_s + "').carousel('cycle')
+  $('#carousel#{thingnum - 1}').carousel({interval: 10000})
+  $('#carousel#{thingnum - 1}').carousel('cycle')
 
-  $('#carousel" + thingnum.to_s + "').carousel({interval: 10000})
-  $('#carousel" + thingnum.to_s + "').carousel('cycle')
+  $('#carousel#{thingnum}').carousel({interval: 10000})
+  $('#carousel#{thingnum}').carousel('cycle')
 </script>"
 		end
 	end
