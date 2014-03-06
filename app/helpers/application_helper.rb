@@ -28,7 +28,7 @@ module ApplicationHelper
 	end
 
 	def markback(text)
-		return strip_tags(sanitize(format(text))) #lisp
+		return strip_tags(sanitize(format(text)))
 	end
 
 	# I'm not going to even try.
