@@ -77,11 +77,13 @@ module ApplicationHelper
               </div></div></div>
 
 <script type=\"text/javascript\">
+$(document).ready(function() {
   $('#carousel#{thingnum - 1}').carousel({interval: 10000})
   $('#carousel#{thingnum - 1}').carousel('cycle')
 
   $('#carousel#{thingnum}').carousel({interval: 10000})
   $('#carousel#{thingnum}').carousel('cycle')
+})
 </script>"
 		end
 	end
