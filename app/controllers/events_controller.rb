@@ -21,19 +21,15 @@ class EventsController < InheritedResources::Base
 	def unrepeatify
 		events_with_repeats = @events.dup
 
-		events_with_repeats.each do |ev|
+		@events.each do |ev|
 			if ev.weeks_repeat && ev.weeks_repeat > 0
 				start_date = ev.start_date + ev.weeks_repeat.weeks
 				end_date = ev.end_date + ev.weeks_repeat.weeks
 
 				while (!ev.end_repeat || start_date < ev.end_repeat) && start_date < (DateTime.now + 365.days)
-					new_event = Event.new(:title => ev.title,
-					                      :content => ev.content,
-					                      :location => ev.location,
-					                      :public => ev.public,
-					                      :start_date => start_date,
-					                      :end_date => end_date,
-					                      :color => ev.color)
+					new_event = ev.dup
+					new_event.start_date = start_date
+					new_event.end_date = end_date
 					new_event.id = ev.id
 					events_with_repeats << new_event
 
