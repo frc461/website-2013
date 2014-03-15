@@ -18,8 +18,9 @@ class Ability
 			can :read, Forum
 			can :read, Comment
 			can :create, Comment
-			can :manage, Comment, :user_id => user.id
-			cannot :destroy, Comment
+			can :manage, Comment, user_id: user.id
+			can :destroy, Comment
+			cannot :destroy, Comment, parent_id: nil
 			can :read, Event
 			can :read, Todo
 			can :write, Todo
