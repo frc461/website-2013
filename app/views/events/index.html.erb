@@ -14,9 +14,9 @@
 	<h1> Calendar </h1>
 </div>
 <% if can? :create, Event %>
-<%= link_to t('.new', :default => t("helpers.links.new")),
+<%= link_to t('.new', default: t("helpers.links.new")),
 new_event_path,
-:class => 'btn btn-primary' %>
+class: 'btn btn-primary' %>
 <% end %>
 <div id='calendar'></div>
 <br />

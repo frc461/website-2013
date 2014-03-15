@@ -15,19 +15,19 @@
 		</tr>
 	</thead>
 	<tbody>
-		<% Todo.where(:group_id => nil).order("done ASC, created_at DESC").each do |todo| %>
+		<% Todo.where(group_id: nil).order("done ASC, created_at DESC").each do |todo| %>
 			<tr>
 				<td><%= link_to todo.name, todo %></td>
 				<td>
-					<%= form_for(todo, :remote => true) do |f| %>
-						<%= f.check_box :done, :disabled => true, :class => "checkthing" %>
+					<%= form_for(todo, remote: true) do |f| %>
+						<%= f.check_box :done, disabled: true, class: "checkthing" %>
 					<% end %>
 				</td>
 				<td>
 					<% if todo.done %>
-						<%= link_to "Un-complete", uncomplete_todo_path(todo), :class => "btn btn-danger btn-mini" %>
+						<%= link_to "Un-complete", uncomplete_todo_path(todo), class: "btn btn-danger btn-mini" %>
 					<% else %>
-						<%= link_to "Complete", complete_todo_path(todo), :class => "btn btn-success btn-mini" %>
+						<%= link_to "Complete", complete_todo_path(todo), class: "btn btn-success btn-mini" %>
 					<% end %>
 				</td>
 				<td><%= todo.created_at.strftime("%-m/%-d/%Y %-l:%M %p") %></td>
@@ -51,15 +51,15 @@
 				<tr>
 					<td><%= link_to todo.name, todo %></td>
 					<td>
-						<%= form_for(todo, :remote => true) do |f|%>
-							<%= f.check_box :done, :class => "checkthing" %>
+						<%= form_for(todo, remote: true) do |f|%>
+							<%= f.check_box :done, class: "checkthing" %>
 							<%end%>
 					</td>
 					<td>
 						<% if todo.done %>
-							<%= link_to "Un-complete", uncomplete_todo_path(todo), :class => "btn btn-danger btn-mini" %>
+							<%= link_to "Un-complete", uncomplete_todo_path(todo), class: "btn btn-danger btn-mini" %>
 						<% else %>
-							<%= link_to "Complete", complete_todo_path(todo), :class => "btn btn-success btn-mini" %>
+							<%= link_to "Complete", complete_todo_path(todo), class: "btn btn-success btn-mini" %>
 						<% end %>
 					</td>
 					<td><%= todo.created_at.strftime("%-m/%-d/%Y %-l:%M %p") %></td>
@@ -73,9 +73,9 @@
 		<br />
 
 		<% if can?(:update, Todo) %>
-			<%= link_to t('.new', :default => t("helpers.links.new")),
+			<%= link_to t('.new', default: t("helpers.links.new")),
 				new_todo_path,
-				:class => 'btn btn-primary' %>
+				class: 'btn btn-primary' %>
 		<% end %>
 		<script>
 			$('.checkthing').live("click", function() {

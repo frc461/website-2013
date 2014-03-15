@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
 	end
 	
 	validates_confirmation_of :password
-	validates_presence_of :password, :on => :create
+	validates_presence_of :password, on: :create
 	validates_presence_of :email
 	validates_presence_of :name
 	validates_uniqueness_of :email
@@ -33,7 +33,7 @@ class User < ActiveRecord::Base
 	end
 
 	def self.authenticate(email, password)
-		user = User.where(:email => email).first
+		user = User.where(email: email).first
 		if user && user.password_hash == BCrypt::Engine.hash_secret(password, user.password_salt)
 			user
 		else
@@ -49,9 +49,9 @@ class User < ActiveRecord::Base
 	end
 
 	has_many :memberships
-	has_many :groups, :through => :memberships
+	has_many :groups, through: :memberships
 	has_many :assignments
-	has_many :todos, :through => :assignments
+	has_many :todos, through: :assignments
 	has_many :posts
 	has_many :comments
 end

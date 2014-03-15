@@ -112,16 +112,16 @@ $(document).ready(function() {
 						if $5 == "r"
 							image_tag(Photo.where("album_id = ? and id = ?",
 							                      Album.where("name LIKE ?", $1).first.id, $2.to_i).first.image.url(style),
-							          :class => "pull-right floating-content-img")
+							          class: "pull-right floating-content-img")
 						elsif $5 == "l"
 							image_tag(Photo.where("album_id = ? and id = ?",
 							                      Album.where("name LIKE ?", $1).first.id, $2.to_i).first.image.url(style),
-							          :class => "pull-left floating-content-img")
+							          class: "pull-left floating-content-img")
 						end
 					else
 						image_tag(Photo.where("album_id = ? and id = ?",
 						                      Album.where("name LIKE ?", $1).first.id, $2.to_i).first.image.url(style),
-						          :class => "content-img")
+						          class: "content-img")
 					end
 				rescue
 					"/!\\ NO SUCH PHOTO /!\\"

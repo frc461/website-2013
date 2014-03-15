@@ -48,7 +48,7 @@ class EventsController < InheritedResources::Base
 		@event = Event.new(params[:event])
 
 		if @event.save
-			redirect_to @event, :notice => "Event created successfully!"
+			redirect_to @event, notice: "Event created successfully!"
 		else
 			flash[:error] = view_context.join_errors(@event.errors)
 
@@ -60,7 +60,7 @@ class EventsController < InheritedResources::Base
 		@event = Event.find(params[:id])
 
 		if @event.update_attributes(params[:event])
-			redirect_to @event, :notice => "Event updated successfully!"
+			redirect_to @event, notice: "Event updated successfully!"
 		else
 			flash[:error] = view_context.join_errors(@event.errors)
 
@@ -78,7 +78,7 @@ class EventsController < InheritedResources::Base
 				format.ics { render text: icalendarify(unrepeatify) }
 			end
 		else
-			@events = Event.where(:public => true)
+			@events = Event.where(public: true)
 
 			respond_to do |format|
 				format.html # index.html.erb

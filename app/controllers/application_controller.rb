@@ -8,11 +8,11 @@ class ApplicationController < ActionController::Base
 	end
 
 	rescue_from CanCan::AccessDenied do |exception|
-		redirect_to root_url, :alert => exception.message
+		redirect_to root_url, alert: exception.message
 	end
 
 	rescue_from ActionView::MissingTemplate do |e|
-		render "error/index", :status => 404
+		render "error/index", status: 404
 	end
 	
 	def debuggy

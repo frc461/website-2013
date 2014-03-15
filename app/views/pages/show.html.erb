@@ -7,7 +7,7 @@
 			Subpages:
     </strong></h4>
     <ul class="nav nav-list">
-		<% @page.pages.where(:navigable => true).sort_by(&:sort_index).each do |child| %>
+		<% @page.pages.where(navigable: true).sort_by(&:sort_index).each do |child| %>
         <li><%= link_to_page child %> </li>
 		<% end %>
     </ul>
@@ -20,7 +20,7 @@
 			<%= link_to_page parent %>
     </strong></h4>
     <ul class="nav nav-list">
-		<% parent.pages.where(:navigable => true).sort_by(&:sort_index).each do |child| %>
+		<% parent.pages.where(navigable: true).sort_by(&:sort_index).each do |child| %>
         <% if child.id == @page.id%>
         <li class="active"><%= child.title %></li>
         <% else %>
@@ -63,10 +63,10 @@
 <% if(can? :update, Page) || (can? :destroy, @page) %>
 <div class="form-actions">
 	<p>
-		<%= link_to "Back", "/", :class => 'btn'  %>
-		<%= link_to "Edit", edit_page_path(@page), :class => 'btn' if can? :update, @page %>
-		<%= link_to "Deletify", "/pages/" + @page.id.to_s, :method => 'delete',
-        :data => { :confirm => "Are ye sure?" }, :class => 'btn btn-danger' if can? :destroy, @page %>
+		<%= link_to "Back", "/", class: 'btn'  %>
+		<%= link_to "Edit", edit_page_path(@page), class: 'btn' if can? :update, @page %>
+		<%= link_to "Deletify", "/pages/" + @page.id.to_s, method: 'delete',
+        data: { confirm: "Are ye sure?" }, class: 'btn btn-danger' if can? :destroy, @page %>
 	</p>
 	<p>
 		This page is "<%= @page.title %>," sort index <%= @page.sort_index %>, id <%= @page.id %>, and was last updated on <%= @page.updated_at.strftime("%Y-%m-%d %H:%M %Ss (%Z)") %>

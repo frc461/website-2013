@@ -1,4 +1,4 @@
-<%= form_for @user, :html => { :class => 'form-horizontal' } do |f| %>
+<%= form_for @user, html: { class: 'form-horizontal' } do |f| %>
 	<% if @user.errors.any? %>
 		<div class="well text-error">
 			<h2><%= pluralize(@user.errors.count, "error") %> prevented this user from being saved:</h2>
@@ -12,51 +12,51 @@
 	<% end %>
 	
 	<div class="control-group">
-		<%= f.label :name, :class => 'control-label' %>
+		<%= f.label :name, class: 'control-label' %>
 		<div class="controls">
-			<%= f.text_field :name, :class => 'text_field' %>
+			<%= f.text_field :name, class: 'text_field' %>
 		</div>
 	</div>
 	
 	<div class="control-group">
-		<%= f.label :email, :class => 'control-label' %>
+		<%= f.label :email, class: 'control-label' %>
 		<div class="controls">
-			<%= f.text_field :email, :class => 'text_field' %>
+			<%= f.text_field :email, class: 'text_field' %>
 		</div>
 	</div>
 	
 	<% if current_user && current_user.admin %>
 		<div class="control-group">
-			<%= f.label :admin, :class => 'control-label' %>
+			<%= f.label :admin, class: 'control-label' %>
 			<div class="controls">
-				<%= f.check_box :admin, :class => 'check_box' %>
+				<%= f.check_box :admin, class: 'check_box' %>
 			</div>
 		</div>
 	<% end %>
 	
 	<div class="control-group">
-		<%= f.label :password, :class => 'control-label' %>
+		<%= f.label :password, class: 'control-label' %>
 		<div class="controls">
-			<%= f.password_field :password, :class => 'text_field' %>
+			<%= f.password_field :password, class: 'text_field' %>
 		</div>
 	</div>
 	
 	<div class="control-group">
-		<%= f.label :password_confirmation, :class => 'control-label' %>
+		<%= f.label :password_confirmation, class: 'control-label' %>
 		<div class="controls">
-			<%= f.password_field :password_confirmation, :class => 'text_field' %>
+			<%= f.password_field :password_confirmation, class: 'text_field' %>
 		</div>
 	</div>
 	
 	<% if !current_user %>
 		<div class="control-group">
-			<%= f.label :secret_code, :class => 'control-label' %>
+			<%= f.label :secret_code, class: 'control-label' %>
 			<div class="controls">
-				<%= f.text_field :secret_code, :class => 'text_field' %>
+				<%= f.text_field :secret_code, class: 'text_field' %>
 			</div>
 		</div>
 	<% else %>
-		<%= f.hidden_field :secret_code, :value => SECRET_CODE %>
+		<%= f.hidden_field :secret_code, value: SECRET_CODE %>
 	<% end %>
 
 	<% if @groups.count > 0 && !(@groups.count == 1 && @groups.first.name == "Everybody") %>
@@ -64,7 +64,7 @@
 		<% @groups.each do |grp| %>
 			<% if grp.name != "Everybody" %>
 				<div class="control-group">
-					<%= f.label grp.name, :class => 'control-label' %>
+					<%= f.label grp.name, class: 'control-label' %>
 					<div class="controls">
 						<%= check_box_tag "user[group_ids][]", grp.id, grp.users.include?(@user) %>
 					</div>
@@ -74,7 +74,7 @@
 	<% end %>
 
 	<div class="form-actions">
-		<%= f.submit nil, :class => 'btn btn-primary' %>
-		<%= link_to "Cancel", (current_user && current_user.admin) ? users_path : root_path, :class => 'btn' %>
+		<%= f.submit nil, class: 'btn btn-primary' %>
+		<%= link_to "Cancel", (current_user && current_user.admin) ? users_path : root_path, class: 'btn' %>
 	</div>
 <% end %>

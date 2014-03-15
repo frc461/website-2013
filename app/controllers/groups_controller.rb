@@ -10,7 +10,7 @@ class GroupsController < InheritedResources::Base
 
 		@group.users << current_user
 
-		redirect_to @group, :notice => "Successfully joined #{@group.name}!"
+		redirect_to @group, notice: "Successfully joined #{@group.name}!"
 	end
 
 	def unjoin
@@ -18,6 +18,6 @@ class GroupsController < InheritedResources::Base
 
 		@group.users.delete(current_user)
 
-		redirect_to @group, :notice => "Successfully left #{@group.name}!"
+		redirect_to @group, notice: "Successfully left #{@group.name}!"
 	end
 end

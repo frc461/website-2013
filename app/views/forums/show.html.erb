@@ -15,7 +15,7 @@
 	<%= @forum.description %>
 </p>
 
-<% if @forum.comments.where(:parent_id => nil).count < 1 %>
+<% if @forum.comments.where(parent_id: nil).count < 1 %>
 	<p>No threads yet.</p>
 <% else %>
 	<table class="table table-striped">
@@ -28,7 +28,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			<% @forum.comments.where(:parent_id => nil, :sticky => true).each do |comment| %>
+			<% @forum.comments.where(parent_id: nil, sticky: true).each do |comment| %>
 				<tr>
 					<td>
 						<% if comment.important %>
@@ -46,7 +46,7 @@
 					<td><%= comment.comments.count > 0 ? comment.comments.last.created_at.strftime("%-m/%-d/%Y %-l:%M %p") : comment.created_at.strftime("%-m/%-d/%Y %-l:%M %p") %></td>
 				</tr>
 			<% end %>
-			<% @forum.comments.where(:parent_id => nil, :sticky => false).order("created_at DESC").each do |comment| %>
+			<% @forum.comments.where(parent_id: nil, sticky: false).order("created_at DESC").each do |comment| %>
 				<tr>
 					<td>
 						<% if comment.important %>
@@ -69,10 +69,10 @@
 <% end %>
 
 <div class="form-actions">
-	<%= link_to "Back", forums_path, :class => 'btn'  %>
-	<%= link_to "New Thread", new_comment_path(:forum_id => @forum.id), :class => 'btn' if can? :create, Comment%>
-	<%= link_to "Edit", edit_forum_path(@forum), :class => 'btn' if can? :update, @forum %>
-	<%= link_to "Deletify", forum_path(@forum), :method => 'delete',
-        :data => { :confirm => 'Are you sure?' },
-        :class => 'btn btn-danger' if can? :destroy, @forum %>
+	<%= link_to "Back", forums_path, class: 'btn'  %>
+	<%= link_to "New Thread", new_comment_path(forum_id: @forum.id), class: 'btn' if can? :create, Comment%>
+	<%= link_to "Edit", edit_forum_path(@forum), class: 'btn' if can? :update, @forum %>
+	<%= link_to "Deletify", forum_path(@forum), method: 'delete',
+        data: { confirm: 'Are you sure?' },
+        class: 'btn btn-danger' if can? :destroy, @forum %>
 </div>

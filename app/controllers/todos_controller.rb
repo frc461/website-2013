@@ -3,7 +3,7 @@ class TodosController < InheritedResources::Base
 		@todo = Todo.create(params[:todo])
 		
 		if @todo.save
-			redirect_to todos_path, :notice => "Successfully created todo."
+			redirect_to todos_path, notice: "Successfully created todo."
 		else
 			render :new
 		end
@@ -16,7 +16,7 @@ class TodosController < InheritedResources::Base
 
 		@todo.save
 
-		redirect_to todos_path, :notice => "To Do item completed!"
+		redirect_to todos_path, notice: "To Do item completed!"
 	end
 
 	def uncomplete
@@ -26,35 +26,35 @@ class TodosController < InheritedResources::Base
 
 		@todo.save
 
-		redirect_to todos_path, :notice => "To Do item un-completed!"
+		redirect_to todos_path, notice: "To Do item un-completed!"
 	end
 
 	def assign
 		@todo = Todo.find(params[:id])
 
-		if User.where(:name => params[:name]).count == 0
-			redirect_to @todo, :alert => "#{params[:name]} does not exist!"
+		if User.where(name: params[:name]).count == 0
+			redirect_to @todo, alert: "#{params[:name]} does not exist!"
 
 			return
 		end
 
-		user_to_add = User.where(:name => params[:name]).first
+		user_to_add = User.where(name: params[:name]).first
 
 		if !@todo.users.include? user_to_add
-			@todo.users << User.where(:name => params[:name]).first
+			@todo.users << User.where(name: params[:name]).first
 
-			redirect_to @todo, :notice => "Successfully assigned #{who(params[:name])}!"
+			redirect_to @todo, notice: "Successfully assigned #{who(params[:name])}!"
 		else
-			redirect_to @todo, :alert => "#{who(params[:name], false).capitalize} already assigned!"
+			redirect_to @todo, alert: "#{who(params[:name], false).capitalize} already assigned!"
 		end
 	end
 
 	def unassign
-		@todo = Todo.find(params[:id])
+		@todo = Todo.find(params[id])
 		
-		@todo.users.delete(User.where(:name => params[:commit]).first)
+		@todo.users.delete(User.where(:name: params[:commit]).first)
 
-		redirect_to @todo, :notice => "Successfully un-assigned #{who(params[:commit])}!"
+		redirect_to @todo, notice: "Successfully un-assigned #{who(params[:commit])}!"
 	end
 
 	private

@@ -5,7 +5,7 @@ class Todo < ActiveRecord::Base
 	belongs_to :group
 
 	has_many :assignments
-	has_many :users, :through => :assignments
+	has_many :users, through: :assignments
 
 	acts_as_taggable
 end

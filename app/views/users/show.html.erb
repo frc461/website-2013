@@ -1,6 +1,6 @@
 <%- model_class = User -%>
 <div class="page-header">
-	<h1><%=t '.title', :default => model_class.model_name.human %></h1>
+	<h1><%=t '.title', default: model_class.model_name.human %></h1>
 </div>
 
 <dl class="dl-horizontal">
@@ -10,16 +10,16 @@
 	<dd><%= @user.email %></dd>
 	<dt><strong><%= model_class.human_attribute_name(:admin) %>:</strong></dt>
 	<dd><%= @user.admin %></dd>
-	<% (current_user.admin ? Group.all : Group.where(:joinable => true)).each do |usr_grp| %>
+	<% (current_user.admin ? Group.all : Group.where(joinable: true)).each do |usr_grp| %>
 		<dt><strong>Belongs to <%= usr_grp.name %>?</strong></dt>
-		<dd><%= check_box_tag "", "", usr_grp.users.include?(@user), :disabled => "disabled" %></dd>
+		<dd><%= check_box_tag "", "", usr_grp.users.include?(@user), disabled: "disabled" %></dd>
 	<% end %>
 </dl>
 
 <h3>Assignments</h3>
-<% if @user.todos.where(:done => false).count > 0 %>
+<% if @user.todos.where(done: false).count > 0 %>
 	<ul>
-		<% @user.todos.where(:done => false).each do |todo| %>
+		<% @user.todos.where(done: false).each do |todo| %>
 			<li><%= link_to todo.name, todo %></li>
 		<% end %>
 	</ul>
@@ -28,11 +28,11 @@
 <% end %>
 
 <div class="form-actions">
-	<%= link_to "Back", users_path, :class => 'btn' if current_user.admin %>
-	<%= link_to "Edit", edit_user_path(@user), :class => 'btn' %>
+	<%= link_to "Back", users_path, class: 'btn' if current_user.admin %>
+	<%= link_to "Edit", edit_user_path(@user), class: 'btn' %>
 	<%= link_to "Deletify",
 		user_path(@user),
-		:method => 'delete',
-		:data => { :confirm => 'Are you sure?' },
-		:class => 'btn btn-danger' if can? :destroy, @user %>
+		method: 'delete',
+		data: { confirm: 'Are you sure?' },
+		class: 'btn btn-danger' if can? :destroy, @user %>
 </div>

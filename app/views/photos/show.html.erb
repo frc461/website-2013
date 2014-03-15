@@ -1,6 +1,6 @@
 <%- model_class = Photo -%>
 <div class="page-header">
-	<h1><%=t '.title', :default => model_class.model_name.human %></h1>
+	<h1><%=t '.title', default: model_class.model_name.human %></h1>
 </div>
 
 <dl class="dl-horizontal">
@@ -13,9 +13,9 @@
 </dl>
 
 <div class="form-actions">
-	<%= link_to "Back", photos_path, :class => 'btn' %>
-	<%= link_to "Edit", edit_photo_path(@photo), :class => 'btn' %>
-	<%= link_to "Deletify", photo_path(@photo), :method => 'delete',
-    :data => { :confirm => "Are you sure?" },
-    :class => 'btn btn-danger' %>
+	<%= link_to "Back", photos_path, class: 'btn' %>
+	<%= link_to "Edit", edit_photo_path(@photo), class: 'btn' %>
+	<%= link_to "Deletify", photo_path(@photo), method: 'delete',
+    data: { confirm: "Are you sure?" },
+    class: 'btn btn-danger' %>
 </div>

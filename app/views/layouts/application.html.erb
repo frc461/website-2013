@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 
 <html lang="en">
-	<%= render :partial => "partials/head" %>
+	<%= render partial: "partials/head" %>
 	<body>
 		<section id="page" data-type="background" data-speed="5">
-			<%= render :partial => "partials/navbar" %>
+			<%= render partial: "partials/navbar" %>
 			<article>
 				<%= content_for :breadcrumb %>
 				<div class="container-fluid">
@@ -12,12 +12,12 @@
 						<div class="span9 solidBackground pull-right" id="main-span">
 							<%= yield %>
 						</div>
-						<%= render :partial => "partials/sidebar" %>
+						<%= render partial: "partials/sidebar" %>
 					</div>
 
 					<br class="visible-phone" />
-					<%= render :partial => "partials/footer" %>
-					<%= render :partial => "partials/alerts_holder" %>
+					<%= render partial: "partials/footer" %>
+					<%= render partial: "partials/alerts_holder" %>
 				</div>
 			</article>
 		</section>

@@ -44,7 +44,7 @@
 				
 				<% if can? :update, Photo # not sure exactly what we should put right above this, but this is definitely better than what was there %>
 					<div class="carousel-caption">
-						<%= link_to "Deletify", photo, :method => "delete", :class => "btn btn-danger btn-mini" %>
+						<%= link_to "Deletify", photo, method: "delete", class: "btn btn-danger btn-mini" %>
 						<br />
 						ID: <%= photo.id %>
 					</div>
@@ -68,7 +68,7 @@
 				<div class="row-fluid">
 					<% photogroup.each do |photo| %>
 						<% if photo %>
-							<%= image_tag photo.image.url(:thumb), :class => "span3", :onclick => "$('.carousel').carousel(" + count.to_s + ");$('html, body').animate({ scrollTop: 0 }, 'fast');" %>
+							<%= image_tag photo.image.url(:thumb), class: "span3", onclick: "$('.carousel').carousel(" + count.to_s + ");$('html, body').animate({ scrollTop: 0 }, 'fast');" %>
 							<% count += 1 %>
 						<% end %>
 					<% end %>
@@ -78,12 +78,12 @@
 
 
 		<div class="form-actions">
-			<%= link_to "Back", albums_path, :class => 'btn' %>
-			<%= link_to "Edit", edit_album_path(@album), :class => 'btn' if can? :update, @album %>
-			<%= link_to "Deletify Album", album_path(@album), :method => 'delete',
-				:data => { :confirm => "Are you sure you want to delete #{@album.name}?" },
-				:class => 'btn btn-danger' if can? :destroy, @album %>
-			<%= link_to "Add Photos", "/photos/mass?album_id=" + @album.id.to_s, :class => "btn btn-success" if can? :create, Photo %>
+			<%= link_to "Back", albums_path, class: 'btn' %>
+			<%= link_to "Edit", edit_album_path(@album), class: 'btn' if can? :update, @album %>
+			<%= link_to "Deletify Album", album_path(@album), method: 'delete',
+				data: { confirm: "Are you sure you want to delete #{@album.name}?" },
+				class: 'btn btn-danger' if can? :destroy, @album %>
+			<%= link_to "Add Photos", "/photos/mass?album_id=" + @album.id.to_s, class: "btn btn-success" if can? :create, Photo %>
 		</div>
 	</div>
 	<script type="text/javascript">
