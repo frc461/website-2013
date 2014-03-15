@@ -9,7 +9,7 @@ class UsersController < InheritedResources::Base
 		else
 			@groups = Group.where(joinable: true)
 		end
-		
+
 		if current_user
 			@groups += current_user.groups
 			
@@ -45,6 +45,16 @@ class UsersController < InheritedResources::Base
 			
 			session[:user_id] = @user.id if !(current_user && current_user.admin)
 		else
+			if current_user && current_user.admin
+				@groups = Group.all
+			else
+				@groups = Group.where(joinable: true)
+			end
+
+			if current_user
+				@groups += current_user.groups
+				@groups.uniq!
+			end
 			render "new"
 		end
 	end
@@ -78,6 +88,16 @@ class UsersController < InheritedResources::Base
 		if @user.update_attributes(params[:user])
 			redirect_to @user
 		else
+			if current_user && current_user.admin
+				@groups = Group.all
+			else
+				@groups = Group.where(joinable: true)
+			end
+
+			if current_user
+				@groups += current_user.groups
+				@groups.uniq!
+			end
 			render "edit"
 		end
 	end
