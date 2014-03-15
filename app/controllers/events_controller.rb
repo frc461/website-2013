@@ -41,7 +41,7 @@ class EventsController < InheritedResources::Base
 					end_date += ev.weeks_repeat.weeks
 				end
 
-				ev.weeks_repeat = nil;
+				ev.weeks_repeat = nil
 			end
 		end
 
