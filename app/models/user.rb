@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
 	# Run the encrypt_password and set_admin functions before saving
 	before_save :encrypt_password, :set_admin
 
+	# TODO: Redo the validations to be more "modern"
+
 	# The secret code should be given upon user creation and should match SECRET_CODE
 	validates_each :secret_code do |record, attr, value|
 		# SECRET_CODE should be defined in an initializer
@@ -13,8 +15,6 @@ class User < ActiveRecord::Base
 			record.errors.add :secret_code, "is not correct"
 		end
 	end
-
-	# TODO: Redo the validations to be more "modern"
 
 	# If we do any changing to password, we need to have a confirmation.
 	validates_confirmation_of :password
@@ -70,6 +70,8 @@ class User < ActiveRecord::Base
 			return nil
 		end
 	end
+
+	# TODO: Redo the authentication system to use Rails 4's built-in passwords.
 
 	def encrypt_password
 		# If we have a password, then generate a salt and hash the password with the salt.
