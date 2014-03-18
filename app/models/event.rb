@@ -12,7 +12,7 @@ class Event < ActiveRecord::Base
 
 	# a < b where a and b are dates means that a is before b
 	def end_date_cannot_be_before_start_date
-		if end_date.present? && start_date.present? && end_date < start_date
+		if start_date.present? && end_date.present? && end_date < start_date
 			errors.add(:end_date, "cannot be before start date")
 		end
 	end
