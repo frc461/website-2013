@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
 	rescue_from ActionView::MissingTemplate do |e|
 		render "error/index", status: 404
 	end
-	
+
 	def debuggy
 		@print_debug = true
 		@debug_string = Digest::MD5.hexdigest(
