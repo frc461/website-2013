@@ -13,10 +13,8 @@ class User < ActiveRecord::Base
 	
 	before_save :encrypt_password, :set_admin
 	
-	validates :password, confirmation: true
-	validates :password, presence: true, on: :create
-	validates :email, :name, presence: true
-	validates :email, uniqueness: true
+	validates :password, confirmation: true, presence: true, on: :create
+	validates :email, :name, presence: true, uniqueness: true
 	# Hacky way to validate that :secret_code equals SECRET_CODE.
 	validates :secret_code, format: { with: /\A#{SECRET_CODE}\z/, message: "is not correct" }
 
@@ -49,7 +47,7 @@ class User < ActiveRecord::Base
 
 	def self.authenticate(email, password)
 		user = User.where(email: email).first
-		
+
 		if user && user.password_hash == BCrypt::Engine.hash_secret(password, user.password_salt)
 			user
 		else

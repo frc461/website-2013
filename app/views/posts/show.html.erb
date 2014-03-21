@@ -11,7 +11,7 @@
 <div class="pull-right post-info">
 	<%= author @post %>
 	<br />
-	<%= @post.created_at %>
+	<%= l @post.created_at, format: :long %>
 </div>
 <div class="page-header">
 	<h1><%= @post.title %></h1>
@@ -25,14 +25,14 @@
 	<%# raise "there are tags" %>
 	<h3>Tags</h3>
 	<% tag_cloud(@post.tags, %w(css1 css2 css3 css4)) do |tag, css_class| %>
-		<%= link_to tag.name, "/search?search=" + tag.name, :class => css_class %>
+		<%= link_to tag.name, "/search?search=" + tag.name, class: css_class %>
 	<% end %>
 <% end %>
 
 <div class="form-actions">
-	<%= link_to "Back", posts_path, :class => "btn" %>
+	<%= link_to "Back", posts_path, class: 'btn' %>
 	<% if can? :update, @post %>
-		<%= link_to "Edit", edit_post_path, :class => "btn" %>
+		<%= link_to "Edit", edit_post_path, class: 'btn' %>
 	<% end %>
 	<% if can? :destroy, @post %>
 		<%= link_to "Delete", post_path, :method => "delete",

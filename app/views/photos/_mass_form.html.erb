@@ -1,35 +1,34 @@
 <%= form_for Photo.new, html: { multipart: true, id: "fileupload"  } do |f| %>
-	Album: <%= f.select(:album_id,
-						[["None", nil]] + Album.all.map { |abm| [abm.name, abm.id] },
-						selected: params[:album_id]) %>
-	<!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
-	<!-- The fileinput-button span is used to style the file input field as button -->
-	<div class="row fileupload-buttonbar">
-		<div class="span7">
-			<span class="btn btn-success fileinput-button">
-				<i class="icon-plus icon-white"></i>
-				<span>Add files...</span>
-				<%= f.file_field :image, multiple: true, name: "photo[image]" %>
-			</span>
-			<button type="submit" class="btn btn-primary start">
-				<i class="icon-upload icon-white"></i>
-				<span>Start upload</span>
-			</button>
-			<button type="reset" class="btn btn-warning cancel">
-				<i class="icon-ban-circle icon-white"></i>
-				<span>Cancel upload</span>
-			</button>
-			<button type="button" class="btn btn-danger delete">
-				<i class="icon-trash icon-white"></i>
-				<span>Delete</span>
-			</button>
-			Select All: <input type="checkbox" class="toggle" />
-		</div>
-		<!-- The global progress bar -->
-		<div class="span5">
-			<div class="progress progress-success progress-striped active fade">
-				<div class="bar" style="width:0%;">
-				</div>
+Album: <%= f.select(:album_id,
+           [["None", nil]] + Album.all.map { |abm| [abm.name, abm.id] },
+           selected: params[:album_id]) %>
+<!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
+<!-- The fileinput-button span is used to style the file input field as button -->
+<div class="row fileupload-buttonbar">
+    <div class="span7">
+		<span class="btn btn-success fileinput-button">
+			<i class="icon-plus icon-white"></i>
+			<span>Add files...</span>
+			<%= f.file_field :image, multiple: true, name: "photo[image]" %>
+		</span>
+		<button type="submit" class="btn btn-primary start">
+			<i class="icon-upload icon-white"></i>
+			<span>Start upload</span>
+		</button>
+		<button type="reset" class="btn btn-warning cancel">
+			<i class="icon-ban-circle icon-white"></i>
+			<span>Cancel upload</span>
+		</button>
+		<button type="button" class="btn btn-danger delete">
+			<i class="icon-trash icon-white"></i>
+			<span>Delete</span>
+		</button>
+		Select All: <input type="checkbox" class="toggle" />
+	</div>
+	<!-- The global progress bar -->
+	<div class="span5">
+		<div class="progress progress-success progress-striped active fade">
+			<div class="bar" style="width:0%;">
 			</div>
 		</div>
 	</div>

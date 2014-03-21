@@ -23,7 +23,7 @@
 		</tr>
 	</thead>
 	<tbody>
-		<% Forum.where(:group_id => nil).order("name ASC").each do | forum | %>
+		<% Forum.where(group_id: nil).order("name ASC").each do | forum | %>
 		<tr>
 			<td><%= link_to forum.name, forum_path(forum) %></td>
 			<td><%= forum.description %></td>
@@ -54,7 +54,7 @@
 <% end %>
 <% end %>
 
-<%= link_to t('.new', :default => t("helpers.links.new")),
+<%= link_to t('.new', default: t("helpers.links.new")),
 new_forum_path,
-:class => 'btn btn-primary' if can? :create, Forum %>
+class: 'btn btn-primary' if can? :create, Forum %>
 <br />

@@ -28,54 +28,62 @@ module ApplicationHelper
 	end
 
 	def markback(text)
-		return strip_tags(sanitize(format(text))) #lisp
+		return strip_tags(sanitize(format(text)))
 	end
 
 	# I'm not going to even try.
 	# four04 - BEGIN DISREGARD
 	def carouselcheck(text)
 		thingnum = 0
+		
 		gsubber = text.gsub!(/\[carousel\]\[([0-9,]+)\]\[([0-9,]+)\]/) do |s|
-			thingnum = 1 + thingnum
+			thingnum += 1
 			thing = "<div class=\"container row-fluid\">
 <div class=\"span6\">
-<div id=\"carousel" + thingnum.to_s + "\" class=\"carousel slide\">
+<div id=\"carousel#{thingnum}\" class=\"carousel slide\">
                 <div class=\"carousel-inner\">
                   <div class=\"item active\">"
 			thing += image_tag(Photo.find($1.split(",").first).image.url(:medium))
-			thing +="</div>"
+			thing += "</div>"
+			
 			$1.split(",").drop(1).each do |photo|
 				thing += " <div class=\"item\">" +
 					image_tag(Photo.find(photo).image.url(:medium)) +
 					"</div>"
 			end
+			
 			thing += "</div>
-                <a class=\"left carousel-control\" href=\"#carousel" + thingnum.to_s + "\" data-slide=\"prev\">&lsaquo;</a>
-                <a class=\"right carousel-control\" href=\"#carousel" + thingnum.to_s + "\" data-slide=\"next\">&rsaquo;</a>
+                <a class=\"carousel-control left\" href=\"#carousel#{thingnum}\" data-slide=\"prev\">&lsaquo;</a>
+                <a class=\"carousel-control right\" href=\"#carousel#{thingnum}\" data-slide=\"next\">&rsaquo;</a>
               </div></div>"
-			thingnum = 1 + thingnum
+			thingnum += 1
+			
 			thing += "<div class=\"span6\">
-<div id=\"carousel"+ thingnum.to_s + "\" class=\"carousel slide hidden-phone\">
+<div id=\"carousel#{thingnum}\" class=\"carousel slide hidden-phone\">
                 <div class=\"carousel-inner\">
-                  <div class=\"item active\">"
+                  <div class=\"active item\">"
 			thing += image_tag(Photo.find($2.split(",").first).image.url(:medium))
-			thing +="</div>"
+			thing += "</div>"
+			
 			$2.split(",").drop(1).each do |photo|
 				thing += " <div class=\"item\">" +
 					image_tag(Photo.find(photo).image.url(:medium)) +
 					"</div>"
 			end
+			
 			thing += "</div>
-                <a class=\"left carousel-control\" href=\"#carousel" + thingnum.to_s + "\" data-slide=\"prev\">&lsaquo;</a>
-                <a class=\"right carousel-control\" href=\"#carousel" + thingnum.to_s + "\" data-slide=\"next\">&rsaquo;</a>
+                <a class=\"left carousel-control\" href=\"#carousel#{thingnum}\" data-slide=\"prev\">&lsaquo;</a>
+                <a class=\"right carousel-control\" href=\"#carousel#{thingnum}\" data-slide=\"next\">&rsaquo;</a>
               </div></div></div>
 
 <script type=\"text/javascript\">
-  $('#carousel" + (thingnum - 1).to_s + "').carousel({interval: 10000})
-  $('#carousel" + (thingnum - 1).to_s + "').carousel('cycle')
+$(document).ready(function() {
+  $('#carousel#{thingnum - 1}').carousel({interval: 10000})
+  $('#carousel#{thingnum - 1}').carousel('cycle')
 
-  $('#carousel" + thingnum.to_s + "').carousel({interval: 10000})
-  $('#carousel" + thingnum.to_s + "').carousel('cycle')
+  $('#carousel#{thingnum}').carousel({interval: 10000})
+  $('#carousel#{thingnum}').carousel('cycle')
+})
 </script>"
 		end
 	end
@@ -104,16 +112,16 @@ module ApplicationHelper
 						if $5 == "r"
 							image_tag(Photo.where("album_id = ? and id = ?",
 							                      Album.where("name LIKE ?", $1).first.id, $2.to_i).first.image.url(style),
-							          :class => "pull-right floating-content-img")
+							          class: "pull-right floating-content-img")
 						elsif $5 == "l"
 							image_tag(Photo.where("album_id = ? and id = ?",
 							                      Album.where("name LIKE ?", $1).first.id, $2.to_i).first.image.url(style),
-							          :class => "pull-left floating-content-img")
+							          class: "pull-left floating-content-img")
 						end
 					else
 						image_tag(Photo.where("album_id = ? and id = ?",
 						                      Album.where("name LIKE ?", $1).first.id, $2.to_i).first.image.url(style),
-						          :class => "content-img")
+						          class: "content-img")
 					end
 				rescue
 					"/!\\ NO SUCH PHOTO /!\\"

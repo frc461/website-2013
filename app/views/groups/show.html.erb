@@ -8,21 +8,21 @@
 	<dt><strong>Name:</strong></dt>
 	<dd><%= @group.name %></dd>
 	<dt><strong>Joinable:</strong></dt>
-	<dd><%= check_box_tag "", "", @group.joinable, :disabled => "disabled" %></dd>
+	<dd><%= check_box_tag "", "", @group.joinable, disabled: "disabled" %></dd>
 	<dt><strong>Page Access:</strong></dt>
-	<dd><%= check_box_tag "", "", @group.page_access, :disabled => "disabled" %></dd>
+	<dd><%= check_box_tag "", "", @group.page_access, disabled: "disabled" %></dd>
 	<dt><strong>Post Access:</strong></dt>
-	<dd><%= check_box_tag "", "", @group.post_access, :disabled => "disabled" %></dd>
+	<dd><%= check_box_tag "", "", @group.post_access, disabled: "disabled" %></dd>
 	<dt><strong>Photo Access:</strong></dt>
-	<dd><%= check_box_tag "", "", @group.photo_access, :disabled => "disabled" %></dd>
+	<dd><%= check_box_tag "", "", @group.photo_access, disabled: "disabled" %></dd>
 	<dt><strong>Event Access:</strong></dt>
-	<dd><%= check_box_tag "", "", @group.event_access, :disabled => "disabled" %></dd>
+	<dd><%= check_box_tag "", "", @group.event_access, disabled: "disabled" %></dd>
 	<dt><strong>User Access:</strong></dt>
-	<dd><%= check_box_tag "", "", @group.user_access, :disabled => "disabled" %></dd>
+	<dd><%= check_box_tag "", "", @group.user_access, disabled: "disabled" %></dd>
 	<dt><strong>Forum Access:</strong></dt>
-	<dd><%= check_box_tag "", "", @group.forum_access, :disabled => "disabled" %></dd>
+	<dd><%= check_box_tag "", "", @group.forum_access, disabled: "disabled" %></dd>
 	<dt><strong>Group Access:</strong></dt>
-	<dd><%= check_box_tag "", "", @group.group_access, :disabled => "disabled" %></dd>
+	<dd><%= check_box_tag "", "", @group.group_access, disabled: "disabled" %></dd>
 	<dt><strong>Users:</strong></dt>
 	<dd>
 		<% if @group.users.count > 0 %>
@@ -34,16 +34,16 @@
 </dl>
 
 <div class="form-actions">
-	<%= link_to "Back", groups_path, :class => 'btn'  %>
-	<%= link_to "Edit", edit_group_path(@group), :class => 'btn' %>
+	<%= link_to "Back", groups_path, class: 'btn'  %>
+	<%= link_to "Edit", edit_group_path(@group), class: 'btn' %>
 	<% if @group.users.include? current_user %>
-		<%= link_to "Un-join", unjoin_group_path(@group), :class => "btn btn-danger" %>
+		<%= link_to "Un-join", unjoin_group_path(@group), class: "btn btn-danger" %>
 	<% else %>
-		<%= link_to "Join", join_group_path(@group), :class => "btn btn-success" %>
+		<%= link_to "Join", join_group_path(@group), class: "btn btn-success" %>
 	<% end %>
 	<%= link_to "Delete",
 		group_path(@group),
-		:method => 'delete',
-		:data => { :confirm => "Are you sure?" },
-		:class => 'btn btn-danger' %>
+		method: 'delete',
+		data: { confirm: "Are you sure?" },
+		class: 'btn btn-danger' %>
 </div>

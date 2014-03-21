@@ -19,7 +19,7 @@
 <div class="row-fluid">
     <div class="span12 postWithBorder"><!-- what is x? style="padding: x"> -->
 		<h2>
-			<%= link_to(post.title, post, :class => "") %>
+			<%= link_to(post.title, post, class: "") %>
 		</h2>
 		<%= markback(post.content).lines.first(2).join %>
     </div>

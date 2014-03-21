@@ -44,7 +44,6 @@
 				<% if can? :update, Photo %>
 					<div class="carousel-caption">
 						<%= link_to "Delete", photo, :method => "delete", :class => "btn btn-danger btn-mini" %>
-						
 						<br />
 						
 						<strong>ID</strong>: <%= photo.id %>
@@ -71,7 +70,7 @@
 				<div class="row-fluid">
 					<% photogroup.each do |photo| %>
 						<% if photo %>
-							<%= image_tag photo.image.url(:thumb), :class => "span3", :onclick => "$('.carousel').carousel(" + count.to_s + ");$('html, body').animate({ scrollTop: 0 }, 'fast');" %>
+							<%= image_tag photo.image.url(:thumb), class: "span3", onclick: "$('.carousel').carousel(" + count.to_s + ");$('html, body').animate({ scrollTop: 0 }, 'fast');" %>
 							<% count += 1 %>
 						<% end %>
 					<% end %>

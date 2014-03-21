@@ -1,6 +1,6 @@
 class PagesController < InheritedResources::Base
 	load_and_authorize_resource
-	skip_load_and_authorize_resource :only => :show
+	skip_load_and_authorize_resource only: :show
 
 	def selectpage(id, titles)
 		begin
@@ -38,7 +38,7 @@ class PagesController < InheritedResources::Base
 			end
 		rescue Exception => ex
 			# redirect_to error_path
-			render "error/index", :status => 404
+			render "error/index", status: 404
 		end
 		# if params[:title] || params[:id]
 		#   if params[:id] =~ /^\d+(\.\d+)?$/
@@ -75,17 +75,17 @@ class PagesController < InheritedResources::Base
 	def show
 		@page = selectpage(params[:id], params[:titles])
 		# redirect_to error_path unless @page
-		render "error/index", :status => 404 unless @page
+		render "error/index", status: 404 unless @page
 	end
 
 	def destroy
 		@page = Page.find(params[:id])
 		@page.delete
 
-		redirect_to pages_path, :notice => "Removed page."
+		redirect_to pages_path, notice: "Removed page."
 	end
 
 	def index
-		redirect_to sitemap_path, :status => 302
+		redirect_to sitemap_path, status: 302
 	end
 end
