@@ -17,7 +17,7 @@ class Event < ActiveRecord::Base
 		end
 	end
 
-	# Convert this into a cute hash thing for fullcalendar.
+	# Convert this into a hash for the slot on the calendar.
 	def calendarify
 		{
 			id: id,

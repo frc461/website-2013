@@ -12,7 +12,8 @@ class User < ActiveRecord::Base
 	has_many :comments
 	
 	before_save :encrypt_password, :set_admin
-	
+
+	# Might want to change this to always need confirmation.
 	validates :password, confirmation: true, presence: true, on: :create
 	validates :email, :name, presence: true
 	validates :email, uniqueness: true
@@ -49,16 +50,12 @@ class User < ActiveRecord::Base
 
 	# The authentification function
 	def self.authenticate(email, password)
-		# We find by email (hence the need for unique emails)
+		# We find by email (hence the need for unique emails).
 		user = User.where(email: email).first
 
 		# If the user exists, check that their password_hash matches the hash created by hashing
 		# the given password with the password_salt, and return the user if they authenticate
-		# successfully (nil otherwise)
-		if user && user.password_hash == BCrypt::Engine.hash_secret(password, user.password_salt)
-			return user
-		else
-			return nil
-		end
+		# successfully (nil otherwise).
+		(user && user.password_hash == BCrypt::Engine.hash_secret(password, user.password_salt)) ? user : nil
 	end
 end
