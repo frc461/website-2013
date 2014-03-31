@@ -14,7 +14,8 @@ class User < ActiveRecord::Base
 	before_save :encrypt_password, :set_admin
 	
 	validates :password, confirmation: true, presence: true, on: :create
-	validates :email, :name, presence: true, uniqueness: true
+	validates :email, :name, presence: true
+	validates :email, uniqueness: true
 	# Hacky way to validate that :secret_code equals SECRET_CODE.
 	validates :secret_code, format: { with: /\A#{SECRET_CODE}\z/, message: "is not correct" }
 

@@ -43,7 +43,7 @@
 				
 				<% if can? :update, Photo %>
 					<div class="carousel-caption">
-						<%= link_to "Delete", photo, :method => "delete", :class => "btn btn-danger btn-mini" %>
+						<%= link_to "Delete", photo, method: "delete", class: "btn btn-danger btn-mini" %>
 						<br />
 						
 						<strong>ID</strong>: <%= photo.id %>
