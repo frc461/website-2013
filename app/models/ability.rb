@@ -4,63 +4,71 @@ class Ability
 	def initialize(user)
 		logged_in = true if user
 
-		# Guest user.
+		# Guest user for if the current user is not logged in.
 		user ||= User.new
 
-		# Universal permissions.
-		can :read, Page
-		can :read, Post
-		can :read, Album
-		can :read, Photo
 		can :create, User
+
+		can :read, Album
 		can :read, Event
-		
+		can :read, Page
+		can :read, Photo
+		can :read, Post
+
 		if logged_in
-			# Lowercase is the user initalize is called on, not the class User.
-			can :update, user
-			can :read, user
-			can :read, Forum
-			can :read, Comment
 			can :create, Comment
-			can :manage, Comment, user_id: user.id
+
 			can :destroy, Comment
 			cannot :destroy, Comment, parent_id: nil
+
+			can :manage, Comment, user_id: user.id
+
+			can :read, Comment
 			can :read, Event
+			can :read, Forum
 			can :read, Todo
+			can :read, user
+
+			can :update, user
+
 			can :write, Todo
-			
-			cannot :destroy, Comment
-			
-			page_access = false
-			post_access = false
-			photo_access = false
+
 			event_access = false
-			user_access = false
 			forum_access = false
 			group_access = false
-			
+			page_access = false
+			photo_access = false
+			post_access = false
+			user_access = false
+
 			user.groups.each do |g|
-				page_access  ||= g.page_access
-				post_access  ||= g.post_access
-				photo_access ||= g.photo_access
 				event_access ||= g.event_access
-				user_access  ||= g.user_access
 				forum_access ||= g.forum_access
 				group_access ||= g.group_access
+				page_access  ||= g.page_access
+				photo_access ||= g.photo_access
+				post_access  ||= g.post_access
+				user_access  ||= g.user_access
 			end
-			
+
+			if forum_access
+				can :manage, Forum
+				cannot :destroy, Forum
+				can :manage, Comment
+				cannot :destroy, Comment
+			end
+
+			if group_access
+				can :manage, Group
+				cannot :destroy, Group
+			end
+
 			if page_access
 				can :manage, Page
 				
 				cannot :destroy, Page
 			end
-			
-			if post_access
-				can :manage, Post
-				
-				cannot :destroy, Post
-			end
-			
+
 			if photo_access
 				can :manage, Photo
 				can :manage, Album
@@ -68,25 +76,16 @@ class Ability
 				cannot :destroy, Photo
 				cannot :destroy, Album
 			end
-			
+
+			if post_access
+				can :manage, Post
+				cannot :destroy, Post
+			end
+
 			if user_access
 				can :manage, User
 				
 				cannot :destroy, User
-			end
-			
-			if forum_access
-				can :manage, Forum
-				can :manage, Comment
-				
-				cannot :destroy, Forum
-				cannot :destroy, Comment
-			end
-			
-			if group_access
-				can :manage, Group
-				
-				cannot :destroy, Group
 			end
 		end
 

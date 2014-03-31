@@ -35,6 +35,7 @@ class User < ActiveRecord::Base
 		true
 	end
 
+	# Gets all of the permissions for the user (inheritance from groups is accounted for)
 	def all_permissions
 		shopping_cart = self.permissions.dup.flatten
 		
@@ -45,13 +46,18 @@ class User < ActiveRecord::Base
 		shopping_cart
 	end
 
+	# The authentification function
 	def self.authenticate(email, password)
+		# We find by email (hence the need for unique emails)
 		user = User.where(email: email).first
 
+		# If the user exists, check that their password_hash matches the hash created by hashing
+		# the given password with the password_salt, and return the user if they authenticate
+		# successfully (nil otherwise)
 		if user && user.password_hash == BCrypt::Engine.hash_secret(password, user.password_salt)
-			user
+			return user
 		else
-			nil
+			return nil
 		end
 	end
 end

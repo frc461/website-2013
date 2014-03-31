@@ -13,6 +13,7 @@ class Photo < ActiveRecord::Base
 
 	validates :image_file_name, uniqueness: true
 
+	# Returns a formatted hash for the photo.
 	def to_jq_upload
 		{
 			"name" => read_attribute(:image_file_name),
