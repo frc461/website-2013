@@ -21,9 +21,8 @@ class Ability
 			can :create, Comment
 
 			can :destroy, Comment
-			cannot :destroy, Comment, parent_id: nil
-
 			can :manage, Comment, user_id: user.id
+			cannot :destroy, Comment, parent_id: nil
 
 			can :read, Comment
 			can :read, Event

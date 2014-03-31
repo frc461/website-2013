@@ -77,7 +77,8 @@ module ApplicationHelper
 			thing << "</div>"
 			thing << "</div>"
 			thing << "</div>"
-			thing <<-JS
+			thing <<
+<<-JS
 <script type=\"text/javascript\">
 $(document).ready(function() {
 	$('#carousel#{thingnum - 1}').carousel({interval: 10000})

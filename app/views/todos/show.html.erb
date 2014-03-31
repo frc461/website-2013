@@ -27,7 +27,7 @@
 		<%= form_tag assign_todo_path(@todo) do %>
 			Assign
 			
-			<%= text_field_tag :name, current_user.name.to_s, placeholder: "Name", "data-provide": "typeahead", "data-items": User.all.count, "data-source": User.all.map{|u| u.name}.to_s, autocomplete: "off" %>
+			<%= text_field_tag :name, current_user.name.to_s, :placeholder => "Name", :"data-provide" => "typeahead", :"data-items" => User.all.count, :"data-source" => User.all.map{|u| u.name}.to_s, :autocomplete => "off" %>
 				
 			<br />
 			<%= submit_tag "Go", class: "btn btn-success" %>
