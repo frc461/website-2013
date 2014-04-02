@@ -1,10 +1,10 @@
 class Photo < ActiveRecord::Base
 	include Rails.application.routes.url_helpers
-	
+
 	attr_accessible :album_id, :image
 
 	belongs_to :album
-	
+
 	has_attached_file(:image,
 	                  storage: :filesystem,
 	                  styles: { medium: "x512", thumb: "250x>" },
