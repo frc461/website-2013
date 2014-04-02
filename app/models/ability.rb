@@ -16,7 +16,7 @@ class Ability
 		can :read, Post
 
 		if logged_in
-			# Lowercase user `user` is the user initialize is called on,
+			# Note: Lowercase user `user` is the user initialize is called on,
 			# not the class User.
 			can :create, Comment
 
@@ -55,40 +55,40 @@ class Ability
 			if forum_access
 				can :manage, Comment
 				can :manage, Forum
-				
+
 				cannot :destroy, Comment
 				cannot :destroy, Forum
 			end
 
 			if group_access
 				can :manage, Group
-				
+
 				cannot :destroy, Group
 			end
 
 			if page_access
 				can :manage, Page
-				
+
 				cannot :destroy, Page
 			end
 
 			if photo_access
 				can :manage, Album
 				can :manage, Photo
-				
+
 				cannot :destroy, Album
 				cannot :destroy, Photo
 			end
 
 			if post_access
 				can :manage, Post
-				
+
 				cannot :destroy, Post
 			end
 
 			if user_access
 				can :manage, User
-				
+
 				cannot :destroy, User
 			end
 		end
