@@ -19,12 +19,12 @@ class Event < ActiveRecord::Base
 
 	# Return the start_date, formatted for the iCalendar feed.
 	def start_date_icalendar
-		return start_date.strftime("%Y%m%dT%H%M%S")
+		return start_date.utc.strftime("%Y%m%dT%H%M%S")
 	end
 
 	# Return the end_date, formatted for the iCalendar feed.
 	def end_date_icalendar
-		return end_date.strftime("%Y%m%dT%H%M%S")
+		return end_date.utc.strftime("%Y%m%dT%H%M%S")
 	end
 
 	# Convert this into a hash for the slot on the calendar.
