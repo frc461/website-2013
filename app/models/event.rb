@@ -12,6 +12,14 @@ class Event < ActiveRecord::Base
 		end
 	end
 
+	def start_date_icalendar
+		return start_date.strftime("%Y%m%dT%H%M%S")
+	end
+
+	def end_date_icalendar
+		return end_date.strftime("%Y%m%dT%H%M%S")
+	end
+
 	def calendarify
 		r = {}
 

@@ -8,8 +8,8 @@ class EventsController < InheritedResources::Base
 
 		event_list.each do |ev|
 			cal.event do
-				dtstart     ev.start_date
-				dtend       ev.end_date
+				dtstart     ev.start_date_icalendar
+				dtend       ev.end_date_icalendar
 				summary     ev.title
 				description ev.content
 			end
