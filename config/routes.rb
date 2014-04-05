@@ -1,7 +1,6 @@
 Website::Application.routes.draw do
 	resources :documents
 
-
 	get "search/search"
 
 	get "sitemap" => "sitemap#index"
@@ -47,8 +46,8 @@ Website::Application.routes.draw do
 	get "users" => "users#index", :as => "users"
 	get "search" => "search#search", :as => "search"
 
-	match '/pages/*titles' => "pages#show"
-	match '/tags/:tag' => "tags#show"
+	match "/pages/*titles" => "pages#show"
+	match "/tags/:tag" => "tags#show"
 
 	# The priority is based upon order of creation:
 	# first created -> highest priority.
@@ -99,7 +98,7 @@ Website::Application.routes.draw do
 
 	# You can have the root of your site routed with "root"
 	# just remember to delete public/index.html.
-	root :to => 'welcome#index'
+	root :to => "welcome#index"
 
 	# See how all your routes lay out with "rake routes"
 

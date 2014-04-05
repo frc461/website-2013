@@ -3,43 +3,51 @@
         <a href="https://www.facebook.com/WBI461">
             <%= image_tag 'icon/facebook-icon.png', class: "social-icon", alt: "Facebook" %>
         </a>
+
         <a href="https://twitter.com/team461WBI">
             <%= image_tag 'icon/twitter-icon.png', class: "social-icon", alt: "Twitter" %>
         </a>
-        <a href="https://www.youtube.com/user/team461">
+
+		<a href="https://www.youtube.com/user/team461">
             <%= image_tag 'icon/youtube-icon.png', class: "social-icon", alt: "Youtube" %>
         </a>
-        <table id="logo-table" class="hidden-phone">
+
+		<table id="logo-table" class="hidden-phone">
             <tr>
                 <td class="setwidth">
                     <a href="http://www.cat.com/">
 						<%= image_tag 'caterpillar-logo.png', id: "MoveL", class: "side-logo", alt: "Caterpillar" %>
                     </a>
                 </td>
+
                 <td>
                     <a href="http://hs.wl.k12.in.us/">
 						<%= image_tag 'wl-logo.png ', id: "NotMove", alt: "West Lafayette Junior/Senior High School" %>
                     </a>
                 </td>
-                <td class="setwidth">
+
+				<td class="setwidth">
                     <a href="http://www.purduefirst.org/">
 						<%= image_tag 'pfp-logo.png', id: "MoveR", class: "side-logo", alt: "Purdue First Programs" %>
                     </a>
                 </td>
             </tr>
         </table>
-        <div class="visible-phone">
-            
+
+		<div class="visible-phone">
             <a href="http://www.cat.com/">
                 <%= image_tag 'caterpillar-logo.png', class: "alt-logos", alt: "Caterpillar" %>
             </a>
-            <a href="http://hs.wl.k12.in.us/">
+
+			<a href="http://hs.wl.k12.in.us/">
                 <%= image_tag 'wl-logo.png ', class: "alt-logos", alt: "West Lafayette Junior/Senior High School" %>
             </a>
-            <a href="http://www.purduefirst.org/">
+
+			<a href="http://www.purduefirst.org/">
                 <%= image_tag 'pfp-logo.png', class: "alt-logos", alt: "Purdue First Programs" %>
             </a>
         </div>
+
         <p>
             &copy; Copyright Westside Boiler Invasion Team 461 2013-2014<br />
             <% if !current_user %>
@@ -49,6 +57,7 @@
             <% end %>
             <% if @print_debug == true %>
             <br />
+
             <code style="background: #101010;
                          border: transparent;
                          color: #404040;

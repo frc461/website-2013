@@ -1,9 +1,7 @@
-<%- model_class = Comment -%>
-<% content_for :title do
-   "New Thread"
-   end %>
+<% title "New Thread" %>
 
 <div class="page-header">
 	<h1>New Thread</h1>
 </div>
-<%= render partial: 'form' %>
+
+<%= render partial: "form" %>

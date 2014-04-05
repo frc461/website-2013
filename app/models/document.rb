@@ -1,9 +1,7 @@
 class Document < ActiveRecord::Base
 	attr_accessible :filename, :name, :secret_code
 	attr_accessor :secret_code
-	validates_each :secret_code do |record, attr, value|
-		if record.secret_code != DOCUMENT_SECRET_CODE #defined in secret.rb
-			record.errors.add :secret_code, "is not correct"
-		end
-	end
+	
+	# Hacky way to validate that :secret_code equals SECRET_CODE.
+	validates :secret_code, format: { with: /\A#{SECRET_CODE}\z/, message: "is not correct" }
 end

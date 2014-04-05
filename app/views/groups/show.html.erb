@@ -34,16 +34,16 @@
 </dl>
 
 <div class="form-actions">
-	<%= link_to "Back", groups_path, class: 'btn'  %>
-	<%= link_to "Edit", edit_group_path(@group), class: 'btn' %>
+	<%= link_to "Back", groups_path, class: "btn"  %>
+	<%= link_to "Edit", edit_group_path(@group), class: "btn" %>
 	<% if @group.users.include? current_user %>
 		<%= link_to "Un-join", unjoin_group_path(@group), class: "btn btn-danger" %>
 	<% else %>
 		<%= link_to "Join", join_group_path(@group), class: "btn btn-success" %>
 	<% end %>
-	<%= link_to "Deletify",
+	<%= link_to "Delete",
 		group_path(@group),
-		method: 'delete',
+		method: "delete",
 		data: { confirm: "Are you sure?" },
-		class: 'btn btn-danger' %>
+		class: "btn btn-danger" %>
 </div>

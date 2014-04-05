@@ -52,7 +52,7 @@ class TodosController < InheritedResources::Base
 	def unassign
 		@todo = Todo.find(params[id])
 		
-		@todo.users.delete(User.where(:name: params[:commit]).first)
+		@todo.users.delete(User.where(name: params[:commit]).first)
 
 		redirect_to @todo, notice: "Successfully un-assigned #{who(params[:commit])}!"
 	end

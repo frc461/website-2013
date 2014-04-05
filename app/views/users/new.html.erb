@@ -1,9 +1,9 @@
-<% content_for :title do
-   "Sign Up"
-   end %>
-<%- model_class = User -%>
+<% title "Sign Up" %>
+
 <div class="page-header">
-	<h1><%=t '.title', default: t('helpers.titles.new', model: model_class.model_name.human,
-        default: "New #{model_class.model_name.human}") %></h1>
+	<h1>
+		<%= current_user ? "New User" : "Sign Up" %>
+	</h1>
 </div>
-<%= render partial: 'form' %>
+
+<%= render partial: "form" %>
