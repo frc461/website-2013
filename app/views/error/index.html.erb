@@ -3,11 +3,35 @@
 </div>
 
 If you came here from a broken link, please email our webmaster at <a href="mailto:webmaster@boilinvasion.org">webmaster@boilerinvasion.org</a>. We'll see what we can do.
-<div id="msg">
-	This page is unavailable and/or does not exist. Someone messed up. How about that person sitting two seats over to the left? That person looks kind of suspicious... Now, I want you to sneak over to that person, grab their mouse and run as fast as you can to the nearest soda machine. When you reach the soda machine, press the buttons 1 4 7 4 3, in that order. When it starts talking, give it the mouse. It will give you 5 gold and 10 extra mana points. Take the gold and buy some surgical tubing. Use the mana to hadouken the trash can 34.67m away to the left of the soda machine. The man next to the trash can will then give you a nickel to buy some cookies. Once you have obtained and eaten the cookies, use the surgical tubing to launch yourself back to the computer and return to this page. Maybe by then the page will exist. If not... try the <%= link_to "sitemap", sitemap_path %>...
 
+<div class="typing-text-message" style="visibility: hidden;">
+	This page is unavailable and/or does not exist.
+	Someone messed up.
+	How about that person sitting two seats over to the left?
+	That person looks kind of suspicious...
+	Now, I want you to sneak over to that person, grab their mouse and run as fast as you can to the nearest soda machine.
+	When you reach the soda machine, press the buttons 1 4 7 4 3, in that order.
+	When it starts talking, give it the mouse.
+	It will give you 5 gold and 10 extra mana points.
+	Take the gold and buy some surgical tubing.
+	Use the mana to hadouken the trash can 34.67m away to the left of the soda machine.
+	The man next to the trash can will then give you a nickel to buy some cookies.
+	Once you have obtained and eaten the cookies, use the surgical tubing to launch yourself back to the computer and return to this page.
+	Maybe by then the page will exist.
+	If not... try the <%= link_to "sitemap", sitemap_path %>...
 </div>
+
 <script>
-	new TypingText(document.getElementById("msg"), 70);
-	TypingText.runAll();    
+	window.onload = function() {
+		ttmessages = document.getElementsByClassName("typing-text-message");
+		for(var i = 0; i < ttmessages.length; i += 1) {
+			new TypingText(ttmessages[i], 80);
+
+			if(ttmessages[i].style.visibility == "hidden") {
+				ttmessages[i].style.visibility = "visible";
+			}
+
+			TypingText.runAll();
+		}
+	}
 </script>
