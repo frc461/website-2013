@@ -27,3 +27,6 @@
 commit_hashes
 
 .rspec
+
+# Hide database dumps that we may be using for testing.
+db.sql
