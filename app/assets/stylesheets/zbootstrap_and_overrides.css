@@ -37,7 +37,7 @@ article a:hover {
 	padding: 8px;
 }
 
-code .custom-debug-string {
+code.custom-debug-string {
 	background: #101010;
 	border: transparent;
 	color: #404040;
