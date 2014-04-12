@@ -8,11 +8,13 @@
 
 			<article>
 				<%= content_for :breadcrumb %>
+
 				<div class="container-fluid">
 					<div class="row-fluid">
 						<div class="span9 solidBackground pull-right" id="main-span">
 							<%= yield %>
 						</div>
+
 						<%= render partial: "partials/sidebar" %>
 					</div>
 
@@ -31,6 +33,7 @@
 	<%= javascript_include_tag "application" %>
 
 	<div id="fb-root"></div>
+
 	<script>
 		(function(d, s, id) {
 		var js, fjs = d.getElementsByTagName(s)[0];
