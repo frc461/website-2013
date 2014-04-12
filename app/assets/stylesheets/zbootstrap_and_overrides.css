@@ -37,6 +37,13 @@ article a:hover {
 	padding: 8px;
 }
 
+code .custom-debug-string {
+	background: #101010;
+	border: transparent;
+	color: #404040;
+	font-size: 8px;
+}
+
 body {
 	background-image: url('/assets/bg.png');
 	background-repeat: repeat;

@@ -16,13 +16,6 @@
 	*zoom: 1;
 }
 
-code .custom-debug-string {
-	background: #101010;
-	border: transparent;
-	color: #404040;
-	font-size: 8px;
-}
-
 .clearfix:before,
 .clearfix:after {
 	display: table;
