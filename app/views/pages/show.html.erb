@@ -1,5 +1,5 @@
 <% if @page.pages.count > 0 || @page.parent_id %>
-<% content_for :ChildrenPages do %>
+<% content_for :page_children do %>
 <% if @page.pages.count > 0 %>
 <div class="well">
     <h4 style="margin-top: -2px; margin-bottom: 2px;"><strong>
