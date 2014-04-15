@@ -55,7 +55,7 @@
 	<div class="control-group">
 		<%=f.label :color, class: 'control-label'%>
 		<div class="controls">
-			<%= f.text_field :color, class: 'text_field', @event.color || value: "#232323"  %>
+			<%= f.text_field :color, class: 'text_field', value: @event.color || "#232323"  %>
 		</div>
 	</div>
 	<div class="control-group">
