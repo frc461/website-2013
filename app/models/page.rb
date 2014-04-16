@@ -9,5 +9,7 @@ class Page < ActiveRecord::Base
 	validates :sort_index, presence: true
 	validates :title, uniqueness: true
 
+	alias_attribute :name, :title
+
 	acts_as_taggable
 end

@@ -38,4 +38,6 @@ class Event < ActiveRecord::Base
 			color: color
 		}
 	end
+
+	alias_attribute :name, :title
 end
