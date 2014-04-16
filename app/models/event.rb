@@ -39,5 +39,5 @@ class Event < ActiveRecord::Base
 		}
 	end
 
-	alias_method :name, :title
+	alias_attribute :name, :title
 end
