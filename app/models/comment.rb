@@ -8,5 +8,7 @@ class Comment < ActiveRecord::Base
 
 	validates :content, presence: true
 
+	alias_method :name, :title
+
 	acts_as_taggable
 end
