@@ -29,14 +29,14 @@ class EventsController < InheritedResources::Base
 				while (!ev.end_repeat ||
 				       start_date < ev.end_repeat) &&
 						start_date < (DateTime.now + 365.days)
-					new_event = ev.dup
+					new_event            = ev.dup
 					new_event.start_date = start_date
-					new_event.end_date = end_date
-					new_event.id = ev.id
+					new_event.end_date   = end_date
+					new_event.id         = ev.id
 					events_with_repeats << new_event
 
 					start_date += ev.weeks_repeat.weeks
-					end_date += ev.weeks_repeat.weeks
+					end_date   += ev.weeks_repeat.weeks
 				end
 
 				ev.weeks_repeat = nil
