@@ -84,7 +84,7 @@ class EventsController < InheritedResources::Base
 
 			respond_to do |format|
 				format.html # index.html.erb
-				format.json { render json: unrepeatify().map{|a| a.cal endarify()} }
+				format.json { render json: unrepeatify().map{|a| a.calendarify()} }
 				format.ics { render text: icalendarify(unrepeatify) }
 			end
 		end
