@@ -8,8 +8,8 @@
 	
 		<% if current_user.admin %>
 			<% @todo.users.each do |user| %>
-				<%= form_tag unassign_todo_path(@todo), :style => "display: inline" do %>
-					<%= submit_tag user.name.to_s, :class => "btn btn-danger btn-mini" %>
+				<%= form_tag unassign_todo_path(@todo), style: "display: inline" do %>
+					<%= submit_tag user.name.to_s, class: "btn btn-danger btn-mini" %>
 				<% end %>
 			<% end %>.
 		<% else %>
@@ -30,7 +30,7 @@
 			<%= text_field_tag :name, current_user.name.to_s, :placeholder => "Name", :"data-provide" => "typeahead", :"data-items" => User.all.count, :"data-source" => User.all.map{|u| u.name}.to_s, :autocomplete => "off" %>
 				
 			<br />
-			<%= submit_tag "Go", :class => "btn btn-success" %>
+			<%= submit_tag "Go", class: "btn btn-success" %>
 		<% end %>
 	</p>
 <% end %>
@@ -42,17 +42,20 @@
 </div>
 
 <div class="form-actions">
-	<%= link_to "Back", todos_path, :class => "btn" %>
+	<%= link_to "Back", todos_path, class: "btn" %>
 	
 	<% if can? :update, Todo %>
-		<%= link_to "Edit", edit_todo_path, :class => "btn" %>
+		<%= link_to "Edit", edit_todo_path, class: "btn" %>
 		
 		<% if @todo.done %>
-			<%= link_to "Un-complete", uncomplete_todo_path(@todo), :class => "btn btn-danger" %>
+			<%= link_to "Un-complete", uncomplete_todo_path(@todo), class: "btn btn-danger" %>
 		<% else %>
-			<%= link_to "Complete", complete_todo_path(@todo), :class => "btn btn-success" %>
+			<%= link_to "Complete", complete_todo_path(@todo), class: "btn btn-success" %>
 		<% end %>
 	<% end %>
 	
-	<%= link_to "Deletify", todo_path, :method => 'delete', :data => { :confirm => "Are you sure?"}, :class => 'btn btn-danger' if(can? :destroy, @todo) %>
+	<%= link_to "Delete", todo_path,
+		:method => "delete",
+		:data => { :confirm => "Are you sure?"},
+		:class => "btn btn-danger" if(can? :destroy, @todo) %>
 </div>

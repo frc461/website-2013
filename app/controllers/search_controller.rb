@@ -23,7 +23,7 @@ class SearchController < ApplicationController
 					if current_user
 						@eventhings += Event.where("lower(title) LIKE lower(?)", "%" + query + "%")
 					else
-						@eventhings += Event.where(:public => true).where("lower(title) LIKE lower(?)", "%" + query + "%")
+						@eventhings += Event.where(public: true).where("lower(title) LIKE lower(?)", "%" + query + "%")
 					end
 					@albuthings += Album.tagged_with(query)
 					@albuthings += Album.where("lower(name) LIKE lower(?)", "%" + query + "%")

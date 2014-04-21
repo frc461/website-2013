@@ -1,8 +1,8 @@
-<%= form_for @photo, :html => { :multipart => true, :class => 'form-horizontal' } do |f| %>
+<%= form_for @photo, html: { multipart: true, class: 'form-horizontal' } do |f| %>
 <div class="control-group">
-    <%= f.label :album_id, :class => 'control-label' %>
+    <%= f.label :album_id, class: 'control-label' %>
     <div class="controls">
-		<%= f.select(:album_id, Album.all.map { |abm| [abm.name, abm.id] }, :include_blank => true) %>
+		<%= f.select(:album_id, Album.all.map { |abm| [abm.name, abm.id] }, include_blank: true) %>
     </div>
 </div>
 
@@ -13,8 +13,8 @@
 </div>
 
 <div class="form-actions">
-    <%= f.submit nil, :class => 'btn btn-primary' %>
-    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-    photos_path, :class => 'btn' %>
+    <%= f.submit nil, class: 'btn btn-primary' %>
+    <%= link_to t('.cancel', default: t("helpers.links.cancel")),
+    photos_path, class: 'btn' %>
 </div>
 <% end %>

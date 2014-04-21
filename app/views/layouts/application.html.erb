@@ -1,23 +1,27 @@
 <!DOCTYPE html>
 
 <html lang="en">
-	<%= render :partial => "partials/head" %>
+	<%= render partial: "partials/head" %>
 	<body>
 		<section id="page" data-type="background" data-speed="5">
-			<%= render :partial => "partials/navbar" %>
+			<%= render partial: "partials/navbar" %>
+
 			<article>
 				<%= content_for :breadcrumb %>
+
 				<div class="container-fluid">
 					<div class="row-fluid">
 						<div class="span9 solidBackground pull-right" id="main-span">
 							<%= yield %>
 						</div>
-						<%= render :partial => "partials/sidebar" %>
+
+						<%= render partial: "partials/sidebar" %>
 					</div>
 
 					<br class="visible-phone" />
-					<%= render :partial => "partials/footer" %>
-					<%= render :partial => "partials/alerts_holder" %>
+
+					<%= render partial: "partials/footer" %>
+					<%= render partial: "partials/alerts_holder" %>
 				</div>
 			</article>
 		</section>
@@ -27,8 +31,11 @@
 		 ================================================== -->
 	<!-- Placed at the end of the document so the pages load faster -->
 	<%= javascript_include_tag "application" %>
+
 	<div id="fb-root"></div>
-	<script type="text/javascript">(function(d, s, id) {
+
+	<script>
+		(function(d, s, id) {
 		var js, fjs = d.getElementsByTagName(s)[0];
 		if (d.getElementById(id)) return;
 		js = d.createElement(s); js.id = id;
@@ -36,6 +43,7 @@
 		fjs.parentNode.insertBefore(js, fjs);
 		}(document, 'script', 'facebook-jssdk'));
 	</script>
+
 	<script type="text/javascript">
 		function sizing() {
 		var formfilterswidth=$("#formfilters").width();
@@ -44,6 +52,7 @@
 		$(document).ready(sizing);
 		$(window).resize(sizing);
 	</script>
+
 	<script type="text/javascript">
 		(function() {
 		var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
@@ -51,30 +60,34 @@
 		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
 		})();
 	</script>
+
 	<script>
 		!function(d,s,id){
 		var js,fjs=d.getElementsByTagName(s)[0];
 		if(!d.getElementById(id)) {
-        js=d.createElement(s);
-        js.id=id;
-        js.src="//platform.twitter.com/widgets.js";
-        fjs.parentNode.insertBefore(js,fjs);
+		js=d.createElement(s);
+		js.id=id;
+		js.src="//platform.twitter.com/widgets.js";
+		fjs.parentNode.insertBefore(js,fjs);
 		}
 		}(document,"script","twitter-wjs");
 	</script>
+
 	<script type="text/javascript">
 		konami = new Konami()
 		konami.code = function () {
 		document.getElementById("konamicodething").style.display = "block";
-		} 
+		}
 		konami.load()
 	</script>
+
 	<script>
 		// somewhat simple to use!
 		$(document).ready(function() {
 		$('.js-activated').dropdownHover(true);
 		});
 	</script>
+
 	<!-- GOOGLE ANALYTICS -->
 	<script type="text/javascript">
 		var _gaq = _gaq || [];
@@ -85,5 +98,5 @@
 		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
 		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 		})();
-	</script> 
+	</script>
 </html>

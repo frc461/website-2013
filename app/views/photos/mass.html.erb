@@ -1,10 +1,7 @@
-<%- model_class = Photo -%>
-<% content_for :title do
-   "Mass Upload Photos"
-   end %>
+<% title "Upload Photos" %>
 
 <div class="page-header">
-	<h1>Mass Upload Photos</h1>
+	<h1>Upload Photos</h1>
 </div>
 
-<%= render :partial => "mass_form" %>
+<%= render partial: "mass_form" %>

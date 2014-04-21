@@ -28,58 +28,69 @@ module ApplicationHelper
 	end
 
 	def markback(text)
-		return strip_tags(sanitize(format(text))) #lisp
+		return strip_tags(sanitize(format(text)))
 	end
 
-	# I'm not going to even try.
-	# four04 - BEGIN DISREGARD
 	def carouselcheck(text)
 		thingnum = 0
+
 		gsubber = text.gsub!(/\[carousel\]\[([0-9,]+)\]\[([0-9,]+)\]/) do |s|
-			thingnum = 1 + thingnum
-			thing = "<div class=\"container row-fluid\">
-<div class=\"span6\">
-<div id=\"carousel" + thingnum.to_s + "\" class=\"carousel slide\">
-                <div class=\"carousel-inner\">
-                  <div class=\"item active\">"
-			thing += image_tag(Photo.find($1.split(",").first).image.url(:medium))
-			thing +="</div>"
+			thingnum += 1
+			thing = "<div class=\"container row-fluid\">"
+			thing << "<div class=\"span6\">"
+			thing << "<div id=\"carousel#{thingnum}\" class=\"carousel slide\">"
+			thing << "<div class=\"carousel-inner\">"
+			thing << "<div class=\"item active\">"
+			thing << image_tag(Photo.find($1.split(",").first).image.url(:medium))
+			thing << "</div>"
+
 			$1.split(",").drop(1).each do |photo|
-				thing += " <div class=\"item\">" +
-					image_tag(Photo.find(photo).image.url(:medium)) +
-					"</div>"
+				thing << "<div class=\"item\">"
+				thing << image_tag(Photo.find(photo).image.url(:medium))
+				thing << "</div>"
 			end
-			thing += "</div>
-                <a class=\"left carousel-control\" href=\"#carousel" + thingnum.to_s + "\" data-slide=\"prev\">&lsaquo;</a>
-                <a class=\"right carousel-control\" href=\"#carousel" + thingnum.to_s + "\" data-slide=\"next\">&rsaquo;</a>
-              </div></div>"
-			thingnum = 1 + thingnum
-			thing += "<div class=\"span6\">
-<div id=\"carousel"+ thingnum.to_s + "\" class=\"carousel slide hidden-phone\">
-                <div class=\"carousel-inner\">
-                  <div class=\"item active\">"
-			thing += image_tag(Photo.find($2.split(",").first).image.url(:medium))
-			thing +="</div>"
+
+			thing << "</div>"
+			thing << "<a class=\"carousel-control left\" href=\"#carousel#{thingnum}\" data-slide=\"prev\">&lsaquo;</a>"
+			thing << "<a class=\"carousel-control right\" href=\"#carousel#{thingnum}\" data-slide=\"next\">&rsaquo;</a>"
+			thing << "</div>"
+			thing << "</div>"
+
+			thingnum += 1
+
+			thing << "<div class=\"span6\">"
+			thing << "<div id=\"carousel#{thingnum}\" class=\"carousel slide hidden-phone\">"
+			thing << "<div class=\"carousel-inner\">"
+			thing << "<div class=\"active item\">"
+			thing << image_tag(Photo.find($2.split(",").first).image.url(:medium))
+			thing << "</div>"
+
 			$2.split(",").drop(1).each do |photo|
-				thing += " <div class=\"item\">" +
-					image_tag(Photo.find(photo).image.url(:medium)) +
-					"</div>"
+				thing << "<div class=\"item\">"
+				thing << image_tag(Photo.find(photo).image.url(:medium))
+				thing << "</div>"
 			end
-			thing += "</div>
-                <a class=\"left carousel-control\" href=\"#carousel" + thingnum.to_s + "\" data-slide=\"prev\">&lsaquo;</a>
-                <a class=\"right carousel-control\" href=\"#carousel" + thingnum.to_s + "\" data-slide=\"next\">&rsaquo;</a>
-              </div></div></div>
 
+			thing << "</div>"
+			thing << "<a class=\"left carousel-control\" href=\"#carousel#{thingnum}\" data-slide=\"prev\">&lsaquo;</a>"
+			thing << "<a class=\"right carousel-control\" href=\"#carousel#{thingnum}\" data-slide=\"next\">&rsaquo;</a>"
+			thing << "</div>"
+			thing << "</div>"
+			thing << "</div>"
+			thing <<
+<<-JS
 <script type=\"text/javascript\">
-  $('#carousel" + (thingnum - 1).to_s + "').carousel({interval: 10000})
-  $('#carousel" + (thingnum - 1).to_s + "').carousel('cycle')
+$(document).ready(function() {
+	$('#carousel#{thingnum - 1}').carousel({interval: 10000})
+	$('#carousel#{thingnum - 1}').carousel('cycle')
 
-  $('#carousel" + thingnum.to_s + "').carousel({interval: 10000})
-  $('#carousel" + thingnum.to_s + "').carousel('cycle')
-</script>"
+	$('#carousel#{thingnum}').carousel({interval: 10000})
+	$('#carousel#{thingnum}').carousel('cycle')
+})
+</script>
+JS
 		end
 	end
-	# four04 - END DISREGARD
 
 	def photocheck(text)
 		gsubber = text.gsub!(/\[[Aa]lbum ([^\[\]]+)\]\[[Pp]hoto (\d+)([otm])?\](\[([rl])\])?/) do |s|
@@ -104,16 +115,16 @@ module ApplicationHelper
 						if $5 == "r"
 							image_tag(Photo.where("album_id = ? and id = ?",
 							                      Album.where("name LIKE ?", $1).first.id, $2.to_i).first.image.url(style),
-							          :class => "pull-right floating-content-img")
+							          class: "pull-right floating-content-img")
 						elsif $5 == "l"
 							image_tag(Photo.where("album_id = ? and id = ?",
 							                      Album.where("name LIKE ?", $1).first.id, $2.to_i).first.image.url(style),
-							          :class => "pull-left floating-content-img")
+							          class: "pull-left floating-content-img")
 						end
 					else
 						image_tag(Photo.where("album_id = ? and id = ?",
 						                      Album.where("name LIKE ?", $1).first.id, $2.to_i).first.image.url(style),
-						          :class => "content-img")
+						          class: "content-img")
 					end
 				rescue
 					"/!\\ NO SUCH PHOTO /!\\"
@@ -195,13 +206,13 @@ module ApplicationHelper
 			text.gsub!("#" + hashtag.text, "<a href=\"https://twitter.com/search/?q=%23" + hashtag.text + "\" target=\"_blank\">" + "#" + hashtag.text + "</a>")
 		end
 
-		# user mentions
+		# User mentions
 		tweet.user_mentions.each do |user|
 			text.gsub!("@" + user.screen_name, "<a href=\"https://twitter.com/" + user.screen_name + "\">" + "@" + user.screen_name + "</a>")
 		end
 
-		# Return gsubbed crap
-		text
+		# Return gsubbed text
+		return text
 	end
 
 	def parent_array (page)

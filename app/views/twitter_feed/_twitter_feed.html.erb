@@ -1,5 +1,5 @@
 <% begin %>
-	<% tweets = $twitterClient.user_timeline("team461wbi", options = { :count => 4 } ) %>
+	<% tweets = $twitterClient.user_timeline("team461wbi", options = { count: 4 } ) %>
 	<% tweets.each do |tweet| %>
 		<hr />
 

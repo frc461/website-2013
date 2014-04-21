@@ -8,21 +8,16 @@ class ApplicationController < ActionController::Base
 	end
 
 	rescue_from CanCan::AccessDenied do |exception|
-		redirect_to root_url, :alert => exception.message
+		redirect_to root_url, alert: exception.message
 	end
 
 	rescue_from ActionView::MissingTemplate do |e|
-		render "error/index", :status => 404
+		render "error/index", status: 404
 	end
-	
+
 	def debuggy
 		@print_debug = true
-		@debug_string = Digest::MD5.hexdigest(
-		                                      "{ \"" +
-		                                      (current_user ? current_user.name : "NOT LOGGED IN" ) +
-		                                      "\", \"" +
-		                                      (@print_debug ? "true" : "false") +
-		                                      "\" };")
+		@debug_string = Digest::MD5.hexdigest("#{(current_user ? current_user.name : "no name")}|#{(@print_debug ? "debug" : "no debug")}")
 	end
 
 	private

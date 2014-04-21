@@ -1,6 +1,7 @@
-<%- model_class = Document -%>
 <div class="page-header">
-	<h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
+	<h1>
+		Documents
+	</h1>
 </div>
 <table class="table table-striped">
 	<thead>
@@ -18,19 +19,20 @@
 			<td><%= link_to document.name, document.filename %></td>
 			<td><%= time_ago_in_words(document.updated_at) + " ago" %></td>
 			<td>
-				<%= link_to t('.edit', :default => t("helpers.links.edit")),
-                edit_document_path(document), :class => 'btn btn-mini' %>
-				<%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                document_path(document),
-                :method => :delete,
-                :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                :class => 'btn btn-mini btn-danger' %>
+				<%= link_to "Edit",
+					edit_document_path(document),
+					:class => "btn btn-mini" %>
+				<%= link_to "Delete",
+					document_path(document),
+					:method => :delete,
+					:data => { :confirm => "Are you sure?" },
+					:class => "btn btn-mini btn-danger" %>
 			</td>
 		</tr>
 		<% end %>
 	</tbody>
 </table>
 
-<%= link_to t('.new', :default => t("helpers.links.new")),
-new_document_path,
-:class => 'btn btn-primary' %>
+<%= link_to "New",
+	new_document_path,
+	:class => "btn btn-primary" %>

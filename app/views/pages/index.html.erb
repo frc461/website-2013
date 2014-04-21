@@ -1,6 +1,4 @@
-<% content_for :title do
-   "Listing Pages"
-   end %>
+<% title "Listing Pages" %>
 <% content_for :breadcrumb do %>
 <ul class="breadcrumb span12">
 	<li><%= link_to "Home", root_path%><span class="divider">/</span></li>
@@ -58,7 +56,7 @@
 <br class="visible-phone" />
 <br class="visible-phone" />
 <% if can? :create, Page %>
-<%= link_to t('.new', :default => t("helpers.links.new")),
+<%= link_to t('.new', default: t("helpers.links.new")),
 new_page_path,
-:class => 'btn btn-primary' %>
+class: 'btn btn-primary' %>
 <% end %>

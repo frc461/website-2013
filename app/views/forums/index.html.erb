@@ -1,7 +1,4 @@
-<%- model_class = Forum -%>
-<% content_for :title do
-   "Forums"
-   end %>
+<% title "Forums" %>
 
 <% content_for :breadcrumb do %>
 <ul class="breadcrumb span12">
@@ -11,7 +8,9 @@
 <% end %>
 
 <div class="page-header">
-	<h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
+	<h1>
+		Forums
+	</h1>
 </div>
 
 <%= link_to "All my comments", comments_path %>
@@ -19,12 +18,12 @@
 <table class="table table-striped">
 	<thead>
 		<tr>
-			<th><%= model_class.human_attribute_name(:name) %></th>
-			<th><%= model_class.human_attribute_name(:description) %></th>
+			<th>Name</th>
+			<th>Description</th>
 		</tr>
 	</thead>
 	<tbody>
-		<% Forum.where(:group_id => nil).order("name ASC").each do | forum | %>
+		<% Forum.where(group_id: nil).order("name ASC").each do | forum | %>
 		<tr>
 			<td><%= link_to forum.name, forum_path(forum) %></td>
 			<td><%= forum.description %></td>
@@ -39,8 +38,8 @@
 <table class="table table-striped">
 	<thead>
 		<tr>
-			<th><%= model_class.human_attribute_name(:name) %></th>
-			<th><%= model_class.human_attribute_name(:description) %></th>
+			<th>Name</th>
+			<th>Description</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -55,7 +54,7 @@
 <% end %>
 <% end %>
 
-<%= link_to t('.new', :default => t("helpers.links.new")),
+<%= link_to t('.new', default: t("helpers.links.new")),
 new_forum_path,
-:class => 'btn btn-primary' if can? :create, Forum %>
+class: 'btn btn-primary' if can? :create, Forum %>
 <br />

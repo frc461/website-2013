@@ -8,8 +8,8 @@ class EventsController < InheritedResources::Base
 
 		event_list.each do |ev|
 			cal.event do
-				dtstart     ev.start_date
-				dtend       ev.end_date
+				dtstart     ev.start_date_icalendar
+				dtend       ev.end_date_icalendar
 				summary     ev.title
 				description ev.content
 			end
@@ -21,7 +21,7 @@ class EventsController < InheritedResources::Base
 	def unrepeatify
 		events_with_repeats = @events.dup
 
-		events_with_repeats.each do |ev|
+		@events.each do |ev|
 			if ev.weeks_repeat && ev.weeks_repeat > 0
 				start_date = ev.start_date + ev.weeks_repeat.weeks
 				end_date = ev.end_date + ev.weeks_repeat.weeks
@@ -29,13 +29,9 @@ class EventsController < InheritedResources::Base
 				while (!ev.end_repeat ||
 				       start_date < ev.end_repeat) &&
 						start_date < (DateTime.now + 365.days)
-					new_event = Event.new(:title => ev.title,
-					                      :content => ev.content,
-					                      :location => ev.location,
-					                      :public => ev.public,
-					                      :start_date => start_date,
-					                      :end_date => end_date,
-					                      :color => ev.color)
+					new_event = ev.dup
+					new_event.start_date = start_date
+					new_event.end_date = end_date
 					new_event.id = ev.id
 					events_with_repeats << new_event
 
@@ -54,7 +50,7 @@ class EventsController < InheritedResources::Base
 		@event = Event.new(params[:event])
 
 		if @event.save
-			redirect_to @event, :notice => "Event created successfully!"
+			redirect_to @event, notice: "Event created successfully!"
 		else
 			flash[:error] = view_context.join_errors(@event.errors)
 
@@ -66,7 +62,7 @@ class EventsController < InheritedResources::Base
 		@event = Event.find(params[:id])
 
 		if @event.update_attributes(params[:event])
-			redirect_to @event, :notice => "Event updated successfully!"
+			redirect_to @event, notice: "Event updated successfully!"
 		else
 			flash[:error] = view_context.join_errors(@event.errors)
 
@@ -84,7 +80,7 @@ class EventsController < InheritedResources::Base
 				format.ics { render text: icalendarify(unrepeatify) }
 			end
 		else
-			@events = Event.where(:public => true)
+			@events = Event.where(public: true)
 
 			respond_to do |format|
 				format.html # index.html.erb
