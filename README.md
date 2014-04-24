@@ -10,12 +10,16 @@ Eventually, this will be up at [our site](http://boilerinvasion.org).
 
 ## Installation
 
-    git clone git@github.com/team461WBI/website.git
+```sh
+git clone git@github.com/team461WBI/website.git
+```
 
 To fetch the repo. Change to directory, then do
 
-    bundle install
-    rake db:migrate
+```sh
+bundle install
+rake db:migrate
+```
 
 Then install nodejs through your package manager of choice (or however
 you want to, really, just make sure it works).
@@ -43,18 +47,20 @@ the login page), but these will have the default permissions, and no more.
 
 To add an administrator, and work around this, you should probably run
 
-    rails console
+```sh
+rails console
+```
 
 And within it, run
 
-````
+```ruby
 User.create :name => "[administrator's name (e.g. Administrator)]",
             :email => "[administrator's email address (e.g. admin@blah.com)]",
             :password => "[administrator password]",
             :password_confirmation => "[administrator password again]",
             :admin => true,
             :secret_code => "[the secret code from above]"
-````
+```
 
 The `:admin => true` is the most important part of that command,
 as it sets the user to an administrator.
