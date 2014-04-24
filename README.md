@@ -54,12 +54,12 @@ rails console
 And within it, run
 
 ```ruby
-User.create :name => "[administrator's name (e.g. Administrator)]",
-            :email => "[administrator's email address (e.g. admin@blah.com)]",
-            :password => "[administrator password]",
-            :password_confirmation => "[administrator password again]",
-            :admin => true,
-            :secret_code => "[the secret code from above]"
+User.create(name: "[administrator's name (e.g. Jim von Administrator)]",
+            email: "[administrator's email address (e.g. jim@administratorz.net)]",
+            password: "[administrator password (e.g. magical.cookies.arent.flying.in.the.sky)]",
+            password_confirmation: "[administrator password again (e.g. magical.cookies.arent.flying.in.the.sky)]",
+            admin: true,
+            secret_code: "[the secret code from above]")
 ```
 
 The `:admin => true` is the most important part of that command,
