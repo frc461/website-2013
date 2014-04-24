@@ -62,7 +62,7 @@ User.create(name: "[administrator's name (e.g. Jim von Administrator)]",
             secret_code: "[the secret code from above]")
 ```
 
-The `:admin => true` is the most important part of that command,
+The `admin: true` is the most important part of that command,
 as it sets the user to an administrator.
 On the sidebar, the Sign Up link (which directs to the user creation
 panel) will only be displayed if the user-logged-in-as is an administrator.
