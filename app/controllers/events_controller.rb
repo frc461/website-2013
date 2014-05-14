@@ -76,7 +76,7 @@ class EventsController < InheritedResources::Base
 
 			respond_to do |format|
 				format.html # index.html.erb
-				format.json { render json: unrepeatify().map{|a| a.calendarify} }
+				format.json { render json: unrepeatify().map{|a| a.fullcalendarify} }
 				format.ics { render text: icalendarify(unrepeatify) }
 			end
 		else
@@ -84,7 +84,7 @@ class EventsController < InheritedResources::Base
 
 			respond_to do |format|
 				format.html # index.html.erb
-				format.json { render json: unrepeatify().map{|a| a.calendarify()} }
+				format.json { render json: unrepeatify().map{|a| a.fullcalendarify()} }
 				format.ics { render text: icalendarify(unrepeatify) }
 			end
 		end
