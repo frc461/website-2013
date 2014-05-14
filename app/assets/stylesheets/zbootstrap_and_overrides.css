@@ -44,6 +44,10 @@ code.custom-debug-string {
 	font-size: 8px;
 }
 
+code.custom-debug-string.font-larger {
+	font-size: 10px;
+}
+
 body {
 	background-image: url('/assets/bg.png');
 	background-repeat: repeat;

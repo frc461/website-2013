@@ -29,14 +29,14 @@ class EventsController < InheritedResources::Base
 				while (!ev.end_repeat ||
 				       start_date < ev.end_repeat) &&
 						start_date < (DateTime.now + 365.days)
-					new_event = ev.dup
+					new_event            = ev.dup
 					new_event.start_date = start_date
-					new_event.end_date = end_date
-					new_event.id = ev.id
+					new_event.end_date   = end_date
+					new_event.id         = ev.id
 					events_with_repeats << new_event
 
 					start_date += ev.weeks_repeat.weeks
-					end_date += ev.weeks_repeat.weeks
+					end_date   += ev.weeks_repeat.weeks
 				end
 
 				ev.weeks_repeat = nil
@@ -76,7 +76,7 @@ class EventsController < InheritedResources::Base
 
 			respond_to do |format|
 				format.html # index.html.erb
-				format.json { render json: unrepeatify().map{|a| a.calendarify} }
+				format.json { render json: unrepeatify().map{|a| a.fullcalendarify} }
 				format.ics { render text: icalendarify(unrepeatify) }
 			end
 		else
@@ -84,7 +84,7 @@ class EventsController < InheritedResources::Base
 
 			respond_to do |format|
 				format.html # index.html.erb
-				format.json { render json: unrepeatify().map{|a| a.calendarify()} }
+				format.json { render json: unrepeatify().map{|a| a.fullcalendarify()} }
 				format.ics { render text: icalendarify(unrepeatify) }
 			end
 		end

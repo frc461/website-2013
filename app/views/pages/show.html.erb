@@ -1,5 +1,5 @@
 <% if @page.pages.count > 0 || @page.parent_id %>
-<% content_for :ChildrenPages do %>
+<% content_for :page_children do %>
 <% if @page.pages.count > 0 %>
 <div class="well">
     <h4 style="margin-top: -2px; margin-bottom: 2px;"><strong>
@@ -68,8 +68,8 @@
 			:class => "btn btn-danger" if can? :destroy, @page %>
 	</p>
 
-	<p>
+	<code class="custom-debug-string font-larger">
 		This page is "<%= @page.title %>," sort index <%= @page.sort_index %>, id <%= @page.id %>, and was last updated on <%= @page.updated_at.strftime("%Y-%m-%d %H:%M %Ss (%Z)") %>
-	</p>
+	</code>
 </div>
 <% end %>
