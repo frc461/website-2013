@@ -16,7 +16,7 @@
 	</h1>
 </div>
 
-<% @albums.in_groups_of(3) do |group| %>
+<% @albums.order(:name).in_groups_of(3) do |group| %>
 	<div class="row-fluid">
 		<% group.each do |album| %>
 			<% if album %>
