@@ -101,4 +101,13 @@ class UsersController < InheritedResources::Base
 			render "edit"
 		end
 	end
+
+	def destroy
+		# Log out before deleting.
+		session[:user_id] = nil
+
+		@user.destroy
+
+		redirect_to root_url
+	end
 end
