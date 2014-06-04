@@ -103,11 +103,8 @@ class UsersController < InheritedResources::Base
 	end
 
 	def destroy
-		# If logged in as the user being deleted.
-		if session[:user_id] == @user.id
-			# Log out before deleting.
-			session[:user_id] = nil
-		end
+		# Log out before deleting if logged in as user to be deleted.
+		session[:user_id] = nil if session[:user_id] == @user.id
 
 		@user.destroy
 
