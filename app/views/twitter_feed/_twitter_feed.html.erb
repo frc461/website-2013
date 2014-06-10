@@ -1,5 +1,5 @@
 <% begin %>
-	<% tweets = $twitterClient.user_timeline("team461wbi", options = { count: 4 } ) %>
+	<% tweets = $twitterClient.user_timeline("frc461", options = { count: 4 } ) %>
 	<% tweets.each do |tweet| %>
 		<hr />
 
@@ -32,6 +32,6 @@
 			</ul>
 		<% else %>
 		<p>Something has gone wrong with our connection to Twitter!</p>
-		<p><a href="https://www.twitter.com/team461wbi">See our tweets here</a></p>
+		<p><a href="https://www.twitter.com/frc461">See our tweets here</a></p>
 	<% end %>
 <% end %>
