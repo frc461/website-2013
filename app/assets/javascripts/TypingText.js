@@ -27,6 +27,7 @@ TypingText = function(element, interval, cursor, finishedCallback) {
 		this.running = true;  // Never run.
 		return;
 	}
+
 	this.element = element;
 	this.finishedCallback = (finishedCallback ? finishedCallback : function() { return; });
 	this.interval = (typeof interval == "undefined" ? 100 : interval);
@@ -44,11 +45,13 @@ TypingText = function(element, interval, cursor, finishedCallback) {
 	this.inHTMLEntity = false;
 	this.HTMLEntityBuffer = "";
 }
+
 TypingText.all = new Array();
 TypingText.currentIndex = 0;
 TypingText.runAll = function() {
 	for(var i = 0; i < TypingText.all.length; i++) TypingText.all[i].run();
 }
+
 TypingText.prototype.run = function() {
 	if(this.running) return;
 	if(typeof this.origText == "undefined") {
